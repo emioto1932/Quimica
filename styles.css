@@ -13,28 +13,14 @@ header {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: relative;
 }
 
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
-    z-index: 2; /* Para garantir que fique acima do menu */
 }
 
 /* Menu suspenso */
-nav {
-    position: absolute;
-    top: 100%;
-    left: 10px; /* Alinha o menu ao botão */
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 200px;
-    z-index: 1;
-}
-
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -42,27 +28,10 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
+    margin: 5px 0;
 }
 
-nav ul li:last-child {
-    border-bottom: none;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-}
-
-nav ul li a:hover {
-    background-color: #f1f1f1;
-}
-
-nav.hidden {
+.hidden {
     display: none;
 }
 
@@ -81,9 +50,6 @@ nav.hidden {
     background-repeat: no-repeat;
     background-position: center;
     transition: background 0.3s ease-in-out;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
 }
 
 /* Temas */
@@ -117,21 +83,4 @@ nav.hidden {
 
 .tema-forcas-intermoleculares {
     background-image: url('img/intermoleculares1.png');
-}
-
-/* Estilos para as divisórias de imagem e texto */
-.image-container, .text-container {
-    width: 48%;
-    margin: 0;
-}
-
-.text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.text-container p {
-    font-size: 16px;
-    line-height: 1.5;
 }
