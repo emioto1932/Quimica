@@ -18,8 +18,10 @@ topics.forEach(topic => {
         // Atualiza o título
        //document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
-// Atualiza o título com o texto selecionado, preservando os acentos
-document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ');
+    function setTopic(topic) {
+    // Atualiza o título diretamente com o texto selecionado
+    document.getElementById('selected-topic').innerText = topic;
+}
 
 
         
