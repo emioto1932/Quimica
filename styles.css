@@ -108,4 +108,7 @@ nav.hidden {
 /* Exibindo o conteúdo ativo */
 .content.active {
     display: block;
+     display: flex; /* Alinha as divisórias lado a lado */
+    justify-content: space-between; /* Espaçamento entre as divisórias */
+    flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */
 }
