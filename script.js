@@ -25,5 +25,8 @@ topics.forEach(topic => {
         
         // Mostra o conteúdo do tópico selecionado
         document.getElementById(selectedTopic).classList.add('active');
+
+        // Esconde o menu
+        menu.classList.add('hidden');
     });
 });
