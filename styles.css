@@ -15,7 +15,6 @@ header {
     color: white;
 }
 
-/* Botão do menu */
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
@@ -36,27 +35,52 @@ nav ul li {
     display: none;
 }
 
-/* Título do tema selecionado */
+/* Título */
 #selected-topic {
     text-align: center;
     margin-top: 20px;
 }
 
-/* Containers de conteúdo */
+/* Container */
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px;
+    height: 300px;
+    margin: 20px auto;
+    width: 90%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background 0.3s ease-in-out;
 }
 
-.image-container img {
-    max-width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* Temas */
+.tema-distribuicao-eletronica {
+    background-image: url('img/distribuicao1.png'), url('img/distribuicao2.png'), url('img/distribuicao3.png');
 }
 
-.text-container {
-    max-width: 50%;
-    text-align: justify;
+.tema-regra-do-octeto {
+    background-image: url('img/octeto1.png'), url('img/octeto2.png');
+}
+
+.tema-ligacao-ionica {
+    background-image: url('img/ionica1.png');
+}
+
+.tema-ligacao-covalente {
+    background-image: url('img/covalente1.png'), url('img/covalente2.png');
+}
+
+.tema-ligacao-metalica {
+    background-image: url('img/metalica1.png');
+}
+
+.tema-eletronegatividade {
+    background-image: url('img/eletronegatividade1.png');
+}
+
+.tema-forcas-intramoleculares {
+    background-image: url('img/intramoleculares1.png');
+}
+
+.tema-forcas-intermoleculares {
+    background-image: url('img/intermoleculares1.png');
 }
