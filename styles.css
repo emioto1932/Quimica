@@ -115,6 +115,20 @@ nav.hidden {
     text-decoration: underline;
 }
 
+/* Responsividade - Para telas pequenas (celular) */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Empilha as divisões em vez de lado a lado */
+        align-items: center; /* Alinha ao centro */
+    }
+
+    .content .image-container,
+    .content .text-container {
+        width: 100%; /* Cada divisão ocupa 100% da largura */
+        margin-bottom: 10px; /* Ajuste de espaço para celular */
+    }
+}
+
 /* Exibindo o conteúdo ativo */
 .content.active {
     display: flex; /* Alinha as divisórias lado a lado */
