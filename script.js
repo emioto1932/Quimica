@@ -32,11 +32,8 @@ topics.forEach(topic => {
 
          
 
-        // Atualiza o título 
-
-       document.getElementById('selected-topic').innerText = selectedTopic; 
-
-  
+    // Atualiza o título
+        document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
   
 
