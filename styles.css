@@ -15,12 +15,13 @@ header {
     color: white;
     padding: 10px 20px;
     position: relative;
+    flex-wrap: wrap;
 }
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
-    flex: 1;
+    flex: 1 0 100%; /* Garante que o título ocupe a largura completa em telas pequenas */
 }
 
 header .menu-icon {
@@ -79,6 +80,7 @@ main {
 
 .container {
     display: flex;
+    flex-wrap: wrap; /* Permite que os containers se ajustem em telas pequenas */
     gap: 20px;
     max-width: 800px;
     width: 100%;
@@ -101,3 +103,25 @@ main {
     text-decoration: underline;
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    header h1 {
+        font-size: 1rem;
+    }
+
+    .container {
+        flex-direction: column; /* Coloca os elementos em coluna em telas pequenas */
+        align-items: center;
+    }
+
+    .image-container img,
+    .text-container {
+        max-width: 90%; /* Ajusta a largura para caber na tela */
+        text-align: center;
+    }
+}
