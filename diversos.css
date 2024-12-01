@@ -11,3 +11,16 @@
         th {
             background-color: #f2f2f2;
         }
+
+       p {
+            font-size: 1.1em;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
