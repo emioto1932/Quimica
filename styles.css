@@ -1,1 +1,103 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007ACC;
+    color: white;
+    padding: 10px 20px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    flex: 1;
+}
+
+header .menu-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+header .author {
+    font-size: 1rem;
+    text-align: right;
+}
+
+/* Menu lateral */
+#menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 250px;
+    padding: 10px;
+    display: none;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li {
+    padding: 5px 0;
+    font-size: 1rem;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: #007ACC;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Corpo principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.text-container {
+    max-width: 400px;
+    font-size: 1rem;
+}
+
+.text-container a {
+    color: #007ACC;
+    text-decoration: underline;
+}
 
