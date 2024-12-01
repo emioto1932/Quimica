@@ -91,6 +91,7 @@ nav.hidden {
 }
 
 .image-container {
+width: 100%; /* A imagem ocupa 100% da largura da divisória */
 padding-left: 5px; /* Adiciona 20px de espaço à esquerda da imagem */
 padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */
 }
