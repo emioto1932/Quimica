@@ -14,28 +14,19 @@ menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", function (event) {
         event.preventDefault(); // Evitar comportamento padrão
         const topic = this.dataset.topic; // Pegar o tema
-        showContent(topic); // Mostrar conteúdo do tema
+        applyTheme(topic); // Aplicar a classe do tema
         menu.classList.add("hidden"); // Esconder o menu
     });
 });
 
-// Função para exibir o conteúdo do tema selecionado
-function showContent(topic) {
-    // Atualizar o título do tema
-    selectedTopic.textContent = topic;
+// Função para aplicar o tema
+function applyTheme(topic) {
+    // Atualizar o título
+    selectedTopic.textContent = topic.replace(/-/g, ' ');
 
-    // Atualizar o conteúdo do container
-    const imageSrc = `img/${topic.replace(/\s+/g, '-').toLowerCase()}.png`;
-    const videoLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(topic)}`;
-    contentContainer.innerHTML = `
-        <div class="image-container">
-            <a href="${videoLink}" target="_blank">
-                <img src="${imageSrc}" alt="Imagem de ${topic}">
-            </a>
-        </div>
-        <div class="text-container">
-            <p>${topic} é um conceito importante em química. Clique na imagem ou no texto para assistir a uma explicação detalhada.</p>
-            <a href="${videoLink}" target="_blank">Clique aqui para o vídeo</a>
-        </div>
-    `;
+    // Remover classes anteriores do container
+    contentContainer.className = 'container';
+
+    // Adicionar a classe correspondente ao tema
+    contentContainer.classList.add(`tema-${topic}`);
 }
