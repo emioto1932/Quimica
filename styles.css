@@ -88,9 +88,6 @@ nav.hidden {
 .content .text-container {
     width: 50%; /* Cada uma ocupa 50% da largura */
     margin-bottom: 20px; /* Espaço entre as divisórias */
-}
-
-.text-container {
     padding-left: 20px; /* Espaçamento entre a imagem e o texto */
 }
 
