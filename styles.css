@@ -90,6 +90,10 @@ nav.hidden {
     margin-bottom: 20px; /* Espaço entre as divisórias */
 }
 
+.image-container {
+padding-left: 20px; /* Adiciona 20px de espaço à esquerda da imagem */
+}
+
 .content img {
     width: 100%;
     height: auto;
