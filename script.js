@@ -16,10 +16,11 @@ topics.forEach(topic => {
         const selectedTopic = event.target.getAttribute('data-topic');
         
         // Atualiza o título
-       // document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
+       //document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
-        // Atualiza o título
-        document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ');
+        // Atualiza o título com o texto selecionado, mantendo a acentuação e convertendo para maiúsculas, se necessário
+        document.getElementById('selected-topic').innerText = selectedTopic.toUpperCase();
+
         
         // Esconde todos os conteúdos
         document.querySelectorAll('.content').forEach(content => {
