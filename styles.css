@@ -1,127 +1,21 @@
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Cabeçalho */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007ACC;
-    color: white;
-    padding: 10px 20px;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-header h1 {
-    font-size: 1.2rem;
-    text-align: center;
-    flex: 1 0 100%; /* Garante que o título ocupe a largura completa em telas pequenas */
-}
-
-header .menu-icon {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-header .author {
-    font-size: 1rem;
-    text-align: right;
-}
-
-/* Menu lateral */
-#menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    width: 250px;
-    padding: 10px;
-    display: none;
-}
-
-#menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#menu ul li {
-    padding: 5px 0;
-    font-size: 1rem;
-}
-
-#menu ul li a {
-    text-decoration: none;
-    color: #007ACC;
-}
-
+/* Estilizar menu oculto */
 .hidden {
     display: none;
 }
 
-/* Corpo principal */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
+/* Exibir menu quando não está oculto */
+nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+    position: absolute;
+    top: 50px; /* Ajuste conforme necessário */
+    left: 10px; /* Ajuste conforme necessário */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os containers se ajustem em telas pequenas */
-    gap: 20px;
-    max-width: 800px;
-    width: 100%;
-}
-
-.image-container img {
-    width: 100%;
-    max-width: 300px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-}
-
-.text-container {
-    max-width: 400px;
-    font-size: 1rem;
-}
-
-.text-container a {
-    color: #007ACC;
-    text-decoration: underline;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    header {
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    header h1 {
-        font-size: 1rem;
-    }
-
-    .container {
-        flex-direction: column; /* Coloca os elementos em coluna em telas pequenas */
-        align-items: center;
-    }
-
-    .image-container img,
-    .text-container {
-        max-width: 90%; /* Ajusta a largura para caber na tela */
-        text-align: center;
-    }
+/* Botão de menu */
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
 }
