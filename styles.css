@@ -86,7 +86,8 @@ nav.hidden {
 
 .content .image-container,
 .content .text-container {
-    margin-bottom: 20px;
+    width: 50%; /* Cada uma ocupa 50% da largura */
+    margin-bottom: 20px; /* Espaço entre as divisórias */
 }
 
 .content img {
@@ -107,8 +108,7 @@ nav.hidden {
 
 /* Exibindo o conteúdo ativo */
 .content.active {
-    display: block;
-     display: flex; /* Alinha as divisórias lado a lado */
+    display: flex; /* Alinha as divisórias lado a lado */
     justify-content: space-between; /* Espaçamento entre as divisórias */
     flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */
 }
