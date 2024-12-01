@@ -114,6 +114,7 @@ padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */
 /* Exibindo o conteúdo ativo */
 .content.active {
     display: flex; /* Alinha as divisórias lado a lado */
+    width: 50%; /* Cada uma ocupa 50% da largura */
     justify-content: space-between; /* Espaçamento entre as divisórias */
     flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */
 }
