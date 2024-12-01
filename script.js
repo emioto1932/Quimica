@@ -18,10 +18,10 @@ topics.forEach(topic => {
         // Atualiza o título
        //document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
-    function setTopic(topic) {
+  
     // Atualiza o título diretamente com o texto selecionado
     document.getElementById('selected-topic').innerText = topic;
-}
+
 
 
         
