@@ -16,7 +16,9 @@ topics.forEach(topic => {
         const selectedTopic = event.target.getAttribute('data-topic');
         
         // Atualiza o título
-       document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
+       document.getElementById('selected-topic').innerText = selectedTopic.toUpperCase();
+        // Atualiza o título
+      //  document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
 
 
