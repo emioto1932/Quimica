@@ -1,21 +1,62 @@
-/* Estilizar menu oculto */
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Botão do menu */
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Menu suspenso */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 5px 0;
+}
+
 .hidden {
     display: none;
 }
 
-/* Exibir menu quando não está oculto */
-nav {
-    background-color: #f0f0f0;
-    padding: 10px;
-    position: absolute;
-    top: 50px; /* Ajuste conforme necessário */
-    left: 10px; /* Ajuste conforme necessário */
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Título do tema selecionado */
+#selected-topic {
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* Botão de menu */
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
+/* Containers de conteúdo */
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
+
+.image-container img {
+    max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.text-container {
+    max-width: 50%;
+    text-align: justify;
 }
