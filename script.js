@@ -18,8 +18,9 @@ topics.forEach(topic => {
         // Atualiza o título
        //document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase();
 
-        // Atualiza o título com o texto selecionado, mantendo a acentuação e convertendo para maiúsculas, se necessário
-        document.getElementById('selected-topic').innerText = selectedTopic.toUpperCase();
+       // Atualiza o título com o texto selecionado, sem modificar
+        document.getElementById('selected-topic').innerText = selectedTopic;
+
 
         
         // Esconde todos os conteúdos
