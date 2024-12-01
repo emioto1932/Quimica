@@ -84,32 +84,9 @@ nav.hidden {
     margin-top: 20px;
 }
 
-largura disponível, utilizando width: 50%.
-
-Aqui está o ajuste no seu código CSS:
-
-Estilo (styles.css)
-css
-Copiar código
 .content .image-container,
 .content .text-container {
-    width: 50%; /* Cada uma ocupa 50% da largura */
-    margin-bottom: 20px; /* Espaço entre as divisórias */
-}
-
-.content {
-    display: flex; /* Alinha as divisórias lado a lado */
-    justify-content: space-between; /* Espaçamento entre as divisórias */
-    flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */
-}
-
-.image-container img {
-    max-width: 100%; /* Garante que a imagem ocupe a largura da divisória */
-    height: auto; /* Mantém a proporção da imagem */
-}
-
-.text-container {
-    padding-left: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-bottom: 20px;
 }
 
 .content img {
