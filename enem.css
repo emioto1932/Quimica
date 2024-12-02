@@ -1,0 +1,51 @@
+/* Estilos gerais para a nova divisória */
+.enim-container {
+    margin-top: 30px; /* Espaço superior */
+    padding: 20px;
+    background-color: #f0f8ff; /* Cor de fundo suave */
+    border: 2px solid #d1e7fd; /* Borda azul clara */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+.enim-container h3 {
+    font-size: 1.5rem;
+    color: #2e6f9f; /* Cor do título */
+    margin-bottom: 15px;
+}
+
+.enim-question {
+    margin-bottom: 20px; /* Espaçamento entre as questões */
+    padding: 10px;
+    background-color: #ffffff; /* Cor de fundo da questão */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #d1e7fd; /* Borda azul clara */
+}
+
+.enim-question img {
+    width: 100%; /* Para garantir que a imagem se ajuste ao container */
+    max-width: 400px; /* Máxima largura da imagem */
+    margin-bottom: 10px; /* Espaço abaixo da imagem */
+    border-radius: 8px; /* Bordas arredondadas na imagem */
+}
+
+.enim-question a {
+    font-size: 1rem;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.enim-question a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 768px) {
+    .enim-question {
+        padding: 15px;
+    }
+
+    .enim-question img {
+        max-width: 100%; /* A imagem ocupará 100% da largura do container em telas pequenas */
+    }
+}
