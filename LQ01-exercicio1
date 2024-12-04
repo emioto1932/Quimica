@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2011)</title>
+    <title>ENEM (2020)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Questão 1 - ENEM (2011) - Forças Intermoleculares</h1>
+        <h1>Questão 1 - ENEM (2020) - Distribuição Eletrônica</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ08ex01-2011-Forcas_Intermoleculares.jpg" alt="Questão 1">
+            <img src="img/LQ01ex01-2020-Distribuicao_eletronica.jpg" alt="Questão 1">
         </div>
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
