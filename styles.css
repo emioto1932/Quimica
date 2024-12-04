@@ -115,6 +115,59 @@ nav.hidden {
     text-decoration: underline;
 }
 
+
+
+.enim-container {
+    margin: 20px 0;
+}
+
+.exercise-list {
+    list-style: none;
+    padding: 0;
+}
+
+.exercise-list li {
+    margin: 10px 0;
+}
+
+.exercise-list a {
+    text-decoration: none;
+    color: blue;
+    font-size: 18px;
+}
+
+.exercise-page {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.exercise-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-video a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.exercise-video a:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
 /* Responsividade - Para telas pequenas (celular) */
 @media (max-width: 768px) {
     .content {
