@@ -20,6 +20,8 @@ header {
     font-size: 24px;
     cursor: pointer;
     z-index: 2; /* Para garantir que fique acima do menu */
+     position: absolute; /* Garante que o menu pode ser posicionado */
+    bottom: 0; /* Alinha na parte inferior */
 }
 
 /* Menu suspenso */
