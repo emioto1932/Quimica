@@ -129,17 +129,17 @@ nav.hidden {
 /* alternativas das questoes semelhantes ao Enem */
 .alternativas {
     text-align: left;
-    margin-top: 1rem;
     font-size: 1rem;
+    margin-top: 1rem;
 }
 
 .alternativa {
-    text-align: center;
     font-size: 1.2rem; /* Ajusta o tamanho da fonte */
     background-color: #ffffff; /* Fundo branco */
-    padding: 0.5rem;
+    padding: 0.2rem 0; /* Reduz o preenchimento para diminuir o espaço */
     margin: 0; /* Remove o espaçamento entre os elementos */
 }
+
 
 
 
