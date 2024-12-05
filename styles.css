@@ -126,21 +126,7 @@ nav.hidden {
 }
 
 
-/* alternativas das questoes semelhantes ao Enem */
-.alternativas {
-    text-align: center; /* Centraliza as alternativas */
-    font-size: 1rem;
-    margin-top: 1rem;
-}
 
-.alternativa {
-    font-size: 1.2rem; /* Ajusta o tamanho da fonte */
-    background-color: #ffffff; /* Fundo branco */
-    padding: 0; /* Remove o padding */
-    margin: 0; /* Remove a margem */
-    display: inline-block; /* Faz as alternativas ficarem lado a lado */
-    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
-}
 
 
 
@@ -221,6 +207,25 @@ nav.hidden {
 }
 
 
+/* alternativas das questoes semelhantes ao Enem */
+.alternativas {
+    text-align: left; /* Alinha o texto à esquerda */
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: block; /* Garante que as alternativas fiquem empilhadas */
+}
+
+.alternativa {
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    padding: 10px; /* Adiciona espaçamento interno */
+    margin-bottom: 10px; /* Espaçamento entre as alternativas */
+    display: block; /* Força cada alternativa a ocupar uma linha */
+    text-align: left; /* Garante alinhamento do texto à esquerda */
+    border: 1px solid #ddd; /* Adiciona borda como em questões impressas */
+    border-radius: 5px; /* Cantos arredondados */
+    line-height: 1.5; /* Ajusta espaçamento entre linhas */
+}
 
 
 
