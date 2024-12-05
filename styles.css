@@ -225,6 +225,7 @@ nav.hidden {
     text-align: left; /* Garante alinhamento do texto à esquerda */
     border: none; /* Remove borda, se preferir */
     line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
+    margin-left: 100px; /* Adiciona 100px de espaço à esquerda */
 }
 
 
