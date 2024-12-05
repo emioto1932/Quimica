@@ -190,6 +190,10 @@ nav.hidden {
     margin-right: 0; /* Garante que não haja margem extra no lado direito */
 }
 
+.enunciado {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
 
 .tabela {
     max-width: 50%; /* Limita a largura máxima para 50% da página */
@@ -258,6 +262,14 @@ nav.hidden {
         width: 100%; /* Cada divisão ocupa 100% da largura */
         margin-bottom: 10px; /* Ajuste de espaço para celular */
     }
+
+   .enunciado {
+    width: 100%; /* No celular, ocupa toda a largura */
+    margin: 0 auto; /* Centraliza no desktop */
+    padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+            }
+    
 }
 
 /* Exibindo o conteúdo ativo */
