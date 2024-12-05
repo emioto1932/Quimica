@@ -185,7 +185,7 @@ nav.hidden {
 
 /* formatacao das questoes  */
 
-bodyquestao {
+.bodyquestao {
     margin-left: 10px; /* Define uma margem de 10px no lado esquerdo */
     margin-right: 0; /* Garante que não haja margem extra no lado direito */
 }
