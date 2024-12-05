@@ -185,11 +185,18 @@ nav.hidden {
 
 /* formatacao das questoes  */
 
+
+
 .tabela {
-    width: 100%;
+    max-width: 50%; /* Limita a largura máxima para 50% da página */
+    margin: 0 auto; /* Centraliza a tabela horizontalmente */
     border-collapse: collapse;
-    margin: 1rem 0;
+    margin-top: 1rem; /* Mantém o espaçamento acima */
 }
+
+
+
+
 
 .tabela th, .tabela td {
     border: 1px solid #ddd;
