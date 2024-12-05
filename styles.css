@@ -136,10 +136,12 @@ nav.hidden {
 .alternativa {
     font-size: 1.2rem; /* Ajusta o tamanho da fonte */
     background-color: #ffffff; /* Fundo branco */
-    padding: 0; /* Retira o padding extra */
-    margin: 0; /* Remove o espaçamento entre as alternativas */
-    line-height: 1.5; /* Ajusta o espaçamento entre as linhas */
+    padding: 0; /* Remove o padding */
+    margin: 0; /* Remove a margem */
+    display: inline-block; /* Faz as alternativas ficarem lado a lado */
+    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
 }
+
 
 
 
