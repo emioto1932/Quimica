@@ -175,6 +175,30 @@ nav.hidden {
 
 
 
+/* formatacao das questoes  */
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.tabela th, .tabela td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.tabela th {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabela td {
+    background-color: #f9f9f9;
+}
+
+
 
 
 
