@@ -37,8 +37,11 @@ nav {
     z-index: 1;
 }
 
+
 .title-right {
-    text-align: right;
+    text-align: right; /* Garante que o texto fique alinhado à direita */
+    flex-grow: 1; /* Faz o título ocupar o espaço restante */
+    margin: 0; /* Remove margens extras */
 }
 
 
