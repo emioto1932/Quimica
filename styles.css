@@ -195,6 +195,13 @@ nav.hidden {
         padding: 0; /* Remove o padding extra */
     }
 
+
+.nota {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+
+
 .tabela {
     max-width: 50%; /* Limita a largura máxima para 50% da página */
     margin-left: 0; /* Remove o alinhamento centralizado */
@@ -269,6 +276,11 @@ nav.hidden {
     padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
     box-sizing: border-box; /* Garante que o padding não afete a largura total */
             }
+    .nota {
+        width: 100%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+
     
 }
 
