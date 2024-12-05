@@ -211,21 +211,22 @@ nav.hidden {
 .alternativas {
     text-align: left; /* Alinha o texto à esquerda */
     font-size: 1rem;
-    margin-top: 1rem;
+    margin: 0; /* Remove margens externas */
+    padding: 0; /* Remove espaçamentos internos */
     display: block; /* Garante que as alternativas fiquem empilhadas */
 }
 
 .alternativa {
     font-size: 1.2rem;
     background-color: #ffffff;
-    padding: 10px; /* Adiciona espaçamento interno */
-    margin-bottom: 10px; /* Espaçamento entre as alternativas */
+    padding: 0; /* Remove o espaçamento interno */
+    margin: 0; /* Remove o espaçamento entre alternativas */
     display: block; /* Força cada alternativa a ocupar uma linha */
     text-align: left; /* Garante alinhamento do texto à esquerda */
-    border: 1px solid #ddd; /* Adiciona borda como em questões impressas */
-    border-radius: 5px; /* Cantos arredondados */
-    line-height: 1.5; /* Ajusta espaçamento entre linhas */
+    border: none; /* Remove borda, se preferir */
+    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
 }
+
 
 
 
