@@ -280,6 +280,13 @@ nav.hidden {
         width: 100%; /* No desktop, limita a largura a 70% */
         padding: 0; /* Remove o padding extra */
     }
+    .tabela {
+    width: 100%; /* Limita a  máxima da página */
+    margin-left: 0; /* Remove o alinhamento centralizado */
+    border-collapse: collapse;
+    margin-top: 1rem; /* Mantém o espaçamento acima */
+     margin-right: 0; /* Garante que não haja margem à direita */
+    }
 
     
 }
