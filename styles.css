@@ -37,6 +37,11 @@ nav {
     z-index: 1;
 }
 
+.title-right {
+    text-align: right;
+}
+
+
 nav ul {
     list-style-type: none;
     margin: 0;
