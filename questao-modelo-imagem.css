@@ -1,0 +1,37 @@
+/* Estilo específico para a página tipo-page-1 */
+
+/* Estilo para a página de exercício */
+.exercise-page {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo da imagem do exercício */
+.exercise-image {
+    margin-bottom: 20px; /* Espaçamento abaixo da imagem */
+}
+
+.exercise-image img {
+    max-width: 100%; /* A imagem ocupa 100% da largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    border: 1px solid #ddd; /* Borda para a imagem */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra leve para a imagem */
+}
+
+/* Estilo para o link do vídeo */
+.exercise-video {
+    margin-top: 20px;
+}
+
+.exercise-video a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.exercise-video a:hover {
+    background-color: #45a049;
+}
