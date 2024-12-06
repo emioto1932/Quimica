@@ -56,4 +56,62 @@
     padding: 0; /* Remove o espaçamento interno */
     margin: 0; /* Remove o espaçamento entre alternativas */
     display: block; /* Força cada alternativa a ocupar uma linha */
-    text-align: left; /* Garante alinhame
+    text-align: left; /* Garante alinhamento do texto à esquerda */
+    border: none; /* Remove borda, se preferir */
+    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
+    margin-left: 30px; /* Adiciona 30px de espaço à esquerda */
+}
+
+/* Estilo para a resposta */
+.resposta {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+/* Estilo do footer */
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+footer .nota {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+footer .nota a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+footer .nota a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade - Para telas pequenas (celular) */
+@media (max-width: 768px) {
+
+    /* Enunciado ocupa toda a largura */
+    .enunciado {
+        width: 100%; /* No celular, ocupa toda a largura */
+        margin: 0 auto; /* Centraliza no desktop */
+        padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
+        box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    }
+
+    /* Tabela ocupa 100% da largura no celular */
+    .tabela {
+        width: 100%;
+        margin-left: 0;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        margin-right: 0;
+    }
+
+    /* Alternativas ocupam 100% no celular */
+    .alternativa {
+        margin-left: 20px;
+    }
+}
