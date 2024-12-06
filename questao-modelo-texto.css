@@ -76,17 +76,20 @@ footer {
     color: #555;
 }
 
-footer .nota {
-    margin-top: 10px;
-    font-size: 1rem;
-}
 
-footer .nota a {
-    color: #4CAF50;
-    text-decoration: none;
-}
+.enunciado {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
 
-footer .nota a:hover {
+
+.nota {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+
+
+.nota a:hover {
     text-decoration: underline;
 }
 
