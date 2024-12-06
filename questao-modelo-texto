@@ -1,0 +1,59 @@
+/* Estilos para a página tipo-page-2 */
+
+/* Estilo geral do corpo da questão */
+.bodyquestao {
+    margin-left: 10px; /* Define uma margem de 10px à esquerda */
+    margin-right: 0; /* Garante que não haja margem extra à direita */
+}
+
+/* Estilo do enunciado */
+.enunciado {
+    width: 70%; /* No desktop, limita a largura a 70% */
+    padding: 0; /* Remove o padding extra */
+}
+
+/* Estilo do texto da pergunta */
+.pergunta {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Tabela */
+.tabela {
+    width: 50%; /* Limita a largura máxima para 50% da página */
+    margin-left: 0; /* Remove o alinhamento centralizado */
+    border-collapse: collapse;
+    margin-top: 1rem; /* Mantém o espaçamento acima */
+    margin-right: 0; /* Garante que não haja margem à direita */
+}
+
+.tabela th, .tabela td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.tabela th {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabela td {
+    background-color: #f9f9f9;
+}
+
+/* Estilo para as alternativas */
+.alternativas {
+    text-align: left; /* Alinha o texto à esquerda */
+    font-size: 1rem;
+    margin-top: 20px; /* Espaço acima das alternativas */
+}
+
+.alternativa {
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    padding: 0; /* Remove o espaçamento interno */
+    margin: 0; /* Remove o espaçamento entre alternativas */
+    display: block; /* Força cada alternativa a ocupar uma linha */
+    text-align: left; /* Garante alinhame
