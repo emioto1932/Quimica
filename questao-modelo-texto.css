@@ -90,6 +90,21 @@ footer .nota a:hover {
     text-decoration: underline;
 }
 
+
+.exercise-video a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.exercise-video a:hover {
+    background-color: #45a049;
+}
+
 /* Responsividade - Para telas pequenas (celular) */
 @media (max-width: 768px) {
 
