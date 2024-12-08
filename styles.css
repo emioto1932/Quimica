@@ -16,6 +16,29 @@ header {
     position: relative;
 }
 
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.title-container {
+    text-align: center;
+    margin: 20px 0; /* Espaçamento entre o menu e o conteúdo */
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Garante espaço entre o título e o aviso */
+}
+
 .construction-note {
     font-size: 1rem;
     color: #555;
@@ -24,13 +47,7 @@ header {
     display: block; /* Garante que fique abaixo do título */
 }
 
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 2; /* Para garantir que fique acima do menu */
-     position: absolute; /* Garante que o menu pode ser posicionado */
-    bottom: 0; /* Alinha na parte inferior */
-}
+
 
 /* Menu suspenso */
 nav {
