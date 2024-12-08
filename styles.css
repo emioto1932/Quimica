@@ -16,6 +16,11 @@ header {
     position: relative;
 }
 
+.construction-note {
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+}
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
