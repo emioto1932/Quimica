@@ -3,7 +3,7 @@ let electronsLayer2 = [];
 let electronLayer3 = [];
 
 function setup() {
-  createCanvas(400, 600); // Cartaz de 400x600 pixels
+  createCanvas(400, 600);  // Cartaz de 400x600 pixels
   frameRate(60);
   
   // Criando elétrons nas camadas
@@ -31,8 +31,20 @@ function draw() {
   fill(0);
   textSize(16);
   textAlign(CENTER, CENTER);
-  text('11', width / 2, height / 2);  // Número atômico do sódio
+  
+  // Exibindo o número atômico com sinal positivo
+  text('11+', width / 2, height / 2 - 10);
+  
+  // Exibindo prótons e nêutrons dentro do núcleo
+  textSize(12);
+  text('P: 11', width / 2, height / 2 + 10);  // Prótons
+  text('N: 12', width / 2, height / 2 + 25);  // Nêutrons
 
+  // Desenhando as camadas com linhas tracejadas
+  drawDottedLine(70);  // Primeira camada
+  drawDottedLine(100); // Segunda camada
+  drawDottedLine(130); // Terceira camada
+  
   // Desenhando as camadas e elétrons
   drawElectrons(electronsLayer1, 70, 2); // Primeira camada
   drawElectrons(electronsLayer2, 100, 8); // Segunda camada
@@ -42,12 +54,14 @@ function draw() {
   moveElectronsLayer3();
 }
 
+// Função para criar elétrons nas órbitas
 function createElectron(radius, angle) {
   let x = width / 2 + radius * cos(angle);
   let y = height / 2 + radius * sin(angle);
   return { x: x, y: y, angle: angle, radius: radius };
 }
 
+// Função para criar um elétron com movimento aleatório
 function createRandomElectron(radius) {
   let angle = random(TWO_PI);
   let x = width / 2 + radius * cos(angle);
@@ -55,6 +69,7 @@ function createRandomElectron(radius) {
   return { x: x, y: y, radius: radius, angle: angle };
 }
 
+// Função para desenhar os elétrons
 function drawElectrons(electronArray, radius, numElectrons) {
   for (let e of electronArray) {
     fill(0, 0, 255);  // Cor azul para os elétrons
@@ -62,6 +77,17 @@ function drawElectrons(electronArray, radius, numElectrons) {
   }
 }
 
+// Função para desenhar a linha tracejada de cada camada
+function drawDottedLine(radius) {
+  stroke(0);
+  strokeWeight(1);
+  noFill();
+  drawingContext.setLineDash([5, 5]); // Estilo de linha tracejada
+  ellipse(width / 2, height / 2, radius * 2, radius * 2); // Desenha a linha da órbita
+  drawingContext.setLineDash([]);  // Reseta para linha contínua
+}
+
+// Função para mover os elétrons da camada 3 (nuvem de elétrons)
 function moveElectronsLayer3() {
   for (let e of electronLayer3) {
     let angleChange = random(-0.05, 0.05);  // Movimento mais suave
