@@ -204,22 +204,20 @@ const sketch = (p) => {
 
 };
 
-// Função para calcular camadas de elétrons
-function calcularCamadas(numProtons) {
-  const camadas = [];
-  const camadasMaximas = [2, 8, 18, 32]; // Sequência máxima para as camadas
-  let index = 0;
+const calculateLayers = (electrons) => {
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+  const layers = [];
+  let remainingElectrons = electrons;
 
-  // Distribuir elétrons nas camadas, seguindo a sequência de 2, 8, 18, 32
-  while (numProtons > 0) {
-    const capacidadeDaCamada = camadasMaximas[index]; // Capacidade da camada atual
-    const elétronsNaCamada = Math.min(capacidadeDaCamada, numProtons); // Adiciona elétrons até o limite da camada ou o número restante de elétrons
-    
-    camadas.push(elétronsNaCamada); // Adiciona os elétrons na camada atual
-    numProtons -= elétronsNaCamada; // Subtrai os elétrons que foram distribuídos
-
-    index++; // Passa para a próxima camada
+  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
+    const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
+    layers.push({
+      radius: 50 + i * 30, // Raio da camada (ajustável)
+      electrons: Array(electronsInLayer).fill(0) // Criar espaço para os elétrons
+    });
+    remainingElectrons -= electronsInLayer;
   }
 
-  return camadas;
+  return layers;
 };
+
