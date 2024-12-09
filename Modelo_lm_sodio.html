@@ -1,59 +1,144 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+const groupSelect = document.getElementById("group-select");
+const elementSelect = document.getElementById("element-select");
+const infoTable = document.getElementById("info-table");
+const tableBody = infoTable.querySelector("tbody");
+const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selecionar Elemento Químico</title>
-  <link rel="stylesheet" href="modelo_lq_sodio.css">
-</head>
+let elementoAtual = null; // Variável para armazenar o elemento selecionado
+let p5Instance = null; // Instância do p5.js
 
-<body>
-  <div class="container">
-    <h1>Escolha um Elemento Químico</h1>
+// Elementos químicos por grupo
+const elementsByGroup = {
+  "1": [{ symbol: "H", name: "Hidrogênio" }, { symbol: "Li", name: "Lítio" }, { symbol: "Na", name: "Sódio" }],
+  "2": [{ symbol: "Be", name: "Berílio" }, { symbol: "Mg", name: "Magnésio" }, { symbol: "Ca", name: "Cálcio" }],
+  "13": [{ symbol: "B", name: "Boro" }, { symbol: "Al", name: "Alumínio" }],
+  "14": [{ symbol: "C", name: "Carbono" }, { symbol: "Si", name: "Silício" }],
+  "15": [{ symbol: "N", name: "Nitrogênio" }, { symbol: "P", name: "Fósforo" }],
+  "16": [{ symbol: "O", name: "Oxigênio" }, { symbol: "S", name: "Enxofre" }],
+  "17": [{ symbol: "F", name: "Flúor" }, { symbol: "Cl", name: "Cloro" }],
+  "18": [{ symbol: "He", name: "Hélio" }, { symbol: "Ne", name: "Neônio" }]
+};
 
-    <!-- Seleção de Grupo -->
-    <div class="input-group">
-      <label for="group-select">Grupo:</label>
-      <select id="group-select">
-        <option value="">-- Selecione um Grupo --</option>
-        <option value="1">Grupo 1</option>
-        <option value="2">Grupo 2</option>
-        <option value="13">Grupo 13</option>
-        <option value="14">Grupo 14</option>
-        <option value="15">Grupo 15</option>
-        <option value="16">Grupo 16</option>
-        <option value="17">Grupo 17</option>
-        <option value="18">Grupo 18</option>
-      </select>
-    </div>
+// Propriedades dos elementos
+const elementProperties = {
+  "H": { protons: 1, electrons: 1, electronegativity: 2.2 },
+  "Li": { protons: 3, electrons: 3, electronegativity: 0.98 },
+  "Na": { protons: 11, electrons: 11, electronegativity: 0.93 },
+  "Be": { protons: 4, electrons: 4, electronegativity: 1.57 },
+  "Mg": { protons: 12, electrons: 12, electronegativity: 1.31 },
+  "Ca": { protons: 20, electrons: 20, electronegativity: 1.0 },
+  "B": { protons: 5, electrons: 5, electronegativity: 2.04 },
+  "Al": { protons: 13, electrons: 13, electronegativity: 1.61 },
+  "C": { protons: 6, electrons: 6, electronegativity: 2.55 },
+  "Si": { protons: 14, electrons: 14, electronegativity: 1.9 },
+  "N": { protons: 7, electrons: 7, electronegativity: 3.04 },
+  "P": { protons: 15, electrons: 15, electronegativity: 2.19 },
+  "O": { protons: 8, electrons: 8, electronegativity: 3.44 },
+  "S": { protons: 16, electrons: 16, electronegativity: 2.58 },
+  "F": { protons: 9, electrons: 9, electronegativity: 3.98 },
+  "Cl": { protons: 17, electrons: 17, electronegativity: 3.16 },
+  "He": { protons: 2, electrons: 2, electronegativity: "N/A" },
+  "Ne": { protons: 10, electrons: 10, electronegativity: "N/A" }
+};
 
-    <!-- Seleção de Elemento -->
-    <div class="input-group">
-      <label for="element-select">Elemento:</label>
-      <select id="element-select" disabled>
-        <option value="">-- Selecione um Elemento --</option>
-      </select>
-    </div>
+// Carregar elementos ao selecionar o grupo
+groupSelect.addEventListener("change", () => {
+  const group = groupSelect.value;
 
-    <!-- Botão para confirmar -->
-    <button id="confirm-button" disabled>Confirmar</button>
+  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
 
-    <!-- Tabela para exibir informações -->
-    <table id="info-table" class="hidden">
-      <thead>
-        <tr>
-          <th>Propriedade</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+  if (group && elementsByGroup[group]) {
+    elementSelect.disabled = false;
+    elementsByGroup[group].forEach(({ symbol, name }) => {
+      const option = document.createElement("option");
+      option.value = symbol;
+      option.textContent = `${name} (${symbol})`;
+      elementSelect.appendChild(option);
+    });
+  } else {
+    elementSelect.disabled = true;
+  }
+});
+
+// Atualizar a tabela e iniciar animação quando o elemento for selecionado
+elementSelect.addEventListener("change", () => {
+  const element = elementSelect.value;
   
-<div id="canvas-container"></div>
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
 
-  <script src="javascript_modelo_lq_sodio.js"></script>
-</body>
+  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
-</html>
+  // Preencher a tabela com as propriedades do elemento
+  tableBody.innerHTML = `
+    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
+    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
+    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
+  `;
+  
+  // Exibir a tabela
+  infoTable.classList.remove("hidden");
+
+  // Remover o canvas antigo, se houver
+  if (p5Instance) {
+    p5Instance.remove();
+  }
+
+  // Criar um novo canvas no contêiner
+  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
+});
+
+// Função de animação com p5.js
+const sketch = (p) => {
+  let layers = [];
+
+  p.setup = () => {
+    p.createCanvas(400, 400);
+    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons
+  };
+
+  p.draw = () => {
+    p.background(255);
+    p.translate(p.width / 2, p.height / 2);
+
+    // Desenhar núcleo
+    p.fill(255, 165, 0);
+    p.ellipse(0, 0, 50, 50);
+    p.fill(0);
+    p.textAlign(p.CENTER, p.CENTER);
+    p.text(`P=${elementoAtual.protons}`, 0, -10);
+    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
+
+    // Desenhar camadas e elétrons
+    layers.forEach((layer, index) => {
+      p.noFill();
+      p.stroke(0);
+      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+
+      layer.electrons.forEach((e, i) => {
+        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+        const x = layer.radius * Math.cos(angle);
+        const y = layer.radius * Math.sin(angle);
+
+        p.fill(0, 0, 255);
+        p.ellipse(x, y, 12, 12); // Desenha o elétron
+      });
+    });
+  };
+
+  // Função para calcular as camadas de distribuição de elétrons
+  const calculateLayers = (protons) => {
+    const config = [2, 8, 18]; // Camadas de distribuição de elétrons
+    let remaining = protons;
+    let radius = 70;
+    let result = [];
+
+    config.forEach((max, i) => {
+      const count = Math.min(remaining, max);
+      result.push({ radius, electrons: new Array(count).fill(0) });
+      remaining -= count;
+      radius += 30;
+    });
+
+    return result;
+  };
+};
