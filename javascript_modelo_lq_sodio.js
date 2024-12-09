@@ -1,6 +1,5 @@
 const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
-const confirmButton = document.getElementById("confirm-button");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
 const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
@@ -58,18 +57,15 @@ groupSelect.addEventListener("change", () => {
     });
   } else {
     elementSelect.disabled = true;
-    confirmButton.disabled = true;
   }
 });
 
-// Habilitar o botão de confirmar ao selecionar um elemento
+// Atualizar a tabela e iniciar animação quando o elemento for selecionado
 elementSelect.addEventListener("change", () => {
-  confirmButton.disabled = !elementSelect.value;
-});
-
-// Mostrar tabela e animação ao clicar em Confirmar
-confirmButton.addEventListener("click", () => {
   const element = elementSelect.value;
+  
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
+
   elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
   // Preencher a tabela com as propriedades do elemento
