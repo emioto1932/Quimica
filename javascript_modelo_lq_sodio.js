@@ -42,8 +42,11 @@ const elementProperties = {
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
 
+  // Limpa a lista de elementos e desativa o botão de confirmação
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
+  confirmButton.disabled = true;
 
+  // Ativa ou desativa o menu de seleção de elementos com base no grupo escolhido
   if (group && elementsByGroup[group]) {
     elementSelect.disabled = false;
     elementsByGroup[group].forEach(({ symbol, name }) => {
@@ -54,9 +57,9 @@ groupSelect.addEventListener("change", () => {
     });
   } else {
     elementSelect.disabled = true;
-    confirmButton.disabled = true;
   }
 });
+
 
 // Habilitar botão ao selecionar um elemento
 elementSelect.addEventListener("change", () => {
