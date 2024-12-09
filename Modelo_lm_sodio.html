@@ -10,6 +10,55 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 
+<body>
+  <div class="container">
+    <h1>Escolha um Elemento Químico</h1>
+
+    <!-- Seleção de Grupo -->
+    <div class="input-group">
+      <label for="group-select">Grupo:</label>
+      <select id="group-select">
+        <option value="">-- Selecione um Grupo --</option>
+        <option value="1">Grupo 1</option>
+        <option value="2">Grupo 2</option>
+        <option value="13">Grupo 13</option>
+        <option value="14">Grupo 14</option>
+        <option value="15">Grupo 15</option>
+        <option value="16">Grupo 16</option>
+        <option value="17">Grupo 17</option>
+        <option value="18">Grupo 18</option>
+      </select>
+    </div>
+
+    <!-- Seleção de Elemento -->
+    <div class="input-group">
+      <label for="element-select">Elemento:</label>
+      <select id="element-select" disabled>
+        <option value="">-- Selecione um Elemento --</option>
+      </select>
+    </div>
+
+    <!-- Tabela para exibir informações -->
+    <table id="info-table" class="hidden">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Contêiner do canvas onde a animação será exibida -->
+  <div id="canvas-container"></div>
+
+  <!-- Colocando o script no final para garantir que o DOM seja carregado -->
+  <script src="javascript_modelo_lq_sodio.js"></script>
+</body>
+
+</html>
+
 
 
 
