@@ -38,44 +38,53 @@ const elementProperties = {
   "Ne": { protons: 10, electrons: 10, electronegativity: "N/A" }
 };
 
-// Carregar elementos ao selecionar o grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
 
   // Limpa a lista de elementos e desativa o botão de confirmação
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-  confirmButton.disabled = true;
+  elementSelect.disabled = true; // Inicialmente desativado
+  confirmButton.disabled = true; // Também desativado inicialmente
 
-  // Ativa ou desativa o menu de seleção de elementos com base no grupo escolhido
   if (group && elementsByGroup[group]) {
-    elementSelect.disabled = false;
+    elementSelect.disabled = false; // Ativa o menu de seleção de elementos
     elementsByGroup[group].forEach(({ symbol, name }) => {
       const option = document.createElement("option");
       option.value = symbol;
       option.textContent = `${name} (${symbol})`;
       elementSelect.appendChild(option);
     });
-  } else {
-    elementSelect.disabled = true;
   }
 });
 
-
-// Habilitar botão ao selecionar um elemento
+// Ativar o botão de confirmação ao escolher um elemento
 elementSelect.addEventListener("change", () => {
-  confirmButton.disabled = !elementSelect.value;
+  if (elementSelect.value) {
+    confirmButton.disabled = false; // Ativa o botão de confirmação
+  } else {
+    confirmButton.disabled = true; // Desativa se nenhuma opção for selecionada
+  }
 });
 
-// Mostrar tabela ao clicar em Confirmar
+// Lógica para exibir os dados e iniciar a animação
 confirmButton.addEventListener("click", () => {
-  const element = elementSelect.value;
-  const properties = elementProperties[element];
+  const selectedElement = elementSelect.value;
 
-  tableBody.innerHTML = `
-    <tr><td>Número de Prótons</td><td>+${properties.protons}</td></tr>
-    <tr><td>Número de Elétrons</td><td>${properties.electrons}</td></tr>
-    <tr><td>Eletronegatividade</td><td>${properties.electronegativity}</td></tr>
-  `;
+  if (!selectedElement) return;
 
-  infoTable.classList.remove("hidden");
+  const elementData = elements.find(el => el.symbol === selectedElement);
+
+  if (elementData) {
+    const tableContainer = document.getElementById("data-table");
+    tableContainer.innerHTML = `
+      <table border="1">
+        <tr><th>Propriedade</th><th>Valor</th></tr>
+        <tr><td>Número de Prótons</td><td>P = ${elementData.protons}+</td></tr>
+        <tr><td>Número de Elétrons</td><td>E = ${elementData.protons}-</td></tr>
+        <tr><td>Eletronegatividade</td><td>${elementData.electronegativity.toFixed(1)}</td></tr>
+      </table>
+    `;
+    // Chamar a função para configurar e iniciar a animação
+    setupAnimation(elementData);
+  }
 });
