@@ -202,7 +202,7 @@ const sketch = (p) => {
     });
   };
 
-
+};
 
 // Função para calcular camadas de elétrons
 function calcularCamadas(numProtons) {
@@ -223,6 +223,3 @@ function calcularCamadas(numProtons) {
 
   return camadas;
 };
-
-  
-
