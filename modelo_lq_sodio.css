@@ -1,77 +1,154 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 0;
-}
+body { 
 
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
+  font-family: Arial, sans-serif; 
 
-h1 {
-  text-align: center;
-  color: #333;
-}
+  background-color: #f4f4f9; 
 
-.input-group {
-  margin-bottom: 15px;
-}
+  margin: 0; 
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+  padding: 0; 
 
-select,
-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+} 
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+  
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
- 
-button:hover:not(:disabled) {
-  background-color: #45a049;
-}
+.container { 
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
+  max-width: 600px; 
 
-th, td {
-  border: 1px solid #ccc;
-  text-align: left;
-  padding: 8px;
-}
+  margin: 50px auto; 
 
-th {
-  background-color: #f2f2f2;
-}
+  padding: 20px; 
 
-.hidden {
-  display: none;
-}
+  background-color: #fff; 
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+
+  border-radius: 8px; 
+
+} 
+
+  
+
+h1 { 
+
+  text-align: center; 
+
+  color: #333; 
+
+} 
+
+  
+
+.input-group { 
+
+  margin-bottom: 15px; 
+
+} 
+
+  
+
+label { 
+
+  display: block; 
+
+  font-weight: bold; 
+
+  margin-bottom: 5px; 
+
+} 
+
+  
+
+select, 
+
+button { 
+
+  width: 100%; 
+
+  padding: 10px; 
+
+  font-size: 16px; 
+
+  margin-top: 5px; 
+
+  border: 1px solid #ccc; 
+
+  border-radius: 5px; 
+
+} 
+
+  
+
+button { 
+
+  background-color: #4CAF50; 
+
+  color: white; 
+
+  border: none; 
+
+  cursor: pointer; 
+
+  transition: background-color 0.3s; 
+
+} 
+
+  
+
+button:disabled { 
+
+  background-color: #ccc; 
+
+  cursor: not-allowed; 
+
+} 
+
+  
+
+button:hover:not(:disabled) { 
+
+  background-color: #45a049; 
+
+} 
+
+  
+
+table { 
+
+  width: 100%; 
+
+  border-collapse: collapse; 
+
+  margin-top: 20px; 
+
+} 
+
+  
+
+th, td { 
+
+  border: 1px solid #ccc; 
+
+  text-align: left; 
+
+  padding: 8px; 
+
+} 
+
+  
+
+th { 
+
+  background-color: #f2f2f2; 
+
+} 
+
+  
+
+.hidden { 
+
+  display: none; 
+
+} 
+
