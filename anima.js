@@ -118,113 +118,104 @@ const elementProperties = {
   "Xe": { protons: 54, electrons: 54, electronegativity: "N/A" },
   "Rn": { protons: 86, electrons: 86, electronegativity: "N/A" }
 };
-
 // Carregar elementos ao selecionar o grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
 
-  elementSelect.innerHTML = '<option value="">Selecione um elemento</option>';
-  if (group) {
-    elementsByGroup[group].forEach(element => {
+  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
+
+  if (group && elementsByGroup[group]) {
+    elementSelect.disabled = false;
+    elementsByGroup[group].forEach(({ symbol, name }) => {
       const option = document.createElement("option");
-      option.value = element.symbol;
-      option.textContent = element.name;
+      option.value = symbol;
+      option.textContent = `${name} (${symbol})`;
       elementSelect.appendChild(option);
     });
+  } else {
+    elementSelect.disabled = true;
   }
-  infoTable.style.display = "none";  // Ocultar a tabela inicialmente
-  if (p5Instance) {
-    p5Instance.remove();  // Remover a instância de p5.js se existirem
-  }
-  canvasContainer.innerHTML = ''; // Limpar o contêiner
 });
 
-// Exibir informações e animação do elemento ao selecionar
+// Atualizar a tabela e iniciar animação quando o elemento for selecionado
 elementSelect.addEventListener("change", () => {
-  const elementSymbol = elementSelect.value;
-
-  if (!elementSymbol) {
-    infoTable.style.display = "none";
-    return;
-  }
-
-  elementoAtual = elementSymbol;
-  const properties = elementProperties[elementoAtual];
-
-  // Exibir propriedades na tabela
-  tableBody.innerHTML = `
-    <tr><td>Prótons:</td><td>${properties.protons}</td></tr>
-    <tr><td>Elétrons:</td><td>${properties.electrons}</td></tr>
-    <tr><td>Eletronegatividade:</td><td>${properties.electronegativity}</td></tr>
-  `;
-  infoTable.style.display = "table"; // Exibir a tabela
-
-  // Desenhar o modelo atômico do elemento selecionado
-  if (p5Instance) {
-    p5Instance.remove();  // Remover a instância anterior do p5.js
-  }
-  canvasContainer.innerHTML = '';
-  p5Instance = new p5((p) => {
-    p.setup = () => {
-      p.createCanvas(400, 400);
-      p.background(255);
-      desenhaModeloAtomico(p, properties.protons);
-    };
-    
-    // Função para desenhar o modelo atômico
-    function desenhaModeloAtomico(p, numeroDeProtons) {
-      const camadas = calcularCamadas(numeroDeProtons);
-      const raio = 60;
-      
-      p.translate(p.width / 2, p.height / 2);
-      p.stroke(0);
-      p.noFill();
-
-      // Desenhar as camadas e os elétrons
-      camadas.forEach((camada, index) => {
-        p.ellipse(0, 0, raio * 2 * (index + 1), raio * 2 * (index + 1));  // Desenho das camadas
-        camada.forEach(el => {
-          p.circle(raio * (index + 1) * Math.cos(el.angle), raio * (index + 1) * Math.sin(el.angle), 10); // Elétrons
-        });
-      });
-    }
-    
-
-
-    // Função para calcular camadas de elétrons
-function calcularCamadas(numProtons) {
-  const camadas = [];
-  const camadasMaximas = [2, 8, 18, 32]; // Sequência máxima para as camadas
-  let camadaAtual = [];
-  let index = 0;
+  const element = elementSelect.value;
   
-  // Distribuir elétrons nas camadas seguindo a sequência de 2, 8, 18, 32
-  for (let i = 1; i <= numProtons; i++) {
-    let capacidadeDaCamada = camadasMaximas[index]; // Capacidade da camada atual
-    
-    // Se a camada atual estiver cheia (capacidade atingida)
-    if (camadaAtual.length === capacidadeDaCamada) {
-      camadas.push(camadaAtual); // Finaliza a camada atual e começa uma nova
-      camadaAtual = [];
-      index++; // Passa para a próxima camada
-      capacidadeDaCamada = camadasMaximas[index]; // Define a nova capacidade da camada
-    }
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
 
-    camadaAtual.push({ angle: 2 * Math.PI * (i - 1) / capacidadeDaCamada }); // Adiciona elétron na camada
+  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
+
+  // Preencher a tabela com as propriedades do elemento
+  tableBody.innerHTML = `
+    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
+    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
+    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
+  `;
+  
+  // Exibir a tabela
+  infoTable.classList.remove("hidden");
+
+  // Remover o canvas antigo, se houver
+  if (p5Instance) {
+    p5Instance.remove();
   }
 
-  if (camadaAtual.length > 0) {
-    camadas.push(camadaAtual); // Adiciona a última camada, caso tenha elétrons restantes
-  }
-
-  return camadas;
-}
-
-
-
-
-
-
-    
-  });
+  // Criar um novo canvas no contêiner
+  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
 });
+
+// Função de animação com p5.js
+const sketch = (p) => {
+  let layers = [];
+
+  p.setup = () => {
+    p.createCanvas(400, 400);
+    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons
+  };
+
+  p.draw = () => {
+    p.background(255);
+    p.translate(p.width / 2, p.height / 2);
+
+    // Desenhar núcleo
+    p.fill(255, 165, 0);
+    p.ellipse(0, 0, 50, 50);
+    p.fill(0);
+    p.textAlign(p.CENTER, p.CENTER);
+    p.text(`P=${elementoAtual.protons}`, 0, -10);
+    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
+
+    // Desenhar camadas e elétrons
+    layers.forEach((layer, index) => {
+      p.noFill();
+      p.stroke(0);
+      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+
+      layer.electrons.forEach((e, i) => {
+        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+        const x = layer.radius * Math.cos(angle);
+        const y = layer.radius * Math.sin(angle);
+
+        p.fill(0, 0, 255);
+        p.ellipse(x, y, 12, 12); // Desenha o elétron
+      });
+    });
+  };
+
+  // Função para calcular as camadas de distribuição de elétrons
+  const calculateLayers = (protons) => {
+    const config = [2, 8, 18, 32, 32, 18, 8]; // Camadas de distribuição de elétrons
+    let remaining = protons;
+    let radius = 70;
+    let result = [];
+
+    config.forEach((max, i) => {
+      const count = Math.min(remaining, max);
+      result.push({ radius, electrons: new Array(count).fill(0) });
+      remaining -= count;
+      radius += 30;
+    });
+
+    return result;
+  };
+};
