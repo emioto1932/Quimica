@@ -3,6 +3,7 @@ const elementSelect = document.getElementById("element-select");
 const confirmButton = document.getElementById("confirm-button");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
+const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
 
 let elementoAtual = null; // Variável para armazenar o elemento selecionado
 let p5Instance = null; // Instância do p5.js
@@ -44,8 +45,7 @@ const elementProperties = {
 // Carregar elementos ao selecionar o grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
-  
-  // Resetar o select de elementos
+
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
 
   if (group && elementsByGroup[group]) {
@@ -82,13 +82,13 @@ confirmButton.addEventListener("click", () => {
   // Exibir a tabela
   infoTable.classList.remove("hidden");
 
-  // Remover a instância existente do p5.js, se houver
+  // Remover o canvas antigo, se houver
   if (p5Instance) {
     p5Instance.remove();
   }
 
-  // Criar uma nova instância do p5.js
-  p5Instance = new p5(sketch);
+  // Criar um novo canvas no contêiner
+  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
 });
 
 // Função de animação com p5.js
