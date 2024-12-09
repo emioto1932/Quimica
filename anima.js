@@ -204,7 +204,7 @@ const sketch = (p) => {
 
   // Função para calcular as camadas de distribuição de elétrons
   const calculateLayers = (protons) => {
-    const config = [2, 8, 18]; // Camadas de distribuição de elétrons
+    const config = [2, 8, 18, 32, 32, 18, 8]; // Camadas de distribuição de elétrons
     let remaining = protons;
     let radius = 70;
     let result = [];
