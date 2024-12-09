@@ -76,3 +76,58 @@ confirmButton.addEventListener("click", () => {
 
   infoTable.classList.remove("hidden");
 });
+
+// Configurações de animação com P5.js
+const sketch = (p) => {
+    let layers = [];
+
+    p.setup = () => {
+        p.createCanvas(400, 400);
+        layers = calculateLayers(elementoAtual.protons);
+    };
+
+    p.draw = () => {
+        p.background(255);
+        p.translate(p.width / 2, p.height / 2);
+
+        // Desenhar núcleo
+        p.fill(255, 165, 0);
+        p.ellipse(0, 0, 50, 50);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.text(`P=${elementoAtual.protons}`, 0, -10);
+        p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
+
+        // Desenhar camadas e elétrons
+        layers.forEach((layer, index) => {
+            p.noFill();
+            p.stroke(0);
+            p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+
+            layer.electrons.forEach((e, i) => {
+                const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+                const x = layer.radius * Math.cos(angle);
+                const y = layer.radius * Math.sin(angle);
+
+                p.fill(0, 0, 255);
+                p.ellipse(x, y, 12, 12);
+            });
+        });
+    };
+
+    const calculateLayers = (protons) => {
+        const config = [2, 8, 18]; // Camadas de distribuição de elétrons
+        let remaining = protons;
+        let radius = 70;
+        let result = [];
+
+        config.forEach((max, i) => {
+            const count = Math.min(remaining, max);
+            result.push({ radius, electrons: new Array(count).fill(0) });
+            remaining -= count;
+            radius += 30;
+        });
+
+        return result;
+    };
+};
