@@ -1,53 +1,99 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo Atômico</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    </head>
-<body>
-    <h1>Selecione um Grupo e um Elemento Químico</h1>
-    
-    <!-- Botão para selecionar o grupo -->
-    <label for="grupo-select">Grupo:</label>
-    <select id="grupo-select">
-        <option value="">Selecione um grupo</option>
-        <option value="1">Grupo 1</option>
-        <option value="2">Grupo 2</option>
-        <option value="13">Grupo 13</option>
-        <option value="14">Grupo 14</option>
-        <option value="15">Grupo 15</option>
-        <option value="16">Grupo 16</option>
-        <option value="17">Grupo 17</option>
-        <option value="18">Grupo 18</option>
-    </select>
+<!DOCTYPE html> 
 
-    <!-- Botão para selecionar o elemento -->
-    <label for="elemento-select">Elemento:</label>
-    <select id="elemento-select" disabled>
-        <option value="">Selecione um elemento</option>
-    </select>
+<html lang="pt-br"> 
 
+<head> 
 
+    <meta charset="UTF-8"> 
 
-    <!-- Tabela de propriedades -->
-    <h2>Propriedades do Elemento</h2>
-    <table id="info-table" border="1">
-        <thead>
-            <tr>
-                <th>Propriedade</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <!-- Canvas para animação -->
-    <h2>Modelo Atômico</h2>
-    <div id="canvas-container"></div>
-    <script src="Modelo_lq_sodio.js"></script>
+    <title>Modelo Atômico</title> 
 
-</body>
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> 
+
+    <script defer src="modelo_lq_sodio.js"></script> 
+
+</head> 
+
+<body> 
+
+    <h1>Selecione um Grupo e um Elemento Químico</h1> 
+
+     
+
+    <!-- Botão para selecionar o grupo --> 
+
+    <label for="grupo-select">Grupo:</label> 
+
+    <select id="grupo-select"> 
+
+        <option value="">Selecione um grupo</option> 
+
+        <option value="1">Grupo 1</option> 
+
+        <option value="2">Grupo 2</option> 
+
+        <option value="13">Grupo 13</option> 
+
+        <option value="14">Grupo 14</option> 
+
+        <option value="15">Grupo 15</option> 
+
+        <option value="16">Grupo 16</option> 
+
+        <option value="17">Grupo 17</option> 
+
+        <option value="18">Grupo 18</option> 
+
+    </select> 
+
+  
+
+    <!-- Botão para selecionar o elemento --> 
+
+    <label for="elemento-select">Elemento:</label> 
+
+    <select id="elemento-select" disabled> 
+
+        <option value="">Selecione um elemento</option> 
+
+    </select> 
+
+  
+
+    <!-- Tabela de propriedades --> 
+
+    <h2>Propriedades do Elemento</h2> 
+
+    <table id="tabela-propriedades" border="1"> 
+
+        <thead> 
+
+            <tr> 
+
+                <th>Propriedade</th> 
+
+                <th>Valor</th> 
+
+            </tr> 
+
+        </thead> 
+
+        <tbody> 
+
+        </tbody> 
+
+    </table> 
+
+  
+
+    <!-- Canvas para animação --> 
+
+    <h2>Modelo Atômico</h2> 
+
+    <div id="canvas-container"></div> 
+
+</body> 
+
+</html> 
