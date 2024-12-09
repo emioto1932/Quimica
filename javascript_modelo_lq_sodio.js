@@ -1,8 +1,8 @@
 const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
-const confirmButton = document.getElementById("confirm-button");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
+const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
 
 let elementoAtual = null; // Variável para armazenar o elemento selecionado
 let p5Instance = null; // Instância do p5.js
@@ -44,8 +44,7 @@ const elementProperties = {
 // Carregar elementos ao selecionar o grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
-  
-  // Resetar o select de elementos
+
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
 
   if (group && elementsByGroup[group]) {
@@ -58,18 +57,15 @@ groupSelect.addEventListener("change", () => {
     });
   } else {
     elementSelect.disabled = true;
-    confirmButton.disabled = true;
   }
 });
 
-// Habilitar o botão de confirmar ao selecionar um elemento
+// Atualizar a tabela e iniciar animação quando o elemento for selecionado
 elementSelect.addEventListener("change", () => {
-  confirmButton.disabled = !elementSelect.value;
-});
-
-// Mostrar tabela e animação ao clicar em Confirmar
-confirmButton.addEventListener("click", () => {
   const element = elementSelect.value;
+  
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
+
   elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
   // Preencher a tabela com as propriedades do elemento
@@ -82,13 +78,13 @@ confirmButton.addEventListener("click", () => {
   // Exibir a tabela
   infoTable.classList.remove("hidden");
 
-  // Reiniciar a animação com o p5.js
+  // Remover o canvas antigo, se houver
   if (p5Instance) {
-    p5Instance.remove(); // Remover a instância anterior
+    p5Instance.remove();
   }
 
-  // Criar uma nova instância do p5.js
-  p5Instance = new p5(sketch);
+  // Criar um novo canvas no contêiner
+  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
 });
 
 // Função de animação com p5.js
@@ -139,4 +135,10 @@ const sketch = (p) => {
     config.forEach((max, i) => {
       const count = Math.min(remaining, max);
       result.push({ radius, electrons: new Array(count).fill(0) });
-      remaining -= count
+      remaining -= count;
+      radius += 30;
+    });
+
+    return result;
+  };
+};
