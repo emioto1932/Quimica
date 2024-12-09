@@ -2,7 +2,7 @@ const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
-const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
+const canvasContainer = document.getElementById("canvas-container");
 
 let elementoAtual = null; // Variável para armazenar o elemento selecionado
 let p5Instance = null; // Instância do p5.js
@@ -63,7 +63,7 @@ groupSelect.addEventListener("change", () => {
 // Atualizar a tabela e iniciar animação quando o elemento for selecionado
 elementSelect.addEventListener("change", () => {
   const element = elementSelect.value;
-  
+
   if (!element) return; // Se não houver elemento selecionado, não faz nada
 
   elementoAtual = elementProperties[element]; // Atualizar o elemento atual
