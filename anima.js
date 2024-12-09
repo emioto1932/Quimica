@@ -203,19 +203,23 @@ const sketch = (p) => {
   };
 
   // Função para calcular as camadas de distribuição de elétrons
-  const calculateLayers = (protons) => {
-    const config = [2, 8, 18, 32, 32, 18, 8]; // Camadas de distribuição de elétrons
-    let remaining = protons;
-    let radius = 70;
-    let result = [];
+// Função para calcular camadas de elétrons
+function calcularCamadas(numProtons) {
+  const camadas = [];
+  const camadasMaximas = [2, 8, 18, 32]; // Sequência máxima para as camadas
+  let index = 0;
 
-    config.forEach((max, i) => {
-      const count = Math.min(remaining, max);
-      result.push({ radius, electrons: new Array(count).fill(0) });
-      remaining -= count;
-      radius += 30;
-    });
+  // Distribuir elétrons nas camadas, seguindo a sequência de 2, 8, 18, 32
+  while (numProtons > 0) {
+    const capacidadeDaCamada = camadasMaximas[index]; // Capacidade da camada atual
+    const elétronsNaCamada = Math.min(capacidadeDaCamada, numProtons); // Adiciona elétrons até o limite da camada ou o número restante de elétrons
+    
+    camadas.push(elétronsNaCamada); // Adiciona os elétrons na camada atual
+    numProtons -= elétronsNaCamada; // Subtrai os elétrons que foram distribuídos
 
-    return result;
-  };
+    index++; // Passa para a próxima camada
+  }
+
+  return camadas;
+)};
 };
