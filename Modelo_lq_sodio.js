@@ -1,291 +1,154 @@
-const groupSelect = document.getElementById("group-select"); 
-
-const elementSelect = document.getElementById("element-select"); 
-
-const infoTable = document.getElementById("info-table"); 
-
-const tableBody = infoTable.querySelector("tbody"); 
-
-const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas 
-
-  
-
-let elementoAtual = null; // Variável para armazenar o elemento selecionado 
-
-let p5Instance = null; // Instância do p5.js 
-
-  
-
-// Elementos químicos por grupo 
-
-const elementsByGroup = { 
-
-  "1": [{ symbol: "H", name: "Hidrogênio" }, { symbol: "Li", name: "Lítio" }, { symbol: "Na", name: "Sódio" }], 
-
-  "2": [{ symbol: "Be", name: "Berílio" }, { symbol: "Mg", name: "Magnésio" }, { symbol: "Ca", name: "Cálcio" }], 
-
-  "13": [{ symbol: "B", name: "Boro" }, { symbol: "Al", name: "Alumínio" }], 
-
-  "14": [{ symbol: "C", name: "Carbono" }, { symbol: "Si", name: "Silício" }], 
-
-  "15": [{ symbol: "N", name: "Nitrogênio" }, { symbol: "P", name: "Fósforo" }], 
-
-  "16": [{ symbol: "O", name: "Oxigênio" }, { symbol: "S", name: "Enxofre" }], 
-
-  "17": [{ symbol: "F", name: "Flúor" }, { symbol: "Cl", name: "Cloro" }], 
-
-  "18": [{ symbol: "He", name: "Hélio" }, { symbol: "Ne", name: "Neônio" }] 
-
-}; 
-
-  
-
-// Propriedades dos elementos 
-
-const elementProperties = { 
-
-  "H": { protons: 1, electrons: 1, electronegativity: 2.2 }, 
-
-  "Li": { protons: 3, electrons: 3, electronegativity: 0.98 }, 
-
-  "Na": { protons: 11, electrons: 11, electronegativity: 0.93 }, 
-
-  "Be": { protons: 4, electrons: 4, electronegativity: 1.57 }, 
-
-  "Mg": { protons: 12, electrons: 12, electronegativity: 1.31 }, 
-
-  "Ca": { protons: 20, electrons: 20, electronegativity: 1.0 }, 
-
-  "B": { protons: 5, electrons: 5, electronegativity: 2.04 }, 
-
-  "Al": { protons: 13, electrons: 13, electronegativity: 1.61 }, 
-
-  "C": { protons: 6, electrons: 6, electronegativity: 2.55 }, 
-
-  "Si": { protons: 14, electrons: 14, electronegativity: 1.9 }, 
-
-  "N": { protons: 7, electrons: 7, electronegativity: 3.04 }, 
-
-  "P": { protons: 15, electrons: 15, electronegativity: 2.19 }, 
-
-  "O": { protons: 8, electrons: 8, electronegativity: 3.44 }, 
-
-  "S": { protons: 16, electrons: 16, electronegativity: 2.58 }, 
-
-  "F": { protons: 9, electrons: 9, electronegativity: 3.98 }, 
-
-  "Cl": { protons: 17, electrons: 17, electronegativity: 3.16 }, 
-
-  "He": { protons: 2, electrons: 2, electronegativity: "N/A" }, 
-
-  "Ne": { protons: 10, electrons: 10, electronegativity: "N/A" } 
-
-}; 
-
-  
-
-// Carregar elementos ao selecionar o grupo 
-
-groupSelect.addEventListener("change", () => { 
-
-  const group = groupSelect.value; 
-
-  
-
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>'; 
-
-  
-
-  if (group && elementsByGroup[group]) { 
-
-    elementSelect.disabled = false; 
-
-    elementsByGroup[group].forEach(({ symbol, name }) => { 
-
-      const option = document.createElement("option"); 
-
-      option.value = symbol; 
-
-      option.textContent = `${name} (${symbol})`; 
-
-      elementSelect.appendChild(option); 
-
-    }); 
-
-  } else { 
-
-    elementSelect.disabled = true; 
-
-  } 
-
-}); 
-
-  
-
-// Atualizar a tabela e iniciar animação quando o elemento for selecionado 
-
-elementSelect.addEventListener("change", () => { 
-
-  const element = elementSelect.value; 
-
-   
-
-  if (!element) return; // Se não houver elemento selecionado, não faz nada 
-
-  
-
-  elementoAtual = elementProperties[element]; // Atualizar o elemento atual 
-
-  
-
-  // Preencher a tabela com as propriedades do elemento 
-
-  tableBody.innerHTML = ` 
-
-    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr> 
-
-    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr> 
-
-    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr> 
-
-  `; 
-
-   
-
-  // Exibir a tabela 
-
-  infoTable.classList.remove("hidden"); 
-
-  
-
-  // Remover o canvas antigo, se houver 
-
-  if (p5Instance) { 
-
-    p5Instance.remove(); 
-
-  } 
-
-  
-
-  // Criar um novo canvas no contêiner 
-
-  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro 
-
-}); 
-
-  
-
-// Função de animação com p5.js 
-
-const sketch = (p) => { 
-
-  let layers = []; 
-
-  
-
-  p.setup = () => { 
-
-    p.createCanvas(400, 400); 
-
-    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons 
-
-  }; 
-
-  
-
-  p.draw = () => { 
-
-    p.background(255); 
-
-    p.translate(p.width / 2, p.height / 2); 
-
-  
-
-    // Desenhar núcleo 
-
-    p.fill(255, 165, 0); 
-
-    p.ellipse(0, 0, 50, 50); 
-
-    p.fill(0); 
-
-    p.textAlign(p.CENTER, p.CENTER); 
-
-    p.text(`P=${elementoAtual.protons}`, 0, -10); 
-
-    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10); 
-
-  
-
-    // Desenhar camadas e elétrons 
-
-    layers.forEach((layer, index) => { 
-
-      p.noFill(); 
-
-      p.stroke(0); 
-
-      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2); 
-
-  
-
-      layer.electrons.forEach((e, i) => { 
-
-        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length; 
-
-        const x = layer.radius * Math.cos(angle); 
-
-        const y = layer.radius * Math.sin(angle); 
-
-  
-
-        p.fill(0, 0, 255); 
-
-        p.ellipse(x, y, 12, 12); // Desenha o elétron 
-
-      }); 
-
-    }); 
-
-  }; 
-
-  
-
-  // Função para calcular as camadas de distribuição de elétrons 
-
-  const calculateLayers = (protons) => { 
-
-    const config = [2, 8, 18]; // Camadas de distribuição de elétrons 
-
-    let remaining = protons; 
-
-    let radius = 70; 
-
-    let result = []; 
-
-  
-
-    config.forEach((max, i) => { 
-
-      const count = Math.min(remaining, max); 
-
-      result.push({ radius, electrons: new Array(count).fill(0) }); 
-
-      remaining -= count; 
-
-      radius += 30; 
-
-    }); 
-
-  
-
-    return result; 
-
-  }; 
-
-}; 
-
- 
-
- 
+// Definindo os elementos químicos e seus respectivos números de elétrons
+const elementsData = {
+  H: { electrons: 1 },
+  He: { electrons: 2 },
+  Li: { electrons: 3 },
+  Be: { electrons: 4 },
+  B: { electrons: 5 },
+  C: { electrons: 6 },
+  N: { electrons: 7 },
+  O: { electrons: 8 },
+  F: { electrons: 9 },
+  Ne: { electrons: 10 },
+  Na: { electrons: 11 },
+  Mg: { electrons: 12 },
+  Al: { electrons: 13 },
+  // Adicione outros elementos conforme necessário
+};
+
+// Camadas e seus limites máximos de elétrons
+const maxElectronsPerLayer = [2, 8, 18, 32, 32, 18, 8];
+
+let electronsLayer1 = [];
+let electronsLayer2 = [];
+let electronsLayer3 = [];
+let electronsLayer4 = [];
+let electronsLayer5 = [];
+let electronsLayer6 = [];
+let electronsLayer7 = [];
+
+let speedLayer1 = 0.03; // Velocidade da camada 1
+let speedLayer2 = 0.02; // Velocidade da camada 2
+let speedLayer3 = 0.015; // Velocidade da camada 3
+let speedLayer4 = 0.01; // Velocidade da camada 4
+let speedLayer5 = 0.005; // Velocidade da camada 5
+let speedLayer6 = 0.003; // Velocidade da camada 6
+let speedLayer7 = 0.002; // Velocidade da camada 7
+
+let electronLayers = [
+  electronsLayer1,
+  electronsLayer2,
+  electronsLayer3,
+  electronsLayer4,
+  electronsLayer5,
+  electronsLayer6,
+  electronsLayer7
+];
+
+function setup() {
+  createCanvas(400, 600);  // Cartaz de 400x600 pixels
+  frameRate(60);
+
+  const elementSelect = document.getElementById('element-select');
+  elementSelect.addEventListener('change', function() {
+    const element = elementSelect.value;
+    if (element) {
+      const numElectrons = elementsData[element]?.electrons || 0;
+      setupElectrons(numElectrons);
+    }
+  });
+}
+
+function setupElectrons(numElectrons) {
+  // Limpar as camadas anteriores
+  for (let i = 0; i < electronLayers.length; i++) {
+    electronLayers[i] = [];
+  }
+
+  let remainingElectrons = numElectrons;
+
+  for (let i = 0; i < maxElectronsPerLayer.length; i++) {
+    if (remainingElectrons <= 0) break;
+
+    // Definir o número de elétrons para esta camada
+    let electronsInLayer = Math.min(remainingElectrons, maxElectronsPerLayer[i]);
+
+    // Criar os elétrons para esta camada
+    for (let j = 0; j < electronsInLayer; j++) {
+      electronLayers[i].push(createElectron((i + 1) * 30, j * TWO_PI / electronsInLayer));
+    }
+
+    remainingElectrons -= electronsInLayer;
+  }
+}
+
+function draw() {
+  background(255);
+
+  // Desenhando o núcleo (círculo laranja no centro)
+  fill(255, 165, 0);
+  noStroke();
+  ellipse(width / 2, height / 2, 50, 50);  // Núcleo
+  fill(0);
+  textSize(16);
+  textAlign(CENTER, CENTER);
+
+  // Desenhando as camadas com linhas tracejadas
+  for (let i = 0; i < maxElectronsPerLayer.length; i++) {
+    drawDottedLine((i + 1) * 30);
+  }
+
+  // Desenhando as camadas e elétrons
+  for (let i = 0; i < electronLayers.length; i++) {
+    drawElectrons(electronLayers[i], (i + 1) * 30, maxElectronsPerLayer[i]);
+    moveElectronsLayer(electronLayers[i], getSpeedForLayer(i));
+  }
+}
+
+// Função para criar elétrons nas órbitas
+function createElectron(radius, angle) {
+  let x = width / 2 + radius * cos(angle);
+  let y = height / 2 + radius * sin(angle);
+  return { x: x, y: y, angle: angle, radius: radius };
+}
+
+// Função para desenhar os elétrons
+function drawElectrons(electronArray, radius, numElectrons) {
+  for (let e of electronArray) {
+    fill(0, 0, 255);  // Cor azul para os elétrons
+    ellipse(e.x, e.y, 12, 12);  // Desenha os elétrons
+  }
+}
+
+// Função para desenhar a linha tracejada de cada camada
+function drawDottedLine(radius) {
+  stroke(0);
+  strokeWeight(1);
+  noFill();
+  drawingContext.setLineDash([5, 5]); // Estilo de linha tracejada
+  ellipse(width / 2, height / 2, radius * 2, radius * 2); // Desenha a linha da órbita
+  drawingContext.setLineDash([]);  // Reseta para linha contínua
+}
+
+// Função para mover os elétrons uniformemente em cada camada
+function moveElectronsLayer(electronArray, speed) {
+  for (let e of electronArray) {
+    e.angle += speed;  // Controla a velocidade de rotação dos elétrons
+    e.x = width / 2 + e.radius * cos(e.angle);
+    e.y = height / 2 + e.radius * sin(e.angle);
+  }
+}
+
+// Função para retornar a velocidade para cada camada
+function getSpeedForLayer(layerIndex) {
+  switch (layerIndex) {
+    case 0: return speedLayer1;
+    case 1: return speedLayer2;
+    case 2: return speedLayer3;
+    case 3: return speedLayer4;
+    case 4: return speedLayer5;
+    case 5: return speedLayer6;
+    case 6: return speedLayer7;
+    default: return 0.01;
+  }
+}
