@@ -204,6 +204,13 @@ const sketch = (p) => {
 
   // Função para calcular as camadas de distribuição de elétrons
 // Função para calcular camadas de elétrons
+
+
+
+
+
+
+  
 function calcularCamadas(numProtons) {
   const camadas = [];
   const camadasMaximas = [2, 8, 18, 32]; // Sequência máxima para as camadas
