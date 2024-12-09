@@ -1,53 +1,36 @@
+// Referências aos elementos do DOM
 const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
 const confirmButton = document.getElementById("confirm-button");
-const infoTable = document.getElementById("info-table");
-const tableBody = infoTable.querySelector("tbody");
+const tableContainer = document.getElementById("data-table");
 
-// Elementos químicos por grupo
+// Dados da tabela periódica por grupo
 const elementsByGroup = {
-  "1": [{ symbol: "H", name: "Hidrogênio" }, { symbol: "Li", name: "Lítio" }, { symbol: "Na", name: "Sódio" }],
-  "2": [{ symbol: "Be", name: "Berílio" }, { symbol: "Mg", name: "Magnésio" }, { symbol: "Ca", name: "Cálcio" }],
-  "13": [{ symbol: "B", name: "Boro" }, { symbol: "Al", name: "Alumínio" }],
-  "14": [{ symbol: "C", name: "Carbono" }, { symbol: "Si", name: "Silício" }],
-  "15": [{ symbol: "N", name: "Nitrogênio" }, { symbol: "P", name: "Fósforo" }],
-  "16": [{ symbol: "O", name: "Oxigênio" }, { symbol: "S", name: "Enxofre" }],
-  "17": [{ symbol: "F", name: "Flúor" }, { symbol: "Cl", name: "Cloro" }],
-  "18": [{ symbol: "He", name: "Hélio" }, { symbol: "Ne", name: "Neônio" }]
+  1: [
+    { symbol: "H", name: "Hidrogênio", protons: 1, electronegativity: 2.1 },
+    { symbol: "Li", name: "Lítio", protons: 3, electronegativity: 1.0 },
+    { symbol: "Na", name: "Sódio", protons: 11, electronegativity: 0.9 },
+  ],
+  2: [
+    { symbol: "Be", name: "Berílio", protons: 4, electronegativity: 1.5 },
+    { symbol: "Mg", name: "Magnésio", protons: 12, electronegativity: 1.2 },
+    { symbol: "Ca", name: "Cálcio", protons: 20, electronegativity: 1.0 },
+  ],
+  // Outros grupos podem ser adicionados aqui
 };
 
-// Propriedades dos elementos
-const elementProperties = {
-  "H": { protons: 1, electrons: 1, electronegativity: 2.2 },
-  "Li": { protons: 3, electrons: 3, electronegativity: 0.98 },
-  "Na": { protons: 11, electrons: 11, electronegativity: 0.93 },
-  "Be": { protons: 4, electrons: 4, electronegativity: 1.57 },
-  "Mg": { protons: 12, electrons: 12, electronegativity: 1.31 },
-  "Ca": { protons: 20, electrons: 20, electronegativity: 1.0 },
-  "B": { protons: 5, electrons: 5, electronegativity: 2.04 },
-  "Al": { protons: 13, electrons: 13, electronegativity: 1.61 },
-  "C": { protons: 6, electrons: 6, electronegativity: 2.55 },
-  "Si": { protons: 14, electrons: 14, electronegativity: 1.9 },
-  "N": { protons: 7, electrons: 7, electronegativity: 3.04 },
-  "P": { protons: 15, electrons: 15, electronegativity: 2.19 },
-  "O": { protons: 8, electrons: 8, electronegativity: 3.44 },
-  "S": { protons: 16, electrons: 16, electronegativity: 2.58 },
-  "F": { protons: 9, electrons: 9, electronegativity: 3.98 },
-  "Cl": { protons: 17, electrons: 17, electronegativity: 3.16 },
-  "He": { protons: 2, electrons: 2, electronegativity: "N/A" },
-  "Ne": { protons: 10, electrons: 10, electronegativity: "N/A" }
-};
-
+// Lógica para manipular a seleção de grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
 
-  // Limpa a lista de elementos e desativa o botão de confirmação
+  // Limpa e desativa os controles ao trocar o grupo
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-  elementSelect.disabled = true; // Inicialmente desativado
-  confirmButton.disabled = true; // Também desativado inicialmente
+  elementSelect.disabled = true;
+  confirmButton.disabled = true;
 
   if (group && elementsByGroup[group]) {
-    elementSelect.disabled = false; // Ativa o menu de seleção de elementos
+    // Popula o menu de elementos com os dados do grupo selecionado
+    elementSelect.disabled = false; // Ativa o menu de elementos
     elementsByGroup[group].forEach(({ symbol, name }) => {
       const option = document.createElement("option");
       option.value = symbol;
@@ -57,25 +40,23 @@ groupSelect.addEventListener("change", () => {
   }
 });
 
-// Ativar o botão de confirmação ao escolher um elemento
+// Lógica para ativar o botão de confirmação ao escolher um elemento
 elementSelect.addEventListener("change", () => {
-  if (elementSelect.value) {
-    confirmButton.disabled = false; // Ativa o botão de confirmação
-  } else {
-    confirmButton.disabled = true; // Desativa se nenhuma opção for selecionada
-  }
+  confirmButton.disabled = !elementSelect.value; // Ativa/desativa dinamicamente
 });
 
-// Lógica para exibir os dados e iniciar a animação
+// Lógica para exibir os dados do elemento escolhido e iniciar a animação
 confirmButton.addEventListener("click", () => {
   const selectedElement = elementSelect.value;
 
   if (!selectedElement) return;
 
-  const elementData = elements.find(el => el.symbol === selectedElement);
+  // Procura os dados do elemento selecionado
+  const group = groupSelect.value;
+  const elementData = elementsByGroup[group].find(el => el.symbol === selectedElement);
 
   if (elementData) {
-    const tableContainer = document.getElementById("data-table");
+    // Renderiza a tabela com as propriedades
     tableContainer.innerHTML = `
       <table border="1">
         <tr><th>Propriedade</th><th>Valor</th></tr>
@@ -84,7 +65,14 @@ confirmButton.addEventListener("click", () => {
         <tr><td>Eletronegatividade</td><td>${elementData.electronegativity.toFixed(1)}</td></tr>
       </table>
     `;
-    // Chamar a função para configurar e iniciar a animação
+
+    // Chama a função para configurar e iniciar a animação do modelo
     setupAnimation(elementData);
   }
 });
+
+// Função para iniciar a animação com base nos dados do elemento
+function setupAnimation(elementData) {
+  console.log(`Iniciando animação para o elemento ${elementData.name} (${elementData.symbol})`);
+  // Substitua por sua lógica de animação
+}
