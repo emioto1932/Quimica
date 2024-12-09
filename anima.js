@@ -189,22 +189,42 @@ elementSelect.addEventListener("change", () => {
       });
     }
     
+
+
     // Função para calcular camadas de elétrons
-    function calcularCamadas(numProtons) {
-      const camadas = [];
-      let camadaAtual = [];
-      let numeroMaximoDeElétronsPorCamada = 2;
-      
-      for (let i = 1; i <= numProtons; i++) {
-        if (camadaAtual.length === numeroMaximoDeElétronsPorCamada) {
-          camadas.push(camadaAtual);
-          camadaAtual = [];
-          numeroMaximoDeElétronsPorCamada = 2 * (camadas.length + 1);
-        }
-        camadaAtual.push({ angle: 2 * Math.PI * (i - 1) / numeroMaximoDeElétronsPorCamada });
-      }
-      camadas.push(camadaAtual); // Adicionar a última camada
-      return camadas;
+function calcularCamadas(numProtons) {
+  const camadas = [];
+  const camadasMaximas = [2, 8, 18, 32]; // Sequência máxima para as camadas
+  let camadaAtual = [];
+  let index = 0;
+  
+  // Distribuir elétrons nas camadas seguindo a sequência de 2, 8, 18, 32
+  for (let i = 1; i <= numProtons; i++) {
+    let capacidadeDaCamada = camadasMaximas[index]; // Capacidade da camada atual
+    
+    // Se a camada atual estiver cheia (capacidade atingida)
+    if (camadaAtual.length === capacidadeDaCamada) {
+      camadas.push(camadaAtual); // Finaliza a camada atual e começa uma nova
+      camadaAtual = [];
+      index++; // Passa para a próxima camada
+      capacidadeDaCamada = camadasMaximas[index]; // Define a nova capacidade da camada
     }
+
+    camadaAtual.push({ angle: 2 * Math.PI * (i - 1) / capacidadeDaCamada }); // Adiciona elétron na camada
+  }
+
+  if (camadaAtual.length > 0) {
+    camadas.push(camadaAtual); // Adiciona a última camada, caso tenha elétrons restantes
+  }
+
+  return camadas;
+}
+
+
+
+
+
+
+    
   });
 });
