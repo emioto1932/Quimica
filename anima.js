@@ -139,4 +139,7 @@ const sketch = (p) => {
     config.forEach((max, i) => {
       const count = Math.min(remaining, max);
       result.push({ radius, electrons: new Array(count).fill(0) });
-      remaining -= count
+      remaining -= count; 
+      radius += 30; });
+    return result;
+  }; };
