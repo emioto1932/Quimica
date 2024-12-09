@@ -5,6 +5,7 @@ const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
 
 let elementoAtual = null; // Variável para armazenar o elemento selecionado
+let p5Instance = null; // Instância do p5.js
 
 // Elementos químicos por grupo
 const elementsByGroup = {
@@ -43,7 +44,8 @@ const elementProperties = {
 // Carregar elementos ao selecionar o grupo
 groupSelect.addEventListener("change", () => {
   const group = groupSelect.value;
-
+  
+  // Resetar o select de elementos
   elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
 
   if (group && elementsByGroup[group]) {
@@ -60,37 +62,42 @@ groupSelect.addEventListener("change", () => {
   }
 });
 
-// Habilitar botão ao selecionar um elemento
+// Habilitar o botão de confirmar ao selecionar um elemento
 elementSelect.addEventListener("change", () => {
   confirmButton.disabled = !elementSelect.value;
 });
 
-// Mostrar tabela ao clicar em Confirmar
+// Mostrar tabela e animação ao clicar em Confirmar
 confirmButton.addEventListener("click", () => {
   const element = elementSelect.value;
   elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
+  // Preencher a tabela com as propriedades do elemento
   tableBody.innerHTML = `
     <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
     <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
     <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
   `;
-
+  
+  // Exibir a tabela
   infoTable.classList.remove("hidden");
 
-  // Reiniciar a animação do p5.js após o botão de confirmação ser clicado
-  p5Instance.remove(); // Remover a instância anterior, se existir
-  new p5(sketch); // Criar nova instância
+  // Reiniciar a animação com o p5.js
+  if (p5Instance) {
+    p5Instance.remove(); // Remover a instância anterior
+  }
+
+  // Criar uma nova instância do p5.js
+  p5Instance = new p5(sketch);
 });
 
-// Função do p5.js para animação
-let p5Instance;
+// Função de animação com p5.js
 const sketch = (p) => {
   let layers = [];
 
   p.setup = () => {
     p.createCanvas(400, 400);
-    layers = calculateLayers(elementoAtual.protons);
+    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons
   };
 
   p.draw = () => {
@@ -117,11 +124,12 @@ const sketch = (p) => {
         const y = layer.radius * Math.sin(angle);
 
         p.fill(0, 0, 255);
-        p.ellipse(x, y, 12, 12);
+        p.ellipse(x, y, 12, 12); // Desenha o elétron
       });
     });
   };
 
+  // Função para calcular as camadas de distribuição de elétrons
   const calculateLayers = (protons) => {
     const config = [2, 8, 18]; // Camadas de distribuição de elétrons
     let remaining = protons;
@@ -131,10 +139,4 @@ const sketch = (p) => {
     config.forEach((max, i) => {
       const count = Math.min(remaining, max);
       result.push({ radius, electrons: new Array(count).fill(0) });
-      remaining -= count;
-      radius += 30;
-    });
-
-    return result;
-  };
-};
+      remaining -= count
