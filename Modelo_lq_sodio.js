@@ -49,8 +49,9 @@ function setup() {
   createCanvas(400, 600);  // Cartaz de 400x600 pixels
   frameRate(60);
 
+  // Evento de mudança no select para escolher o elemento
   const elementSelect = document.getElementById('element-select');
-  elementSelect.addEventListener('change', function() {
+  elementSelect.addEventListener('change', function () {
     const element = elementSelect.value;
     if (element) {
       const numElectrons = elementsData[element]?.electrons || 0;
@@ -59,6 +60,7 @@ function setup() {
   });
 }
 
+// Função para configurar os elétrons nas camadas
 function setupElectrons(numElectrons) {
   // Limpar as camadas anteriores
   for (let i = 0; i < electronLayers.length; i++) {
@@ -67,6 +69,7 @@ function setupElectrons(numElectrons) {
 
   let remainingElectrons = numElectrons;
 
+  // Distribuir os elétrons nas camadas
   for (let i = 0; i < maxElectronsPerLayer.length; i++) {
     if (remainingElectrons <= 0) break;
 
