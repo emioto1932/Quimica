@@ -4,6 +4,8 @@ const confirmButton = document.getElementById("confirm-button");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
 
+let elementoAtual = null; // Variável para armazenar o elemento selecionado
+
 // Elementos químicos por grupo
 const elementsByGroup = {
   "1": [{ symbol: "H", name: "Hidrogênio" }, { symbol: "Li", name: "Lítio" }, { symbol: "Na", name: "Sódio" }],
@@ -66,68 +68,73 @@ elementSelect.addEventListener("change", () => {
 // Mostrar tabela ao clicar em Confirmar
 confirmButton.addEventListener("click", () => {
   const element = elementSelect.value;
-  const properties = elementProperties[element];
+  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
   tableBody.innerHTML = `
-    <tr><td>Número de Prótons</td><td>+${properties.protons}</td></tr>
-    <tr><td>Número de Elétrons</td><td>${properties.electrons}</td></tr>
-    <tr><td>Eletronegatividade</td><td>${properties.electronegativity}</td></tr>
+    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
+    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
+    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
   `;
 
   infoTable.classList.remove("hidden");
+
+  // Reiniciar a animação do p5.js após o botão de confirmação ser clicado
+  p5Instance.remove(); // Remover a instância anterior, se existir
+  new p5(sketch); // Criar nova instância
 });
 
-// Configurações de animação com P5.js
+// Função do p5.js para animação
+let p5Instance;
 const sketch = (p) => {
-    let layers = [];
+  let layers = [];
 
-    p.setup = () => {
-        p.createCanvas(400, 400);
-        layers = calculateLayers(elementoAtual.protons);
-    };
+  p.setup = () => {
+    p.createCanvas(400, 400);
+    layers = calculateLayers(elementoAtual.protons);
+  };
 
-    p.draw = () => {
-        p.background(255);
-        p.translate(p.width / 2, p.height / 2);
+  p.draw = () => {
+    p.background(255);
+    p.translate(p.width / 2, p.height / 2);
 
-        // Desenhar núcleo
-        p.fill(255, 165, 0);
-        p.ellipse(0, 0, 50, 50);
-        p.fill(0);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text(`P=${elementoAtual.protons}`, 0, -10);
-        p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
+    // Desenhar núcleo
+    p.fill(255, 165, 0);
+    p.ellipse(0, 0, 50, 50);
+    p.fill(0);
+    p.textAlign(p.CENTER, p.CENTER);
+    p.text(`P=${elementoAtual.protons}`, 0, -10);
+    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
 
-        // Desenhar camadas e elétrons
-        layers.forEach((layer, index) => {
-            p.noFill();
-            p.stroke(0);
-            p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+    // Desenhar camadas e elétrons
+    layers.forEach((layer, index) => {
+      p.noFill();
+      p.stroke(0);
+      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
 
-            layer.electrons.forEach((e, i) => {
-                const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
-                const x = layer.radius * Math.cos(angle);
-                const y = layer.radius * Math.sin(angle);
+      layer.electrons.forEach((e, i) => {
+        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+        const x = layer.radius * Math.cos(angle);
+        const y = layer.radius * Math.sin(angle);
 
-                p.fill(0, 0, 255);
-                p.ellipse(x, y, 12, 12);
-            });
-        });
-    };
+        p.fill(0, 0, 255);
+        p.ellipse(x, y, 12, 12);
+      });
+    });
+  };
 
-    const calculateLayers = (protons) => {
-        const config = [2, 8, 18]; // Camadas de distribuição de elétrons
-        let remaining = protons;
-        let radius = 70;
-        let result = [];
+  const calculateLayers = (protons) => {
+    const config = [2, 8, 18]; // Camadas de distribuição de elétrons
+    let remaining = protons;
+    let radius = 70;
+    let result = [];
 
-        config.forEach((max, i) => {
-            const count = Math.min(remaining, max);
-            result.push({ radius, electrons: new Array(count).fill(0) });
-            remaining -= count;
-            radius += 30;
-        });
+    config.forEach((max, i) => {
+      const count = Math.min(remaining, max);
+      result.push({ radius, electrons: new Array(count).fill(0) });
+      remaining -= count;
+      radius += 30;
+    });
 
-        return result;
-    };
+    return result;
+  };
 };
