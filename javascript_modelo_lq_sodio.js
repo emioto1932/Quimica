@@ -1,3 +1,24 @@
+// Definindo os elementos químicos e seus respectivos números de elétrons
+const elementsData = {
+  H: { electrons: 1 },
+  He: { electrons: 2 },
+  Li: { electrons: 3 },
+  Be: { electrons: 4 },
+  B: { electrons: 5 },
+  C: { electrons: 6 },
+  N: { electrons: 7 },
+  O: { electrons: 8 },
+  F: { electrons: 9 },
+  Ne: { electrons: 10 },
+  Na: { electrons: 11 },
+  Mg: { electrons: 12 },
+  Al: { electrons: 13 },
+  // Adicione outros elementos conforme necessário
+};
+
+// Camadas e seus limites máximos de elétrons
+const maxElectronsPerLayer = [2, 8, 18, 32, 32, 18, 8];
+
 let electronsLayer1 = [];
 let electronsLayer2 = [];
 let electronsLayer3 = [];
@@ -14,44 +35,50 @@ let speedLayer5 = 0.005; // Velocidade da camada 5
 let speedLayer6 = 0.003; // Velocidade da camada 6
 let speedLayer7 = 0.002; // Velocidade da camada 7
 
+let electronLayers = [
+  electronsLayer1,
+  electronsLayer2,
+  electronsLayer3,
+  electronsLayer4,
+  electronsLayer5,
+  electronsLayer6,
+  electronsLayer7
+];
+
 function setup() {
   createCanvas(400, 600);  // Cartaz de 400x600 pixels
   frameRate(60);
 
-  // Criando elétrons nas camadas
-  // Primeira camada (2 elétrons)
-  for (let i = 0; i < 2; i++) {
-    electronsLayer1.push(createElectron(70, i * TWO_PI / 2));
+  const elementSelect = document.getElementById('element-select');
+  elementSelect.addEventListener('change', function() {
+    const element = elementSelect.value;
+    if (element) {
+      const numElectrons = elementsData[element]?.electrons || 0;
+      setupElectrons(numElectrons);
+    }
+  });
+}
+
+function setupElectrons(numElectrons) {
+  // Limpar as camadas anteriores
+  for (let i = 0; i < electronLayers.length; i++) {
+    electronLayers[i] = [];
   }
 
-  // Segunda camada (8 elétrons)
-  for (let i = 0; i < 8; i++) {
-    electronsLayer2.push(createElectron(100, i * TWO_PI / 8));
-  }
+  let remainingElectrons = numElectrons;
 
-  // Terceira camada (18 elétrons)
-  for (let i = 0; i < 18; i++) {
-    electronsLayer3.push(createElectron(130, i * TWO_PI / 18));
-  }
+  for (let i = 0; i < maxElectronsPerLayer.length; i++) {
+    if (remainingElectrons <= 0) break;
 
-  // Quarta camada (32 elétrons)
-  for (let i = 0; i < 32; i++) {
-    electronsLayer4.push(createElectron(160, i * TWO_PI / 32));
-  }
+    // Definir o número de elétrons para esta camada
+    let electronsInLayer = Math.min(remainingElectrons, maxElectronsPerLayer[i]);
 
-  // Quinta camada (32 elétrons)
-  for (let i = 0; i < 32; i++) {
-    electronsLayer5.push(createElectron(190, i * TWO_PI / 32));
-  }
+    // Criar os elétrons para esta camada
+    for (let j = 0; j < electronsInLayer; j++) {
+      electronLayers[i].push(createElectron((i + 1) * 30, j * TWO_PI / electronsInLayer));
+    }
 
-  // Sexta camada (18 elétrons)
-  for (let i = 0; i < 18; i++) {
-    electronsLayer6.push(createElectron(220, i * TWO_PI / 18));
-  }
-
-  // Sétima camada (2 elétrons)
-  for (let i = 0; i < 2; i++) {
-    electronsLayer7.push(createElectron(250, i * TWO_PI / 2));
+    remainingElectrons -= electronsInLayer;
   }
 }
 
@@ -66,37 +93,16 @@ function draw() {
   textSize(16);
   textAlign(CENTER, CENTER);
 
-  // Exibindo o número de prótons e nêutrons
-  textSize(12);
-  text('P = 11', width / 2, height / 2 - 10);  // Prótons
-  text('N = 12', width / 2, height / 2 + 10);  // Nêutrons
-
   // Desenhando as camadas com linhas tracejadas
-  drawDottedLine(70);   // Primeira camada
-  drawDottedLine(100);  // Segunda camada
-  drawDottedLine(130);  // Terceira camada
-  drawDottedLine(160);  // Quarta camada
-  drawDottedLine(190);  // Quinta camada
-  drawDottedLine(220);  // Sexta camada
-  drawDottedLine(250);  // Sétima camada
+  for (let i = 0; i < maxElectronsPerLayer.length; i++) {
+    drawDottedLine((i + 1) * 30);
+  }
 
   // Desenhando as camadas e elétrons
-  drawElectrons(electronsLayer1, 70, 2);  // Primeira camada
-  drawElectrons(electronsLayer2, 100, 8); // Segunda camada
-  drawElectrons(electronsLayer3, 130, 18); // Terceira camada
-  drawElectrons(electronsLayer4, 160, 32); // Quarta camada
-  drawElectrons(electronsLayer5, 190, 32); // Quinta camada
-  drawElectrons(electronsLayer6, 220, 18); // Sexta camada
-  drawElectrons(electronsLayer7, 250, 2);  // Sétima camada
-
-  // Atualizando a posição dos elétrons nas camadas
-  moveElectronsLayer(electronsLayer1, speedLayer1);
-  moveElectronsLayer(electronsLayer2, speedLayer2);
-  moveElectronsLayer(electronsLayer3, speedLayer3);
-  moveElectronsLayer(electronsLayer4, speedLayer4);
-  moveElectronsLayer(electronsLayer5, speedLayer5);
-  moveElectronsLayer(electronsLayer6, speedLayer6);
-  moveElectronsLayer(electronsLayer7, speedLayer7);
+  for (let i = 0; i < electronLayers.length; i++) {
+    drawElectrons(electronLayers[i], (i + 1) * 30, maxElectronsPerLayer[i]);
+    moveElectronsLayer(electronLayers[i], getSpeedForLayer(i));
+  }
 }
 
 // Função para criar elétrons nas órbitas
@@ -130,5 +136,19 @@ function moveElectronsLayer(electronArray, speed) {
     e.angle += speed;  // Controla a velocidade de rotação dos elétrons
     e.x = width / 2 + e.radius * cos(e.angle);
     e.y = height / 2 + e.radius * sin(e.angle);
+  }
+}
+
+// Função para retornar a velocidade para cada camada
+function getSpeedForLayer(layerIndex) {
+  switch (layerIndex) {
+    case 0: return speedLayer1;
+    case 1: return speedLayer2;
+    case 2: return speedLayer3;
+    case 3: return speedLayer4;
+    case 4: return speedLayer5;
+    case 5: return speedLayer6;
+    case 6: return speedLayer7;
+    default: return 0.01;
   }
 }
