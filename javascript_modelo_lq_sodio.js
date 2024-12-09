@@ -1,78 +1,55 @@
-// Referências aos elementos do DOM
+// Referências aos elementos HTML
 const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
 const confirmButton = document.getElementById("confirm-button");
-const tableContainer = document.getElementById("data-table");
 
-// Dados da tabela periódica por grupo
+// Dados de exemplo para os elementos de cada grupo
 const elementsByGroup = {
-  1: [
-    { symbol: "H", name: "Hidrogênio", protons: 1, electronegativity: 2.1 },
-    { symbol: "Li", name: "Lítio", protons: 3, electronegativity: 1.0 },
-    { symbol: "Na", name: "Sódio", protons: 11, electronegativity: 0.9 },
-  ],
-  2: [
-    { symbol: "Be", name: "Berílio", protons: 4, electronegativity: 1.5 },
-    { symbol: "Mg", name: "Magnésio", protons: 12, electronegativity: 1.2 },
-    { symbol: "Ca", name: "Cálcio", protons: 20, electronegativity: 1.0 },
-  ],
-  // Outros grupos podem ser adicionados aqui
+  1: ["Hidrogênio", "Lítio", "Sódio"],
+  2: ["Berílio", "Magnésio", "Cálcio"],
+  13: ["Boro", "Alumínio", "Gálio"],
+  14: ["Carbono", "Silício", "Germânio"],
+  15: ["Nitrogênio", "Fósforo", "Arsênio"],
+  16: ["Oxigênio", "Enxofre", "Selênio"],
+  17: ["Flúor", "Cloro", "Bromo"],
+  18: ["Hélio", "Neônio", "Argônio"]
 };
 
-// Lógica para manipular a seleção de grupo
+// Evento para quando um grupo for selecionado
 groupSelect.addEventListener("change", () => {
-  const group = groupSelect.value;
+  const selectedGroup = groupSelect.value;
 
-  // Limpa e desativa os controles ao trocar o grupo
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-  elementSelect.disabled = true;
+  if (selectedGroup) {
+    // Popula o select de elementos com base no grupo selecionado
+    populateElementSelect(selectedGroup);
+
+    // Ativa o select de elementos
+    elementSelect.disabled = false;
+  } else {
+    // Se nenhum grupo for selecionado, desativa o select de elementos
+    elementSelect.disabled = true;
+    elementSelect.innerHTML = `<option value="">-- Selecione um Elemento --</option>`;
+  }
+
+  // Sempre desativa o botão de confirmação até um elemento ser selecionado
   confirmButton.disabled = true;
-
-  if (group && elementsByGroup[group]) {
-    // Popula o menu de elementos com os dados do grupo selecionado
-    elementSelect.disabled = false; // Ativa o menu de elementos
-    elementsByGroup[group].forEach(({ symbol, name }) => {
-      const option = document.createElement("option");
-      option.value = symbol;
-      option.textContent = `${name} (${symbol})`;
-      elementSelect.appendChild(option);
-    });
-  }
 });
 
-// Lógica para ativar o botão de confirmação ao escolher um elemento
+// Evento para quando um elemento for selecionado
 elementSelect.addEventListener("change", () => {
-  confirmButton.disabled = !elementSelect.value; // Ativa/desativa dinamicamente
+  // Habilita o botão de confirmação se um elemento for selecionado
+  confirmButton.disabled = !elementSelect.value;
 });
 
-// Lógica para exibir os dados do elemento escolhido e iniciar a animação
-confirmButton.addEventListener("click", () => {
-  const selectedElement = elementSelect.value;
+// Função para preencher o select de elementos com base no grupo selecionado
+function populateElementSelect(group) {
+  const elements = elementsByGroup[group] || [];
+  elementSelect.innerHTML = `<option value="">-- Selecione um Elemento --</option>`;
 
-  if (!selectedElement) return;
-
-  // Procura os dados do elemento selecionado
-  const group = groupSelect.value;
-  const elementData = elementsByGroup[group].find(el => el.symbol === selectedElement);
-
-  if (elementData) {
-    // Renderiza a tabela com as propriedades
-    tableContainer.innerHTML = `
-      <table border="1">
-        <tr><th>Propriedade</th><th>Valor</th></tr>
-        <tr><td>Número de Prótons</td><td>P = ${elementData.protons}+</td></tr>
-        <tr><td>Número de Elétrons</td><td>E = ${elementData.protons}-</td></tr>
-        <tr><td>Eletronegatividade</td><td>${elementData.electronegativity.toFixed(1)}</td></tr>
-      </table>
-    `;
-
-    // Chama a função para configurar e iniciar a animação do modelo
-    setupAnimation(elementData);
-  }
-});
-
-// Função para iniciar a animação com base nos dados do elemento
-function setupAnimation(elementData) {
-  console.log(`Iniciando animação para o elemento ${elementData.name} (${elementData.symbol})`);
-  // Substitua por sua lógica de animação
+  elements.forEach((element) => {
+    const option = document.createElement("option");
+    option.value = element;
+    option.textContent = element;
+    elementSelect.appendChild(option);
+  });
 }
