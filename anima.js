@@ -209,11 +209,12 @@ const calculateLayers = (electrons) => {
   const layers = [];
   let remainingElectrons = electrons;
 
-  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
+  for (let i = 0; i < maxPerLayer.length; i++) {
+    if (remainingElectrons <= 0) break; // Nenhum elétron restante
     const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
-      radius: 50 + i * 30, // Raio da camada (ajustável)
-      electrons: Array(electronsInLayer).fill(0) // Criar espaço para os elétrons
+      radius: 50 + i * 30, // Distância do núcleo aumenta a cada camada
+      electrons: Array(electronsInLayer).fill(1), // Lista de elétrons na camada
     });
     remainingElectrons -= electronsInLayer;
   }
@@ -221,3 +222,87 @@ const calculateLayers = (electrons) => {
   return layers;
 };
 
+// Carregar elementos ao selecionar o grupo
+groupSelect.addEventListener("change", () => {
+  const group = groupSelect.value;
+
+  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
+
+  if (group && elementsByGroup[group]) {
+    elementSelect.disabled = false;
+    elementsByGroup[group].forEach(({ symbol, name }) => {
+      const option = document.createElement("option");
+      option.value = symbol;
+      option.textContent = `${name} (${symbol})`;
+      elementSelect.appendChild(option);
+    });
+  } else {
+    elementSelect.disabled = true;
+  }
+});
+
+// Atualizar a tabela e iniciar animação quando o elemento for selecionado
+elementSelect.addEventListener("change", () => {
+  const element = elementSelect.value;
+
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
+
+  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
+
+  // Preencher a tabela com as propriedades do elemento
+  tableBody.innerHTML = `
+    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
+    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
+    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
+  `;
+
+  // Exibir a tabela
+  infoTable.classList.remove("hidden");
+
+  // Remover o canvas antigo, se houver
+  if (p5Instance) {
+    p5Instance.remove();
+  }
+
+  // Criar um novo canvas no contêiner
+  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
+});
+
+// Função de animação com p5.js
+const sketch = (p) => {
+  let layers = [];
+
+  p.setup = () => {
+    p.createCanvas(400, 400).parent(canvasContainer); // Colocar o canvas no contêiner
+    layers = calculateLayers(elementoAtual.electrons); // Calcular camadas para a distribuição de elétrons
+  };
+
+  p.draw = () => {
+    p.background(255);
+    p.translate(p.width / 2, p.height / 2);
+
+    // Desenhar núcleo
+    p.fill(255, 165, 0);
+    p.ellipse(0, 0, 50, 50);
+    p.fill(0);
+    p.textAlign(p.CENTER, p.CENTER);
+    p.text(`P=${elementoAtual.protons}`, 0, -10);
+    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
+
+    // Desenhar camadas e elétrons
+    layers.forEach((layer, index) => {
+      p.noFill();
+      p.stroke(0);
+      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+
+      layer.electrons.forEach((e, i) => {
+        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+        const x = layer.radius * Math.cos(angle);
+        const y = layer.radius * Math.sin(angle);
+
+        p.fill(0, 0, 255);
+        p.ellipse(x, y, 12, 12); // Desenha o elétron
+      });
+    });
+  };
+};
