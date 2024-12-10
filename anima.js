@@ -205,16 +205,16 @@ const sketch = (p) => {
 };
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32]; // Máximo de elétrons por camada
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // Ajuste para respeitar as regras de preenchimento
+    // Determina o número de elétrons para a camada atual
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
 
-    if (i >= 2 && electronsInLayer < maxPerLayer[i]) {
-      // Para camadas acima da terceira, só números válidos: 8, 18 ou 32
+    // Para camadas acima da terceira, ajusta para valores divisíveis válidos
+    if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
       const divisibleValues = [8, 18, 32];
       const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
       electronsInLayer = maxAllowed || electronsInLayer;
@@ -228,14 +228,12 @@ const calculateLayers = (electrons) => {
     remainingElectrons -= electronsInLayer;
   }
 
-  // Distribuir elétrons restantes em camadas adicionais
-  while (remainingElectrons > 0) {
-    const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[3]); // Até 32 elétrons por camada extra
+  // Tratamento para casos onde ainda restam elétrons (pouco provável devido ao maxPerLayer definido)
+  if (remainingElectrons > 0) {
     layers.push({
       radius: 50 + layers.length * 30,
-      electrons: Array(electronsInLayer).fill(0)
+      electrons: Array(remainingElectrons).fill(0)
     });
-    remainingElectrons -= electronsInLayer;
   }
 
   return layers;
