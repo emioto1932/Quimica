@@ -205,7 +205,7 @@ const sketch = (p) => {
 };
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32]; // Máximo de elétrons por camada
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
 
