@@ -209,7 +209,6 @@ const calculateLayers = (electrons) => {
   const layers = [];
   let remainingElectrons = electrons;
 
-  // Preenchendo as camadas conforme as regras
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
     const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
@@ -219,7 +218,7 @@ const calculateLayers = (electrons) => {
     remainingElectrons -= electronsInLayer;
   }
 
-  // Se ainda restarem elétrons, eles vão para a camada extra
+  // Se ainda restarem elétrons, eles vão para a camada seguinte (por exemplo, a quinta camada)
   if (remainingElectrons > 0) {
     layers.push({
       radius: 50 + layers.length * 30, // Raio da camada (ajustável)
@@ -229,4 +228,5 @@ const calculateLayers = (electrons) => {
 
   return layers;
 };
+
 
