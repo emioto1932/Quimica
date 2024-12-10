@@ -205,37 +205,28 @@ const sketch = (p) => {
 };
 
 const calculateLayers = (electrons) => {
-  // Máximo de elétrons por camada, conforme a regra
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8];
+  const maxPerLayer = [2, 8, 18, 18, 32]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
-  
-  // Laço para distribuir os elétrons nas camadas
+
+  // Preenchendo as camadas conforme as regras
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    let electronsInLayer = 0;
-    
-    // Verificar o máximo de elétrons que cabe na camada atual
-    if (remainingElectrons >= maxPerLayer[i]) {
-      electronsInLayer = maxPerLayer[i];  // Coloca o máximo permitido
-    } else {
-      electronsInLayer = remainingElectrons;  // Coloca todos os elétrons restantes
-    }
-
-    // Adiciona a camada com os elétrons alocados
+    const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
-      radius: 50 + i * 30,  // Raio ajustável para visualização
-      electrons: Array(electronsInLayer).fill(0)  // Preenche a camada com os elétrons
+      radius: 50 + i * 30, // Raio da camada (ajustável)
+      electrons: Array(electronsInLayer).fill(0) // Criar espaço para os elétrons
     });
-
-    // Atualiza os elétrons restantes após distribuir na camada
     remainingElectrons -= electronsInLayer;
+  }
+
+  // Se ainda restarem elétrons, eles vão para a camada extra
+  if (remainingElectrons > 0) {
+    layers.push({
+      radius: 50 + layers.length * 30, // Raio da camada (ajustável)
+      electrons: Array(remainingElectrons).fill(0) // Elétrons restantes na camada extra
+    });
   }
 
   return layers;
 };
 
-// Teste para Potássio (K, 19 elétrons)
-console.log(calculateLayers(19));  // Esperado: [2, 8, 8, 1]
-
-// Teste para Iodo (I, 53 elétrons)
-console.log(calculateLayers(53));  // Esperado: [2, 8, 18, 18, 7]
