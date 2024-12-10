@@ -210,11 +210,11 @@ const calculateLayers = (electrons) => {
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // Ajuste para não ultrapassar as regras gerais de preenchimento
+    // Ajuste para respeitar as regras de preenchimento
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
 
-    // Regra para completar apenas números inteiros aceitáveis (8, 18 ou 32) na camada anterior
-    if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
+    if (i >= 2 && electronsInLayer < maxPerLayer[i]) {
+      // Para camadas acima da terceira, só números válidos: 8, 18 ou 32
       const divisibleValues = [8, 18, 32];
       const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
       electronsInLayer = maxAllowed || electronsInLayer;
@@ -228,12 +228,14 @@ const calculateLayers = (electrons) => {
     remainingElectrons -= electronsInLayer;
   }
 
-  // Se ainda restarem elétrons, eles vão para a camada seguinte
-  if (remainingElectrons > 0) {
+  // Distribuir elétrons restantes em camadas adicionais
+  while (remainingElectrons > 0) {
+    const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[3]); // Até 32 elétrons por camada extra
     layers.push({
       radius: 50 + layers.length * 30,
-      electrons: Array(remainingElectrons).fill(0)
+      electrons: Array(electronsInLayer).fill(0)
     });
+    remainingElectrons -= electronsInLayer;
   }
 
   return layers;
