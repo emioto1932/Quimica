@@ -205,31 +205,34 @@ const sketch = (p) => {
 };
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+  const maxPerLayer = [2, 8, 18, 32, 32]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
+    // Ajuste para não ultrapassar as regras gerais de preenchimento
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
 
-    // Ajustar casos especiais para números entre 18 e 32
-    if (i >= 2 && electronsInLayer > 18 && maxPerLayer[i] === 32) {
-      electronsInLayer = 18; // Coloca no máximo 18 na camada atual
+    // Regra para completar apenas números inteiros aceitáveis (8, 18 ou 32) na camada anterior
+    if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
+      const divisibleValues = [8, 18, 32];
+      const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
+      electronsInLayer = maxAllowed || electronsInLayer;
     }
 
     layers.push({
       radius: 50 + i * 30, // Raio da camada (ajustável)
-      electrons: Array(electronsInLayer).fill(0), // Preencher elétrons na camada
+      electrons: Array(electronsInLayer).fill(0) // Elétrons na camada
     });
 
     remainingElectrons -= electronsInLayer;
   }
 
-  // Para números maiores, continuar a distribuição nas camadas extras
+  // Se ainda restarem elétrons, eles vão para a camada seguinte
   if (remainingElectrons > 0) {
     layers.push({
       radius: 50 + layers.length * 30,
-      electrons: Array(remainingElectrons).fill(0), // Elétrons restantes
+      electrons: Array(remainingElectrons).fill(0)
     });
   }
 
