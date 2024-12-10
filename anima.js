@@ -118,91 +118,8 @@ const elementProperties = {
   "Xe": { protons: 54, electrons: 54, electronegativity: "N/A" },
   "Rn": { protons: 86, electrons: 86, electronegativity: "N/A" }
 };
-// Carregar elementos ao selecionar o grupo
-groupSelect.addEventListener("change", () => {
-  const group = groupSelect.value;
-
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-
-  if (group && elementsByGroup[group]) {
-    elementSelect.disabled = false;
-    elementsByGroup[group].forEach(({ symbol, name }) => {
-      const option = document.createElement("option");
-      option.value = symbol;
-      option.textContent = `${name} (${symbol})`;
-      elementSelect.appendChild(option);
-    });
-  } else {
-    elementSelect.disabled = true;
-  }
-});
-
-// Atualizar a tabela e iniciar animação quando o elemento for selecionado
-elementSelect.addEventListener("change", () => {
-  const element = elementSelect.value;
-  
-  if (!element) return; // Se não houver elemento selecionado, não faz nada
-
-  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
-
-  // Preencher a tabela com as propriedades do elemento
-  tableBody.innerHTML = `
-    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
-    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
-    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
-  `;
-  
-  // Exibir a tabela
-  infoTable.classList.remove("hidden");
-
-  // Remover o canvas antigo, se houver
-  if (p5Instance) {
-    p5Instance.remove();
-  }
-
-  // Criar um novo canvas no contêiner
-  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
-});
-
-// Função de animação com p5.js
-const sketch = (p) => {
-  let layers = [];
-
-  p.setup = () => {
-    p.createCanvas(400, 400);
-    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons
-  };
-
-  p.draw = () => {
-    p.background(255);
-    p.translate(p.width / 2, p.height / 2);
-
-    // Desenhar núcleo
-    p.fill(255, 165, 0);
-    p.ellipse(0, 0, 50, 50);
-    p.fill(0);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.text(`P=${elementoAtual.protons}`, 0, -10);
-    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
-
-    // Desenhar camadas e elétrons
-    layers.forEach((layer, index) => {
-      p.noFill();
-      p.stroke(0);
-      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
-
-      layer.electrons.forEach((e, i) => {
-        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
-        const x = layer.radius * Math.cos(angle);
-        const y = layer.radius * Math.sin(angle);
-
-        p.fill(0, 0, 255);
-        p.ellipse(x, y, 12, 12); // Desenha o elétron
-      });
-    });
-  };
-
-};
+const canvasContainer = document.getElementById("canvas-container");
+let p5Instance;
 
 const calculateLayers = (electrons) => {
   const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
@@ -210,99 +127,77 @@ const calculateLayers = (electrons) => {
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length; i++) {
-    if (remainingElectrons <= 0) break; // Nenhum elétron restante
     const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
-      radius: 50 + i * 30, // Distância do núcleo aumenta a cada camada
-      electrons: Array(electronsInLayer).fill(1), // Lista de elétrons na camada
+      radius: 50 + i * 40, // Aumenta o raio com base na camada
+      electrons: Array(electronsInLayer).fill(null),
     });
     remainingElectrons -= electronsInLayer;
+
+    if (remainingElectrons <= 0) break;
   }
 
   return layers;
 };
 
-// Carregar elementos ao selecionar o grupo
-groupSelect.addEventListener("change", () => {
-  const group = groupSelect.value;
-
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-
-  if (group && elementsByGroup[group]) {
-    elementSelect.disabled = false;
-    elementsByGroup[group].forEach(({ symbol, name }) => {
-      const option = document.createElement("option");
-      option.value = symbol;
-      option.textContent = `${name} (${symbol})`;
-      elementSelect.appendChild(option);
-    });
-  } else {
-    elementSelect.disabled = true;
-  }
-});
-
-// Atualizar a tabela e iniciar animação quando o elemento for selecionado
-elementSelect.addEventListener("change", () => {
-  const element = elementSelect.value;
-
-  if (!element) return; // Se não houver elemento selecionado, não faz nada
-
-  elementoAtual = elementProperties[element]; // Atualizar o elemento atual
-
-  // Preencher a tabela com as propriedades do elemento
-  tableBody.innerHTML = `
-    <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
-    <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
-    <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
-  `;
-
-  // Exibir a tabela
-  infoTable.classList.remove("hidden");
-
-  // Remover o canvas antigo, se houver
-  if (p5Instance) {
-    p5Instance.remove();
-  }
-
-  // Criar um novo canvas no contêiner
-  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
-});
-
-// Função de animação com p5.js
-const sketch = (p) => {
+const sketch = (p, elementoAtual) => {
   let layers = [];
 
   p.setup = () => {
-    p.createCanvas(400, 400).parent(canvasContainer); // Colocar o canvas no contêiner
-    layers = calculateLayers(elementoAtual.electrons); // Calcular camadas para a distribuição de elétrons
+    const canvas = p.createCanvas(400, 400);
+    canvas.parent(canvasContainer);
+    layers = calculateLayers(elementoAtual.protons);
   };
 
   p.draw = () => {
-    p.background(255);
+    p.background(240);
     p.translate(p.width / 2, p.height / 2);
 
-    // Desenhar núcleo
-    p.fill(255, 165, 0);
-    p.ellipse(0, 0, 50, 50);
-    p.fill(0);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.text(`P=${elementoAtual.protons}`, 0, -10);
-    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10);
-
     // Desenhar camadas e elétrons
-    layers.forEach((layer, index) => {
+    layers.forEach((layer, layerIndex) => {
+      // Desenhar a camada
       p.noFill();
-      p.stroke(0);
-      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2);
+      p.stroke(100);
+      p.circle(0, 0, layer.radius * 2);
 
-      layer.electrons.forEach((e, i) => {
-        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length;
+      // Desenhar os elétrons
+      const angleIncrement = p.TWO_PI / layer.electrons.length;
+      layer.electrons.forEach((_, i) => {
+        const angle = i * angleIncrement;
         const x = layer.radius * Math.cos(angle);
         const y = layer.radius * Math.sin(angle);
-
-        p.fill(0, 0, 255);
-        p.ellipse(x, y, 12, 12); // Desenha o elétron
+        p.fill(50, 100, 200);
+        p.noStroke();
+        p.circle(x, y, 10);
       });
     });
+
+    // Desenhar o núcleo
+    p.fill(200, 50, 50);
+    p.noStroke();
+    p.circle(0, 0, 50);
+
+    p.fill(255);
+    p.textAlign(p.CENTER, p.CENTER);
+    p.textSize(16);
+    p.text(`${elementoAtual.nome}\n${elementoAtual.simbolo}`, 0, 0);
   };
 };
+
+const selectElement = (index) => {
+  if (p5Instance) {
+    p5Instance.remove(); // Remove a instância anterior do p5
+  }
+
+  const elementoAtual = elementos[index];
+  p5Instance = new p5((p) => sketch(p, elementoAtual), canvasContainer);
+};
+
+// Adicionar os botões para selecionar os elementos
+const buttonsContainer = document.getElementById("buttons-container");
+elementos.forEach((elemento, index) => {
+  const button = document.createElement("button");
+  button.textContent = elemento.nome;
+  button.addEventListener("click", () => selectElement(index));
+  buttonsContainer.appendChild(button);
+});
