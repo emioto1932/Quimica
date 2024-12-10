@@ -205,18 +205,26 @@ const sketch = (p) => {
 };
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+  const maxPerLayer = [2, 8, 18, 18, 32]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
 
+  // Preenchendo as camadas conforme as regras
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // A quantidade de elétrons na camada atual será o menor valor entre os elétrons restantes e o máximo permitido pela camada
     const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
       radius: 50 + i * 30, // Raio da camada (ajustável)
       electrons: Array(electronsInLayer).fill(0) // Criar espaço para os elétrons
     });
     remainingElectrons -= electronsInLayer;
+  }
+
+  // Se ainda restarem elétrons, eles vão para a camada extra
+  if (remainingElectrons > 0) {
+    layers.push({
+      radius: 50 + layers.length * 30, // Raio da camada (ajustável)
+      electrons: Array(remainingElectrons).fill(0) // Elétrons restantes na camada extra
+    });
   }
 
   return layers;
