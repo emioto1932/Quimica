@@ -210,24 +210,12 @@ const calculateLayers = (electrons) => {
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // Verifica quantos elétrons podemos colocar na camada atual
-    let electronsInLayer = 0;
-    
-    // Se houver elétrons restantes e a camada atual não for a última, preenche até o máximo
-    if (remainingElectrons >= maxPerLayer[i]) {
-      electronsInLayer = maxPerLayer[i];
-    } else {
-      // Caso contrário, coloca o número restante de elétrons na camada
-      electronsInLayer = remainingElectrons;
-    }
-
-    // Cria a camada e adiciona os elétrons
+    // A quantidade de elétrons na camada atual será o menor valor entre os elétrons restantes e o máximo permitido pela camada
+    const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
       radius: 50 + i * 30, // Raio da camada (ajustável)
       electrons: Array(electronsInLayer).fill(0) // Criar espaço para os elétrons
     });
-
-    // Subtrai os elétrons alocados da quantidade total restante
     remainingElectrons -= electronsInLayer;
   }
 
