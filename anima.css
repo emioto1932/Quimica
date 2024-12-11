@@ -26,8 +26,11 @@ h1 {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribui os containers com espaços iguais entre eles */
+  align-items: flex-start; /* Alinha os itens no topo do container (padrão) */
 }
+
+
 
 /* Contêiner da seleção de elementos */
 .selection-container {
