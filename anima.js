@@ -217,9 +217,13 @@ const calculateLayers = (electrons) => {
 
     // Regra para completar apenas números inteiros aceitáveis (8, 18 ou 32) na camada anterior
     if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
+     // const divisibleValues = [8, 18, 32];
+     // const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
+     // electronsInLayer = maxAllowed || electronsInLayer;
       const divisibleValues = [8, 18, 32];
-      const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
-      electronsInLayer = maxAllowed || electronsInLayer;
+      const maxAllowed = divisibleValues
+        .filter(v => v <= remainingElectrons) // Filtra os valores que são <= remainingElectrons
+        .reduce((max, v) => v > max ? v : max, 0); // Retorna o maior valor da lista filtrada
     }
 
     layers.push({
