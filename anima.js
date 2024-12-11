@@ -208,37 +208,33 @@ const sketch = (p) => {
 
 const calculateLayers = (electrons) => {
   const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
-  const divisibleValues = [8, 18, 32]; // Valores possíveis para cada camada
   const layers = [];
   let remainingElectrons = electrons;
 
+  // Definindo uma faixa de velocidade por camada
+  const speeds = [0.5, 1.0, 1.5, 1.8, 1.8, 1.5, 1.0]; // Velocidade por camada (em unidades fictícias)
+  const speedVariance = 0.2; // Variação na velocidade para tornar as diferenças pequenas
+
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
+    remainingElectrons -= electronsInLayer;
 
-    // Se a camada for de camada 3 ou mais, aplica a nova regra
-    if (i >= 2 && remainingElectrons > 0) {
-      // Encontra o maior valor de divisibleValues que seja menor ou igual ao máximo permitido para a camada atual
-      for (let j = divisibleValues.length - 1; j >= 0; j--) {
-        if (divisibleValues[j] <= maxPerLayer[i] && remainingElectrons >= divisibleValues[j]) {
-          electronsInLayer = divisibleValues[j];
-          break;
-        }
-      }
-    }
+    // Gerando uma velocidade ligeiramente alterada para cada camada
+    const layerSpeed = speeds[i] + (Math.random() - 0.5) * speedVariance;
 
     layers.push({
       radius: 50 + i * 30, // Raio da camada (ajustável)
-      electrons: Array(electronsInLayer).fill(0) // Elétrons na camada
+      electrons: Array(electronsInLayer).fill(0), // Elétrons na camada
+      speed: layerSpeed // Velocidade do movimento dos elétrons na camada
     });
-
-    remainingElectrons -= electronsInLayer;
   }
 
   // Se ainda restarem elétrons, eles vão para a camada seguinte
   if (remainingElectrons > 0) {
     layers.push({
       radius: 50 + layers.length * 30,
-      electrons: Array(remainingElectrons).fill(0)
+      electrons: Array(remainingElectrons).fill(0),
+      speed: speeds[speeds.length - 1] + (Math.random() - 0.5) * speedVariance // Velocidade para os elétrons restantes
     });
   }
 
