@@ -32,14 +32,14 @@ h1 {
 /* Contêiner da seleção de elementos */
 .selection-container {
   flex: 1;
-  min-width: 300px; /* Garante que não fique muito pequeno */
+  min-width: 400px; /* Garante que não fique muito pequeno */
   margin-right: 20px;
 }
 
 /* Contêiner da animação */
 .animation-container {
   flex: 2;
-  min-width: 400px;
+  min-width: 500px;
   background-color: #e8e8e8;
   margin-top: 20px; /* Dará espaço quando em layout de coluna */
 }
