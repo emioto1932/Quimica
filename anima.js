@@ -207,20 +207,23 @@ const sketch = (p) => {
 
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 2]; // Máximo de elétrons por camada
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+  const divisibleValues = [8, 18, 32]; // Valores possíveis para cada camada
   const layers = [];
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // Ajuste para não ultrapassar as regras gerais de preenchimento
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
 
-    // Regra para completar apenas números inteiros aceitáveis (8, 18 ou 32) na camada anterior
-    if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
-     const divisibleValues = [8, 18, 32];
-     const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
-     electronsInLayer = maxAllowed || electronsInLayer;
-      
+    // Se a camada for de camada 3 ou mais, aplica a nova regra
+    if (i >= 2 && remainingElectrons > 0) {
+      // Verifica qual é o maior valor possível para a camada atual
+      for (let j = divisibleValues.length - 1; j >= 0; j--) {
+        if (remainingElectrons / divisibleValues[j] >= 1) {
+          electronsInLayer = divisibleValues[j];
+          break;
+        }
+      }
     }
 
     layers.push({
