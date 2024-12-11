@@ -217,11 +217,20 @@ const calculateLayers = (electrons) => {
 
     // Se a camada ainda tiver elétrons menores que a capacidade máxima (exceto para a camada final),
     // garantir que o número de elétrons seja um valor válido (8, 18 ou 32) ou o valor restante.
-    if (i >= 2 && electronsInLayer < maxPerLayer[i]) {
-      const divisibleValues = [8, 18, 32];
-      const maxAllowed = divisibleValues.find(v => v <= remainingElectrons);
-      electronsInLayer = maxAllowed || electronsInLayer;
-    }
+
+    
+          if (i >= 2 && electronsInLayer < maxPerLayer[i]) {
+            const divisibleValues = [8, 18, 32];
+            const maxAllowed = divisibleValues.find(v => v <= remainingElectrons);
+            // Corrigir para garantir que o número de elétrons seja menor ou igual aos elétrons restantes
+            electronsInLayer = Math.min(maxAllowed, remainingElectrons);
+          }
+
+
+
+
+
+    
 
     layers.push({
       radius: 50 + i * 30, // Raio da camada (ajustável)
