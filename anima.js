@@ -2,46 +2,17 @@ const groupSelect = document.getElementById("group-select");
 const elementSelect = document.getElementById("element-select");
 const infoTable = document.getElementById("info-table");
 const tableBody = infoTable.querySelector("tbody");
-const canvasContainer = document.getElementById("canvas-container");
-const electronDistribution = document.getElementById("electron-distribution"); // Novo elemento para mostrar a distribuição eletrônica
+const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas
+const electronDistributionDiv = document.getElementById("electron-distribution"); // Div para exibir a distribuição eletrônica
 
 let elementoAtual = null; // Variável para armazenar o elemento selecionado
 let p5Instance = null; // Instância do p5.js
 
-// Elementos químicos por grupo
-const elementsByGroup = {
-  // Adicione todos os grupos e elementos aqui como já está no seu código.
-};
-
-// Propriedades dos elementos (adicionando os novos elementos)
-const elementProperties = {
-  // Adicione as propriedades dos elementos aqui como já está no seu código.
-};
-
-// Carregar elementos ao selecionar o grupo
-groupSelect.addEventListener("change", () => {
-  const group = groupSelect.value;
-
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
-
-  if (group && elementsByGroup[group]) {
-    elementSelect.disabled = false;
-    elementsByGroup[group].forEach(({ symbol, name }) => {
-      const option = document.createElement("option");
-      option.value = symbol;
-      option.textContent = `${name} (${symbol})`;
-      elementSelect.appendChild(option);
-    });
-  } else {
-    elementSelect.disabled = true;
-  }
-});
-
 // Atualizar a tabela e iniciar animação quando o elemento for selecionado
 elementSelect.addEventListener("change", () => {
   const element = elementSelect.value;
-
-  if (!element) return;
+  
+  if (!element) return; // Se não houver elemento selecionado, não faz nada
 
   elementoAtual = elementProperties[element]; // Atualizar o elemento atual
 
@@ -51,7 +22,7 @@ elementSelect.addEventListener("change", () => {
     <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
     <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
   `;
-
+  
   // Exibir a tabela
   infoTable.classList.remove("hidden");
 
@@ -63,7 +34,7 @@ elementSelect.addEventListener("change", () => {
   // Criar um novo canvas no contêiner
   p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro
 
-  // Exibir a distribuição de elétrons abaixo da animação
+  // Gerar a lista de distribuição eletrônica abaixo da animação
   displayElectronDistribution(elementoAtual.electrons);
 });
 
@@ -106,37 +77,41 @@ const sketch = (p) => {
   };
 };
 
-// Função para calcular as camadas de acordo com o número de elétrons
+// Função para calcular a distribuição de elétrons nas camadas
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8];
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
   const layers = [];
   let remainingElectrons = electrons;
 
   for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
     let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
     layers.push({
-      radius: 50 + i * 30,
-      electrons: Array(electronsInLayer).fill(0)
+      radius: 50 + i * 30, // Raio da camada (ajustável)
+      electrons: Array(electronsInLayer).fill(0) // Elétrons na camada
     });
+
     remainingElectrons -= electronsInLayer;
+  }
+
+  // Se ainda restarem elétrons, eles vão para a camada seguinte
+  if (remainingElectrons > 0) {
+    layers.push({
+      radius: 50 + layers.length * 30,
+      electrons: Array(remainingElectrons).fill(0)
+    });
   }
 
   return layers;
 };
 
-// Função para exibir a distribuição de elétrons
+// Função para exibir a distribuição de elétrons abaixo da animação
 const displayElectronDistribution = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
-  let remainingElectrons = electrons;
-  let distribution = "";
+  const layers = calculateLayers(electrons);
+  const distributionText = layers.map((layer, index) => {
+    const layerName = ["K", "L", "M", "N", "O", "P", "Q"][index];
+    return `${layerName} = ${layer.electrons.length}`;
+  }).join(" | ");
 
-  // Calcula a distribuição por camada
-  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
-    distribution += `${String.fromCharCode(75 + i)} = ${electronsInLayer}, `;
-    remainingElectrons -= electronsInLayer;
-  }
-
-  // Atualiza o texto da distribuição de elétrons no HTML
-  electronDistribution.textContent = `Distribuição Eletrônica - Número de elétrons por camada: ${distribution.slice(0, -2)}`;
+  // Exibir a distribuição eletrônica na div
+  electronDistributionDiv.textContent = `Distribuição Eletrônica - Número de elétrons por camada: ${distributionText}`;
 };
