@@ -1,90 +1,117 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> 
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selecionar Elemento Químico</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <link rel="stylesheet" href="anima.css">
-  <style>
-    /* Estilo para o aviso */
-    #cache-warning {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(255, 0, 0, 0.8);
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      z-index: 1000;
-    }
+<html lang="pt-br"> 
 
-    #cache-warning button {
-      background-color: transparent;
-      border: none;
-      color: white;
-      font-size: 20px;
-      margin-left: 20px;
-      cursor: pointer;
-    }
+  
 
-    #cache-warning button:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
+<head> 
 
-<body>
-  <!-- Aviso sobre o cache -->
-  <div id="cache-warning">
-    <p>Estamos atualizando a animação! Para ver as mudanças, por favor, limpe o cache do seu navegador e recarregue a página.</p>
-    <button onclick="document.getElementById('cache-warning').style.display='none'">Fechar</button>
-  </div>
+  <meta charset="UTF-8"> 
 
-  <div class="container">
-    <h1>Escolha um Elemento Químico</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <!-- Seleção de Grupo -->
-    <div class="input-group">
-      <label for="group-select">Grupo:</label>
-      <select id="group-select">
-        <option value="">-- Selecione um Grupo --</option>
-        <option value="1">Grupo 1</option>
-        <option value="2">Grupo 2</option>
-        <option value="13">Grupo 13</option>
-        <option value="14">Grupo 14</option>
-        <option value="15">Grupo 15</option>
-        <option value="16">Grupo 16</option>
-        <option value="17">Grupo 17</option>
-        <option value="18">Grupo 18</option>
-      </select>
-    </div>
+  <title>Selecionar Elemento Químico</title> 
 
-    <!-- Seleção de Elemento -->
-    <div class="input-group">
-      <label for="element-select">Elemento:</label>
-      <select id="element-select" disabled>
-        <option value="">-- Selecione um Elemento --</option>
-      </select>
-    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> 
 
-    <!-- Tabela para exibir informações -->
-    <table id="info-table" class="hidden">
-      <thead>
-        <tr>
-          <th>Propriedade</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  <div id="canvas-container"></div> 
-  <!-- Colocando o script no final para garantir que o DOM seja carregado -->
-  <script src="anima.js"></script>
-</body>
+  <link rel="stylesheet" href="anima.css"> 
 
-</html>
+</head> 
+
+  
+
+<body> 
+
+  <div class="container"> 
+
+    <h1>Escolha um Elemento Químico</h1> 
+
+  
+
+    <!-- Seleção de Grupo --> 
+
+    <div class="input-group"> 
+
+      <label for="group-select">Grupo:</label> 
+
+      <select id="group-select"> 
+
+        <option value="">-- Selecione um Grupo --</option> 
+
+        <option value="1">Grupo 1</option> 
+
+        <option value="2">Grupo 2</option> 
+
+        <option value="13">Grupo 13</option> 
+
+        <option value="14">Grupo 14</option> 
+
+        <option value="15">Grupo 15</option> 
+
+        <option value="16">Grupo 16</option> 
+
+        <option value="17">Grupo 17</option> 
+
+        <option value="18">Grupo 18</option> 
+
+      </select> 
+
+    </div> 
+
+  
+
+    <!-- Seleção de Elemento --> 
+
+    <div class="input-group"> 
+
+      <label for="element-select">Elemento:</label> 
+
+      <select id="element-select" disabled> 
+
+        <option value="">-- Selecione um Elemento --</option> 
+
+      </select> 
+
+    </div> 
+
+  
+
+    <!-- Botão para confirmar 
+
+    <button id="confirm-button" disabled>Confirmar</button> --> 
+
+  
+
+    <!-- Tabela para exibir informações --> 
+
+    <table id="info-table" class="hidden"> 
+
+      <thead> 
+
+        <tr> 
+
+          <th>Propriedade</th> 
+
+          <th>Valor</th> 
+
+        </tr> 
+
+      </thead> 
+
+      <tbody></tbody> 
+
+    </table> 
+
+  </div> 
+
+  <div id="canvas-container"></div>  
+
+  <!-- Colocando o script no final para garantir que o DOM seja carregado --> 
+
+  <script src="anima.js"></script> 
+
+</body> 
+
+  
+
+</html> 
