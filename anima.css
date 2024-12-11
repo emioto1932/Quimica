@@ -1,3 +1,4 @@
+/* Estilos principais do corpo */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -5,8 +6,9 @@ body {
   padding: 0;
 }
 
+/* Contêiner principal */
 .container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
   background-color: #fff;
@@ -14,11 +16,35 @@ body {
   border-radius: 8px;
 }
 
+/* Cabeçalho */
 h1 {
   text-align: center;
   color: #333;
 }
 
+/* Flexbox container para organização lado a lado */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Contêiner da seleção de elementos */
+.selection-container {
+  flex: 1;
+  min-width: 300px; /* Garante que não fique muito pequeno */
+  margin-right: 20px;
+}
+
+/* Contêiner da animação */
+.animation-container {
+  flex: 2;
+  min-width: 300px;
+  background-color: #e8e8e8;
+  margin-top: 20px; /* Dará espaço quando em layout de coluna */
+}
+
+/* Estilos para os inputs e botões */
 .input-group {
   margin-bottom: 15px;
 }
@@ -29,8 +55,7 @@ label {
   margin-bottom: 5px;
 }
 
-select,
-button {
+select, button {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -56,6 +81,7 @@ button:hover:not(:disabled) {
   background-color: #45a049;
 }
 
+/* Estilos da tabela */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -74,4 +100,16 @@ th {
 
 .hidden {
   display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .selection-container, .animation-container {
+    margin-right: 0;
+    margin-top: 20px;
+  }
 }
