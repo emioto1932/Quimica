@@ -487,3 +487,22 @@ const calculateLayers = (electrons) => {
   return layers; 
 
 }; 
+
+
+
+// Função para exibir a distribuição de elétrons
+const displayElectronDistribution = (electrons) => {
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+  let remainingElectrons = electrons;
+  let distribution = "";
+
+  // Calcula a distribuição por camada
+  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
+    let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
+    distribution += `${String.fromCharCode(75 + i)} = ${electronsInLayer}, `;
+    remainingElectrons -= electronsInLayer;
+  }
+
+  // Atualiza o texto da distribuição de elétrons no HTML
+  electronDistribution.textContent = `Distribuição Eletrônica - Número de elétrons por camada: ${distribution.slice(0, -2)}`;
+};
