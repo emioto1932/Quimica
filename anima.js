@@ -207,7 +207,8 @@ const sketch = (p) => {
 
 
 const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 18, 32, 32]; // Limites máximos por camada
+  // Limites máximos por camada conforme a tabela periódica
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; 
   const layers = [];
   let remainingElectrons = electrons;
 
@@ -215,10 +216,10 @@ const calculateLayers = (electrons) => {
   for (let i = 0; i < maxPerLayer.length; i++) {
     let electronsInLayer = 0;
 
-    // Se ainda há elétrons, preenche a camada de acordo com o limite máximo
+    // Verificar se ainda há elétrons a distribuir
     if (remainingElectrons > 0) {
-      if (remainingElectrons < maxPerLayer[i]) {
-        // Se os elétrons restantes forem menores que o máximo da camada, coloca o restante
+      // Verifica o limite para a camada e aloca os elétrons
+      if (remainingElectrons <= maxPerLayer[i]) {
         electronsInLayer = remainingElectrons;
         layers.push({
           radius: 50 + i * 30, // Raio da camada (ajustável)
@@ -226,7 +227,6 @@ const calculateLayers = (electrons) => {
         });
         remainingElectrons = 0; // Não há mais elétrons para distribuir
       } else {
-        // Caso contrário, coloca o número máximo de elétrons permitido para a camada
         electronsInLayer = maxPerLayer[i];
         layers.push({
           radius: 50 + i * 30, // Raio da camada (ajustável)
@@ -235,7 +235,7 @@ const calculateLayers = (electrons) => {
         remainingElectrons -= electronsInLayer; // Subtrai os elétrons alocados
       }
     } else {
-      break; // Caso não haja mais elétrons para distribuir
+      break; // Não há mais elétrons para alocar
     }
   }
 
