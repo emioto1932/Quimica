@@ -217,9 +217,9 @@ const calculateLayers = (electrons) => {
 
     // Se a camada for de camada 3 ou mais, aplica a nova regra
     if (i >= 2 && remainingElectrons > 0) {
-      // Verifica qual é o maior valor possível para a camada atual
+      // Encontra o maior valor de divisibleValues que seja menor ou igual ao máximo permitido para a camada atual
       for (let j = divisibleValues.length - 1; j >= 0; j--) {
-        if (remainingElectrons / divisibleValues[j] >= 1) {
+        if (divisibleValues[j] <= maxPerLayer[i] && remainingElectrons >= divisibleValues[j]) {
           electronsInLayer = divisibleValues[j];
           break;
         }
