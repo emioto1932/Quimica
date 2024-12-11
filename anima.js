@@ -204,38 +204,45 @@ const sketch = (p) => {
 
 };
 
-const calculateLayers = (electrons) => {
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada
+const distributeElectrons = (totalElectrons) => {
+  // Máximo de elétrons por camada conforme as regras
+  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8];
   const layers = [];
-  let remainingElectrons = electrons;
+  let remainingElectrons = totalElectrons;
 
-  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-    // Determinar a quantidade de elétrons na camada atual
-    let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
+  for (let i = 0; i < maxPerLayer.length; i++) {
+    if (remainingElectrons <= 0) break; // Se não houver mais elétrons, finalize
 
-    // Garantir que camadas intermediárias (a partir da 3ª) sigam as regras dos múltiplos permitidos
-    if (i >= 2 && electronsInLayer > 0 && electronsInLayer < maxPerLayer[i]) {
-      const divisibleValues = [8, 18, 32];
-      const maxAllowed = divisibleValues.find(v => v <= electronsInLayer);
-      electronsInLayer = maxAllowed || electronsInLayer;
+    const maxElectronsInLayer = maxPerLayer[i];
+    let electronsInLayer = 0;
+
+    // Regras específicas de preenchimento
+    if (remainingElectrons <= maxElectronsInLayer) {
+      electronsInLayer = remainingElectrons;
+    } else if (maxElectronsInLayer === 8) {
+      electronsInLayer = 8;
+    } else if (maxElectronsInLayer === 18) {
+      if (remainingElectrons <= 8) {
+        electronsInLayer = remainingElectrons;
+      } else if (remainingElectrons <= 18) {
+        electronsInLayer = 8;
+      } else {
+        electronsInLayer = 18;
+      }
+    } else if (maxElectronsInLayer === 32) {
+      if (remainingElectrons <= 8) {
+        electronsInLayer = remainingElectrons;
+      } else if (remainingElectrons <= 18) {
+        electronsInLayer = 8;
+      } else if (remainingElectrons <= 32) {
+        electronsInLayer = 18;
+      } else {
+        electronsInLayer = 32;
+      }
     }
 
-    // Adicionar a camada à lista
-    layers.push({
-      radius: 50 + i * 30, // Raio da camada (ajustável)
-      electrons: Array(electronsInLayer).fill(0) // Elétrons na camada
-    });
-
-    // Subtrair os elétrons alocados
+    layers.push(electronsInLayer);
     remainingElectrons -= electronsInLayer;
-  }
-
-  // Se ainda restarem elétrons, criar uma camada extra
-  if (remainingElectrons > 0) {
-    layers.push({
-      radius: 50 + layers.length * 30,
-      electrons: Array(remainingElectrons).fill(0)
-    });
   }
 
   return layers;
