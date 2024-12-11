@@ -1,195 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Distribuição Eletrônica</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f4f4f4;
-    }
-
-    #canvas-container {
-      margin-top: 20px;
-    }
-
-    #group-select, #element-select {
-      margin: 10px;
-    }
-
-    #info-table {
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
-
-    #info-table td, #info-table th {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-  </style>
-</head>
-<body>
-  <h1>Distribuição Eletrônica</h1>
-  
-  <select id="group-select">
-    <option value="">-- Selecione um Grupo --</option>
-    <option value="1">Grupo 1</option>
-    <option value="2">Grupo 2</option>
-    <option value="13">Grupo 13</option>
-    <option value="14">Grupo 14</option>
-    <option value="15">Grupo 15</option>
-    <option value="16">Grupo 16</option>
-    <option value="17">Grupo 17</option>
-    <option value="18">Grupo 18</option>
-  </select>
-
-  <select id="element-select" disabled>
-    <option value="">-- Selecione um Elemento --</option>
-  </select>
-
-  <table id="info-table" class="hidden">
-    <thead>
-      <tr>
-        <th>Propriedade</th>
-        <th>Valor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Dados do elemento serão inseridos aqui -->
-    </tbody>
-  </table>
-
-  <div id="canvas-container"></div>
-
+  <title>Selecionar Elemento Químico</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script>
-    const groupSelect = document.getElementById("group-select");
-    const elementSelect = document.getElementById("element-select");
-    const infoTable = document.getElementById("info-table");
-    const tableBody = infoTable.querySelector("tbody");
-    const canvasContainer = document.getElementById("canvas-container");
+  <link rel="stylesheet" href="anima.css">
+</head>
 
-    let elementoAtual = null; // Variável para armazenar o elemento selecionado
-    let p5Instance = null; // Instância do p5.js
+<body>
+  <div class="container">
+    <h1>Escolha um Elemento Químico</h1>
 
-    const elementsByGroup = {
-      "1": [{ symbol: "H", name: "Hidrogênio" }, { symbol: "Li", name: "Lítio" }, { symbol: "Na", name: "Sódio" }],
-      "2": [{ symbol: "Be", name: "Berílio" }, { symbol: "Mg", name: "Magnésio" }],
-      // Adicionar os outros grupos conforme necessário...
-    };
+    <!-- Seleção de Grupo -->
+    <div class="input-group">
+      <label for="group-select">Grupo:</label>
+      <select id="group-select">
+        <option value="">-- Selecione um Grupo --</option>
+        <option value="1">Grupo 1</option>
+        <option value="2">Grupo 2</option>
+        <option value="13">Grupo 13</option>
+        <option value="14">Grupo 14</option>
+        <option value="15">Grupo 15</option>
+        <option value="16">Grupo 16</option>
+        <option value="17">Grupo 17</option>
+        <option value="18">Grupo 18</option>
+      </select>
+    </div>
 
-    const elementProperties = {
-      "H": { protons: 1, electrons: 1, electronegativity: 2.2 },
-      "Li": { protons: 3, electrons: 3, electronegativity: 0.98 },
-      "Na": { protons: 11, electrons: 11, electronegativity: 0.93 },
-      "Be": { protons: 4, electrons: 4, electronegativity: 1.57 },
-      // Adicionar os outros elementos conforme necessário...
-    };
+    <!-- Seleção de Elemento -->
+    <div class="input-group">
+      <label for="element-select">Elemento:</label>
+      <select id="element-select" disabled>
+        <option value="">-- Selecione um Elemento --</option>
+      </select>
+    </div>
 
-    // Carregar elementos ao selecionar o grupo
-    groupSelect.addEventListener("change", () => {
-      const group = groupSelect.value;
-      elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>';
+    <!-- Botão para confirmar
+    <button id="confirm-button" disabled>Confirmar</button> -->
 
-      if (group && elementsByGroup[group]) {
-        elementSelect.disabled = false;
-        elementsByGroup[group].forEach(({ symbol, name }) => {
-          const option = document.createElement("option");
-          option.value = symbol;
-          option.textContent = `${name} (${symbol})`;
-          elementSelect.appendChild(option);
-        });
-      } else {
-        elementSelect.disabled = true;
-      }
-    });
-
-    // Atualizar a tabela e iniciar animação quando o elemento for selecionado
-    elementSelect.addEventListener("change", () => {
-      const element = elementSelect.value;
-      if (!element) return;
-
-      elementoAtual = elementProperties[element];
-
-      tableBody.innerHTML = `
-        <tr><td>Número de Prótons</td><td>+${elementoAtual.protons}</td></tr>
-        <tr><td>Número de Elétrons</td><td>${elementoAtual.electrons}</td></tr>
-        <tr><td>Eletronegatividade</td><td>${elementoAtual.electronegativity}</td></tr>
-      `;
-      infoTable.classList.remove("hidden");
-
-      // Remover o canvas antigo, se houver
-      if (p5Instance) {
-        p5Instance.remove();
-      }
-
-      // Criar um novo canvas no contêiner
-      p5Instance = new p5(sketch, canvasContainer);
-    });
-
-    // Função de animação com p5.js
-    const sketch = (p) => {
-      let layers = [];
-
-      p.setup = () => {
-        p.createCanvas(400, 400);
-        layers = distributeElectrons(elementoAtual.electrons); // Usando a função de distribuição
-      };
-
-      p.draw = () => {
-        p.background(255);
-        p.translate(p.width / 2, p.height / 2);
-
-        // Desenhar núcleo
-        p.fill(255, 165, 0);
-        p.ellipse(0, 0, 50, 50);
-        p.fill(0);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text(`P=${elementoAtual.protons}`, 0, -10);
-
-        // Desenhar camadas e elétrons
-        layers.forEach((electrons, index) => {
-          const radius = (index + 1) * 50; // Distância entre as camadas
-          p.noFill();
-          p.stroke(0);
-          p.ellipse(0, 0, radius * 2, radius * 2);
-
-          electrons.forEach((_, i) => {
-            const angle = (i * p.TWO_PI) / electrons.length;
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
-
-            p.fill(0, 0, 255);
-            p.ellipse(x, y, 12, 12); // Desenha o elétron
-          });
-        });
-      };
-    };
-
-    // Função para distribuir os elétrons por camadas
-    const distributeElectrons = (totalElectrons) => {
-      const maxPerLayer = [2, 8, 18, 32, 32, 18, 8];
-      const layers = [];
-      let remainingElectrons = totalElectrons;
-
-      for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) {
-        const electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]);
-        layers.push(Array(electronsInLayer).fill(0));
-        remainingElectrons -= electronsInLayer;
-      }
-
-      return layers;
-    };
-  </script>
+    <!-- Tabela para exibir informações -->
+    <table id="info-table" class="hidden">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="canvas-container"></div> 
+  <!-- Colocando o script no final para garantir que o DOM seja carregado -->
+  <script src="anima.js"></script>
 </body>
+
 </html>
 
