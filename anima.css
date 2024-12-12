@@ -26,22 +26,22 @@ h1 {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Adiciona um pequeno espaçamento entre os contêineres */
+  justify-content: space-between;
 }
 
 /* Contêiner da seleção de elementos */
 .selection-container {
-  flex: 1 1 48%; /* Faz a largura ser flexível, mas com um mínimo de 48% */
+  flex: 1;
+  min-width: 300px; /* Garante que não fique muito pequeno */
   margin-right: 20px;
-  max-width: 48%; /* Garantir que não ultrapasse 48% */
 }
 
 /* Contêiner da animação */
 .animation-container {
-  flex: 2 1 48%; /* Ocupa mais espaço, mas com um mínimo de 48% */
+  flex: 2;
+  min-width: 300px;
   background-color: #e8e8e8;
-  padding: 20px; /* Dá algum espaço interno para a animação */
-  max-width: 48%; /* Garantir que não ultrapasse 48% */
+  margin-top: 20px; /* Dará espaço quando em layout de coluna */
 }
 
 /* Estilos para os inputs e botões */
@@ -56,7 +56,7 @@ label {
 }
 
 select, button {
-  width: 100%; /* Certifique-se de que ocupe toda a largura disponível do seu contêiner */
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   margin-top: 5px;
@@ -105,8 +105,7 @@ th {
 /* Responsividade */
 @media (max-width: 768px) {
   .flex-container {
-    flex-direction: column; /* Alinha os itens verticalmente em telas menores */
-    gap: 10px;
+    flex-direction: column;
   }
 
   .selection-container, .animation-container {
