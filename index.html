@@ -51,6 +51,8 @@
 
             <ul> 
 
+                <li><a href="#" data-topic="tabela-periódica">Propriedades - Tabela Periódica</a></li> 
+
                 <li><a href="#" data-topic="distribuição-eletrônica">Distribuição eletrônica</a></li> 
 
                 <li><a href="#" data-topic="regra-do-octeto">Regra do Octeto</a></li> 
@@ -76,6 +78,53 @@
     <main> 
 
         <h2 id="selected-topic">Escolha um tema no menu</h2> 
+
+            <div id="tabela-periódica" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                        <div id="container-anima">
+                    <!-- O iframe será inserido aqui -->
+                      </div>
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+
+
+                <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ09-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ09-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ09-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+                        <script>
+                          window.addEventListener('load', function() {
+                            // Criando o iframe
+                            const iframe = document.createElement('iframe');
+                            iframe.src = 'anima.html'; // Caminho para anima.html
+                            iframe.width = '100%';
+                            iframe.height = '600px'; // Ajuste a altura conforme necessário
+                        
+                            // Inserindo o iframe no contêiner
+                            const container = document.getElementById('container-anima');
+                            container.innerHTML = '';  // Limpar o contêiner
+                            container.appendChild(iframe);
+                          });
+                        </script>
+
+
+
+                
+            </div> 
+
+
+        
 
         <div class="container" id="content-container"> 
 
