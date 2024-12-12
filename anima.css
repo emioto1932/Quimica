@@ -29,17 +29,20 @@ h1 {
   justify-content: space-between;
 }
 
+
+
+
 /* Contêiner da seleção de elementos */
 .selection-container {
   flex: 1;
-  min-width: 500px; /* Garante que não fique muito pequeno */
+  width: 48%; /* O grupo de seleção ocupará 48% da largura */
   margin-right: 20px;
 }
 
 /* Contêiner da animação */
 .animation-container {
   flex: 2;
-  min-width: 600px;
+  mwidth: 48%; /* A animação ocupará 48% da largura */
   background-color: #e8e8e8;
   margin-top: 20px; /* Dará espaço quando em layout de coluna */
 }
