@@ -16,6 +16,12 @@ let elementoAtual = null; // Variável para armazenar o elemento selecionado
 
 let p5Instance = null; // Instância do p5.js 
 
+
+// Para exibir no formato brasileiro (com vírgula), podemos converter antes de exibir:
+const exibirComVirgula = (valor) => {
+  return valor.toFixed(2).replace('.', ','); // Substitui o ponto por vírgula
+};
+
   
 
 // Elementos químicos por grupo 
@@ -150,8 +156,7 @@ const elementsByGroup = {
 
 const elementProperties = { 
 
-  "H": { protons: 1, electrons: 1, electronegativity: 2.2 }, 
- 'H': {
+  'H': {
     protons: 1,
     numeroProtons: 1,
     electrons: 1,
@@ -762,10 +767,10 @@ elementSelect.addEventListener("change", () => {
 
     <tr><td>Número de Elétrons (carga -)</td><td>${elementoAtual.electrons}</td><td>Eletronegatividade (escala de Pauling)</td><td>${elementoAtual.electronegativity}</td></tr> 
 
-    <tr><td>Massa atômica relativa (u)</td><td>${elementoAtual.massaAtomica}</td><td>Temperatura de fusão (ºC)</td><td>${elementoAtual.temperaturaFusao}</td></tr> 
-    <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${elementoAtual.temperaturaEbulicao}</td></tr> 
+    <tr><td>Massa atômica relativa (u)</td><td>${elementoAtual.massaAtomica}</td><td>Temperatura de fusão (ºC)</td><td>exibirComVirgula(${elementoAtual.temperaturaFusao})</td></tr> 
+    <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>exibirComVirgula(${elementoAtual.temperaturaEbulicao})</td></tr> 
 
-    <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${elementoAtual.energiaIonizacao}</td></tr> 
+    <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>exibirComVirgula(${elementoAtual.energiaIonizacao})</td></tr> 
  
   `; 
 
