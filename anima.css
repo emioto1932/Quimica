@@ -8,6 +8,7 @@ body {
 
 /* Contêiner principal */
 .container {
+
   max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
@@ -31,8 +32,9 @@ h1 {
 
 /* Contêiner da seleção de elementos */
 .selection-container {
-  flex: 1;
+  display: flex;
   flex-direction: column;
+   justify-content: center;
   min-width: 100px; /* Garante que não fique muito pequeno */
   margin-right: 20px;
   
