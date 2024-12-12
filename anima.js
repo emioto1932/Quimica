@@ -625,6 +625,32 @@ const elementProperties = {
   temperaturaEbulicao: 58.8,
   energiaIonizacao: 1139.9
 },
+ 'I': {
+  protons: 53,
+  numeroProtons: 53,
+  electrons: 53,
+  massaAtomica: 126.90,
+  numeroNeutrons: 74,
+  raioAtomico: 140,
+  categoria: 'Halogênio',
+  electronegativity: 2.66,
+  temperaturaFusao: 113.7,
+  temperaturaEbulicao: 184.3,
+  energiaIonizacao: 97316.47
+},
+'At': {
+  protons: 85,
+  numeroProtons: 85,
+  electrons: 85,
+  massaAtomica: 210,
+  numeroNeutrons: 125,
+  raioAtomico: 150,
+  categoria: Halogênio,
+  electronegativity: 2.2,
+  temperaturaFusao: 302,
+  temperaturaEbulicao: 337,
+  energiaIonizacao: 897.91
+},
 'He': {
   protons: 2,
   numeroProtons: 2,
