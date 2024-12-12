@@ -636,7 +636,7 @@ const elementProperties = {
   electronegativity: 2.66,
   temperaturaFusao: 113.7,
   temperaturaEbulicao: 184.3,
-  energiaIonizacao: 97316.47
+  energiaIonizacao: 1008.4
 },
 'At': {
   protons: 85,
