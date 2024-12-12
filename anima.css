@@ -32,8 +32,10 @@ h1 {
 /* Contêiner da seleção de elementos */
 .selection-container {
   flex: 1;
-  min-width: 300px; /* Garante que não fique muito pequeno */
+  flex-direction: column;
+  min-width: 100px; /* Garante que não fique muito pequeno */
   margin-right: 20px;
+  
 }
 
 /* Contêiner da animação */
