@@ -868,7 +868,7 @@ const sketch = (p) => {
 
     p.text(`P=${elementoAtual.protons}`, 0, -10); 
 
-    p.text(`N=${Math.round(elementoAtual.protons * 1.2)}`, 0, 10); 
+    p.text(`N=${Math.round(elementoAtual.numeroNeutrons}`, 0, 10); 
 
   
 
