@@ -42,7 +42,7 @@ h1 {
 /* Contêiner da animação */
 .animation-container {
   flex: 2;
-  mwidth: 48%; /* A animação ocupará 48% da largura */
+  width: 48%; /* A animação ocupará 48% da largura */
   background-color: #e8e8e8;
   margin-top: 20px; /* Dará espaço quando em layout de coluna */
 }
