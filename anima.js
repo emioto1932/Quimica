@@ -645,7 +645,7 @@ const elementProperties = {
   massaAtomica: 210,
   numeroNeutrons: 125,
   raioAtomico: 150,
-  categoria: Halogênio,
+  categoria: 'Halogênio',
   electronegativity: 2.2,
   temperaturaFusao: 302,
   temperaturaEbulicao: 337,
