@@ -17,10 +17,11 @@ let elementoAtual = null; // Variável para armazenar o elemento selecionado
 let p5Instance = null; // Instância do p5.js 
 
 
-// Para exibir no formato brasileiro (com vírgula), podemos converter antes de exibir:
 const exibirComVirgula = (valor) => {
-  return valor.toFixed(2).replace('.', ','); // Substitui o ponto por vírgula
+  // Converte o valor para número (removendo zeros à direita) e depois substitui o ponto por vírgula
+  return parseFloat(valor).toString().replace('.', ',');
 };
+
 
   
 
