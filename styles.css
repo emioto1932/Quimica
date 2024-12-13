@@ -126,6 +126,10 @@ nav.hidden {
     box-sizing: border-box; /* Inclui o padding dentro da largura total */
 }
 
+.contentanima {
+    width: 100%;
+}
+
 .image-container {
     padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */
 }
