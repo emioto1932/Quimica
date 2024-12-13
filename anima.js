@@ -168,7 +168,7 @@ const elementProperties = {
     electronegativity: 2.20,
     temperaturaFusao: -259.16,
     temperaturaEbulicao: -252.87,
-   densidade: 0.00008988 (gás),
+   densidade: 0.00008988,
    configuracaoEletronica: 1,
    energiaIonizacao: 1312
   },
@@ -513,7 +513,7 @@ const elementProperties = {
   electronegativity: 3.04,
   temperaturaFusao: -209.86,
   temperaturaEbulicao: -195.79,
-  densidade: 0.00125 (gás),
+  densidade: 0.00125,
   configuracaoEletronica: 2, 5,
   energiaIonizacao: 1402.3
 },
@@ -588,7 +588,7 @@ const elementProperties = {
   electronegativity: 3.44,
   temperaturaFusao: -218.79,
   temperaturaEbulicao: -182.96,
-  densidade: 0.001429 (gás),
+  densidade: 0.001429,
   configuracaoEletronica: 2, 6,
   energiaIonizacao: 1313.9
 },
@@ -663,7 +663,7 @@ const elementProperties = {
   electronegativity: 3.98,
   temperaturaFusao: -219.67,
   temperaturaEbulicao: -188.12,
-  densidade: 0.001696 (gás),
+  densidade: 0.001696,
   configuracaoEletronica: 2, 7,
   energiaIonizacao: 1681
 },
@@ -678,7 +678,7 @@ const elementProperties = {
   electronegativity: 3.16,
   temperaturaFusao: -101.5,
   temperaturaEbulicao: -34.04,
-  densidade: 0.003214 (gás),
+  densidade: 0.003214,
   configuracaoEletronica: 2, 8, 7,
   energiaIonizacao: 1251.2
 },
@@ -738,7 +738,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -272.2,
   temperaturaEbulicao: -268.93,
-  densidade: 0.0001786 (gás),
+  densidade: 0.0001786,
   configuracaoEletronica: 2,
   energiaIonizacao: 2372.3
 },
@@ -753,7 +753,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -248.59,
   temperaturaEbulicao: -246.05,
-  densidade: 0.0008999 (gás),
+  densidade: 0.0008999,
   configuracaoEletronica: 2, 8,
   energiaIonizacao: 2080.7
 },
@@ -768,7 +768,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -189.35,
   temperaturaEbulicao: -185.85,
-  densidade: 0.0017837 (gás),
+  densidade: 0.0017837,
   configuracaoEletronica: 2, 8, 8,
 
   energiaIonizacao: 1520.6
@@ -784,7 +784,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -157.36,
   temperaturaEbulicao: -153.22,
-  densidade: 0.003733 (gás),
+  densidade: 0.003733,
   configuracaoEletronica: 2, 8, 18, 8,
   energiaIonizacao: 1350.8
 },
@@ -799,7 +799,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -111.8,
   temperaturaEbulicao: -108.1,
-  densidade: 0.0055 (gás),
+  densidade: 0.0055,
   configuracaoEletronica: 2, 8, 18, 18, 8,
   energiaIonizacao: 1170.4
 },
@@ -814,7 +814,7 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -71,
   temperaturaEbulicao: -61.8,
-  densidade: 0.00973 (gás),
+  densidade: 0.00973,
   configuracaoEletronica: 2, 8, 18, 32, 18, 8,
   energiaIonizacao: 1037.7
 }
