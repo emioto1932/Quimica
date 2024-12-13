@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById("popup");
     const openPopupBtn = document.getElementById("openPopupBtn");
+    const closePopupBtn = document.getElementById("closePopupBtn");
 
     // Função para abrir a pop-up
     openPopupBtn.addEventListener("click", function() {
@@ -8,6 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Função para fechar a pop-up
+    closePopupBtn.addEventListener("click", function() {
+        popup.style.display = "none"; // Torna a pop-up invisível
+    });
+
+    // Função para fechar a pop-up clicando fora da janela
     popup.addEventListener("click", function(e) {
         if (e.target === popup) { // Fechar quando clicar fora da janela
             popup.style.display = "none";
