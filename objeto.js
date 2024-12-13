@@ -1,21 +1,31 @@
-// Função para abrir a pop-up e mostrar a tabela da propriedade selecionada
-function openPopup(propriedade) {
-    const popup = document.getElementById("popup");
-    const propertyTitle = document.getElementById("propertyTitle");
+document.addEventListener("DOMContentLoaded", function() {
+    // Pegando o parâmetro da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const propriedade = urlParams.get("propriedade");
 
-    // Alterando o título da propriedade conforme o link clicado
-    if (propriedade === "densidade") {
-        propertyTitle.textContent = "Densidade";  // Modificando o título
+    // Exibindo o nome da propriedade na pop-up
+    const propertyNameElement = document.getElementById("propertyName");
+
+    if (propriedade) {
+        // Definindo o nome da propriedade de acordo com o link clicado
+        if (propriedade === "densidade") {
+            propertyNameElement.textContent = "Densidade";
+        } else {
+            propertyNameElement.textContent = "Propriedade Não Encontrada";
+        }
     } else {
-        propertyTitle.textContent = "Propriedade Não Encontrada";
+        propertyNameElement.textContent = "Propriedade Não Informada";
     }
 
-    // Exibir a pop-up
-    popup.style.display = "block";
-}
-
-// Função para fechar a pop-up
-document.getElementById("closePopupBtn").addEventListener("click", function() {
+    // Função para abrir a pop-up
     const popup = document.getElementById("popup");
-    popup.style.display = "none"; // Apenas esconde a pop-up
+    const closePopupBtn = document.getElementById("closePopupBtn");
+
+    // Função para fechar a pop-up
+    closePopupBtn.addEventListener("click", function() {
+        popup.style.display = "none"; // Fecha a pop-up
+    });
+
+    // Abrir pop-up automaticamente quando a página carregar
+    popup.style.display = "block";
 });
