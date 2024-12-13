@@ -113,12 +113,11 @@
                                     // Inserindo o iframe
                                     container.appendChild(iframe);
                                 
-                                    // Adicionando um evento para esconder o iframe quando outro item do menu for clicado
-                                    const menuItems = document.querySelectorAll('.menu'); // Seleciona todos os itens do menu
-                                    menuItems.forEach(item => {
-                                      item.addEventListener('click', function() {
+                                          const menuItems = document.querySelectorAll('nav a'); // Seleciona os links do menu
+                                        menuItems.forEach(item => {
+                                          item.addEventListener('click', function() {
                                         // Remove o iframe quando outro item do menu for clicado
-                                        container.innerHTML = '';
+                                            container.innerHTML = ''; // Limpar o contêiner
                                       });
                                     });
                                   });
