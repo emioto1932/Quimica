@@ -5,7 +5,7 @@ function openPopup(propriedade) {
 
     // Alterando o título da propriedade conforme o link clicado
     if (propriedade === "densidade") {
-        propertyTitle.textContent = "Densidade";
+        propertyTitle.textContent = "Densidade";  // Modificando o título
     } else {
         propertyTitle.textContent = "Propriedade Não Encontrada";
     }
@@ -17,5 +17,5 @@ function openPopup(propriedade) {
 // Função para fechar a pop-up
 document.getElementById("closePopupBtn").addEventListener("click", function() {
     const popup = document.getElementById("popup");
-    popup.style.display = "none"; // Apenas esconde a pop-up, sem recarregar a página
+    popup.style.display = "none"; // Apenas esconde a pop-up
 });
