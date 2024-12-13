@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Função para abrir a pop-up
     openPopupBtn.addEventListener("click", function() {
         popup.style.display = "block"; // Torna a pop-up visível
+        adjustTableSize(); // Ajusta o tamanho da tabela com base na tela
     });
 
     // Função para fechar a pop-up
@@ -13,29 +14,28 @@ document.addEventListener("DOMContentLoaded", function() {
         popup.style.display = "none"; // Torna a pop-up invisível
     });
 
-    // Função para fechar a pop-up clicando fora da janela
+    // Função para fechar clicando fora da janela
     popup.addEventListener("click", function(e) {
         if (e.target === popup) { // Fechar quando clicar fora da janela
             popup.style.display = "none";
         }
     });
 
-    // Função que permite arrastar elementos nas células da tabela
-    const cells = document.querySelectorAll(".popup-table td");
-    cells.forEach(cell => {
-        cell.classList.add("droppable");
-        cell.addEventListener("dragover", function(e) {
-            e.preventDefault();
-        });
+    // Função que calcula o tamanho das células
+    function adjustTableSize() {
+        const popupWidth = window.innerWidth * 0.8; // 80% da largura da tela
+        const popupHeight = window.innerHeight * 0.8; // 80% da altura da tela
 
-        cell.addEventListener("drop", function(e) {
-            e.preventDefault();
-            const draggedElement = document.querySelector(".dragging");
-            if (draggedElement) {
-                cell.appendChild(draggedElement);
-            }
+        const cellWidth = popupWidth / 4; // Largura de cada célula (dividido por 4 colunas)
+        const cellHeight = popupHeight / 4; // Altura de cada célula (dividido por 4 linhas)
+
+        // Aplica os novos valores no CSS das células
+        const cells = document.querySelectorAll(".popup-table td");
+        cells.forEach(cell => {
+            cell.style.width = `${cellWidth}px`;
+            cell.style.height = `${cellHeight}px`;
         });
-    });
+    }
 
     // Criar objetos arrastáveis para teste
     function createDraggableObject(content) {
