@@ -51,7 +51,7 @@
 
             <ul> 
 
-                <li><a href="#" data-topic="tabela-periódica">Propriedades - Tabela Periódica</a></li> 
+ 
 
                 <li><a href="#" data-topic="distribuição-eletrônica">Distribuição eletrônica</a></li> 
 
@@ -77,57 +77,6 @@
 
     <main> 
 
-        <h2 id="selected-topic">Escolha um tema no menu</h2> 
-
-            <div id="tabela-periódica" class="contentanima hidden"> 
-
-                <div class="image-container"> 
-
-                        <div id="container-anima">
-                    <!-- O iframe será inserido aqui -->
-                      </div>
-
-                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
-
-                </div> 
-
-
-
-                <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-
-                        
-                            <script>
-                                  window.addEventListener('load', function() {
-                                    // Criando o iframe
-                                    const iframe = document.createElement('iframe');
-                                    iframe.src = 'anima.html'; // Caminho para anima.html
-                                    iframe.width = '100%';
-                                    iframe.height = '600px'; // Ajuste a altura conforme necessário
-                                    
-                                    // Obtendo o contêiner para inserir o iframe
-                                    const container = document.getElementById('container-anima');
-                                    
-                                    // Limpando o contêiner antes de inserir o iframe
-                                    container.innerHTML = '';  // Limpar o contêiner
-                                    
-                                    // Inserindo o iframe
-                                    container.appendChild(iframe);
-                                
-                                          const menuItems = document.querySelectorAll('nav a'); // Seleciona os links do menu
-                                        menuItems.forEach(item => {
-                                          item.addEventListener('click', function() {
-                                        // Remove o iframe quando outro item do menu for clicado
-                                            container.innerHTML = ''; // Limpar o contêiner
-                                      });
-                                    });
-                                  });
-                            </script>
-
-
-
-
-                
-            </div> 
 
 
         
