@@ -3,42 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pop-up Tabela</title>
+    <title>Propriedades Químicas</title>
     <link rel="stylesheet" href="objeto.css">
+    <style>
+        /* Estilos para o link aparecer como um link clicável */
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div id="popup">
-        <span id="closePopupBtn" class="close-btn">&times;</span>
-        <div class="popup-title">
-            <h2>Propriedade Química</h2>
-            <p id="propertyName">Carregando...</p>
+    <h1>Propriedades Químicas</h1>
+    <table border="1">
+        <tr>
+            <th>Propriedade</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td>Temperatura de Fusão</td>
+            <td>100°C</td>
+        </tr>
+        <tr>
+            <td>Temperatura de Ebulição</td>
+            <td>250°C</td>
+        </tr>
+        <tr>
+            <td>Densidade</td>
+            <td><a href="javascript:void(0);" onclick="openPopup('densidade')">Abrir Tabela de Densidade</a></td>
+        </tr>
+        <tr>
+            <td>Eletronegatividade</td>
+            <td>2.5</td>
+        </tr>
+    </table>
+
+    <!-- A pop-up que ficará oculta inicialmente -->
+    <div id="popup" style="display: none;">
+        <div class="popup-content">
+            <span id="closePopupBtn" class="close-btn">&times;</span>
+            <h2 id="propertyTitle">Propriedade Química</h2>
+            <table class="popup-table">
+                <tr><td>Valor 1</td><td>Valor 2</td><td>Valor 3</td><td>Valor 4</td></tr>
+                <tr><td>Valor 5</td><td>Valor 6</td><td>Valor 7</td><td>Valor 8</td></tr>
+                <tr><td>Valor 9</td><td>Valor 10</td><td>Valor 11</td><td>Valor 12</td></tr>
+                <tr><td>Valor 13</td><td>Valor 14</td><td>Valor 15</td><td>Valor 16</td></tr>
+            </table>
         </div>
-        <table class="popup-table">
-            <tr>
-                <td>Valor 1</td>
-                <td>Valor 2</td>
-                <td>Valor 3</td>
-                <td>Valor 4</td>
-            </tr>
-            <tr>
-                <td>Valor 5</td>
-                <td>Valor 6</td>
-                <td>Valor 7</td>
-                <td>Valor 8</td>
-            </tr>
-            <tr>
-                <td>Valor 9</td>
-                <td>Valor 10</td>
-                <td>Valor 11</td>
-                <td>Valor 12</td>
-            </tr>
-            <tr>
-                <td>Valor 13</td>
-                <td>Valor 14</td>
-                <td>Valor 15</td>
-                <td>Valor 16</td>
-            </tr>
-        </table>
     </div>
 
     <script src="objeto.js"></script>
