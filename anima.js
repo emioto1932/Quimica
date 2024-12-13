@@ -168,6 +168,9 @@ const elementProperties = {
     electronegativity: 2.20,
     temperaturaFusao: -259.16,
     temperaturaEbulicao: -252.87,
+   densidade: 0.00008988 (gás),
+   configuracaoEletronica: 1
+configuracaoEletronica: 1
     energiaIonizacao: 1312
   },
   'Li': {
@@ -181,6 +184,8 @@ const elementProperties = {
   electronegativity: 0.98,
   temperaturaFusao: 180.54,
   temperaturaEbulicao: 1590,
+  densidade: 0.534,
+  configuracaoEletronica: 2, 1,
   energiaIonizacao: 520
 },
 'Na': {
@@ -194,6 +199,8 @@ const elementProperties = {
   electronegativity: 0.93,
   temperaturaFusao: 97.72,
   temperaturaEbulicao: 883,
+  densidade: 0.971,
+  configuracaoEletronica: 2, 8, 1,
   energiaIonizacao: 495.8
 },
 'K': {
@@ -207,6 +214,8 @@ const elementProperties = {
   electronegativity: 0.82,
   temperaturaFusao: 63.38,
   temperaturaEbulicao: 759,
+  densidade: 0.856,
+  configuracaoEletronica: 2, 8, 8, 1,
   energiaIonizacao: 418.8
 },
 'Rb': {
@@ -220,6 +229,8 @@ const elementProperties = {
   electronegativity: 0.82,
   temperaturaFusao: 39.3,
   temperaturaEbulicao: 688,
+  densidade: 1.532,
+  configuracaoEletronica: 2, 8, 18, 1,
   energiaIonizacao: 403
 },
 'Cs': {
@@ -233,6 +244,8 @@ const elementProperties = {
   electronegativity: 0.79,
   temperaturaFusao: 28.44,
   temperaturaEbulicao: 687,
+  densidade: 1.873,
+  configuracaoEletronica: 2, 8, 18, 18, 1,
   energiaIonizacao: 375.7
 },
 'Fr': {
@@ -246,6 +259,8 @@ const elementProperties = {
   electronegativity: 0.7,
   temperaturaFusao: 27,
   temperaturaEbulicao: 650,
+  densidade: 1.87,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 8, 1,
   energiaIonizacao: 380
 },
 'Be': {
@@ -259,6 +274,8 @@ const elementProperties = {
   electronegativity: 1.57,
   temperaturaFusao: 1287,
   temperaturaEbulicao: 2471,
+  densidade: 1.848,
+  configuracaoEletronica: 2, 2,
   energiaIonizacao: 899.5
 },
 'Mg': {
@@ -272,6 +289,8 @@ const elementProperties = {
   electronegativity: 1.31,
   temperaturaFusao: 650,
   temperaturaEbulicao: 1090,
+  densidade: 1.738,
+  configuracaoEletronica: 2, 8, 2,
   energiaIonizacao: 737.7
 },
 'Ca': {
@@ -285,6 +304,8 @@ const elementProperties = {
   electronegativity: 1.00,
   temperaturaFusao: 842,
   temperaturaEbulicao: 1487,
+  densidade: 1.54,
+  configuracaoEletronica: 2, 8, 8, 2,
   energiaIonizacao: 589.8
 },
 'Sr': {
@@ -298,6 +319,8 @@ const elementProperties = {
   electronegativity: 0.95,
   temperaturaFusao: 777,
   temperaturaEbulicao: 1384,
+  densidade: 2.64,
+  configuracaoEletronica: 2, 8, 18, 8, 2,
   energiaIonizacao: 549.5
 },
 'Ba': {
@@ -311,6 +334,8 @@ const elementProperties = {
   electronegativity: 0.89,
   temperaturaFusao: 725,
   temperaturaEbulicao: 1640,
+  densidade: 3.62,
+  configuracaoEletronica: 2, 8, 18, 18, 8, 2,
   energiaIonizacao: 503.6
 },
 'Ra': {
@@ -324,6 +349,8 @@ const elementProperties = {
   electronegativity: 0.9,
   temperaturaFusao: 700,
   temperaturaEbulicao: 1413,
+  densidade: 5.5,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 8, 2,
   energiaIonizacao: 509.3
 },
 'B': {
@@ -337,6 +364,8 @@ const elementProperties = {
   electronegativity: 2.04,
   temperaturaFusao: 2076,
   temperaturaEbulicao: 4000,
+  densidade: 2.34,
+  configuracaoEletronica: 2, 3,
   energiaIonizacao: 800.6
 },
 'Al': {
@@ -350,6 +379,8 @@ const elementProperties = {
   electronegativity: 1.61,
   temperaturaFusao: 660.3,
   temperaturaEbulicao: 2470,
+  densidade: 2.70,
+  configuracaoEletronica: 2, 8, 3,
   energiaIonizacao: 577.5
 },
 'Ga': {
@@ -363,6 +394,8 @@ const elementProperties = {
   electronegativity: 1.81,
   temperaturaFusao: 29.76,
   temperaturaEbulicao: 2204,
+  densidade: 5.91,
+  configuracaoEletronica: 2, 8, 18, 3,
   energiaIonizacao: 578.8
 },
 'In': {
@@ -376,6 +409,8 @@ const elementProperties = {
   electronegativity: 1.78,
   temperaturaFusao: 156.6,
   temperaturaEbulicao: 2072,
+  densidade: 7.31,
+  configuracaoEletronica: 2, 8, 18, 18, 3,
   energiaIonizacao: 558.5
 },
 'Ti': {
@@ -389,6 +424,8 @@ const elementProperties = {
   electronegativity: 1.54,
   temperaturaFusao: 1668,
   temperaturaEbulicao: 3287,
+  densidade: 4.54,
+  configuracaoEletronica: 2, 8, 10, 2,
   energiaIonizacao: 656.9
 },
 'C': {
@@ -402,6 +439,8 @@ const elementProperties = {
   electronegativity: 2.55,
   temperaturaFusao: 3550,
   temperaturaEbulicao: 4827,
+  densidade: 2.267,
+  configuracaoEletronica: 2, 4,
   energiaIonizacao: 1086.5
 },
 'Si': {
@@ -415,6 +454,8 @@ const elementProperties = {
   electronegativity: 1.90,
   temperaturaFusao: 1414,
   temperaturaEbulicao: 2900,
+  densidade: 2.329,
+  configuracaoEletronica: 2, 8, 4,
   energiaIonizacao: 786.5
 },
 'Ge': {
@@ -428,6 +469,8 @@ const elementProperties = {
   electronegativity: 2.01,
   temperaturaFusao: 938.3,
   temperaturaEbulicao: 2833,
+  densidade: 5.323,
+  configuracaoEletronica: 2, 8, 18, 4,
   energiaIonizacao: 762.5
 },
 'Sn': {
@@ -441,6 +484,8 @@ const elementProperties = {
   electronegativity: 1.96,
   temperaturaFusao: 231.9,
   temperaturaEbulicao: 2602,
+  densidade: 7.31,
+  configuracaoEletronica: 2, 8, 18, 18, 4,
   energiaIonizacao: 708.6
 },
 'Pb': {
@@ -454,6 +499,8 @@ const elementProperties = {
   electronegativity: 2.33,
   temperaturaFusao: 327.5,
   temperaturaEbulicao: 1740,
+  densidade: 11.34,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 4,
   energiaIonizacao: 715.6
 },
 'N': {
@@ -467,6 +514,8 @@ const elementProperties = {
   electronegativity: 3.04,
   temperaturaFusao: -209.86,
   temperaturaEbulicao: -195.79,
+  densidade: 0.00125 (gás),
+  configuracaoEletronica: 2, 5,
   energiaIonizacao: 1402.3
 },
 'P': {
@@ -480,6 +529,8 @@ const elementProperties = {
   electronegativity: 2.19,
   temperaturaFusao: 44.1,
   temperaturaEbulicao: 280.5,
+  densidade: 1.823,
+  configuracaoEletronica: 2, 8, 5,
   energiaIonizacao: 1011.8
 },
 'As': {
@@ -493,6 +544,8 @@ const elementProperties = {
   electronegativity: 2.18,
   temperaturaFusao: 817,
   temperaturaEbulicao: 614,
+  densidade: 5.776,
+  configuracaoEletronica: 2, 8, 18, 5,
   energiaIonizacao: 947
 },
 'Sb': {
@@ -506,6 +559,8 @@ const elementProperties = {
   electronegativity: 2.05,
   temperaturaFusao: 630.6,
   temperaturaEbulicao: 1587,
+  densidade: 6.685,
+  configuracaoEletronica: 2, 8, 18, 18, 5,
   energiaIonizacao: 834.9
 },
 'Bi': {
@@ -519,6 +574,8 @@ const elementProperties = {
   electronegativity: 2.02,
   temperaturaFusao: 271.3,
   temperaturaEbulicao: 1564,
+  densidade: 9.78,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 5,
   energiaIonizacao: 703
 },
 'O': {
@@ -532,6 +589,8 @@ const elementProperties = {
   electronegativity: 3.44,
   temperaturaFusao: -218.79,
   temperaturaEbulicao: -182.96,
+  densidade: 0.001429 (gás),
+  configuracaoEletronica: 2, 6,
   energiaIonizacao: 1313.9
 },
 'S': {
@@ -545,6 +604,8 @@ const elementProperties = {
   electronegativity: 2.58,
   temperaturaFusao: 115.21,
   temperaturaEbulicao: 444.6,
+  densidade: 2.067,
+  configuracaoEletronica: 2, 8, 6,
   energiaIonizacao: 999.6
 },
 'Se': {
@@ -558,6 +619,8 @@ const elementProperties = {
   electronegativity: 2.55,
   temperaturaFusao: 221,
   temperaturaEbulicao: 684.9,
+  densidade: 4.79,
+  configuracaoEletronica: 2, 8, 18, 6,
   energiaIonizacao: 941.0
 },
 'Te': {
@@ -571,6 +634,8 @@ const elementProperties = {
   electronegativity: 2.01,
   temperaturaFusao: 450,
   temperaturaEbulicao: 988,
+  densidade: 6.24,
+  configuracaoEletronica: 2, 8, 18, 18, 6,
   energiaIonizacao: 869.3
 },
 'Po': {
@@ -584,6 +649,8 @@ const elementProperties = {
   electronegativity: 2.0,
   temperaturaFusao: 254,
   temperaturaEbulicao: 962,
+  densidade: 9.32,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 6,
   energiaIonizacao: 813.1
 },
 'F': {
@@ -597,6 +664,8 @@ const elementProperties = {
   electronegativity: 3.98,
   temperaturaFusao: -219.67,
   temperaturaEbulicao: -188.12,
+  densidade: 0.001696 (gás),
+  configuracaoEletronica: 2, 7,
   energiaIonizacao: 1681
 },
 'Cl': {
@@ -610,6 +679,8 @@ const elementProperties = {
   electronegativity: 3.16,
   temperaturaFusao: -101.5,
   temperaturaEbulicao: -34.04,
+  densidade: 0.003214 (gás),
+  configuracaoEletronica: 2, 8, 7,
   energiaIonizacao: 1251.2
 },
 'Br': {
@@ -623,6 +694,8 @@ const elementProperties = {
   electronegativity: 2.96,
   temperaturaFusao: -7.2,
   temperaturaEbulicao: 58.8,
+  densidade: 3.12,
+  configuracaoEletronica: 2, 8, 18, 7,
   energiaIonizacao: 1139.9
 },
  'I': {
@@ -636,6 +709,8 @@ const elementProperties = {
   electronegativity: 2.66,
   temperaturaFusao: 113.7,
   temperaturaEbulicao: 184.3,
+  densidade: 4.933,
+  configuracaoEletronica: 2, 8, 18, 18, 7,
   energiaIonizacao: 1008.4
 },
 'At': {
@@ -649,6 +724,8 @@ const elementProperties = {
   electronegativity: 2.2,
   temperaturaFusao: 302,
   temperaturaEbulicao: 337,
+  densidade: 6.17,
+  configuracaoEletronica: 2, 8, 18, 32, 18, 7,
   energiaIonizacao: 897.91
 },
 'He': {
@@ -662,6 +739,8 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -272.2,
   temperaturaEbulicao: -268.93,
+  densidade: 0.0001786 (gás),
+  configuracaoEletronica: 2,
   energiaIonizacao: 2372.3
 },
 'Ne': {
@@ -675,6 +754,8 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -248.59,
   temperaturaEbulicao: -246.05,
+  densidade: 0.0008999 (gás),
+  configuracaoEletronica: 2, 8,
   energiaIonizacao: 2080.7
 },
 'Ar': {
@@ -688,6 +769,9 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -189.35,
   temperaturaEbulicao: -185.85,
+  densidade: 0.0017837 (gás),
+  configuracaoEletronica: 2, 8, 8,
+
   energiaIonizacao: 1520.6
 },
 'Kr': {
@@ -701,6 +785,8 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -157.36,
   temperaturaEbulicao: -153.22,
+  densidade: 0.003733 (gás),
+  configuracaoEletronica: 2, 8, 18, 8,
   energiaIonizacao: 1350.8
 },
 'Xe': {
@@ -714,6 +800,8 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -111.8,
   temperaturaEbulicao: -108.1,
+  densidade: 0.0055 (gás),
+  configuracaoEletronica: 2, 8, 18, 18, 8,
   energiaIonizacao: 1170.4
 },
 'Rn': {
@@ -727,6 +815,8 @@ const elementProperties = {
   electronegativity: 0,
   temperaturaFusao: -71,
   temperaturaEbulicao: -61.8,
+  densidade: 0.00973 (gás),
+  configuracaoEletronica: 2, 8, 18, 32, 18, 8,
   energiaIonizacao: 1037.7
 }
 
@@ -798,6 +888,7 @@ elementSelect.addEventListener("change", () => {
     <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
 
     <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
+   <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td><td>Densidade (g/cm³)</td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
 
   
