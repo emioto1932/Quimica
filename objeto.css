@@ -18,7 +18,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
+    width: 80vw; /* Largura da pop-up: 80% da largura da tela */
+    height: 80vh; /* Altura da pop-up: 80% da altura da tela */
     display: none; /* Inicialmente oculto */
     z-index: 1000;
 }
@@ -31,12 +32,13 @@ body {
 
 .popup-table {
     width: 100%;
+    height: 100%; /* Para ocupar toda a altura disponível */
     border-collapse: collapse;
 }
 
 .popup-table td {
-    width: 40px;
-    height: 40px;
+    width: 25%; /* Cada célula ocupa 25% da largura da tabela (4 colunas) */
+    height: 25%; /* Cada célula ocupa 25% da altura da tabela (4 linhas) */
     border: 1px solid #ccc;
     text-align: center;
     vertical-align: middle;
