@@ -3,44 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Pop-up Tabela</title>
     <link rel="stylesheet" href="objeto.css">
 </head>
 <body>
-    <button id="openPopupBtn">Abrir Pop-up</button>
-
-    <!-- Janela Pop-up -->
-    <div class="popup" id="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close-btn" id="closePopupBtn">&times;</span>
-            <h1 class="popup-title">Posição dos Objetos Químicos</h1>
-            <table class="popup-table">
-                <tr>
-                    <td id="cell1"></td>
-                    <td id="cell2"></td>
-                    <td id="cell3"></td>
-                    <td id="cell4"></td>
-                </tr>
-                <tr>
-                    <td id="cell5"></td>
-                    <td id="cell6"></td>
-                    <td id="cell7"></td>
-                    <td id="cell8"></td>
-                </tr>
-                <tr>
-                    <td id="cell9"></td>
-                    <td id="cell10"></td>
-                    <td id="cell11"></td>
-                    <td id="cell12"></td>
-                </tr>
-                <tr>
-                    <td id="cell13"></td>
-                    <td id="cell14"></td>
-                    <td id="cell15"></td>
-                    <td id="cell16"></td>
-                </tr>
-            </table>
+    <div id="popup">
+        <span id="closePopupBtn" class="close-btn">&times;</span>
+        <div class="popup-title">
+            <h2>Propriedade Química</h2>
+            <p id="propertyName">Carregando...</p>
         </div>
+        <table class="popup-table">
+            <tr>
+                <td>Valor 1</td>
+                <td>Valor 2</td>
+                <td>Valor 3</td>
+                <td>Valor 4</td>
+            </tr>
+            <tr>
+                <td>Valor 5</td>
+                <td>Valor 6</td>
+                <td>Valor 7</td>
+                <td>Valor 8</td>
+            </tr>
+            <tr>
+                <td>Valor 9</td>
+                <td>Valor 10</td>
+                <td>Valor 11</td>
+                <td>Valor 12</td>
+            </tr>
+            <tr>
+                <td>Valor 13</td>
+                <td>Valor 14</td>
+                <td>Valor 15</td>
+                <td>Valor 16</td>
+            </tr>
+        </table>
     </div>
 
     <script src="objeto.js"></script>
