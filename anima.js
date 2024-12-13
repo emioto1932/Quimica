@@ -866,7 +866,7 @@ const sketch = (p) => {
 
     p.textAlign(p.CENTER, p.CENTER); 
 
-    p.text(`P=${elementoAtual.protons}+, 0, -10); 
+    p.text(`P=${elementoAtual.protons}+`, 0, -10); 
 
     p.text(`N=${elementoAtual.numeroNeutrons}`, 0, 10); 
 
