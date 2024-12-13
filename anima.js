@@ -170,7 +170,6 @@ const elementProperties = {
     temperaturaEbulicao: -252.87,
    densidade: 0.00008988 (gás),
    configuracaoEletronica: 1,
-   configuracaoEletronica: 1,
    energiaIonizacao: 1312
   },
   'Li': {
