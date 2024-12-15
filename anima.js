@@ -1077,3 +1077,26 @@ const calculateLayers = (electrons) => {
   return layers; 
 
 }; 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".propriedade-link"); // Suponha que os links têm essa classe
+    links.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const elementoQuimico = this.getAttribute("data-elemento"); // Por exemplo: 'Na'
+            const grupo = this.getAttribute("data-grupo"); // Por exemplo: 'Alcalino'
+
+            // Armazena no Local Storage
+            localStorage.setItem("elementoEscolhido", elementoQuimico);
+            localStorage.setItem("grupoEscolhido", grupo);
+        });
+    });
+
+    // Recupera e exibe os dados, se existirem
+    const elemento = localStorage.getItem("elementoEscolhido");
+    const grupo = localStorage.getItem("grupoEscolhido");
+    if (elemento && grupo) {
+        document.getElementById("elemento-info").textContent = `Elemento: ${elemento}, Grupo: ${grupo}`;
+    }
+});
+
