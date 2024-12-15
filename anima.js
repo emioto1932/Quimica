@@ -884,9 +884,12 @@ elementSelect.addEventListener("change", () => {
     <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
 
     <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
- 
-<tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td><td><a href="objeto.html?propriedade=densidade&grupo=${encodeURIComponent(grupoSelecionado)}&elemento=${encodeURIComponent(elementoAtual.nome)}">Abrir Tabela de Densidade</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
+   <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td><td>
+   <a href="objeto.html?propriedade=densidade" class="popup-link">Abrir Tabela de Densidade</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
+
+  
+ 
   `; 
 
    
@@ -1072,4 +1075,3 @@ const calculateLayers = (electrons) => {
   return layers; 
 
 }; 
-
