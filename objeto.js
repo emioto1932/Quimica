@@ -1,31 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Pegando o parâmetro da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const propriedade = urlParams.get("propriedade");
+    // Recuperar as informações do Local Storage
+    const elemento = localStorage.getItem("elementoEscolhido");
+    const grupo = localStorage.getItem("grupoEscolhido");
 
-    // Exibindo o nome da propriedade na pop-up
+    // Exibir o nome do elemento e grupo no popup
     const propertyNameElement = document.getElementById("propertyName");
-
-    if (propriedade) {
-        // Definindo o nome da propriedade de acordo com o link clicado
-        if (propriedade === "densidade") {
-            propertyNameElement.textContent = "Densidade";
-        } else {
-            propertyNameElement.textContent = "Propriedade Não Encontrada";
-        }
+    if (elemento && grupo) {
+        propertyNameElement.textContent = `${elemento} - ${grupo}`;
     } else {
         propertyNameElement.textContent = "Propriedade Não Informada";
     }
 
-    // Função para abrir a pop-up
+    // Configuração da pop-up
     const popup = document.getElementById("popup");
     const closePopupBtn = document.getElementById("closePopupBtn");
 
-    // Função para fechar a pop-up e voltar para a página anterior
+    // Fechar a pop-up e voltar sem limpar dados
     closePopupBtn.addEventListener("click", function() {
         window.history.back(); // Volta para a página anterior
     });
 
-    // Abrir pop-up automaticamente quando a página carregar
+    // Exibir a pop-up automaticamente
     popup.style.display = "block";
 });
