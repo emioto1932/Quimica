@@ -170,7 +170,7 @@ const elementProperties = {
     configuracaoEletronica: '1',
     energiaIonizacao: 1312
 },
- 'Li': {
+'Li': {
     protons: 3,
     numeroProtons: 3,
     electrons: 3,
@@ -840,7 +840,7 @@ groupSelect.addEventListener("change", () => {
 
       option.value = symbol; 
 
-      option.textContent = ${name} (${symbol}); 
+      option.textContent = `${name} (${symbol})`; 
 
       elementSelect.appendChild(option); 
 
@@ -874,7 +874,7 @@ elementSelect.addEventListener("change", () => {
 
   // Preencher a tabela com as propriedades do elemento 
 
-  tableBody.innerHTML =  
+  tableBody.innerHTML = ` 
 
     <tr><td>Número atômico ou Número de Prótons (carga +)</td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
@@ -890,7 +890,7 @@ elementSelect.addEventListener("change", () => {
 
   
  
-  ; 
+  `; 
 
    
 
@@ -954,9 +954,9 @@ const sketch = (p) => {
 
     p.textAlign(p.CENTER, p.CENTER); 
 
-    p.text(P=${elementoAtual.protons}+, 0, -10); 
+    p.text(`P=${elementoAtual.protons}+`, 0, -10); 
 
-    p.text(N=${elementoAtual.numeroNeutrons}, 0, 10); 
+    p.text(`N=${elementoAtual.numeroNeutrons}`, 0, 10); 
 
   
 
@@ -1077,3 +1077,23 @@ const calculateLayers = (electrons) => {
 }; 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".propriedade-link"); // Suponha que os links têm essa classe
+    links.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const elementoQuimico = this.getAttribute("data-elemento"); // Por exemplo: 'Na'
+            const grupo = this.getAttribute("data-grupo"); // Por exemplo: 'Alcalino'
+
+            // Armazena no Local Storage
+            localStorage.setItem("elementoEscolhido", elementoQuimico);
+            localStorage.setItem("grupoEscolhido", grupo);
+        });
+    });
+
+    // Recupera e exibe os dados, se existirem
+    const elemento = localStorage.getItem("elementoEscolhido");
+    const grupo = localStorage.getItem("grupoEscolhido");
+    if (elemento && grupo) {
+        document.getElementById("elemento-info").textContent = `Elemento: ${elemento}, Grupo: ${grupo}`;
+    }
+});
