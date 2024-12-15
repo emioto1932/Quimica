@@ -876,7 +876,12 @@ elementSelect.addEventListener("change", () => {
 
   // Preencher a tabela com as propriedades do elemento 
 
-  tableBody.innerHTML = ` 
+document.addEventListener("DOMContentLoaded", function() {
+    // Preenche a tabela com os dados
+    const tabelaPropriedades = document.getElementById("tabela-propriedades");
+    if (tabelaPropriedades) {
+        tableBody.innerHTML = `
+
 
     <tr><td>Número atômico ou Número de Prótons (carga +)</td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
@@ -886,13 +891,21 @@ elementSelect.addEventListener("change", () => {
     <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
 
     <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
-   <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td><td>
-   <a href="objeto.html?propriedade=densidade" class="popup-link">Abrir Tabela de Densidade</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
+  <tr>
+            <td>Configuração Eletrônica (K L M N O P Q)</td>
+            <td>${elementoAtual.configuracaoEletronica}</td>
+            <td><a href="objeto.html?propriedade=densidade" class="popup-link" data-elemento="${elementoAtual.nome}" data-grupo="${elementoAtual.grupo}">Abrir Tabela de Densidade</a></td>
+            <td>${exibirComVirgula(elementoAtual.densidade)}</td>
+        </tr>`;
+   
+   //<tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td><td>
+//   <a href="objeto.html?propriedade=densidade" class="popup-link">Abrir Tabela de Densidade</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
 
   
  
   `; 
+
 
    
 
@@ -1079,24 +1092,16 @@ const calculateLayers = (electrons) => {
 }; 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll(".propriedade-link"); // Suponha que os links têm essa classe
-    links.forEach(link => {
-        link.addEventListener("click", function (event) {
-            const elementoQuimico = this.getAttribute("data-elemento"); // Por exemplo: 'Na'
-            const grupo = this.getAttribute("data-grupo"); // Por exemplo: 'Alcalino'
+// Adicionar evento de clique ao link
+        const popupLink = document.querySelector(".popup-link");
+        popupLink.addEventListener("click", function(event) {
+            // Preencher os dados no Local Storage
+            const elemento = this.getAttribute("data-elemento");
+            const grupo = this.getAttribute("data-grupo");
 
-            // Armazena no Local Storage
-            localStorage.setItem("elementoEscolhido", elementoQuimico);
+            // Salvar as informações no Local Storage
+            localStorage.setItem("elementoEscolhido", elemento);
             localStorage.setItem("grupoEscolhido", grupo);
         });
-    });
-
-    // Recupera e exibe os dados, se existirem
-    const elemento = localStorage.getItem("elementoEscolhido");
-    const grupo = localStorage.getItem("grupoEscolhido");
-    if (elemento && grupo) {
-        document.getElementById("elemento-info").textContent = `Elemento: ${elemento}, Grupo: ${grupo}`;
     }
 });
-
