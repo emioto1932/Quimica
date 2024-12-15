@@ -131,3 +131,59 @@ body {
     color: #333;
     margin-top: 10px;
 }
+
+.cubos-massa {
+    margin-top: 20px;
+    position: relative;
+}
+
+.cubos-ouro {
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transform: rotateX(30deg) rotateY(45deg);
+    animation: rotateCubeOuro 6s infinite linear;
+}
+
+.face-ouro {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+}
+
+#faceOuro1 {
+    transform: rotateY(0deg) translateZ(50px);
+}
+
+#faceOuro2 {
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+#faceOuro3 {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+#faceOuro4 {
+    transform: rotateY(270deg) translateZ(50px);
+}
+
+#faceOuro5 {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+#faceOuro6 {
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes rotateCubeOuro {
+    0% { transform: rotateX(30deg) rotateY(45deg); }
+    100% { transform: rotateX(30deg) rotateY(405deg); }
+}
