@@ -30,6 +30,78 @@ h1 {
   justify-content: space-between;
 }
 
+/* Estilo padrão para a tabela */
+.tabela-responsiva {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.tabela-responsiva th, .tabela-responsiva td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Media Query para telas pequenas (exemplo: celulares) */
+@media (max-width: 768px) {
+  .tabela-responsiva thead {
+    display: none; /* Esconde o cabeçalho em telas pequenas */
+  }
+
+  .tabela-responsiva tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .tabela-responsiva td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: none; /* Remove a borda da célula */
+    width: 100%;
+  }
+
+  .tabela-responsiva td:nth-child(1),
+  .tabela-responsiva td:nth-child(2) {
+    flex: 1 1 50%; /* As duas primeiras colunas têm 50% de largura e permanecem lado a lado */
+  }
+
+  .tabela-responsiva td:nth-child(3),
+  .tabela-responsiva td:nth-child(4) {
+    flex: 1 1 100%; /* As colunas subsequentes ocupam toda a largura e "quebram" para a linha seguinte */
+  }
+
+  /* Adicionando um "rótulo" (label) para as células quando o cabeçalho for ocultado */
+  .tabela-responsiva td:nth-child(1)::before {
+    content: "Propriedade 1: ";
+    font-weight: bold;
+  }
+
+  .tabela-responsiva td:nth-child(2)::before {
+    content: "Valor 1: ";
+    font-weight: bold;
+  }
+
+  .tabela-responsiva td:nth-child(3)::before {
+    content: "Propriedade 2: ";
+    font-weight: bold;
+  }
+
+  .tabela-responsiva td:nth-child(4)::before {
+    content: "Valor 2: ";
+    font-weight: bold;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
