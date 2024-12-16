@@ -19,7 +19,7 @@ function draw() {
     strokeWeight(1);
     fill(255, 0, 0); // Vermelho
     drawCubeWithDots(); // Desenha o cubo com bolinhas
-    drawLabels(); // Desenha os rótulos
+    drawLabelsRedCube(); // Desenha os rótulos do cubo vermelho
     pop();
 
     // Cubo dourado (Sódio) com massa
@@ -101,7 +101,7 @@ function drawCubeWithDots() {
 }
 
 // Desenha rótulos no cubo vermelho
-function drawLabels() {
+function drawLabelsRedCube() {
     fill(0); // Preto
     textSize(12);
     textAlign(CENTER, CENTER);
@@ -113,22 +113,22 @@ function drawLabels() {
     text("1 cm", 0, 0);
     pop();
 
-    // Escreve "Volume de 1 cm³" abaixo do cubo
+    // Escreve "1 cm³" abaixo do cubo
     push();
     translate(0, cubeSize + 20, 0);
-    text("Volume de 1 cm³ (1 centímetro cúbico)", 0, 0);
+    text("1 cm³", 0, 0);
     pop();
 }
 
-// Desenha a massa do sódio no cubo dourado
+// Desenha a massa no cubo dourado
 function drawMassLabel() {
     fill(0); // Preto
     textSize(12);
     textAlign(CENTER, CENTER);
 
-    // Massa do sódio (22,99 g/mol)
+    // Massa (15 g)
     push();
     translate(0, 0, cubeSize / 2 + 10);
-    text("Massa do Na: 22,99 g", 0, 0);
+    text("Massa: 15 g", 0, 0);
     pop();
 }
