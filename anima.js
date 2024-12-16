@@ -1077,3 +1077,48 @@ const calculateLayers = (electrons) => {
   return layers; 
 
 }; 
+
+
+document.getElementById("group-select").addEventListener("change", function() {
+  var selectedGroup = this.value;
+  var groupImage = document.getElementById("group-image");
+
+  // Ocultar a imagem inicialmente
+  groupImage.style.display = "none";
+
+  // Verifica o grupo selecionado e atualiza a imagem correspondente
+  switch (selectedGroup) {
+    case "1":
+      groupImage.src = "img/grupo01.jpg";
+      break;
+    case "2":
+      groupImage.src = "img/grupo02.jpg";
+      break;
+    case "13":
+      groupImage.src = "img/grupo13.jpg";
+      break;
+    case "14":
+      groupImage.src = "img/grupo14.jpg";
+      break;
+    case "15":
+      groupImage.src = "img/grupo15.jpg";
+      break;
+    case "16":
+      groupImage.src = "img/grupo16.jpg";
+      break;
+    case "17":
+      groupImage.src = "img/grupo17.jpg";
+      break;
+    case "18":
+      groupImage.src = "img/grupo18.jpg";
+      break;
+    default:
+      groupImage.src = "";
+      break;
+  }
+
+  // Exibe a imagem se um grupo for selecionado
+  if (groupImage.src !== "") {
+    groupImage.style.display = "block";
+  }
+});
