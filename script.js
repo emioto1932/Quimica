@@ -1,4 +1,3 @@
-
 // Selecionando o menu e o botão do menu 
 
 const menuButton = document.getElementById('menu-button'); 
