@@ -1,71 +1,135 @@
+// Selecionando o menu e o botão do menu  
 
+  
 
-<!DOCTYPE html> 
-<html lang="pt-br">
+const menuButton = document.getElementById('menu-button');  
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selecionar Elemento Químico</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <link rel="stylesheet" href="anima.css">
-</head>
+  
 
-<body>
+const menu = document.getElementById('menu');  
 
-  <div class="container">
-    <h1>Escolha um Elemento Químico</h1>
+  
 
-    <div class="flex-container">
-      <!-- Tabela de Seleção -->
-      <div class="selection-container">
-        <!-- Seleção de Grupo -->
-        <div class="input-group">
-          <label for="group-select">Grupo:</label>
-          <select id="group-select">
-            <option value="">-- Selecione um Grupo --</option>
-            <option value="1">Grupo 1</option>
-            <option value="2">Grupo 2</option>
-            <option value="13">Grupo 13</option>
-            <option value="14">Grupo 14</option>
-            <option value="15">Grupo 15</option>
-            <option value="16">Grupo 16</option>
-            <option value="17">Grupo 17</option>
-            <option value="18">Grupo 18</option>
-          </select>
-        </div>
+const contentContainer = document.getElementById('content-container');  
 
-        <!-- Seleção de Elemento -->
-        <div class="input-group">
-          <label for="element-select">Elemento:</label>
-          <select id="element-select" disabled>
-            <option value="">-- Selecione um Elemento --</option>
-          </select>
-        </div>
-      </div>
-         <!-- Animação da Distribuição Eletrônica -->
-      <div id="canvas-container" class="animation-container">
-      </div>
-        <!-- Tabela para exibir informações -->
-      <table id="info-table" class="hidden"  class="flex-container">
-        <thead>
-          <tr>
-            <th>Propriedade</th>
-            <th>Valor</th>
-            <th>Propriedade</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      </div>
+  
 
-     
+const topics = document.querySelectorAll('a[data-topic]');  
 
-    
-  </div>
+  
 
-  <script src="anima.js"></script>
-</body>
+   
 
-</html>
+  
+
+// Função para mostrar/esconder o menu  
+
+  
+
+menuButton.addEventListener('click', () => {  
+
+  
+
+    menu.classList.toggle('hidden');  
+
+  
+
+});  
+
+  
+
+   
+
+  
+
+// Função para mostrar o conteúdo correto  
+
+  
+
+topics.forEach(topic => {  
+
+  
+
+    topic.addEventListener('click', (event) => {  
+
+  
+
+        event.preventDefault();  
+
+  
+
+        const selectedTopic = event.target.getAttribute('data-topic');  
+
+  
+
+          
+
+  
+
+    // Atualiza o título 
+
+        document.getElementById('selected-topic').innerText = selectedTopic.replace(/-/g, ' ').toUpperCase(); 
+
+  
+
+   
+
+  
+
+   
+
+  
+
+   
+
+  
+
+          
+
+  
+
+        // Esconde todos os conteúdos  
+
+  
+
+        document.querySelectorAll('.content').forEach(content => {  
+
+  
+
+            content.classList.remove('active');  
+
+  
+
+        });  
+
+  
+
+          
+
+  
+
+        // Mostra o conteúdo do tópico selecionado  
+
+  
+
+        document.getElementById(selectedTopic).classList.add('active');  
+
+  
+
+   
+
+  
+
+        // Esconde o menu  
+
+  
+
+        menu.classList.add('hidden');  
+
+  
+
+    });  
+
+  
+
+}); 
