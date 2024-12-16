@@ -1,0 +1,613 @@
+<!DOCTYPE html> 
+
+<html lang="pt-BR"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Ligação Química</title> 
+
+    <link rel="stylesheet" href="styles.css"> 
+
+    <link rel="stylesheet" href="diversos.css"> 
+    <link rel="stylesheet" href="enem.css"> 
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4TLC8C9GZW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4TLC8C9GZW');
+</script>
+
+</head> 
+
+<body> 
+
+    <header> 
+
+        <div class="menu-container">
+        <button id="menu-button" class="menu-icon" aria-label="Abrir menu">☰ MENU</button>
+    </div>
+    <div class="title-container">
+        <h1 class="title-right">O que você precisa saber para entender a química</h1>
+        <p class="construction-note">
+            Este site está em construção. Enquanto finalizamos, explore o conteúdo já disponível!
+        </p>
+    </div>
+
+
+
+
+
+
+        
+        <nav id="menu" class="hidden"> 
+
+            <ul> 
+
+ 
+
+                <li><a href="#" data-topic="distribuição-eletrônica">Distribuição eletrônica</a></li> 
+
+                <li><a href="#" data-topic="regra-do-octeto">Regra do Octeto</a></li> 
+
+                <li><a href="#" data-topic="ligação-iônica">Ligação iônica</a></li> 
+
+                <li><a href="#" data-topic="ligação-covalente">Ligação Covalente</a></li> 
+
+                <li><a href="#" data-topic="ligacão-metálica">Ligação Metálica</a></li> 
+
+                <li><a href="#" data-topic="eletronegatividade">Eletronegatividade</a></li> 
+
+                <li><a href="#" data-topic="forças-intramoleculares">Forças Intramoleculares</a></li> 
+
+                <li><a href="#" data-topic="forças-intermoleculares">Forças Intermoleculares</a></li> 
+
+            </ul> 
+
+        </nav> 
+
+    </header> 
+
+ 
+
+    <main>  
+
+  
+
+        <h2 id="selected-topic">Escolha um tema no menu</h2>  
+
+
+        
+
+        <div class="container" id="content-container"> 
+
+            <!-- Conteúdos dos temas --> 
+
+            <div id="distribuição-eletrônica" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/DistruicaoEletronicaSodio.jpg" alt="Distribuição Eletrônica"> 
+                  
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+                   
+                    <p>A <span class="highlight">distribuição eletrônica</span> é o processo que descreve como os elétrons se distribuem nas camadas ao redor do núcleo de um átomo, de acordo com o modelo atômico de <span class="highlight">Niels Bohr (1913)</span>. Esse modelo ajuda a entender como os elétrons ocupam diferentes camadas de energia, que podem ser representadas como órbitas ao redor do núcleo.</p> 
+
+                 <table> 
+
+                        <tr> 
+
+                            <th>Nível de Energia</th> 
+
+                            <th>K</th> 
+
+                            <th>L</th> 
+
+                            <th>M</th> 
+
+                            <th>N</th> 
+
+                            <th>O</th> 
+
+                            <th>P</th> 
+
+                        </tr> 
+
+                        <tr> 
+
+                            <td>Máximo de Elétrons</td> 
+
+                            <td>2</td> 
+
+                            <td>8</td> 
+
+                            <td>18</td> 
+
+                            <td>32</td> 
+
+                            <td>32</td> 
+
+                            <td>8</td> 
+
+                        </tr> 
+
+                    </table> 
+  <a href="anima.html" target="_blank">Clique aqui para o <span class="highlight">Simulador de Distribuição Eletrônica</span></a> 
+
+                </div> 
+
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ01-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ01-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ01-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+             
+
+            </div> 
+
+            <div id="regra-do-octeto" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/distribuicao_eletronica_regra_do_octeto_gases_nobres.jpg" alt="Regra do Octeto"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                    <h2>A Regra do Octeto e a Estabilidade dos Gases Nobres</h2> 
+
+                    <p> 
+
+                    Inicialmente, os cientistas notaram que os <span class="highlight">gases nobres</span> não reagiam facilmente com outros elementos químicos, o que os tornava "nobres" no sentido de serem quimicamente inertes. Contudo, ao estudar a estrutura eletrônica dos átomos, descobriu-se que essa estabilidade era resultado de uma <span class="highlight">configuração eletrônica estável</span>, em que a camada de valência estava preenchida com oito elétrons. Essa descoberta levou à formulação da <span class="highlight">regra do octeto</span>, que propõe que os átomos de outros elementos químicos também buscam atingir uma camada de valência com oito elétrons, semelhante aos gases nobres, para alcançar estabilidade. 
+
+                    </p> 
+
+                    <p> 
+
+                    Assim, a tendência dos átomos em <span class="highlight">ganhar, perder ou compartilhar elétrons</span> nas ligações químicas está diretamente relacionada à busca por essa configuração estável. A <span class="highlight">regra do octeto</span> explica não apenas a <span class="highlight">inerte dos gases nobres</span>, mas também a formação de ligações químicas entre outros elementos, que tentam, de diversas formas, alcançar uma camada de valência completa, imitando a estabilidade dos gases nobres. 
+
+                    </p> 
+
+                    
+
+                </div> 
+
+
+                <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ02-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ02-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ02-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+
+
+
+                
+            </div> 
+
+            <div id="ligação-iônica" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/distribuicao_eletronica_ligacao_ionica.jpg" alt="Ligação Iônica"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                   <h1>Ligação Iônica</h1>
+                        <p>A <span class="highlight">ligação iônica</span> ocorre quando átomos de metais e não-metais interagem para alcançar uma configuração eletrônica mais estável. Isso acontece através da <span class="highlight">transferência de elétrons</span> entre os átomos.</p>
+                
+                        <h2>Como Funciona a Ligação Iônica</h2>
+                        <ul>
+                            <li><span class="highlight">Metais</span>: Os metais, especialmente os do <span class="highlight">grupo 1</span>, <span class="highlight">grupo 2</span> e <span class="highlight">grupo 13</span>, possuem poucos elétrons na camada de valência. Por exemplo, o sódio (Na), do grupo 1, tem apenas <span class="highlight">1 elétron</span> na camada de valência. Eles tendem a <span class="highlight">perder elétrons</span> facilmente, alcançando uma camada de valência estável com 8 elétrons na penúltima camada. Ao perderem elétrons, esses átomos se tornam <span class="highlight">íons positivos (cátions)</span>.</li>
+                            <li><span class="highlight">Não-metais</span>: Já os não-metais, especialmente os do <span class="highlight">grupo 15</span>, <span class="highlight">grupo 16</span> e <span class="highlight">grupo 17</span>, têm elétrons a menos para completar sua camada de valência. Por exemplo, o cloro (Cl), do grupo 17, tem <span class="highlight">7 elétrons</span> na camada de valência e precisa de apenas <span class="highlight">1 elétron</span> para atingir a estabilidade. Eles tendem a <span class="highlight">ganhar elétrons</span>, tornando-se <span class="highlight">íons negativos (ânions)</span>.</li>
+                        </ul>
+                
+                        <h2>Formação da Ligação</h2>
+                        <p>Quando um átomo de metal perde um elétron e um átomo de não-metal ganha esse elétron, formam-se <span class="highlight">íons de cargas opostas</span>. A <span class="highlight">atração entre esses íons</span> resulta na formação da <span class="highlight">ligação iônica</span>, mantendo os átomos unidos de forma estável.</p>
+                
+                        <h2>Exemplo:</h2>
+                        <p>1. O átomo de <span class="highlight">sódio (Na)</span> perde um elétron e se torna um íon positivo <span class="highlight">(Na⁺)</span>.<br>
+                        2. O átomo de <span class="highlight">cloro (Cl)</span> ganha esse elétron e se torna um íon negativo <span class="highlight">(Cl⁻)</span>.</p>
+                        <p>Juntos, o íon sódio (Na⁺) e o íon cloro (Cl⁻) formam o <span class="highlight">sal de cozinha (NaCl)</span>, que tem uma forte <span class="highlight">ligação iônica</span> entre eles.</p>
+
+        
+                        <p>A <span class="highlight">ligação iônica</span> é, portanto, o resultado da <span class="highlight">transferência de elétrons</span> entre os átomos, formando íons de cargas opostas que se atraem fortemente.</p>
+                         <h2>Resumo das Regras de Preenchimento</h2>
+                            <ul>
+                                <li><span class="highlight">Metais (grupos 1, 2 e 13)</span>: Têm poucos elétrons na camada de valência e os perdem para alcançar 8 elétrons na penúltima camada.</li>
+                                <li><span class="highlight">Não-metais (grupos 15, 16 e 17)</span>: Têm elétrons a menos na camada de valência e ganham elétrons para alcançar 8 elétrons na camada de valência.</li>
+                            </ul>
+                            <p>A <span class="highlight">ligação iônica</span> é, portanto, o resultado da <span class="highlight">transferência de elétrons</span> entre os átomos, formando íons de cargas opostas que se atraem fortemente.</p>
+
+                </div> 
+
+
+                
+                       <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ03-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ03-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ03-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+                
+                
+            </div> 
+
+            <div id="ligação-covalente" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/ligacao_covalente_exemplos.jpg" alt="Ligação Covalente"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                     <h1>Ligação Covalente</h1>
+                    <p>A <span class="highlight">ligação covalente</span> ocorre entre <span class="highlight">átomos de elementos não-metais</span>, especialmente os localizados no lado direito da tabela periódica, como os grupos <span class="highlight">14</span>, <span class="highlight">15</span>, <span class="highlight">16</span> e <span class="highlight">17</span>. Esses elementos precisam de <span class="highlight">elétrons</span> para completar sua camada de valência e atingir a estabilidade, de acordo com a <span class="highlight">regra do octeto</span>.</p>
+            
+                    <h2>Como Funciona a Ligação Covalente</h2>
+                    <ul>
+                        <li><span class="highlight">Necessidade de Elétrons</span>: Os elementos desses grupos (como carbono, oxigênio, nitrogênio, cloro, entre outros) têm <span class="highlight">elétrons a menos</span> na camada de valência para atingir a configuração estável de 8 elétrons. No caso do <span class="highlight">hidrogênio (H)</span>, ele precisa de apenas <span class="highlight">2 elétrons</span> para se tornar estável, com a mesma configuração do gás hélio.</li>
+                        <li><span class="highlight">Compartilhamento de Elétrons</span>: Como esses elementos <span class="highlight">necessitam de elétrons</span>, a ligação covalente ocorre quando <span class="highlight">dois átomos compartilham elétrons</span> para que cada um consiga completar sua camada de valência. Cada átomo "empresta" ou "compartilha" elétrons com o outro para formar pares de elétrons.</li>
+                        <li><span class="highlight">Formação de Pares de Elétrons</span>: Esses pares de elétrons são compartilhados entre os átomos, formando a <span class="highlight">ligação covalente</span>, que os mantém unidos. Cada átomo, ao compartilhar elétrons, consegue alcançar a estabilidade desejada, com a camada de valência completa com <span class="highlight">8 elétrons</span>, ou <span class="highlight">2 elétrons</span> no caso do hidrogênio.</li>
+                    </ul>
+            
+                    <h2>Exemplos de Ligação Covalente</h2>
+                    <ul>
+                        <li><span class="highlight">Molécula de Hidrogênio (H₂)</span>: O hidrogênio, que precisa de 2 elétrons, forma uma ligação covalente simples com outro átomo de hidrogênio. Juntos, compartilham seus elétrons, formando a molécula de H₂, com ambos os átomos atingindo a estabilidade.</li>
+                        <li><span class="highlight">Molécula de Oxigênio (O₂)</span>: O oxigênio (O), do grupo 16, precisa de 2 elétrons para completar sua camada de valência. Dois átomos de oxigênio se ligam, compartilhando 4 elétrons (2 de cada átomo), formando a molécula O₂. Agora, ambos os átomos de oxigênio têm 8 elétrons na camada de valência, alcançando a estabilidade.</li>
+                        <li><span class="highlight">Molécula de Água (H₂O)</span>: O oxigênio (O) e o hidrogênio (H) formam ligações covalentes entre si. O oxigênio compartilha 2 elétrons com os dois átomos de hidrogênio, resultando na molécula H₂O. O oxigênio atinge 8 elétrons e cada hidrogênio atinge 2 elétrons, ficando estáveis.</li>
+                    </ul>
+            
+                    <h2>Resumo das Regras de Formação</h2>
+                    <ul>
+                        <li><span class="highlight">Metais e Não-metais (grupos 14, 15, 16 e 17)</span>: Precisam de elétrons para completar a camada de valência.</li>
+                        <li><span class="highlight">Compartilhamento de Elétrons</span>: Para completar a camada de valência, os átomos compartilham seus elétrons, formando pares de elétrons.</li>
+                        <li><span class="highlight">Hidrogênio (H)</span>: Precisa de apenas 2 elétrons para atingir a configuração do hélio, por isso forma ligações covalentes com 2 elétrons compartilhados.</li>
+                    </ul>
+                    <p>A <span class="highlight">ligação covalente</span> é, portanto, um compartilhamento mútuo de elétrons entre átomos não-metais, que buscam alcançar uma camada de valência estável.</p>
+
+                </div> 
+
+                         
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ04-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ04-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ04-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+                
+            </div> 
+
+            <div id="ligacão-metálica" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/ligacao_metalica_sodio.jpg" alt="Ligação Metálica"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                    <h1>Ligação Metálica</h1>
+                        <p>A <span class="highlight">ligação metálica</span> ocorre entre <span class="highlight">átomos de metais</span>, como os do <span class="highlight">grupo 1</span>, <span class="highlight">grupo 2</span> e <span class="highlight">grupo 13</span> da tabela periódica. Esses metais possuem poucos elétrons em sua <span class="highlight">camada de valência</span>, o que facilita a <span class="highlight">perda de elétrons</span>. A camada de valência é onde acontecem as ligações químicas, e os metais, ao perderem seus elétrons, buscam alcançar a estabilidade, ficando com a camada anterior (penúltima) cheia, com 8 elétrons, que é a configuração estável.</p>
+                
+                        <h2>Como Funciona a Ligação Metálica?</h2>
+                        <ul>
+                            <li><span class="highlight">Perda de Elétrons</span>: Os átomos de metais, como os do grupo 1 (ex: sódio, Na), grupo 2 (ex: magnésio, Mg) e grupo 13 (ex: alumínio, Al), possuem 1, 2 e 3 elétrons na camada de valência, respectivamente. Eles preferem <span class="highlight">perder esses elétrons</span>, pois ao fazê-lo, ficam mais estáveis, atingindo uma camada anterior com 8 elétrons.</li>
+                            <li><span class="highlight">Formação do "Mar de Elétrons"</span>: Quando esses elétrons são perdidos, eles não ficam em um único átomo, mas <span class="highlight">se movimentam livremente</span> por entre os átomos do metal. Isso cria o que chamamos de <span class="highlight">"mar de elétrons"</span>, onde os elétrons de valência ficam "soltos" e se movem livremente ao redor dos núcleos positivos (cátions). Isso confere aos metais propriedades como <span class="highlight">condutividade elétrica</span> e <span class="highlight">maleabilidade</span>.</li>
+                            <li><span class="highlight">Atração entre Elétrons e Cátions</span>: A atração entre os <span class="highlight">elétrons livres</span> e os <span class="highlight">cátions</span> cria uma rede de átomos unidos, mantendo os átomos unidos, mas de forma flexível.</li>
+                        </ul>
+                
+                        <h2>Exemplos de Metais com Ligação Metálica</h2>
+                        <ul>
+                            <li><span class="highlight">Sódio (Na)</span>: Metal do grupo 1, com 1 elétron na camada de valência.</li>
+                            <li><span class="highlight">Cálcio (Ca)</span>: Metal do grupo 2, com 2 elétrons na camada de valência.</li>
+                            <li><span class="highlight">Alumínio (Al)</span>: Metal do grupo 13, com 3 elétrons na camada de valência.</li>
+                        </ul>
+                
+                        <h2>Ligas Metálicas</h2>
+                        <ul>
+                            <li><span class="highlight">Aço</span>: Liga de ferro (Fe) e carbono (C), usada na construção civil e fabricação de ferramentas.</li>
+                            <li><span class="highlight">Latão</span>: Liga de cobre (Cu) e zinco (Zn), usada em instrumentos musicais, moedas e bijuterias.</li>
+                            <li><span class="highlight">Bronze</span>: Liga de cobre (Cu) e estanho (Sn), usada em esculturas e ferramentas antigas.</li>
+                            <li><span class="highlight">Alumínio</span>: Combinações de alumínio (Al) com silício (Si) e magnésio (Mg), usadas em aviões e carros.</li>
+                        </ul>
+                
+                        <h2>Resumo da Ligação Metálica</h2>
+                        <ul>
+                            <li><span class="highlight">Metais</span> perdem elétrons da <span class="highlight">camada de valência</span> para atingir a estabilidade, ficando com 8 elétrons na penúltima camada.</li>
+                            <li>Os elétrons formam um <span class="highlight">mar de elétrons</span> livremente movimentável.</li>
+                            <li>A atração entre os <span class="highlight">elétrons livres</span> e os <span class="highlight">cátions</span> cria a <span class="highlight">ligação metálica</span>.</li>
+                        </ul>
+                </div> 
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ05-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ05-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ05-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+
+
+                
+            </div> 
+
+            <div id="eletronegatividade" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/eletronegatividade_valores.jpg" alt="Eletronegatividade"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+                    <h1>Eletronegatividade dos Elementos Químicos</h1>
+                            <p>A <span class="highlight">eletronegatividade</span> é a medida da tendência de um átomo de atrair os elétrons da ligação química. Ela está relacionada à <span class="highlight">necessidade de estabilidade</span> dos átomos. Os <span class="highlight">não metais</span> tendem a ser mais eletronegativos, enquanto os <span class="highlight">metais</span> são menos eletronegativos.</p>
+                    
+                            <h2>Como Funciona a Eletronegatividade?</h2>
+                            <p>A eletronegatividade de um elemento depende de sua capacidade de atrair elétrons quando se liga a outro átomo. Os <span class="highlight">não metais</span>, como o oxigênio e o cloro, têm uma grande necessidade de ganhar elétrons para completar sua camada de valência e alcançar a estabilidade. Por outro lado, os <span class="highlight">metais</span>, como o sódio e o cálcio, têm uma tendência de perder elétrons para alcançar essa estabilidade.</p>
+
+                    <h2>Valores de Eletronegatividade</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Símbolo</th>
+                                <th>Eletronegatividade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="highlight">Flúor</span></td><td>F</td><td>3,98</td></tr>
+                            <tr><td><span class="highlight">Oxigênio</span></td><td>O</td><td>3,44</td></tr>
+                            <tr><td><span class="highlight">Cloro</span></td><td>Cl</td><td>3,16</td></tr>
+                            <tr><td><span class="highlight">Nitrogênio</span></td><td>N</td><td>3,04</td></tr>
+                            <tr><td><span class="highlight">Carbono</span></td><td>C</td><td>2,55</td></tr>
+                            <tr><td><span class="highlight">Hidrogênio</span></td><td>H</td><td>2,20</td></tr>
+                            <tr><td><span class="highlight">Sódio</span></td><td>Na</td><td>0,93</td></tr>
+                        </tbody>
+                    </table>
+            
+                    <h2>Formação de Moléculas</h2>
+                    <ul>
+                        <li><span class="highlight">H₂</span>: Molécula apolar, pois a eletronegatividade do Hidrogênio é a mesma entre os dois átomos.</li>
+                        <li><span class="highlight">O₂</span>: Molécula apolar, pois a eletronegatividade do Oxigênio é a mesma entre os dois átomos.</li>
+                        <li><span class="highlight">HCl</span>: Molécula polar, pois o Cloro é mais eletronegativo que o Hidrogênio e atrai os elétrons da ligação.</li>
+                        <li><span class="highlight">H₂O</span>: Molécula polar, pois o Oxigênio é mais eletronegativo que o Hidrogênio e possui dois pares de elétrons livres, que "empurram" os elétrons das ligações.</li>
+                    </ul>
+            
+                    <h2>Polaridade nas Ligações</h2>
+                    <p>Quando dois átomos com <span class="highlight">eletronegatividade igual</span> se unem, como no caso das moléculas de <span class="highlight">H₂</span> e <span class="highlight">O₂</span>, a molécula resultante será <span class="highlight">apolar</span>, ou seja, não terá polos positivos e negativos, pois ambos os átomos atraem os elétrons com a mesma força.</p>
+            
+                    <p>Porém, quando átomos com <span class="highlight">eletronegatividade diferente</span> se unem, como em <span class="highlight">HCl</span> ou <span class="highlight">H₂O</span>, a molécula será <span class="highlight">polar</span>. Isso acontece porque o átomo mais eletronegativo, como o <span class="highlight">Cloro</span> ou o <span class="highlight">Oxigênio</span>, atrai os elétrons para si, criando um <span class="highlight">polo negativo</span>, enquanto o átomo menos eletronegativo, como o <span class="highlight">Hidrogênio</span>, fica com um <span class="highlight">polo positivo</span>.</p>
+            
+                    <h2>Exemplos Práticos</h2>
+                    <ul>
+                        <li><span class="highlight">Ácido Clorídrico (HCl)</span>: O <span class="highlight">Cloro</span> atrai os elétrons da ligação para si, criando um polo negativo no cloro e um polo positivo no hidrogênio, tornando a molécula polar.</li>
+                        <li><span class="highlight">Água (H₂O)</span>: O <span class="highlight">Oxigênio</span> é mais eletronegativo e, com seus pares de elétrons não ligados, empurra os elétrons das ligações com o hidrogênio, criando uma molécula angular e polar.</li>
+                    </ul>
+            
+                    <h2>Resumo Final</h2>
+                    <p>Em uma molécula, a <span class="highlight">polaridade</span> e a forma geométrica dependem da diferença de eletronegatividade entre os átomos envolvidos e da presença de pares de elétrons livres. A diferença de eletronegatividade entre os átomos determina se a molécula será <span class="highlight">polar</span> ou <span class="highlight">apolar</span>.</p>
+                </div> 
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ06-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ06-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ06-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+                
+            </div> 
+
+            <div id="forças-intramoleculares" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/ligacao-intramolecular.jpg" alt="Forças Intramoleculares"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                 <h2><span class="highlight">Explicação das Forças Intramoleculares</span></h2>
+                <p>Essas forças de ligação são essenciais para determinar as propriedades dos compostos. Vamos entender cada uma delas em mais detalhes:</p>
+                <ul>
+                    <li><span class="highlight">Ligação Iônica:</span> A ligação iônica ocorre entre íons com cargas opostas, como no <span class="highlight">NaCl</span>. A energia de dissociação é alta devido à forte atração entre os íons positivos e negativos. Compostos iônicos têm <span class="highlight">altos pontos de fusão e ebulição</span> e são bons condutores de eletricidade quando dissolvidos em água.</li>
+                    <li><span class="highlight">Ligação Metálica:</span> Na ligação metálica, os elétrons são compartilhados livremente entre os átomos, formando uma "nuvem" de elétrons livres. Isso dá aos metais características como <span class="highlight">maleabilidade, ductilidade</span> e boa condutividade elétrica. A energia de dissociação é moderada, pois os elétrons não estão tão fortemente ligados aos átomos.</li>
+                    <li><span class="highlight">Ligação Covalente:</span> Na ligação covalente, os átomos compartilham elétrons para alcançar a estabilidade. A força de atração é forte, especialmente em moléculas como a <span class="highlight">H₂O</span>. No caso de moléculas como O₂, a energia de dissociação é menor, já que a ligação covalente simples entre dois átomos de oxigênio é menos intensa do que uma ligação O-H.</li>
+                </ul>
+
+                </div> 
+
+            
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ07-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ07-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ07-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+                
+            </div> 
+
+            <div id="forças-intermoleculares" class="content hidden"> 
+
+                <div class="image-container"> 
+
+                    <img src="img/forca_intermolecular_ponte_de_hidrogenio.jpg" alt="Forças Intermoleculares"> 
+
+                    <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
+
+                </div> 
+
+                <div class="text-container"> 
+
+                    <h2 class="highlight">Forças Intermoleculares</h2>
+                    <p>As forças intermoleculares são interações que ocorrem entre moléculas diferentes e são responsáveis por várias propriedades físicas das substâncias, como temperatura de ebulição, fusão e solubilidade. A seguir, explicamos as principais forças intermoleculares, do tipo mais forte para o mais fraco:</p>
+                
+                    <h3 class="highlight">1. Forças de Ligação de Hidrogênio (ou Pontes de Hidrogênio)</h3>
+                    <p>As <span class="highlight">forças de ligação de hidrogênio</span> ocorrem quando um átomo de hidrogênio está ligado a um átomo altamente eletronegativo, como oxigênio (O), nitrogênio (N) ou flúor (F). Essas moléculas podem formar ligações adicionais com outras moléculas que contenham esses átomos.</p>
+                    <ul>
+                        <li><strong>Exemplo</strong>: <span class="highlight">Água (H₂O)</span> e <span class="highlight">Amônia (NH₃)</span></li>
+                        <li><strong>Características</strong>: São as forças intermoleculares mais fortes e responsáveis pela alta temperatura de ebulição e fusão da água.</li>
+                    </ul>
+                
+                    <h3 class="highlight">2. Forças Dipolo-Dipolo</h3>
+                    <p>As <span class="highlight">forças dipolo-dipolo</span> ocorrem entre moléculas polares, onde uma extremidade é ligeiramente positiva e a outra é ligeiramente negativa. Essas moléculas se atraem mutuamente.</p>
+                    <ul>
+                        <li><strong>Exemplo</strong>: <span class="highlight">Cloreto de hidrogênio (HCl)</span></li>
+                        <li><strong>Características</strong>: Menos fortes que as ligações de hidrogênio, mas ainda significativas em moléculas polares.</li>
+                    </ul>
+                
+                    <h3 class="highlight">3. Forças de Dispersão de London (ou Forças de Van der Waals)</h3>
+                    <p>As <span class="highlight">forças de dispersão de London</span> são as mais fracas, ocorrendo devido ao movimento dos elétrons, que cria dipolos temporários que atraem outras moléculas.</p>
+                    <ul>
+                        <li><strong>Exemplo</strong>: <span class="highlight">Gases nobres (como o argônio, Ar)</span> e <span class="highlight">Iodo (I₂)</span></li>
+                        <li><strong>Características</strong>: As forças mais fracas, mas presentes em todas as moléculas, principalmente em moléculas apolares.</li>
+                    </ul>
+                
+                    <h3 class="highlight">4. Forças Íon-Dipolo</h3>
+                    <p>As <span class="highlight">forças íon-dipolo</span> ocorrem quando um íon (um átomo ou molécula com carga) interage com uma molécula polar, sendo atraído pela extremidade oposta da molécula.</p>
+                    <ul>
+                        <li><strong>Exemplo</strong>: <span class="highlight">NaCl em água</span> (sal dissolvido em água)</li>
+                        <li><strong>Características</strong>: Mais fortes que as forças dipolo-dipolo, frequentemente vistas quando compostos iônicos se dissolvem em solventes polares.</li>
+                    </ul>
+                
+                    <h3 class="highlight">Tabela de Comparação das Forças Intermoleculares</h3>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Força Intermolecular</th>
+                                <th>Exemplos de Substâncias</th>
+                                <th>Temperatura de Ebulição (°C)</th>
+                                <th>Intensidade das Forças</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight">Forças de Ligação de Hidrogênio</span></td>
+                                <td><span class="highlight">H₂O (água), NH₃ (amônia), HF (fluoreto de hidrogênio)</span></td>
+                                <td>100°C (H₂O), -33°C (NH₃), 19.5°C (HF)</td>
+                                <td><span class="highlight">Alta</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">Forças Dipolo-Dipolo</span></td>
+                                <td><span class="highlight">HCl (cloreto de hidrogênio), SO₂ (dióxido de enxofre), CH₃Cl (clorometano)</span></td>
+                                <td>-85°C (SO₂), -24°C (CH₃Cl), -114°C (HCl)</td>
+                                <td><span class="highlight">Moderada</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">Forças de Dispersão de London</span></td>
+                                <td><span class="highlight">Ar (gás argônio), I₂ (iodo), CO₂ (dióxido de carbono)</span></td>
+                                <td>-185.8°C (Ar), 184°C (I₂), -78.5°C (CO₂)</td>
+                                <td><span class="highlight">Baixa</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">Forças Íon-Dipolo</span></td>
+                                <td><span class="highlight">NaCl em H₂O (sal dissolvido), LiCl em água</span></td>
+                                <td>Depende da concentração, mas geralmente altas (ex: NaCl)</td>
+                                <td><span class="highlight">Muito alta</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div> 
+
+
+
+                
+
+                         <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ08-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ08-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ08-exercicio3.html" target="_blank">Questão 3</a></li>
+                            <li><a href="LQ08-exercicio4.html" target="_blank">Questão 4</a></li>
+                            <li><a href="LQ08-exercicio5.html" target="_blank">Questão 5</a></li>
+                            <li><a href="LQ08-exercicio6.html" target="_blank">Questão 6</a></li>
+                            <li><a href="LQ08-exercicio7.html" target="_blank">Questão 7</a></li>
+                            <li><a href="LQ08-exercicio8.html" target="_blank">Questão 8</a></li>
+                        </ul>
+                        </div>
+
+
+
+                
+
+            </div> 
+
+        </div> 
+
+    </main> 
+
+       <footer> 
+
+        <p style="font-size: 1em; text-align: center; color: #777; margin-top: 20px;"> 
+
+        Este site e seu conteúdo foram gerados por meio da interação entre o prof. Eliezer Mioto e o ChatGPT, uma inteligência artificial da OpenAI. Saiba mais em <a href="https://openai.com" target="_blank" style="color: #007bff; text-decoration: none;">openai.com</a>. 
+
+        </p> 
+       <p style="font-size: 1em; text-align: center; color: #777; margin-top: 20px;"> As questões do Exame Nacional do Ensino Médio (Enem) estão disponíveis no site oficial do INEP: <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos</a></p>
+       </p>
+
+        </footer> 
+       <p style="font-size: 1em; text-align: center; color: #777; margin-top: 20px;"> Os cartazes foram elaborados na prática experimental da turma 2A de 2024, EE Prof. Maria Augusta de Ávila. </p>
+       </p>
+    <script src="script.js"></script> 
+
+</body> 
+
+</html> 
