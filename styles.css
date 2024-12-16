@@ -1,328 +1,393 @@
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* Cabeçalho */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    position: relative;
-}
-
-.menu-container {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-.title-container {
-    text-align: center;
-    margin: 20px 0; /* Espaçamento entre o menu e o conteúdo */
-}
-
-.title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 10px; /* Garante espaço entre o título e o aviso */
-}
-
-.construction-note {
-    font-size: 1rem;
-    color: #555;
-    font-style: italic;
-    margin-top: 10px; /* Evita colar no título */
-    display: block; /* Garante que fique abaixo do título */
-}
-
-
-
-/* Menu suspenso */
-nav {
-    position: absolute;
-    top: 100%;
-    left: 10px; /* Alinha o menu ao botão */
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 200px;
-    z-index: 1;
-}
-
-
-.title-right {
-    text-align: right; /* Garante que o texto fique alinhado à direita */
-    flex-grow: 1; /* Faz o título ocupar o espaço restante */
-    margin: 0; /* Remove margens extras */
-}
-
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-}
-
-nav ul li:last-child {
-    border-bottom: none;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-}
-
-nav ul li a:hover {
-    background-color: #f1f1f1;
-}
-
-nav.hidden {
-    display: none;
-}
+/* Estilos gerais */ 
 
-/* Título */
-#selected-topic {
-    text-align: center;
-    margin-top: 20px;
-}
+body { 
 
-/* Container */
-.container {
-    margin: 20px auto;
-    width: 90%;
-}
+    font-family: Arial, sans-serif; 
 
-/* Estilo dos conteúdos (conteúdo com a classe hidden começa escondido) */
-.content {
-    display: none;
-    margin-top: 20px;
-}
+    margin: 0; 
 
-.content .image-container,
-.content .text-container {
-    width: 50%; /* Cada uma ocupa 50% da largura */
-    margin-bottom: 20px; /* Espaço entre as divisórias */
-    box-sizing: border-box; /* Inclui o padding dentro da largura total */
-}
+    padding: 0; 
 
-.contentanima {
-    width: 100%;
-}
+} 
 
-.image-container {
-    padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */
-}
+  
 
-.image-container img {
-    width: 100%; /* A imagem ocupa 100% da largura da divisória */
-    height: auto; /* Mantém a proporção da imagem */
-}
-.content img {
-    width: 100%;
-    height: auto;
-}
+/* Cabeçalho */ 
 
-.text-container a {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #4CAF50;
-}
+header { 
 
-.text-container a:hover {
-    text-decoration: underline;
-}
+    display: flex; 
 
+    align-items: center; 
 
+    justify-content: space-between; 
 
+    padding: 10px; 
 
+    background-color: #4CAF50; 
 
+    color: white; 
 
+    position: relative; 
 
+} 
 
+  
 
+.menu-icon { 
 
+    font-size: 24px; 
 
-.enim-container {
-    margin: 20px 0;
-}
+    cursor: pointer; 
 
-.exercise-list {
-    list-style: none;
-    padding: 0;
-}
+    z-index: 2; /* Para garantir que fique acima do menu */ 
 
-.exercise-list li {
-    margin: 10px 0;
-}
+     position: absolute; /* Garante que o menu pode ser posicionado */ 
 
-.exercise-list a {
-    text-decoration: none;
-    color: blue;
-    font-size: 18px;
-}
+    bottom: 0; /* Alinha na parte inferior */ 
 
-.exercise-page {
-    text-align: center;
-    margin-top: 20px;
-}
+} 
 
-.exercise-image img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
+  
 
-.exercise-video a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
+/* Menu suspenso */ 
 
-.exercise-video a:hover {
-    background-color: #45a049;
-}
+nav { 
 
+    position: absolute; 
 
+    top: 100%; 
 
+    left: 10px; /* Alinha o menu ao botão */ 
 
-/* formatacao das questoes  */
+    background-color: white; 
 
-.bodyquestao {
-    margin-left: 10px; /* Define uma margem de 10px no lado esquerdo */
-    margin-right: 0; /* Garante que não haja margem extra no lado direito */
-}
+    border: 1px solid #ccc; 
 
-.enunciado {
-        width: 70%; /* No desktop, limita a largura a 70% */
-        padding: 0; /* Remove o padding extra */
-    }
+    border-radius: 5px; 
 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 
-.nota {
-        width: 70%; /* No desktop, limita a largura a 70% */
-        padding: 0; /* Remove o padding extra */
-    }
+    width: 200px; 
 
+    z-index: 1; 
 
-.tabela {
-    width: 50%; /* Limita a largura máxima para 50% da página */
-    margin-left: 0; /* Remove o alinhamento centralizado */
-    border-collapse: collapse;
-    margin-top: 1rem; /* Mantém o espaçamento acima */
-     margin-right: 0; /* Garante que não haja margem à direita */
-}
+} 
 
+  
 
+.title-right { 
 
+    text-align: right; 
 
+} 
 
+  
 
+  
 
+nav ul { 
 
-.tabela th, .tabela td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    text-align: center;
-}
+    list-style-type: none; 
 
-.tabela th {
-    background-color: #007bff;
-    color: white;
-}
+    margin: 0; 
 
-.tabela td {
-    background-color: #f9f9f9;
-}
+    padding: 0; 
 
+} 
 
-/* alternativas das questoes semelhantes ao Enem */
-.alternativas {
-    text-align: left; /* Alinha o texto à esquerda */
-    font-size: 1rem;
-    margin: 0; /* Remove margens externas */
-    padding: 0; /* Remove espaçamentos internos */
-    display: block; /* Garante que as alternativas fiquem empilhadas */
-}
+  
 
-.alternativa {
-    font-size: 1.2rem;
-    background-color: #ffffff;
-    padding: 0; /* Remove o espaçamento interno */
-    margin: 0; /* Remove o espaçamento entre alternativas */
-    display: block; /* Força cada alternativa a ocupar uma linha */
-    text-align: left; /* Garante alinhamento do texto à esquerda */
-    border: none; /* Remove borda, se preferir */
-    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
-    margin-left: 100px; /* Adiciona 100px de espaço à esquerda */
-}
+nav ul li { 
 
+    margin: 0; 
 
+    padding: 10px; 
 
+    border-bottom: 1px solid #ccc; 
 
-/* Responsividade - Para telas pequenas (celular) */
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column; /* Empilha as divisões em vez de lado a lado */
-        align-items: center; /* Alinha ao centro */
-    }
+    text-align: left; 
 
-    .content .image-container,
-    .content .text-container {
-        width: 100%; /* Cada divisão ocupa 100% da largura */
-        margin-bottom: 10px; /* Ajuste de espaço para celular */
-    }
+} 
 
-   .enunciado {
-    width: 100%; /* No celular, ocupa toda a largura */
-    margin: 0 auto; /* Centraliza no desktop */
-    padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
-    box-sizing: border-box; /* Garante que o padding não afete a largura total */
-            }
-    .nota {
-        width: 100%; /* No desktop, limita a largura a 70% */
-        padding: 0; /* Remove o padding extra */
-    }
-    .tabela {
-    width: 100%; /* Limita a  máxima da página */
-    margin-left: 0; /* Remove o alinhamento centralizado */
-    border-collapse: collapse;
-    margin-top: 1rem; /* Mantém o espaçamento acima */
-     margin-right: 0; /* Garante que não haja margem à direita */
-    }
+  
 
-    
-}
+nav ul li:last-child { 
 
-/* Exibindo o conteúdo ativo */
-.content.active {
-    display: flex; /* Alinha as divisórias lado a lado */
-    justify-content: space-between; /* Espaçamento entre as divisórias */
-    flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */
-}
+    border-bottom: none; 
+
+} 
+
+  
+
+nav ul li a { 
+
+    text-decoration: none; 
+
+    color: #333; 
+
+    display: block; 
+
+} 
+
+  
+
+nav ul li a:hover { 
+
+    background-color: #f1f1f1; 
+
+} 
+
+  
+
+nav.hidden { 
+
+    display: none; 
+
+} 
+
+  
+
+/* Título */ 
+
+#selected-topic { 
+
+    text-align: center; 
+
+    margin-top: 20px; 
+
+} 
+
+  
+
+/* Container */ 
+
+.container { 
+
+    margin: 20px auto; 
+
+    width: 90%; 
+
+} 
+
+  
+
+/* Estilo dos conteúdos (conteúdo com a classe hidden começa escondido) */ 
+
+.content { 
+
+    display: none; 
+
+    margin-top: 20px; 
+
+} 
+
+  
+
+.content .image-container, 
+
+.content .text-container { 
+
+    width: 50%; /* Cada uma ocupa 50% da largura */ 
+
+    margin-bottom: 20px; /* Espaço entre as divisórias */ 
+
+    box-sizing: border-box; /* Inclui o padding dentro da largura total */ 
+
+} 
+
+  
+
+.image-container { 
+
+    padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */ 
+
+} 
+
+  
+
+.image-container img { 
+
+    width: 100%; /* A imagem ocupa 100% da largura da divisória */ 
+
+    height: auto; /* Mantém a proporção da imagem */ 
+
+} 
+
+.content img { 
+
+    width: 100%; 
+
+    height: auto; 
+
+} 
+
+  
+
+.text-container a { 
+
+    display: block; 
+
+    margin-top: 10px; 
+
+    text-decoration: none; 
+
+    color: #4CAF50; 
+
+} 
+
+  
+
+.text-container a:hover { 
+
+    text-decoration: underline; 
+
+} 
+
+  
+
+  
+
+  
+
+.enim-container { 
+
+    margin: 20px 0; 
+
+} 
+
+  
+
+.exercise-list { 
+
+    list-style: none; 
+
+    padding: 0; 
+
+} 
+
+  
+
+.exercise-list li { 
+
+    margin: 10px 0; 
+
+} 
+
+  
+
+.exercise-list a { 
+
+    text-decoration: none; 
+
+    color: blue; 
+
+    font-size: 18px; 
+
+} 
+
+  
+
+.exercise-page { 
+
+    text-align: center; 
+
+    margin-top: 20px; 
+
+} 
+
+  
+
+.exercise-image img { 
+
+    max-width: 100%; 
+
+    height: auto; 
+
+    border: 1px solid #ddd; 
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+
+} 
+
+  
+
+.exercise-video a { 
+
+    display: inline-block; 
+
+    margin-top: 20px; 
+
+    padding: 10px 20px; 
+
+    background-color: #4CAF50; 
+
+    color: white; 
+
+    text-decoration: none; 
+
+    border-radius: 5px; 
+
+} 
+
+  
+
+.exercise-video a:hover { 
+
+    background-color: #45a049; 
+
+} 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+/* Responsividade - Para telas pequenas (celular) */ 
+
+@media (max-width: 768px) { 
+
+    .content { 
+
+        flex-direction: column; /* Empilha as divisões em vez de lado a lado */ 
+
+        align-items: center; /* Alinha ao centro */ 
+
+    } 
+
+  
+
+    .content .image-container, 
+
+    .content .text-container { 
+
+        width: 100%; /* Cada divisão ocupa 100% da largura */ 
+
+        margin-bottom: 10px; /* Ajuste de espaço para celular */ 
+
+    } 
+
+} 
+
+  
+
+/* Exibindo o conteúdo ativo */ 
+
+.content.active { 
+
+    display: flex; /* Alinha as divisórias lado a lado */ 
+
+    justify-content: space-between; /* Espaçamento entre as divisórias */ 
+
+    flex-wrap: wrap; /* Permite que as divisórias quebrem para a linha seguinte em telas menores */ 
+
+} 
