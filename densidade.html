@@ -5,47 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propriedade de Densidade</title>
     <link rel="stylesheet" href="densidade.css">
+    <!-- Importando p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="densidade.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <!-- Cubos -->
-        <div class="cubos">
-            <div class="cubos-animado" id="cubosAnimado">
-                <div class="face" id="face1"><span>1</span></div>
-                <div class="face" id="face2"><span>2</span></div>
-                <div class="face" id="face3"><span>3</span></div>
-                <div class="face" id="face4"><span>4</span></div>
-                <div class="face" id="face5"><span>5</span></div>
-                <div class="face" id="face6"><span>6</span></div>
-            </div>
-
-            <div class="cubos-parado">
-                <div class="caixa">
-                    <div class="face-cubo"></div>
-                    <div class="face-cubo"></div>
-                    <div class="face-cubo"></div>
-                    <div class="face-cubo"></div>
-                    <div class="face-cubo"></div>
-                    <div class="face-cubo"></div>
-                </div>
-                <p class="texto">Toda a matéria ocupa espaço. Se compararmos com o mesmo volume, no caso 1 cm³, e escrevemos 1 cm³ = 1 mL (um mililitro, 1 litro dividido por 1000).</p>
-            </div>
-        </div>
-
-        <!-- Novo Cubo com Massa -->
-        <div class="cubos-massa">
-            <div class="cubos-ouro">
-                <div class="face-ouro" id="faceOuro1"><span>1 cm³ = 19,32 g</span></div>
-                <div class="face-ouro" id="faceOuro2"><span>1 cm³ = 19,32 g</span></div>
-                <div class="face-ouro" id="faceOuro3"><span>1 cm³ = 19,32 g</span></div>
-                <div class="face-ouro" id="faceOuro4"><span>1 cm³ = 19,32 g</span></div>
-                <div class="face-ouro" id="faceOuro5"><span>1 cm³ = 19,32 g</span></div>
-                <div class="face-ouro" id="faceOuro6"><span>1 cm³ = 19,32 g</span></div>
-            </div>
-            <p class="texto">O ouro (Au) tem densidade de 19,32 g/cm³.</p>
-        </div>
+        <h1>Densidade e Volume</h1>
+        <p>Comparação visual de densidade em cubos de 1 cm³.</p>
+        <!-- Área para renderização do p5.js -->
+        <div id="p5-container"></div>
     </div>
-
-    <script src="densidade.js"></script>
 </body>
 </html>
