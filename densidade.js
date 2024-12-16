@@ -1,13 +1,36 @@
-const cubo = document.getElementById("cubosAnimado");
+let angleX = 0; // Ângulo de rotação no eixo X
+let angleY = 0; // Ângulo de rotação no eixo Y
 
-// Função para gerar um movimento aleatório do cubo
-function movimentoAleatorio() {
-    const aleatorioX = Math.floor(Math.random() * 360);
-    const aleatorioY = Math.floor(Math.random() * 360);
-    const aleatorioZ = Math.floor(Math.random() * 360);
-
-    cubo.style.transform = `rotateX(${aleatorioX}deg) rotateY(${aleatorioY}deg) rotateZ(${aleatorioZ}deg)`;
+function setup() {
+    const canvas = createCanvas(400, 400, WEBGL);
+    canvas.parent('p5-container'); // Anexa o canvas ao contêiner no HTML
 }
 
-// Chama a função de movimento aleatório a cada 2 segundos
-setInterval(movimentoAleatorio, 2000);
+function draw() {
+    background(240);
+
+    // Primeiro cubo (vermelho)
+    push();
+    rotateX(angleX);
+    rotateY(angleY);
+    stroke(0);
+    strokeWeight(2);
+    fill(255, 0, 0); // Vermelho
+    box(100); // Cubo com 100px
+    pop();
+
+    // Segundo cubo (dourado) com texto
+    push();
+    translate(200, 0, 0); // Translação do segundo cubo
+    rotateX(angleX * 1.5);
+    rotateY(angleY * 1.5);
+    stroke(0);
+    strokeWeight(2);
+    fill(255, 215, 0); // Dourado
+    box(100); // Cubo com 100px
+    pop();
+
+    // Incremento dos ângulos para animação
+    angleX += radians(1);
+    angleY += radians(1);
+}
