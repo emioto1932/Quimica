@@ -16,11 +16,38 @@ header {
     position: relative;
 }
 
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 2; /* Para garantir que fique acima do menu */
+.menu-container {
+    display: flex;
+    align-items: center;
 }
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.title-container {
+    text-align: center;
+    margin: 20px 0; /* Espaçamento entre o menu e o conteúdo */
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Garante espaço entre o título e o aviso */
+}
+
+.construction-note {
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 10px; /* Evita colar no título */
+    display: block; /* Garante que fique abaixo do título */
+}
+
+
 
 /* Menu suspenso */
 nav {
@@ -34,6 +61,14 @@ nav {
     width: 200px;
     z-index: 1;
 }
+
+
+.title-right {
+    text-align: right; /* Garante que o texto fique alinhado à direita */
+    flex-grow: 1; /* Faz o título ocupar o espaço restante */
+    margin: 0; /* Remove margens extras */
+}
+
 
 nav ul {
     list-style-type: none;
@@ -91,6 +126,10 @@ nav.hidden {
     box-sizing: border-box; /* Inclui o padding dentro da largura total */
 }
 
+.contentanima {
+    width: 100%;
+}
+
 .image-container {
     padding-right: 20px; /* Adiciona 20px de espaço à direita da imagem */
 }
@@ -115,6 +154,138 @@ nav.hidden {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+
+
+.enim-container {
+    margin: 20px 0;
+}
+
+.exercise-list {
+    list-style: none;
+    padding: 0;
+}
+
+.exercise-list li {
+    margin: 10px 0;
+}
+
+.exercise-list a {
+    text-decoration: none;
+    color: blue;
+    font-size: 18px;
+}
+
+.exercise-page {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.exercise-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-video a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.exercise-video a:hover {
+    background-color: #45a049;
+}
+
+
+
+
+/* formatacao das questoes  */
+
+.bodyquestao {
+    margin-left: 10px; /* Define uma margem de 10px no lado esquerdo */
+    margin-right: 0; /* Garante que não haja margem extra no lado direito */
+}
+
+.enunciado {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+
+
+.nota {
+        width: 70%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+
+
+.tabela {
+    width: 50%; /* Limita a largura máxima para 50% da página */
+    margin-left: 0; /* Remove o alinhamento centralizado */
+    border-collapse: collapse;
+    margin-top: 1rem; /* Mantém o espaçamento acima */
+     margin-right: 0; /* Garante que não haja margem à direita */
+}
+
+
+
+
+
+
+
+
+.tabela th, .tabela td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.tabela th {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabela td {
+    background-color: #f9f9f9;
+}
+
+
+/* alternativas das questoes semelhantes ao Enem */
+.alternativas {
+    text-align: left; /* Alinha o texto à esquerda */
+    font-size: 1rem;
+    margin: 0; /* Remove margens externas */
+    padding: 0; /* Remove espaçamentos internos */
+    display: block; /* Garante que as alternativas fiquem empilhadas */
+}
+
+.alternativa {
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    padding: 0; /* Remove o espaçamento interno */
+    margin: 0; /* Remove o espaçamento entre alternativas */
+    display: block; /* Força cada alternativa a ocupar uma linha */
+    text-align: left; /* Garante alinhamento do texto à esquerda */
+    border: none; /* Remove borda, se preferir */
+    line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
+    margin-left: 100px; /* Adiciona 100px de espaço à esquerda */
+}
+
+
+
+
 /* Responsividade - Para telas pequenas (celular) */
 @media (max-width: 768px) {
     .content {
@@ -127,6 +298,26 @@ nav.hidden {
         width: 100%; /* Cada divisão ocupa 100% da largura */
         margin-bottom: 10px; /* Ajuste de espaço para celular */
     }
+
+   .enunciado {
+    width: 100%; /* No celular, ocupa toda a largura */
+    margin: 0 auto; /* Centraliza no desktop */
+    padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+            }
+    .nota {
+        width: 100%; /* No desktop, limita a largura a 70% */
+        padding: 0; /* Remove o padding extra */
+    }
+    .tabela {
+    width: 100%; /* Limita a  máxima da página */
+    margin-left: 0; /* Remove o alinhamento centralizado */
+    border-collapse: collapse;
+    margin-top: 1rem; /* Mantém o espaçamento acima */
+     margin-right: 0; /* Garante que não haja margem à direita */
+    }
+
+    
 }
 
 /* Exibindo o conteúdo ativo */
