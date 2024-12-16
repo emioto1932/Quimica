@@ -1122,3 +1122,11 @@ document.getElementById("group-select").addEventListener("change", function() {
     groupImage.style.display = "block";
   }
 });
+
+
+// pergunta e resposta sobre os grupos cima para baixo
+    function mostrarResposta(id) {
+      const resposta = document.getElementById(id);
+      resposta.style.display = resposta.style.display === 'block' ? 'none' : 'block';
+    }
+ 
