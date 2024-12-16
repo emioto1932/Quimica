@@ -1,51 +1,54 @@
-let angleX = 0; // Ângulo de rotação no eixo X
-let angleY = 0; // Ângulo de rotação no eixo Y
-let cubeSize = 100; // Tamanho do cubo
+let angleXRed = 0; // Ângulo de rotação do cubo vermelho (eixo X)
+let angleYRed = 0; // Ângulo de rotação do cubo vermelho (eixo Y)
+let angleXYellow = 0; // Ângulo de rotação do cubo amarelo (eixo X)
+let angleYYellow = 0; // Ângulo de rotação do cubo amarelo (eixo Y)
+let cubeSize = 150; // Tamanho do cubo
 
 function setup() {
-    const canvas = createCanvas(600, 400, WEBGL);
+    const canvas = createCanvas(700, 500, WEBGL);
     canvas.parent('p5-container'); // Anexa o canvas ao contêiner no HTML
 }
 
 function draw() {
     background(240);
-    lights(); // Adiciona luz à cena
+    lights(); // Adiciona iluminação à cena
 
-    // Cubo vermelho com bolinhas brancas
+    // Cubo Vermelho (com bolinhas brancas)
     push();
-    rotateX(angleX);
-    rotateY(angleY);
+    rotateX(angleXRed);
+    rotateY(angleYRed);
     stroke(0);
     strokeWeight(1);
-    fill(255, 0, 0); // Vermelho
-    drawCubeWithDots(); // Desenha o cubo com bolinhas
-    drawLabelsRedCube(); // Desenha os rótulos do cubo vermelho
+    fill(255, 0, 0); // Cor vermelha
+    drawCubeWithDots();
+    drawLabelsRedCube();
     pop();
 
-    // Cubo dourado (Sódio) com massa
+    // Cubo Amarelo (Sódio) com massa
     push();
-    translate(200, 0, 0); // Posiciona o cubo ao lado
-    rotateX(angleX * 1.5);
-    rotateY(angleY * 1.5);
+    translate(250, 0, 0); // Move o cubo para o lado direito
+    rotateX(angleXYellow);
+    rotateY(angleYYellow);
     stroke(0);
     strokeWeight(1);
-    fill(255, 215, 0); // Dourado
-    box(cubeSize); // Cubo com 100px
-    drawMassLabel(); // Desenha a massa no cubo
+    fill(255, 215, 0); // Cor dourada (Sódio)
+    box(cubeSize);
+    drawMassLabel();
     pop();
 
-    // Incremento dos ângulos para animação
-    angleX += radians(1);
-    angleY += radians(1);
+    // Atualiza os ângulos para rotação lenta
+    angleXRed += radians(0.5);
+    angleYRed += radians(0.4);
+    angleXYellow += radians(0.3);
+    angleYYellow += radians(0.6);
 }
 
 // Desenha o cubo vermelho com bolinhas brancas
 function drawCubeWithDots() {
-    box(cubeSize); // Cubo principal
-    let dotSize = 10;
+    box(cubeSize); // Desenha o cubo
+    let dotSize = 10; // Tamanho das bolinhas
 
-    // Adiciona bolinhas brancas nas faces
-    fill(255); // Branco
+    fill(255); // Cor branca
     noStroke();
 
     // Face 1: 1 bolinha
@@ -106,29 +109,30 @@ function drawLabelsRedCube() {
     textSize(12);
     textAlign(CENTER, CENTER);
 
-    // Escreve "1 cm" em cada aresta
-    push();
-    translate(0, cubeSize / 2 + 15, 0);
-    rotateX(HALF_PI);
-    text("1 cm", 0, 0);
-    pop();
-
-    // Escreve "1 cm³" abaixo do cubo
+    // Texto abaixo do cubo
     push();
     translate(0, cubeSize + 20, 0);
     text("1 cm³", 0, 0);
     pop();
+
+    // Escreve "1 cm" em cada aresta
+    for (let i = 0; i < 4; i++) {
+        push();
+        rotateZ(PI / 2 * i);
+        translate(0, cubeSize / 2 + 10, 0);
+        text("1 cm", 0, 0);
+        pop();
+    }
 }
 
-// Desenha a massa no cubo dourado
+// Desenha a massa no cubo amarelo
 function drawMassLabel() {
     fill(0); // Preto
-    textSize(12);
+    textSize(14);
     textAlign(CENTER, CENTER);
 
-    // Massa (15 g)
     push();
-    translate(0, 0, cubeSize / 2 + 10);
+    translate(0, 0, cubeSize / 2 + 20);
     text("Massa: 15 g", 0, 0);
     pop();
 }
