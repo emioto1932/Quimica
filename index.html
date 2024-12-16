@@ -31,13 +31,27 @@
 
     <header> 
 
-        <button id="menu-button" class="menu-icon">☰</button> 
+        <div class="menu-container">
+        <button id="menu-button" class="menu-icon" aria-label="Abrir menu">☰ MENU</button>
+    </div>
+    <div class="title-container">
+        <h1 class="title-right">O que você precisa saber para entender a química</h1>
+        <p class="construction-note">
+            Este site está em construção. Enquanto finalizamos, explore o conteúdo já disponível!
+        </p>
+    </div>
 
-        <h1>O que você precisa saber para entender a química</h1> 
 
+
+
+
+
+        
         <nav id="menu" class="hidden"> 
 
             <ul> 
+
+ 
 
                 <li><a href="#" data-topic="distribuição-eletrônica">Distribuição eletrônica</a></li> 
 
@@ -61,9 +75,16 @@
 
     </header> 
 
-    <main> 
+ 
 
-        <h2 id="selected-topic">Escolha um tema no menu</h2> 
+    <main>  
+
+  
+
+        <h2 id="selected-topic">Escolha um tema no menu</h2>  
+
+
+        
 
         <div class="container" id="content-container"> 
 
@@ -73,14 +94,15 @@
 
                 <div class="image-container"> 
 
-                    <img src="img/distribuicao_eletronica.jpg" alt="Distribuição Eletrônica"> 
+                    <img src="img/DistruicaoEletronicaSodio.jpg" alt="Distribuição Eletrônica"> 
+                  
 
                     <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
 
                 </div> 
 
                 <div class="text-container"> 
-
+                   
                     <p>A <span class="highlight">distribuição eletrônica</span> é o processo que descreve como os elétrons se distribuem nas camadas ao redor do núcleo de um átomo, de acordo com o modelo atômico de <span class="highlight">Niels Bohr (1913)</span>. Esse modelo ajuda a entender como os elétrons ocupam diferentes camadas de energia, que podem ser representadas como órbitas ao redor do núcleo.</p> 
 
                  <table> 
@@ -122,33 +144,20 @@
                         </tr> 
 
                     </table> 
+  <a href="anima.html" target="_blank">Clique aqui para o <span class="highlight">Simulador de Distribuição Eletrônica</span></a> 
 
                 </div> 
 
 
-                <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                    <div class="enim-container">
-                        <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                        
-                        <!-- Questão 1 -->
-                        <div class="enim-question">
-                            <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ01-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ01-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ01-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
                         </div>
-                
-                        <!-- Questão 2 -->
-                        <div class="enim-question">
-                            <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                        </div>
-                
-                        <!-- Questão 3 -->
-                        <div class="enim-question">
-                            <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                        </div>
-                    </div>
-                
+             
 
             </div> 
 
@@ -184,28 +193,20 @@
 
 
                 <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                    <div class="enim-container">
-                        <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                        
-                        <!-- Questão 1 -->
-                        <div class="enim-question">
-                            <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                        </div>
-                
-                        <!-- Questão 2 -->
-                        <div class="enim-question">
-                            <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                        </div>
-                
-                        <!-- Questão 3 -->
-                        <div class="enim-question">
-                            <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                        </div>
-    </div>
 
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ02-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ02-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ02-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+
+
+
+                
             </div> 
 
             <div id="ligação-iônica" class="content hidden"> 
@@ -247,30 +248,19 @@
                             <p>A <span class="highlight">ligação iônica</span> é, portanto, o resultado da <span class="highlight">transferência de elétrons</span> entre os átomos, formando íons de cargas opostas que se atraem fortemente.</p>
 
                 </div> 
-                        <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                        <div class="enim-container">
-                            <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                            
-                            <!-- Questão 1 -->
-                            <div class="enim-question">
-                                <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                                <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                            </div>
-                    
-                            <!-- Questão 2 -->
-                            <div class="enim-question">
-                                <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                                <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                            </div>
-                    
-                            <!-- Questão 3 -->
-                            <div class="enim-question">
-                                <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                                <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                            </div>
+
+
+                
+                       <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ03-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ03-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ03-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
                         </div>
 
-
+                
                 
             </div> 
 
@@ -313,29 +303,15 @@
 
                 </div> 
 
-            <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                <div class="enim-container">
-                    <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                    
-                    <!-- Questão 1 -->
-                    <div class="enim-question">
-                        <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                    </div>
-            
-                    <!-- Questão 2 -->
-                    <div class="enim-question">
-                        <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                    </div>
-            
-                    <!-- Questão 3 -->
-                    <div class="enim-question">
-                        <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                    </div>
-                    </div>
-
+                         
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ04-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ04-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ04-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
 
                 
             </div> 
@@ -385,28 +361,14 @@
                         </ul>
                 </div> 
 
-                <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                    <div class="enim-container">
-                        <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                        
-                        <!-- Questão 1 -->
-                        <div class="enim-question">
-                            <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ05-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ05-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ05-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
                         </div>
-                
-                        <!-- Questão 2 -->
-                        <div class="enim-question">
-                            <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                        </div>
-                
-                        <!-- Questão 3 -->
-                        <div class="enim-question">
-                            <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                        </div>
-                    </div>
 
 
 
@@ -473,29 +435,14 @@
                     <p>Em uma molécula, a <span class="highlight">polaridade</span> e a forma geométrica dependem da diferença de eletronegatividade entre os átomos envolvidos e da presença de pares de elétrons livres. A diferença de eletronegatividade entre os átomos determina se a molécula será <span class="highlight">polar</span> ou <span class="highlight">apolar</span>.</p>
                 </div> 
 
-        <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-            <div class="enim-container">
-                <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                
-                <!-- Questão 1 -->
-                <div class="enim-question">
-                    <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                    <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                </div>
-        
-                <!-- Questão 2 -->
-                <div class="enim-question">
-                    <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                    <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                </div>
-        
-                <!-- Questão 3 -->
-                <div class="enim-question">
-                    <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                    <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                </div>
-            </div>
-
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ06-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ06-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ06-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
 
                 
             </div> 
@@ -523,30 +470,14 @@
                 </div> 
 
             
-            <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                <div class="enim-container">
-                    <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                    
-                    <!-- Questão 1 -->
-                    <div class="enim-question">
-                        <img src="img/questao1_enem.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                    </div>
-            
-                    <!-- Questão 2 -->
-                    <div class="enim-question">
-                        <img src="img/questao2_enem.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                    </div>
-            
-                    <!-- Questão 3 -->
-                    <div class="enim-question">
-                        <img src="img/questao3_enem.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                    </div>
-                </div>
-
-
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ07-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ07-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ07-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
 
                 
             </div> 
@@ -556,7 +487,6 @@
                 <div class="image-container"> 
 
                     <img src="img/forca_intermolecular_ponte_de_hidrogenio.jpg" alt="Forças Intermoleculares"> 
-
                     <a href="https://www.youtube.com/" target="_blank">Clique aqui para o vídeo</a> 
 
                 </div> 
@@ -638,28 +568,19 @@
 
                 
 
-                            <!-- Nova Divisão: Questões do ENEM Resolvidos nos Vídeos -->
-                <div class="enim-container">
-                    <h3>Questões do Enem Resolvidos nos Vídeos</h3>
-                    
-                    <!-- Questão 1 -->
-                    <div class="enim-question">
-                        <img src="img/LQ08ex01-2011-ponte-hidrogenio.jpg" alt="Questão 1 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da Questão 1</a>
-                    </div>
-            
-                    <!-- Questão 2 -->
-                    <div class="enim-question">
-                        <img src="img/LQ08ex03-2012- relacao-polar-e-apolar.jpg" alt="Questão 2 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da Questão 2</a>
-                    </div>
-            
-                    <!-- Questão 3 -->
-                    <div class="enim-question">
-                        <img src="img/LQ08ex02-2012- relacao-polar-e-apolar.jpg" alt="Questão 3 - ENEM" class="enim-image">
-                        <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da Questão 3</a>
-                    </div>
-                </div>
+                         <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ08-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ08-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ08-exercicio3.html" target="_blank">Questão 3</a></li>
+                            <li><a href="LQ08-exercicio4.html" target="_blank">Questão 4</a></li>
+                            <li><a href="LQ08-exercicio5.html" target="_blank">Questão 5</a></li>
+                            <li><a href="LQ08-exercicio6.html" target="_blank">Questão 6</a></li>
+                            <li><a href="LQ08-exercicio7.html" target="_blank">Questão 7</a></li>
+                            <li><a href="LQ08-exercicio8.html" target="_blank">Questão 8</a></li>
+                        </ul>
+                        </div>
 
 
 
@@ -680,10 +601,10 @@
         </p> 
        <p style="font-size: 1em; text-align: center; color: #777; margin-top: 20px;"> As questões do Exame Nacional do Ensino Médio (Enem) estão disponíveis no site oficial do INEP: <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos</a></p>
        </p>
-           
 
         </footer> 
-
+       <p style="font-size: 1em; text-align: center; color: #777; margin-top: 20px;"> Os cartazes foram elaborados na prática experimental da turma 2A de 2024, EE Prof. Maria Augusta de Ávila. </p>
+       </p>
     <script src="script.js"></script> 
 
 </body> 
