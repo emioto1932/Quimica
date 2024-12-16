@@ -8,182 +8,29 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
-
-.cubos {
-    position: relative;
-}
-
-.cubos-animado {
-    width: 100px;
-    height: 100px;
-    transform-style: preserve-3d;
-    transform: rotateX(30deg) rotateY(45deg);
-    animation: rotateCube 6s infinite linear;
-}
-
-.face {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-}
-
-#face1 {
-    transform: rotateY(0deg) translateZ(50px);
-}
-
-#face2 {
-    transform: rotateY(90deg) translateZ(50px);
-}
-
-#face3 {
-    transform: rotateY(180deg) translateZ(50px);
-}
-
-#face4 {
-    transform: rotateY(270deg) translateZ(50px);
-}
-
-#face5 {
-    transform: rotateX(90deg) translateZ(50px);
-}
-
-#face6 {
-    transform: rotateX(-90deg) translateZ(50px);
-}
-
-@keyframes rotateCube {
-    0% { transform: rotateX(30deg) rotateY(45deg); }
-    100% { transform: rotateX(30deg) rotateY(405deg); }
-}
-
-.cubos-parado {
-    width: 150px;
-    position: relative;
-    padding-top: 20px;
-}
-
-.caixa {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(0deg) rotateY(0deg);
-    animation: none;
-}
-
-.face-cubo {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: lightgray;
-    border: 2px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-}
-
-.face-cubo:nth-child(1) {
-    transform: translateZ(50px);
-    background-color: white;
-}
-
-.face-cubo:nth-child(2) {
-    transform: rotateY(90deg) translateZ(50px);
-}
-
-.face-cubo:nth-child(3) {
-    transform: rotateY(180deg) translateZ(50px);
-}
-
-.face-cubo:nth-child(4) {
-    transform: rotateY(270deg) translateZ(50px);
-}
-
-.face-cubo:nth-child(5) {
-    transform: rotateX(90deg) translateZ(50px);
-}
-
-.face-cubo:nth-child(6) {
-    transform: rotateX(-90deg) translateZ(50px);
-}
-
-.texto {
     text-align: center;
-    font-size: 14px;
+    padding: 20px;
+}
+
+h1 {
     color: #333;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.cubos-massa {
-    margin-top: 20px;
-    position: relative;
-}
-
-.cubos-ouro {
-    width: 100px;
-    height: 100px;
-    transform-style: preserve-3d;
-    transform: rotateX(30deg) rotateY(45deg);
-    animation: rotateCubeOuro 6s infinite linear;
-}
-
-.face-ouro {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+p {
+    color: #555;
+    margin-bottom: 20px;
     font-size: 14px;
-    font-weight: bold;
-    color: white;
-    padding: 5px;
 }
 
-#faceOuro1 {
-    transform: rotateY(0deg) translateZ(50px);
-}
-
-#faceOuro2 {
-    transform: rotateY(90deg) translateZ(50px);
-}
-
-#faceOuro3 {
-    transform: rotateY(180deg) translateZ(50px);
-}
-
-#faceOuro4 {
-    transform: rotateY(270deg) translateZ(50px);
-}
-
-#faceOuro5 {
-    transform: rotateX(90deg) translateZ(50px);
-}
-
-#faceOuro6 {
-    transform: rotateX(-90deg) translateZ(50px);
-}
-
-@keyframes rotateCubeOuro {
-    0% { transform: rotateX(30deg) rotateY(45deg); }
-    100% { transform: rotateX(30deg) rotateY(405deg); }
+#p5-container {
+    width: 100%;
+    height: 400px;
 }
