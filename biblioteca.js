@@ -1,79 +1,68 @@
-let cubeSize = 20;
-let angle = 0;
-let provetaY = 0;
+let liquidLevel = 60; // Nível do líquido (ajustável)
 
 function setup() {
-  createCanvas(800, 600, WEBGL);
+  createCanvas(800, 600, WEBGL); // Configura o canvas 3D
 }
 
 function draw() {
-  background(240);
-  lights();
+  background(240); // Fundo cinza claro
+  lights(); // Adiciona iluminação
 
-  // Cubo vermelho
-  push();
-  translate(-100, sin(frameCount * 0.01) * 50, 0);
-  rotateY(angle);
-  drawCube("red", "1 cm³", true);
-  pop();
-
-  // Cubo amarelo
-  push();
-  translate(100, cos(frameCount * 0.01) * 50, 0);
-  rotateY(angle);
-  drawCube("yellow", "19 g", false);
-  pop();
-
-  // Proveta
-  push();
-  translate(0, 100 + provetaY, 0);
+  // Desenha a proveta
   drawGraduatedCylinder();
+}
+
+// Função principal da proveta
+function drawGraduatedCylinder() {
+  push();
+  // Corpo da proveta
+  noStroke();
+  fill(200, 230, 255, 80); // Transparência azul clara
+  cylinder(40, 200); // Cilindro da proveta
+
+  // Base hexagonal sólida
+  push();
+  translate(0, 100, 0); // Desce até a base
+  rotateX(HALF_PI);
+  fill(100, 100, 100, 150); // Cinza semi-transparente
+  cylinder(45, 10, 6); // Hexágono na base
   pop();
 
-  angle += 0.01;
+  // Marcas graduadas
+  drawGraduations();
+
+  // Faixa do líquido
+  drawLiquid();
+  pop();
 }
 
-function drawCube(colorName, label, withDots) {
-  fill(colorName === "red" ? [255, 0, 0] : [255, 215, 0]);
-  stroke(0);
-  box(cubeSize);
-
-  fill(0);
-  textSize(12);
-  textAlign(CENTER, CENTER);
-  text(label, 0, cubeSize + 15);
-
-  if (withDots) {
-    fill(255);
-    for (let i = 1; i <= 6; i++) {
-      push();
-      translate(0, 0, cubeSize / 2 + 1);
-      ellipse(0, 0, 5, 5);
-      pop();
-    }
-  }
-}
-
-function drawGraduatedCylinder() {
-  fill(200, 230, 255, 100);
-  noStroke();
-  cylinder(30, 200);
-
-  translate(0, 100, 0);
-  rotateX(HALF_PI);
-  fill(150, 150, 150, 150);
-  cylinder(40, 10, 6);
-
+// Função para desenhar as graduações
+function drawGraduations() {
   push();
-  stroke(0);
-  for (let i = -90; i <= 90; i += 20) {
-    line(-15, i, 15, i);
+  stroke(0); // Linhas pretas
+  for (let i = -90; i <= 90; i += 20) { // Intervalos de 1 mL
+    line(-20, i, 20, i); // Linhas horizontais
   }
-  textSize(10);
+
+  // Números das graduações
+  textSize(12);
   fill(0);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
   for (let j = 0; j <= 10; j++) {
-    text(`${j} mL`, 25, -90 + j * 20);
+    push();
+    translate(30, -100 + j * 20, 0); // Ajusta posição dos números
+    rotateY(HALF_PI); // Gira para leitura correta
+    text(`${j} mL`, 0, 0);
+    pop();
   }
+  pop();
+}
+
+// Função para desenhar o líquido na proveta
+function drawLiquid() {
+  push();
+  fill(0, 100, 255, 150); // Azul mais forte com transparência
+  translate(0, -100 + liquidLevel / 2, 0); // Ajusta o nível do líquido
+  cylinder(38, liquidLevel); // Cilindro interno representando o líquido
   pop();
 }
