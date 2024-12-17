@@ -115,14 +115,16 @@ function drawLabelsRedCube() {
     text("1 cm³", 0, 0);
     pop();
 
-    // Escreve "1 cm" em cada aresta
-    for (let i = 0; i < 4; i++) {
-        push();
-        rotateZ(PI / 2 * i);
-        translate(0, cubeSize / 2 + 10, 0);
-        text("1 cm", 0, 0);
-        pop();
-    }
+    // Escreve "1 cm" nas arestas do cubo
+    push();
+    textSize(12);
+    text("1 cm", cubeSize / 2 + 20, 0, 0);
+    text("1 cm", -cubeSize / 2 - 20, 0, 0);
+    text("1 cm", 0, cubeSize / 2 + 20, 0);
+    text("1 cm", 0, -cubeSize / 2 - 20, 0);
+    text("1 cm", 0, 0, cubeSize / 2 + 20);
+    text("1 cm", 0, 0, -cubeSize / 2 - 20);
+    pop();
 }
 
 // Desenha a massa no cubo amarelo
@@ -133,6 +135,6 @@ function drawMassLabel() {
 
     push();
     translate(0, 0, cubeSize / 2 + 20);
-    text("Massa: 15 g", 0, 0);
+    text("Massa: 19 g", 0, 0);
     pop();
 }
