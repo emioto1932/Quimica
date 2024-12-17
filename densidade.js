@@ -8,7 +8,7 @@ let elementos = [
 ];
 
 function setup() {
-  noCanvas(); // Desabilita a tela principal do p5.js
+  noCanvas();
   elementos.forEach(elemento => {
     let celula = document.getElementById(elemento.id);
     if (celula) {
@@ -18,30 +18,40 @@ function setup() {
 }
 
 function criarCubo(container, elemento) {
-  let canvas = createGraphics(100, 100, WEBGL); // Canvas do cubo
+  let canvas = createCanvas(80, 80, WEBGL);
   canvas.parent(container);
-
-  container.style.backgroundColor = `rgb(${elemento.cor[0]}, ${elemento.cor[1]}, ${elemento.cor[2]})`;
-  container.innerHTML += `
-    <div style="margin-top: 10px;">
-      <strong>${elemento.simbolo}</strong> (${elemento.nome})<br>
-      Densidade: ${elemento.densidade}
-    </div>
-  `;
 
   let angulo = 0;
 
-  canvas.draw = function () {
+  function drawCubo() {
     background(240);
     lights();
+    rotateY(angulo);
+    fill(elemento.cor);
     if (elemento.tipo === "gas") {
-      fill(255, 255, 255, 50);
-      sphere(50);
+      noFill();
+      stroke(100);
+      box(50);
     } else {
-      fill(elemento.cor);
-      rotateY(angulo);
       box(50);
     }
     angulo += 0.02;
-  };
+  }
+
+  container.querySelector("canvas").id = "cubo-" + elemento.id;
+  let sketch = new p5((p) => {
+    p.setup = () => {
+      p.createCanvas(80, 80, p.WEBGL).parent(container);
+    };
+    p.draw = drawCubo;
+  });
+
+  // Adiciona texto diretamente
+  let info = document.createElement("div");
+  info.innerHTML = `
+    <strong>${elemento.simbolo}</strong><br>
+    ${elemento.nome}<br>
+    Densidade: ${elemento.densidade}
+  `;
+  container.appendChild(info);
 }
