@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
   text-align: center;
+  background-color: #f4f4f9;
 }
 
 h1 {
@@ -10,29 +10,31 @@ h1 {
   color: #333;
 }
 
-.tabela-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.tabela {
+  display: grid;
+  grid-template-columns: repeat(4, 150px);
   gap: 10px;
-}
-
-.linha {
-  display: flex;
-  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
 }
 
 .celula {
   width: 150px;
-  height: 200px;
-  border: 1px solid #ddd;
+  height: 150px;
+  border: 1px solid #ccc;
   background-color: #fff;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.celula p {
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
 }
