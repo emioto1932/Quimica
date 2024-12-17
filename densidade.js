@@ -158,4 +158,17 @@ function drawLabelsRedCube() {
     // Escreve "1 cm" nas arestas do cubo
     push();
     textSize(12);
-    text("
+    text("1 cm", 0, -cubeSize / 2 - 10);
+    text("1 cm", 0, cubeSize / 2 + 10);
+    text("1 cm", cubeSize / 2 + 10, 0);
+    text("1 cm", -cubeSize / 2 - 10, 0);
+    pop();
+}
+
+// Desenha o rótulo de massa no cubo amarelo (sódio)
+function drawMassLabel() {
+    fill(0); // Preto
+    textSize(16);
+    textAlign(CENTER, CENTER);
+    text("19 g", 0, 0);
+}
