@@ -9,9 +9,9 @@ const elementos = [
 
 elementos.forEach(elemento => {
   const container = document.getElementById(elemento.id);
-
   if (container) {
-    const sketch = (p) => {
+    // Criação do sketch individual
+    new p5((p) => {
       let angulo = 0;
 
       p.setup = () => {
@@ -23,24 +23,15 @@ elementos.forEach(elemento => {
         p.lights();
         p.rotateY(angulo);
         p.fill(elemento.cor);
-        p.stroke(50);
+        p.stroke(0);
         p.box(50);
         angulo += 0.02;
       };
-    };
+    });
 
-    new p5(sketch);
-
-    // Adiciona o texto do elemento
-    const info = document.createElement("div");
-    info.innerHTML = `
-      <strong>${elemento.simbolo}</strong><br>
-      ${elemento.nome}<br>
-      Densidade: ${elemento.densidade}
-    `;
-    info.style.position = "absolute";
-    info.style.bottom = "10px";
-    info.style.fontSize = "12px";
-    container.appendChild(info);
+    // Adiciona o texto com densidade
+    const texto = document.createElement("p");
+    texto.innerHTML = `<strong>${elemento.simbolo}</strong> (${elemento.nome})<br>Densidade: ${elemento.densidade}`;
+    container.appendChild(texto);
   }
 });
