@@ -2,16 +2,19 @@ let angleXRed = 0; // Ângulo de rotação do cubo vermelho (eixo X)
 let angleYRed = 0; // Ângulo de rotação do cubo vermelho (eixo Y)
 let angleXYellow = 0; // Ângulo de rotação do cubo amarelo (eixo X)
 let angleYYellow = 0; // Ângulo de rotação do cubo amarelo (eixo Y)
-let cubeSize = 150; // Tamanho do cubo
+let cubeSize = 90; // Tamanho do cubo (reduzido em 40%)
 
 function setup() {
-    const canvas = createCanvas(700, 500, WEBGL);
+    const canvas = createCanvas(700, 600, WEBGL);
     canvas.parent('p5-container'); // Anexa o canvas ao contêiner no HTML
 }
 
 function draw() {
     background(240);
     lights(); // Adiciona iluminação à cena
+
+    // Proveta com as marcações de volume
+    drawBeaker();
 
     // Cubo Vermelho (com bolinhas brancas)
     push();
@@ -41,6 +44,34 @@ function draw() {
     angleYRed += radians(0.4);
     angleXYellow += radians(0.3);
     angleYYellow += radians(0.6);
+}
+
+// Desenha a proveta com marcações de 1 cm³ (1 mL)
+function drawBeaker() {
+    // Desenhando a proveta
+    push();
+    translate(-250, 0, 0); // Move a proveta para a esquerda
+    noFill();
+    stroke(0);
+    strokeWeight(2);
+    beginShape();
+    vertex(-40, -150); // Topo da proveta
+    vertex(40, -150);  // Topo da proveta
+    vertex(40, 200);   // Fundo da proveta
+    vertex(-40, 200);  // Fundo da proveta
+    endShape(CLOSE);
+
+    // Desenhando as marcações de volume (1 mL = 1 cm³)
+    let startY = -140;
+    for (let i = 1; i <= 10; i++) {
+        line(-35, startY, 35, startY); // Marca de 1 mL
+        textSize(14);
+        fill(0);
+        textAlign(CENTER, CENTER);
+        text(i + " mL", 0, startY + 10); // Número da marca
+        startY += 30; // Distância entre as marcas
+    }
+    pop();
 }
 
 // Desenha o cubo vermelho com bolinhas brancas
