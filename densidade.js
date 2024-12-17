@@ -2,7 +2,7 @@ let angleXRed = 0; // Ângulo de rotação do cubo vermelho (eixo X)
 let angleYRed = 0; // Ângulo de rotação do cubo vermelho (eixo Y)
 let angleXYellow = 0; // Ângulo de rotação do cubo amarelo (eixo X)
 let angleYYellow = 0; // Ângulo de rotação do cubo amarelo (eixo Y)
-let cubeSize = 90; // Tamanho do cubo (reduzido em 40%)
+let cubeSize = 45; // Tamanho reduzido do cubo (50% menor)
 
 function setup() {
     const canvas = createCanvas(700, 600, WEBGL);
@@ -46,25 +46,34 @@ function draw() {
     angleYYellow += radians(0.6);
 }
 
-// Desenha a proveta com marcações de 1 cm³ (1 mL)
+// Desenha a proveta como um cilindro com boca aberta
 function drawBeaker() {
-    // Desenhando a proveta
     push();
     translate(-250, 0, 0); // Move a proveta para a esquerda
-    noFill();
+
+    // Desenhando a boca da proveta
+    fill(255);
     stroke(0);
     strokeWeight(2);
     beginShape();
-    vertex(-40, -150); // Topo da proveta
-    vertex(40, -150);  // Topo da proveta
-    vertex(40, 200);   // Fundo da proveta
-    vertex(-40, 200);  // Fundo da proveta
+    vertex(-30, -150); // Topo da boca
+    vertex(30, -150);
+    vertex(30, -130);
+    vertex(-30, -130);
     endShape(CLOSE);
 
-    // Desenhando as marcações de volume (1 mL = 1 cm³)
-    let startY = -140;
+    // Corpo do cilindro
+    beginShape();
+    vertex(-30, -130);
+    vertex(30, -130);
+    vertex(30, 200);
+    vertex(-30, 200);
+    endShape(CLOSE);
+
+    // Marcações de 1 mL
+    let startY = -120;
     for (let i = 1; i <= 10; i++) {
-        line(-35, startY, 35, startY); // Marca de 1 mL
+        line(-25, startY, 25, startY); // Marca de 1 mL
         textSize(14);
         fill(0);
         textAlign(CENTER, CENTER);
@@ -77,7 +86,7 @@ function drawBeaker() {
 // Desenha o cubo vermelho com bolinhas brancas
 function drawCubeWithDots() {
     box(cubeSize); // Desenha o cubo
-    let dotSize = 10; // Tamanho das bolinhas
+    let dotSize = 5; // Tamanho das bolinhas
 
     fill(255); // Cor branca
     noStroke();
@@ -149,12 +158,12 @@ function drawLabelsRedCube() {
     // Escreve "1 cm" nas arestas do cubo
     push();
     textSize(12);
-    text("1 cm", cubeSize / 2 + 20, 0, 0);
-    text("1 cm", -cubeSize / 2 - 20, 0, 0);
-    text("1 cm", 0, cubeSize / 2 + 20, 0);
-    text("1 cm", 0, -cubeSize / 2 - 20, 0);
-    text("1 cm", 0, 0, cubeSize / 2 + 20);
-    text("1 cm", 0, 0, -cubeSize / 2 - 20);
+    text("1 cm", cubeSize / 2 + 10, 0, 0);
+    text("1 cm", -cubeSize / 2 - 10, 0, 0);
+    text("1 cm", 0, cubeSize / 2 + 10, 0);
+    text("1 cm", 0, -cubeSize / 2 - 10, 0);
+    text("1 cm", 0, 0, cubeSize / 2 + 10);
+    text("1 cm", 0, 0, -cubeSize / 2 - 10);
     pop();
 }
 
