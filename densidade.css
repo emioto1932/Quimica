@@ -23,8 +23,8 @@ h1 {
 }
 
 .celula {
-  width: 120px;
-  height: 150px;
+  width: 150px;
+  height: 200px;
   border: 1px solid #ddd;
   background-color: #fff;
   display: flex;
