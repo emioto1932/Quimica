@@ -1,180 +1,74 @@
-let angleXRed = 0; // Ângulo de rotação do cubo vermelho (eixo X)
-let angleYRed = 0; // Ângulo de rotação do cubo vermelho (eixo Y)
-let angleXYellow = 0; // Ângulo de rotação do cubo amarelo (eixo X)
-let angleYYellow = 0; // Ângulo de rotação do cubo amarelo (eixo Y)
-let cubeSize = 45; // Tamanho reduzido do cubo (50% menor)
+let cuboSize = 40; // Tamanho padrão dos cubos
+let elementos = [
+  { simbolo: "H", densidade: "0.09", cor: [200, 200, 255], tipo: "gas" },
+  { simbolo: "Li", densidade: "0.53", cor: [255, 100, 100], tipo: "metal" },
+  { simbolo: "Na", densidade: "0.97", cor: [255, 255, 0], tipo: "metal" },
+  { simbolo: "K", densidade: "0.86", cor: [150, 100, 255], tipo: "metal" },
+  { simbolo: "Rb", densidade: "1.53", cor: [255, 165, 0], tipo: "metal" },
+  { simbolo: "Cs", densidade: "1.93", cor: [255, 215, 0], tipo: "metal" },
+  { simbolo: "Fr", densidade: "–", cor: [100, 255, 200], tipo: "metal" }
+];
 
 function setup() {
-    const canvas = createCanvas(700, 600, WEBGL);
-    canvas.parent('p5-container'); // Anexa o canvas ao contêiner no HTML
+  let canvas = createCanvas(800, 800, WEBGL);
+  canvas.parent("tabela");
 }
 
 function draw() {
-    background(240);
-    lights(); // Adiciona iluminação à cena
+  background(240);
+  lights();
+  orbitControl(); // Permite mover a câmera para visualizar a tabela
 
-    // Proveta com as marcações de volume
-    drawBeaker();
+  let xOffset = -300;
+  let yOffset = -300;
 
-    // Cubo Vermelho (com bolinhas brancas)
-    push();
-    rotateX(angleXRed);
-    rotateY(angleYRed);
-    stroke(0);
-    strokeWeight(1);
-    fill(255, 0, 0); // Cor vermelha
-    drawCubeWithDots();
-    drawLabelsRedCube();
-    pop();
-
-    // Cubo Amarelo (Sódio) com massa
-    push();
-    translate(250, 0, 0); // Move o cubo para o lado direito
-    rotateX(angleXYellow);
-    rotateY(angleYYellow);
-    stroke(0);
-    strokeWeight(1);
-    fill(255, 215, 0); // Cor dourada (Sódio)
-    box(cubeSize);
-    drawMassLabel();
-    pop();
-
-    // Atualiza os ângulos para rotação lenta
-    angleXRed += radians(0.5);
-    angleYRed += radians(0.4);
-    angleXYellow += radians(0.3);
-    angleYYellow += radians(0.6);
-}
-
-// Desenha a proveta como um cilindro com boca aberta
-function drawBeaker() {
-    push();
-    translate(-250, 0, 0); // Move a proveta para a esquerda
-
-    // Desenhando a boca da proveta
-    fill(255);
-    stroke(0);
-    strokeWeight(2);
-    beginShape();
-    vertex(-30, -150); // Topo da boca
-    vertex(30, -150);
-    vertex(30, -130);
-    vertex(-30, -130);
-    endShape(CLOSE);
-
-    // Corpo do cilindro
-    beginShape();
-    vertex(-30, -130);
-    vertex(30, -130);
-    vertex(30, 200);
-    vertex(-30, 200);
-    endShape(CLOSE);
-
-    // Marcações de 1 mL
-    let startY = -120;
-    for (let i = 1; i <= 10; i++) {
-        line(-25, startY, 25, startY); // Marca de 1 mL
-        textSize(14);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        text(i + " mL", 0, startY + 10); // Número da marca
-        startY += 30; // Distância entre as marcas
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 4; col++) {
+      let index = getElementIndex(row, col);
+      if (index !== null) {
+        let elemento = elementos[index];
+        push();
+        translate(xOffset + col * 150, yOffset + row * 150, 0);
+        drawCubo(elemento);
+        if (row == 1) drawText(elemento.simbolo, elemento.densidade);
+        pop();
+      }
     }
-    pop();
+  }
 }
 
-// Desenha o cubo vermelho com bolinhas brancas
-function drawCubeWithDots() {
-    box(cubeSize); // Desenha o cubo
-    let dotSize = 5; // Tamanho das bolinhas
-
-    fill(255); // Cor branca
-    noStroke();
-
-    // Face 1: 1 bolinha
-    push();
-    translate(0, 0, cubeSize / 2 + 1);
-    ellipse(0, 0, dotSize);
-    pop();
-
-    // Face 2: 2 bolinhas
-    push();
-    translate(0, 0, -cubeSize / 2 - 1);
-    ellipse(-10, -10, dotSize);
-    ellipse(10, 10, dotSize);
-    pop();
-
-    // Face 3: 3 bolinhas
-    push();
-    translate(cubeSize / 2 + 1, 0, 0);
-    ellipse(0, -10, dotSize);
-    ellipse(-10, 10, dotSize);
-    ellipse(10, 10, dotSize);
-    pop();
-
-    // Face 4: 4 bolinhas
-    push();
-    translate(-cubeSize / 2 - 1, 0, 0);
-    ellipse(-10, -10, dotSize);
-    ellipse(10, -10, dotSize);
-    ellipse(-10, 10, dotSize);
-    ellipse(10, 10, dotSize);
-    pop();
-
-    // Face 5: 5 bolinhas
-    push();
-    translate(0, -cubeSize / 2 - 1, 0);
-    ellipse(0, 0, dotSize);
-    ellipse(-10, -10, dotSize);
-    ellipse(10, -10, dotSize);
-    ellipse(-10, 10, dotSize);
-    ellipse(10, 10, dotSize);
-    pop();
-
-    // Face 6: 6 bolinhas
-    push();
-    translate(0, cubeSize / 2 + 1, 0);
-    ellipse(-10, -10, dotSize);
-    ellipse(10, -10, dotSize);
-    ellipse(-10, 10, dotSize);
-    ellipse(10, 10, dotSize);
-    ellipse(0, -20, dotSize);
-    ellipse(0, 20, dotSize);
-    pop();
+function getElementIndex(row, col) {
+  let positions = [
+    [0, null, 1, null], // Linha 1: H, -, Li, -
+    [2, null, null, null], // Linha 2: Na
+    [null, 3, null, null], // Linha 3: -, K
+    [4, null, 5, null] // Linha 4: Rb, -, Cs
+  ];
+  return positions[row][col];
 }
 
-// Desenha rótulos no cubo vermelho
-function drawLabelsRedCube() {
-    fill(0); // Preto
-    textSize(12);
-    textAlign(CENTER, CENTER);
+function drawCubo(elemento) {
+  fill(elemento.cor);
+  rotateY(frameCount * 0.01); // Movimento giratório
+  box(cuboSize);
 
-    // Texto abaixo do cubo
+  // Se for hidrogênio, desenha neblina
+  if (elemento.tipo === "gas") {
     push();
-    translate(0, cubeSize + 20, 0);
-    text("1 cm³", 0, 0);
+    fill(255, 255, 255, 50); // Branco semi-transparente
+    translate(0, -cuboSize / 2, 0);
+    sphere(cuboSize * 0.7); // Simula uma neblina ao redor
     pop();
-
-    // Escreve "1 cm" nas arestas do cubo
-    push();
-    textSize(12);
-    text("1 cm", cubeSize / 2 + 10, 0, 0);
-    text("1 cm", -cubeSize / 2 - 10, 0, 0);
-    text("1 cm", 0, cubeSize / 2 + 10, 0);
-    text("1 cm", 0, -cubeSize / 2 - 10, 0);
-    text("1 cm", 0, 0, cubeSize / 2 + 10);
-    text("1 cm", 0, 0, -cubeSize / 2 - 10);
-    pop();
+  }
 }
 
-// Desenha a massa no cubo amarelo
-function drawMassLabel() {
-    fill(0); // Preto
-    textSize(14);
-    textAlign(CENTER, CENTER);
-
-    push();
-    translate(0, 0, cubeSize / 2 + 20);
-    text("Massa: 19 g", 0, 0);
-    pop();
+function drawText(simbolo, densidade) {
+  push();
+  translate(0, cuboSize + 10, 0);
+  rotateX(HALF_PI);
+  fill(0);
+  textSize(18);
+  textAlign(CENTER);
+  text(`${simbolo} - ${densidade} g/cm³`, 0, 0);
+  pop();
 }
