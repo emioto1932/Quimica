@@ -2,7 +2,7 @@ let angleXRed = 0; // Ângulo de rotação do cubo vermelho (eixo X)
 let angleYRed = 0; // Ângulo de rotação do cubo vermelho (eixo Y)
 let angleXYellow = 0; // Ângulo de rotação do cubo amarelo (eixo X)
 let angleYYellow = 0; // Ângulo de rotação do cubo amarelo (eixo Y)
-let cubeSize = 30; // Tamanho reduzido do cubo (aproximadamente 1 cm³)
+let cubeSize = 45; // Tamanho reduzido do cubo (50% menor)
 
 function setup() {
     const canvas = createCanvas(700, 600, WEBGL);
@@ -46,34 +46,34 @@ function draw() {
     angleYYellow += radians(0.6);
 }
 
-// Desenha a proveta como um cilindro com boca estreita e as marcas de 1 mL
+// Desenha a proveta como um cilindro com boca aberta
 function drawBeaker() {
     push();
     translate(-250, 0, 0); // Move a proveta para a esquerda
 
-    // Desenhando a boca da proveta (abertura estreita)
+    // Desenhando a boca da proveta
     fill(255);
     stroke(0);
     strokeWeight(2);
     beginShape();
-    vertex(-15, -150); // Topo da boca
-    vertex(15, -150);
-    vertex(15, -130);
-    vertex(-15, -130);
+    vertex(-30, -150); // Topo da boca
+    vertex(30, -150);
+    vertex(30, -130);
+    vertex(-30, -130);
     endShape(CLOSE);
 
-    // Corpo do cilindro (proveta)
+    // Corpo do cilindro
     beginShape();
-    vertex(-15, -130);
-    vertex(15, -130);
-    vertex(15, 200);
-    vertex(-15, 200);
+    vertex(-30, -130);
+    vertex(30, -130);
+    vertex(30, 200);
+    vertex(-30, 200);
     endShape(CLOSE);
 
-    // Marcações de 1 mL (representando 1 cm³)
+    // Marcações de 1 mL
     let startY = -120;
     for (let i = 1; i <= 10; i++) {
-        line(-12, startY, 12, startY); // Marca de 1 mL
+        line(-25, startY, 25, startY); // Marca de 1 mL
         textSize(14);
         fill(0);
         textAlign(CENTER, CENTER);
@@ -86,7 +86,7 @@ function drawBeaker() {
 // Desenha o cubo vermelho com bolinhas brancas
 function drawCubeWithDots() {
     box(cubeSize); // Desenha o cubo
-    let dotSize = 3; // Tamanho das bolinhas
+    let dotSize = 5; // Tamanho das bolinhas
 
     fill(255); // Cor branca
     noStroke();
@@ -158,17 +158,23 @@ function drawLabelsRedCube() {
     // Escreve "1 cm" nas arestas do cubo
     push();
     textSize(12);
-    text("1 cm", 0, -cubeSize / 2 - 10);
-    text("1 cm", 0, cubeSize / 2 + 10);
-    text("1 cm", cubeSize / 2 + 10, 0);
-    text("1 cm", -cubeSize / 2 - 10, 0);
+    text("1 cm", cubeSize / 2 + 10, 0, 0);
+    text("1 cm", -cubeSize / 2 - 10, 0, 0);
+    text("1 cm", 0, cubeSize / 2 + 10, 0);
+    text("1 cm", 0, -cubeSize / 2 - 10, 0);
+    text("1 cm", 0, 0, cubeSize / 2 + 10);
+    text("1 cm", 0, 0, -cubeSize / 2 - 10);
     pop();
 }
 
-// Desenha o rótulo de massa no cubo amarelo (sódio)
+// Desenha a massa no cubo amarelo
 function drawMassLabel() {
     fill(0); // Preto
-    textSize(16);
+    textSize(14);
     textAlign(CENTER, CENTER);
-    text("19 g", 0, 0);
+
+    push();
+    translate(0, 0, cubeSize / 2 + 20);
+    text("Massa: 19 g", 0, 0);
+    pop();
 }
