@@ -11,10 +11,10 @@ h1 {
 }
 
 .tabela {
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
   margin: 20px auto;
 }
 
