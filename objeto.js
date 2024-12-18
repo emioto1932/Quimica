@@ -1,44 +1,37 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Pegando os parâmetros da URL
+    // Recupera o parâmetro da URL
     const urlParams = new URLSearchParams(window.location.search);
     const propriedade = urlParams.get("propriedade");
-    const grupo = urlParams.get("grupo"); // Recupera o grupo
-    const elemento = urlParams.get("elemento"); // Recupera o elemento químico
 
-    // Exibindo o nome da propriedade na pop-up
-    const propertyNameElement = document.getElementById("propertyName");
-    const groupElement = document.getElementById("groupName"); // Elemento para exibir o grupo
-    const elementNameElement = document.getElementById("elementName"); // Elemento para exibir o nome do elemento
+    // Elementos da página
+    const propertyTitle = document.getElementById("propertyTitle");
+    const propertyIframe = document.getElementById("propertyIframe");
 
+    // Define o título da propriedade e carrega o iframe correspondente
     if (propriedade) {
-        // Definindo o nome da propriedade de acordo com o link clicado
         if (propriedade === "densidade") {
-            propertyNameElement.textContent = "Densidade";
+            propertyTitle.textContent = "Densidade";
+            propertyIframe.src = "densidade.html"; // Carrega a página densidade.html
+        } else if (propriedade === "ponto_fusao") {
+            propertyTitle.textContent = "Ponto de Fusão";
+            propertyIframe.src = "ponto_fusao.html"; // Carrega a página ponto_fusao.html
+        } else if (propriedade === "condutividade") {
+            propertyTitle.textContent = "Condutividade";
+            propertyIframe.src = "condutividade.html"; // Carrega a página condutividade.html
         } else {
-            propertyNameElement.textContent = "Propriedade Não Encontrada";
+            propertyTitle.textContent = "Propriedade Não Encontrada";
         }
     } else {
-        propertyNameElement.textContent = "Propriedade Não Informada";
+        propertyTitle.textContent = "Propriedade Não Informada";
     }
-
-    // Exibindo o grupo e o nome do elemento
-    if (grupo && elemento) {
-        groupElement.textContent = grupo; // Exibe o grupo
-        elementNameElement.textContent = elemento; // Exibe o nome do elemento
-    } else {
-        groupElement.textContent = "Grupo Não Informado";
-        elementNameElement.textContent = "Elemento Não Informado";
-    }
-
-    // Função para abrir a pop-up
-    const popup = document.getElementById("popup");
-    const closePopupBtn = document.getElementById("closePopupBtn");
 
     // Função para fechar a pop-up e voltar para a página anterior
+    const closePopupBtn = document.getElementById("closePopupBtn");
     closePopupBtn.addEventListener("click", function() {
-        window.history.back(); // Volta para a página anterior
+        window.location.href = "anima.html"; // Redireciona para anima.html
     });
 
-    // Abrir pop-up automaticamente quando a página carregar
+    // Exibe a pop-up
+    const popup = document.getElementById("popup");
     popup.style.display = "block";
 });
