@@ -126,6 +126,80 @@
 
 
 
+      <div class="container">
+    <h1>Tendências Periódicas: Como as Propriedades dos Elementos Variam ao Longo do Período</h1>
+
+    <!-- Área onde a imagem das propriedades dos elementos será mostrada -->
+    <div id="period-image-container">
+        <img id="period-image" src="img/periodo02.jpg" alt="Propriedades dos Elementos no Período" style="max-width: 100%; display: block;">
+    </div>
+
+    <div class="pergunta">
+        <p><strong>1. Como o número de prótons muda ao longo do período 2? O que isso significa para a força com que o núcleo atrai os elétrons?</strong></p>
+        <button onclick="mostrarResposta('resposta1')">Resposta</button>
+        <div id="resposta1" class="resposta">
+            <p>O número de prótons aumenta de 3 (Li) para 10 (Ne). Isso significa que o núcleo exerce uma força crescente sobre os elétrons, puxando-os para mais perto, o que diminui o raio atômico.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>2. Por que todos os elementos do período 2 têm a camada K (primeira camada) completa? O que muda na configuração eletrônica quando avançamos de Li para Ne?</strong></p>
+        <button onclick="mostrarResposta('resposta2')">Resposta</button>
+        <div id="resposta2" class="resposta">
+            <p>Todos têm a camada K completa porque possuem pelo menos 2 elétrons para preenchê-la. À medida que avançamos de Li para Ne, os elétrons adicionais ocupam a camada L, preenchendo-a progressivamente até ficar completa no Neônio.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>3. Por que o raio atômico diminui ao avançar do Li para o Ne, mesmo que todos os elementos tenham duas camadas eletrônicas?</strong></p>
+        <button onclick="mostrarResposta('resposta3')">Resposta</button>
+        <div id="resposta3" class="resposta">
+            <p>O raio atômico diminui porque o aumento no número de prótons faz com que o núcleo atraia os elétrons da camada externa com mais força, comprimindo o tamanho do átomo.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>4. Como a eletronegatividade muda ao longo do período 2? Por que o Flúor tem a maior eletronegatividade enquanto o Lítio tem uma das menores?</strong></p>
+        <button onclick="mostrarResposta('resposta4')">Resposta</button>
+        <div id="resposta4" class="resposta">
+            <p>A eletronegatividade aumenta ao longo do período, do Li (0,98) ao F (3,98). O Flúor é o mais eletronegativo porque seu núcleo exerce uma forte atração sobre os elétrons devido ao alto número de prótons e ao pequeno raio atômico.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>5. Qual é o padrão observado na energia de ionização ao longo do período 2? Por que a energia de ionização do Neônio é a mais alta entre os elementos desse período?</strong></p>
+        <button onclick="mostrarResposta('resposta5')">Resposta</button>
+        <div id="resposta5" class="resposta">
+            <p>A energia de ionização aumenta ao longo do período porque o aumento no número de prótons torna mais difícil remover um elétron. O Neônio tem a maior energia de ionização porque sua configuração eletrônica é estável, e remover um elétron exige mais energia.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>6. Por que a temperatura de fusão é mais alta para elementos como Carbono e Berílio, enquanto é muito baixa para Nitrogênio, Oxigênio, Flúor e Neônio?</strong></p>
+        <button onclick="mostrarResposta('resposta6')">Resposta</button>
+        <div id="resposta6" class="resposta">
+            <p>O Carbono e o Berílio têm temperaturas de fusão altas porque formam redes covalentes ou estruturas metálicas, que exigem muita energia para quebrar. Os gases como Nitrogênio, Oxigênio, Flúor e Neônio têm temperaturas de fusão baixas devido às forças intermoleculares fracas.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>7. Por que a temperatura de ebulição é tão alta para elementos como Carbono, mas muito baixa para os gases como Neônio?</strong></p>
+        <button onclick="mostrarResposta('resposta7')">Resposta</button>
+        <div id="resposta7" class="resposta">
+            <p>O Carbono tem uma alta temperatura de ebulição porque forma uma rede covalente sólida. Já o Neônio, sendo um gás nobre, tem forças de dispersão muito fracas, resultando em uma baixa temperatura de ebulição.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrarResposta(id) {
+        const resposta = document.getElementById(id);
+        resposta.style.display = resposta.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+
+
 
 
 
