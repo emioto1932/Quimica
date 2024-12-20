@@ -1,1173 +1,230 @@
- 
 
-const groupSelect = document.getElementById("group-select"); 
+<!DOCTYPE html> 
+<html lang="pt-br">
 
-const elementSelect = document.getElementById("element-select"); 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecionar Elemento Químico</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <link rel="stylesheet" href="anima.css">
+</head>
 
-const infoTable = document.getElementById("info-table"); 
+<body>
 
-const tableBody = infoTable.querySelector("tbody"); 
+  <div class="container">
+    <h1>Escolha um Elemento Químico</h1>
 
-const canvasContainer = document.getElementById("canvas-container"); // Novo contêiner para o canvas 
+    <div class="flex-container">
+      <!-- Tabela de Seleção -->
+      <div class="selection-container">
+        <!-- Seleção de Grupo -->
+        <div class="input-group">
+          <label for="group-select">Grupo:</label>
+          <select id="group-select">
+            <option value="">-- Selecione um Grupo --</option>
+            <option value="1">Grupo 1</option>
+            <option value="2">Grupo 2</option>
+            <option value="13">Grupo 13</option>
+            <option value="14">Grupo 14</option>
+            <option value="15">Grupo 15</option>
+            <option value="16">Grupo 16</option>
+            <option value="17">Grupo 17</option>
+            <option value="18">Grupo 18</option>
+          </select>
+        </div>
+
+        <!-- Seleção de Elemento -->
+        <div class="input-group">
+          <label for="element-select">Elemento:</label>
+          <select id="element-select" disabled>
+            <option value="">-- Selecione um Elemento --</option>
+          </select>
+        </div>
+      </div>
+         <!-- Animação da Distribuição Eletrônica -->
+      <div id="canvas-container" class="animation-container">
+      </div>
+        <!-- Tabela para exibir informações -->
+      <table id="info-table" class="hidden"  class="tabela-responsiva">
+        <thead>
+          <tr>
+            <th>Propriedades do Elemento Químico</th>
+            <th>Valor</th>
+            <th></th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      </div>
+
+
+
+    
+  
+
+
+    <div class="container">
+    <h1>Tendências Periódicas: Como as Propriedades dos Elementos Variam ao Longo do Grupo</h1>
+
+        <!-- Área onde a imagem da tabela periódica do grupo selecionado será mostrada -->
+    <div id="group-image-container">
+      <img id="group-image" src="" alt="" style="max-width: 100%; display: none;">
+    </div>
+    
+    <div class="pergunta">
+      <p><strong>1. O que acontece com o número de camadas à medida que você desce em um grupo?</strong></p>
+      <button onclick="mostrarResposta('resposta1')">Resposta</button>
+      <div id="resposta1" class="resposta">
+        <p><em>Hipótese:</em> O número de camadas de elétrons aumenta conforme o número atômico cresce, pois os elementos mais pesados precisam de mais camadas para acomodar o maior número de elétrons.</p>
+      </div>
+    </div>
+
+    <div class="pergunta">
+      <p><strong>2. Quantos elétrons há na última camada e qual é a relação com o número do grupo ou coluna?</strong></p>
+      <button onclick="mostrarResposta('resposta2')">Resposta</button>
+      <div id="resposta2" class="resposta">
+        <p><em>Hipótese:</em> O número de elétrons na última camada aumenta conforme o número do grupo. Por exemplo, os elementos do Grupo 1 têm 1 elétron na última camada, os do Grupo 2 têm 2 elétrons, e assim por diante, até os do Grupo 18, que têm 8 elétrons na camada de valência (exceto o hélio, que tem 2).</p>
+      </div>
+    </div>
+
+    <div class="pergunta">
+      <p><strong>3. Por que o raio atômico aumenta à medida que o número atômico cresce em um grupo?</strong></p>
+      <button onclick="mostrarResposta('resposta3')">Resposta</button>
+      <div id="resposta3" class="resposta">
+        <p><em>Hipótese:</em> O raio atômico aumenta porque, com o aumento do número atômico, mais camadas de elétrons são adicionadas. Isso faz com que o átomo se expanda, mesmo que a carga nuclear também aumente.</p>
+      </div>
+    </div>
+
+    <div class="pergunta">
+      <p><strong>4. Por que a eletronegatividade (a força com que um átomo atrai elétrons) diminui à medida que o número atômico aumenta ou o número de camadas aumenta?</strong></p>
+      <button onclick="mostrarResposta('resposta4')">Resposta</button>
+      <div id="resposta4" class="resposta">
+        <p><em>Hipótese:</em> A eletronegatividade diminui porque, à medida que aumentam o número de camadas de elétrons, a atração do núcleo pelos elétrons da camada externa fica mais fraca. Isso ocorre devido à maior distância entre os elétrons da camada de valência e o núcleo, além do efeito de blindagem pelos elétrons internos.</p>
+      </div>
+    </div>
+
+    <div class="pergunta">
+      <p><strong>5. O que acontece com a densidade, a temperatura de fusão e a temperatura de ebulição à medida que você desce em um grupo?</strong></p>
+      <button onclick="mostrarResposta('resposta5')">Resposta</button>
+      <div id="resposta5" class="resposta">
+        <p><em>Hipótese:</em> A densidade geralmente aumenta com o aumento do número atômico em um grupo, já que átomos maiores e mais pesados tendem a ser mais densos. A temperatura de fusão e ebulição pode variar dependendo do tipo de ligação (covalente ou metálica), mas, em geral, tende a aumentar em alguns grupos (como os metais) devido ao aumento da força das interações entre os átomos.</p>
+      </div>
+    </div>
+
+       <div class="pergunta">
+      <p><strong>6. O que acontece com a energia necessária para remover o último elétron da camada de valência à medida que você desce em um grupo?</strong></p>
+      <button onclick="mostrarResposta('resposta6')">Resposta</button>
+      <div id="resposta6" class="resposta">
+        <p><em>Hipótese: À medida que o número atômico aumenta e o número de camadas de elétrons também cresce, o último elétron da camada de valência fica mais distante do núcleo. Isso faz com que a atração do núcleo sobre o último elétron seja menor. Como resultado, é necessário menos energia para remover esse último elétron.
+</p>
+      </div>
+    </div>
+
+
+
+
 
   
 
-let elementoAtual = null; // Variável para armazenar o elemento selecionado 
-
-let p5Instance = null; // Instância do p5.js 
-
-
-const exibirComVirgula = (valor) => {
-  // Converte o valor para número (removendo zeros à direita) e depois substitui o ponto por vírgula
-  return parseFloat(valor).toString().replace('.', ',');
-};
-
-
-  
-
-// Elementos químicos por grupo 
-
-const elementsByGroup = { 
-
-  "1": [ 
-
-    { symbol: "H", name: "Hidrogênio". periodo: "1" }, 
-
-    { symbol: "Li", name: "Lítio", periodo: "2"  }, 
-
-    { symbol: "Na", name: "Sódio", periodo: "3"  }, 
-
-    { symbol: "K", name: "Potássio", periodo: "4"  }, 
-
-    { symbol: "Rb", name: "Rubídio", periodo: "5"  }, 
-
-    { symbol: "Cs", name: "Césio", periodo: "6"  }, 
-
-    { symbol: "Fr", name: "Frâncio", periodo: "7"  } 
-
-  ], 
-
-  "2": [ 
-
-    { symbol: "Be", name: "Berílio", periodo: "2"  }, 
-
-    { symbol: "Mg", name: "Magnésio", periodo: "3"  }, 
-
-    { symbol: "Ca", name: "Cálcio", periodo: "4"  }, 
-
-    { symbol: "Sr", name: "Estrôncio", periodo: "5"  }, 
-
-    { symbol: "Ba", name: "Bário", periodo: "6"  }, 
-
-    { symbol: "Ra", name: "Radônio", periodo: "7"  } 
-
-  ], 
-
-  "13": [ 
-
-    { symbol: "B", name: "Boro", periodo: "2"  }, 
-
-    { symbol: "Al", name: "Alumínio", periodo: "3"  }, 
-
-    { symbol: "Ga", name: "Gálio", periodo: "4"  }, 
-
-    { symbol: "In", name: "Índio", periodo: "5"  }, 
-
-    { symbol: "Tl", name: "Talio", periodo: "6"  } 
-
-  ], 
-
-  "14": [ 
-
-    { symbol: "C", name: "Carbono", periodo: "2"  }, 
-
-    { symbol: "Si", name: "Silício", periodo: "3"  }, 
-
-    { symbol: "Ge", name: "Germânio", periodo: "4"  }, 
-
-    { symbol: "Sn", name: "Estanho", periodo: "5"  }, 
-
-    { symbol: "Pb", name: "Chumbo", periodo: "6"  } 
-
-  ], 
-
-  "15": [ 
-
-    { symbol: "N", name: "Nitrogênio", periodo: "2"  }, 
-
-    { symbol: "P", name: "Fósforo", periodo: "3"  }, 
-
-    { symbol: "As", name: "Arsênio", periodo: "4"  }, 
-
-    { symbol: "Sb", name: "Antimônio", periodo: "5"  }, 
-
-    { symbol: "Bi", name: "Bismuto", periodo: "6"  } 
-
-  ], 
-
-  "16": [ 
-
-    { symbol: "O", name: "Oxigênio", periodo: "2"  }, 
-
-    { symbol: "S", name: "Enxofre", periodo: "3"  }, 
-
-    { symbol: "Se", name: "Selênio", periodo: "4"  }, 
-
-    { symbol: "Te", name: "Telúrio", periodo: "5"  }, 
-
-    { symbol: "Po", name: "Polônio", periodo: "6"  } 
-
-  ], 
-
-  "17": [ 
-
-    { symbol: "F", name: "Flúor", periodo: "2"  }, 
-
-    { symbol: "Cl", name: "Cloro", periodo: "3"  }, 
-
-    { symbol: "Br", name: "Bromo", periodo: "4"  }, 
-
-    { symbol: "I", name: "Iodo", periodo: "5"  }, 
-
-    { symbol: "At", name: "Ástato", periodo: "6"  } 
-
-  ], 
-
-  "18": [ 
-
-    { symbol: "He", name: "Hélio", periodo: "1"  }, 
-
-    { symbol: "Ne", name: "Neônio", periodo: "2"  }, 
-
-    { symbol: "Ar", name: "Argônio", periodo: "3"  }, 
-
-    { symbol: "Kr", name: "Criptônio", periodo: "4"  }, 
-
-    { symbol: "Xe", name: "Xenônio", periodo: "5"  }, 
-
-    { symbol: "Rn", name: "Radônio", periodo: "6"  } 
-
-  ] 
-
-}; 
-
-  
-
-// Propriedades dos elementos (adicionando os novos elementos) 
-
-const elementProperties = { 
-
-'H': {
-    protons: 1,
-    numeroProtons: 1,
-    electrons: 1,
-    massaAtomica: 1.008,
-    numeroNeutrons: 0,
-    raioAtomico: 53,
-    categoria: 'Não-metal',
-    electronegativity: 2.20,
-    temperaturaFusao: -259.16,
-    temperaturaEbulicao: -252.87,
-    densidade: 0.00008988,
-    configuracaoEletronica: '1',
-    energiaIonizacao: 1312
-},
-'Li': {
-    protons: 3,
-    numeroProtons: 3,
-    electrons: 3,
-    massaAtomica: 6.94,
-    numeroNeutrons: 4,
-    raioAtomico: 152,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.98,
-    temperaturaFusao: 180.54,
-    temperaturaEbulicao: 1590,
-    densidade: 0.534,
-    configuracaoEletronica: '2, 1',
-    energiaIonizacao: 520
-},
-'Na': {
-    protons: 11,
-    numeroProtons: 11,
-    electrons: 11,
-    massaAtomica: 22.99,
-    numeroNeutrons: 12,
-    raioAtomico: 186,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.93,
-    temperaturaFusao: 97.72,
-    temperaturaEbulicao: 883,
-    densidade: 0.971,
-    configuracaoEletronica: '2, 8, 1',
-    energiaIonizacao: 495.8
-},
-'K': {
-    protons: 19,
-    numeroProtons: 19,
-    electrons: 19,
-    massaAtomica: 39.1,
-    numeroNeutrons: 20,
-    raioAtomico: 227,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.82,
-    temperaturaFusao: 63.38,
-    temperaturaEbulicao: 759,
-    densidade: 0.856,
-    configuracaoEletronica: '2, 8, 8, 1',
-    energiaIonizacao: 418.8
-},
-'Rb': {
-    protons: 37,
-    numeroProtons: 37,
-    electrons: 37,
-    massaAtomica: 85.47,
-    numeroNeutrons: 48,
-    raioAtomico: 303,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.82,
-    temperaturaFusao: 39.3,
-    temperaturaEbulicao: 688,
-    densidade: 1.532,
-    configuracaoEletronica: '2, 8, 18, 1',
-    energiaIonizacao: 403
-},
-'Cs': {
-    protons: 55,
-    numeroProtons: 55,
-    electrons: 55,
-    massaAtomica: 132.91,
-    numeroNeutrons: 78,
-    raioAtomico: 343,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.79,
-    temperaturaFusao: 28.44,
-    temperaturaEbulicao: 687,
-    densidade: 1.873,
-    configuracaoEletronica: '2, 8, 18, 18, 1',
-    energiaIonizacao: 375.7
-},
-'Fr': {
-    protons: 87,
-    numeroProtons: 87,
-    electrons: 87,
-    massaAtomica: 223,
-    numeroNeutrons: 136,
-    raioAtomico: 330,
-    categoria: 'Metal alcalino',
-    electronegativity: 0.7,
-    temperaturaFusao: 27,
-    temperaturaEbulicao: 650,
-    densidade: 1.87,
-    configuracaoEletronica: '2, 8, 18, 32, 18, 8, 1',
-    energiaIonizacao: 380
-},
-'Be': {
-    protons: 4,
-    numeroProtons: 4,
-    electrons: 4,
-    massaAtomica: 9.01,
-    numeroNeutrons: 5,
-    raioAtomico: 112,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 1.57,
-    temperaturaFusao: 1287,
-    temperaturaEbulicao: 2471,
-    densidade: 1.848,
-    configuracaoEletronica: '2, 2',
-    energiaIonizacao: 899.5
-},
-'Mg': {
-    protons: 12,
-    numeroProtons: 12,
-    electrons: 12,
-    massaAtomica: 24.31,
-    numeroNeutrons: 12,
-    raioAtomico: 160,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 1.31,
-    temperaturaFusao: 650,
-    temperaturaEbulicao: 1090,
-    densidade: 1.738,
-    configuracaoEletronica: '2, 8, 2',
-    energiaIonizacao: 737.7
-},
-'Ca': {
-    protons: 20,
-    numeroProtons: 20,
-    electrons: 20,
-    massaAtomica: 40.08,
-    numeroNeutrons: 20,
-    raioAtomico: 197,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 1.00,
-    temperaturaFusao: 842,
-    temperaturaEbulicao: 1487,
-    densidade: 1.54,
-    configuracaoEletronica: '2, 8, 8, 2',
-    energiaIonizacao: 589.8
-},
-'Sr': {
-    protons: 38,
-    numeroProtons: 38,
-    electrons: 38,
-    massaAtomica: 87.62,
-    numeroNeutrons: 50,
-    raioAtomico: 215,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 0.95,
-    temperaturaFusao: 777,
-    temperaturaEbulicao: 1384,
-    densidade: 2.64,
-    configuracaoEletronica: '2, 8, 18, 8, 2',
-    energiaIonizacao: 549.5
-},
-'Ba': {
-    protons: 56,
-    numeroProtons: 56,
-    electrons: 56,
-    massaAtomica: 137.33,
-    numeroNeutrons: 81,
-    raioAtomico: 253,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 0.89,
-    temperaturaFusao: 725,
-    temperaturaEbulicao: 1640,
-    densidade: 3.62,
-    configuracaoEletronica: '2, 8, 18, 18, 8, 2',
-    energiaIonizacao: 503.6
-},
-'Ra': {
-    protons: 88,
-    numeroProtons: 88,
-    electrons: 88,
-    massaAtomica: 226,
-    numeroNeutrons: 138,
-    raioAtomico: 295,
-    categoria: 'Metal alcalino-terroso',
-    electronegativity: 0.9,
-    temperaturaFusao: 700,
-    temperaturaEbulicao: 1413,
-    densidade: 5.5,
-    configuracaoEletronica: '2, 8, 18, 32, 18, 8, 2',
-    energiaIonizacao: 509.3
-},
-'B': {
-    protons: 5,
-    numeroProtons: 5,
-    electrons: 5,
-    massaAtomica: 10.81,
-    numeroNeutrons: 6,
-    raioAtomico: 85,
-    categoria: 'Semimetal',
-    electronegativity: 2.04,
-    temperaturaFusao: 2076,
-    temperaturaEbulicao: 4000,
-    densidade: 2.34,
-    configuracaoEletronica: '2, 3',
-    energiaIonizacao: 800.6
-},
-'Al': {
-    protons: 13,
-    numeroProtons: 13,
-    electrons: 13,
-    massaAtomica: 26.98,
-    numeroNeutrons: 14,
-    raioAtomico: 143,
-    categoria: 'Metal',
-    electronegativity: 1.61,
-    temperaturaFusao: 660.3,
-    temperaturaEbulicao: 2470,
-    densidade: 2.70,
-    configuracaoEletronica: '2, 8, 3',
-    energiaIonizacao: 577.5
-},
-'Ga': {
-    protons: 31,
-    numeroProtons: 31,
-    electrons: 31,
-    massaAtomica: 69.72,
-    numeroNeutrons: 39,
-    raioAtomico: 135,
-    categoria: 'Metal',
-    electronegativity: 1.81,
-    temperaturaFusao: 29.76,
-    temperaturaEbulicao: 2204,
-    densidade: 5.91,
-    configuracaoEletronica: '2, 8, 18, 3',
-    energiaIonizacao: 578.8
-},
-'In': {
-    protons: 49,
-    numeroProtons: 49,
-    electrons: 49,
-    massaAtomica: 114.82,
-    numeroNeutrons: 66,
-    raioAtomico: 162,
-    categoria: 'Metal',
-    electronegativity: 1.78,
-    temperaturaFusao: 156.6,
-    temperaturaEbulicao: 2080,
-    densidade: 7.31,
-    configuracaoEletronica: '2, 8, 18, 18, 3',
-    energiaIonizacao: 558.1
-},
-'Tl': {
-    protons: 81,
-    numeroProtons: 81,
-    electrons: 81,
-    massaAtomica: 204.38,
-    numeroNeutrons: 123,
-    raioAtomico: 196,
-    categoria: 'Metal',
-    electronegativity: 1.62,
-    temperaturaFusao: 304,
-    temperaturaEbulicao: 1473,
-    densidade: 11.85,
-    configuracaoEletronica: '2, 8, 18, 32, 18, 3',
-    energiaIonizacao: 589.4
-},
-'C': {
-  protons: 6,
-  numeroProtons: 6,
-  electrons: 6,
-  massaAtomica: 12.01,
-  numeroNeutrons: 6,
-  raioAtomico: 70,
-  categoria: 'Não-metal',
-  electronegativity: 2.55,
-  temperaturaFusao: 3550,
-  temperaturaEbulicao: 4827,
-  densidade: 2.267,
-  configuracaoEletronica: '2, 4',
-  energiaIonizacao: 1086.5
-},
-'Si': {
-  protons: 14,
-  numeroProtons: 14,
-  electrons: 14,
-  massaAtomica: 28.09,
-  numeroNeutrons: 14,
-  raioAtomico: 111,
-  categoria: 'Semimetal',
-  electronegativity: 1.90,
-  temperaturaFusao: 1414,
-  temperaturaEbulicao: 2900,
-  densidade: 2.329,
-  configuracaoEletronica: '2, 8, 4',
-  energiaIonizacao: 786.5
-},
-'Ge': {
-  protons: 32,
-  numeroProtons: 32,
-  electrons: 32,
-  massaAtomica: 72.63,
-  numeroNeutrons: 41,
-  raioAtomico: 122,
-  categoria: 'Semimetal',
-  electronegativity: 2.01,
-  temperaturaFusao: 938.3,
-  temperaturaEbulicao: 2833,
-  densidade: 5.323,
-  configuracaoEletronica: '2, 8, 18, 4',
-  energiaIonizacao: 762.5
-},
-'Sn': {
-  protons: 50,
-  numeroProtons: 50,
-  electrons: 50,
-  massaAtomica: 118.71,
-  numeroNeutrons: 69,
-  raioAtomico: 141,
-  categoria: 'Metal',
-  electronegativity: 1.96,
-  temperaturaFusao: 231.9,
-  temperaturaEbulicao: 2602,
-  densidade: 7.31,
-  configuracaoEletronica: '2, 8, 18, 18, 4',
-  energiaIonizacao: 708.6
-},
-'Pb': {
-  protons: 82,
-  numeroProtons: 82,
-  electrons: 82,
-  massaAtomica: 207.2,
-  numeroNeutrons: 125,
-  raioAtomico: 175,
-  categoria: 'Metal',
-  electronegativity: 2.33,
-  temperaturaFusao: 327.5,
-  temperaturaEbulicao: 1740,
-  densidade: 11.34,
-  configuracaoEletronica: '2, 8, 18, 32, 18, 4',
-  energiaIonizacao: 715.6
-},
-'N': {
-  protons: 7,
-  numeroProtons: 7,
-  electrons: 7,
-  massaAtomica: 14.01,
-  numeroNeutrons: 7,
-  raioAtomico: 65,
-  categoria: 'Não-metal',
-  electronegativity: 3.04,
-  temperaturaFusao: -209.86,
-  temperaturaEbulicao: -195.79,
-  densidade: 0.00125,
-  configuracaoEletronica: '2, 5',
-  energiaIonizacao: 1402.3
-},
-'P': {
-  protons: 15,
-  numeroProtons: 15,
-  electrons: 15,
-  massaAtomica: 30.97,
-  numeroNeutrons: 16,
-  raioAtomico: 110,
-  categoria: 'Não-metal',
-  electronegativity: 2.19,
-  temperaturaFusao: 44.1,
-  temperaturaEbulicao: 280.5,
-  densidade: 1.823,
-  configuracaoEletronica: '2, 8, 5',
-  energiaIonizacao: 1011.8
-},
-'As': {
-  protons: 33,
-  numeroProtons: 33,
-  electrons: 33,
-  massaAtomica: 74.92,
-  numeroNeutrons: 42,
-  raioAtomico: 114,
-  categoria: 'Semimetal',
-  electronegativity: 2.18,
-  temperaturaFusao: 817,
-  temperaturaEbulicao: 614,
-  densidade: 5.776,
-  configuracaoEletronica: '2, 8, 18, 5',
-  energiaIonizacao: 947
-},
-'Sb': {
-  protons: 51,
-  numeroProtons: 51,
-  electrons: 51,
-  massaAtomica: 121.76,
-  numeroNeutrons: 71,
-  raioAtomico: 139,
-  categoria: 'Semimetal',
-  electronegativity: 2.05,
-  temperaturaFusao: 630.6,
-  temperaturaEbulicao: 1587,
-  densidade: 6.685,
-  configuracaoEletronica: '2, 8, 18, 18, 5',
-  energiaIonizacao: 834.9
-},
-'Bi': {
-  protons: 83,
-  numeroProtons: 83,
-  electrons: 83,
-  massaAtomica: 208.98,
-  numeroNeutrons: 126,
-  raioAtomico: 160,
-  categoria: 'Metal',
-  electronegativity: 2.02,
-  temperaturaFusao: 271.3,
-  temperaturaEbulicao: 1564,
-  densidade: 9.78,
-  configuracaoEletronica: '2, 8, 18, 32, 18, 5',
-  energiaIonizacao: 703
-},
-'O': {
-  protons: 8,
-  numeroProtons: 8,
-  electrons: 8,
-  massaAtomica: 16.00,
-  numeroNeutrons: 8,
-  raioAtomico: 60,
-  categoria: 'Não-metal',
-  electronegativity: 3.44,
-  temperaturaFusao: -218.79,
-  temperaturaEbulicao: -182.96,
-  densidade: 0.001429,
-  configuracaoEletronica: '2, 6',
-  energiaIonizacao: 1313.9
-},
-'S': {
-  protons: 16,
-  numeroProtons: 16,
-  electrons: 16,
-  massaAtomica: 32.07,
-  numeroNeutrons: 16,
-  raioAtomico: 104,
-  categoria: 'Não-metal',
-  electronegativity: 2.58,
-  temperaturaFusao: 115.21,
-  temperaturaEbulicao: 444.6,
-  densidade: 2.067,
-  configuracaoEletronica: '2, 8, 6',
-  energiaIonizacao: 999.6
-},
-'Se': {
-  protons: 34,
-  numeroProtons: 34,
-  electrons: 34,
-  massaAtomica: 78.96,
-  numeroNeutrons: 45,
-  raioAtomico: 120,
-  categoria: 'Não-metal',
-  electronegativity: 2.55,
-  temperaturaFusao: 221,
-  temperaturaEbulicao: 684.9,
-  densidade: 4.79,
-  configuracaoEletronica: '2, 8, 18, 6',
-  energiaIonizacao: 941.0
-},
-'Te': {
-  protons: 52,
-  numeroProtons: 52,
-  electrons: 52,
-  massaAtomica: 127.60,
-  numeroNeutrons: 76,
-  raioAtomico: 138,
-  categoria: 'Semimetal',
-  electronegativity: 2.01,
-  temperaturaFusao: 450,
-  temperaturaEbulicao: 988,
-  densidade: 6.24,
-  configuracaoEletronica: '2, 8, 18, 18, 6',
-  energiaIonizacao: 869.3
-},
-'Po': {
-  protons: 84,
-  numeroProtons: 84,
-  electrons: 84,
-  massaAtomica: 209,
-  numeroNeutrons: 125,
-  raioAtomico: 140,
-  categoria: 'Metal',
-  electronegativity: 2.0,
-  temperaturaFusao: 254,
-  temperaturaEbulicao: 962,
-  densidade: 9.32,
-  configuracaoEletronica: '2, 8, 18, 32, 18, 6',
-  energiaIonizacao: 813.1
-},
-'F': {
-  protons: 9,
-  numeroProtons: 9,
-  electrons: 9,
-  massaAtomica: 18.998,
-  numeroNeutrons: 10,
-  raioAtomico: 64,
-  categoria: 'Não-metal',
-  electronegativity: 3.98,
-  temperaturaFusao: -219.67,
-  temperaturaEbulicao: -188.12,
-  densidade: 0.001696,
-  configuracaoEletronica: '2, 7',
-  energiaIonizacao: 1681
-},
-'Cl': {
-  protons: 17,
-  numeroProtons: 17,
-  electrons: 17,
-  massaAtomica: 35.45,
-  numeroNeutrons: 18,
-  raioAtomico: 99,
-  categoria: 'Não-metal',
-  electronegativity: 3.16,
-  temperaturaFusao: -101.5,
-  temperaturaEbulicao: -34.04,
-  densidade: 0.003214,
-  configuracaoEletronica: '2, 8, 7',
-  energiaIonizacao: 1251.2
-},
-'Br': {
-  protons: 35,
-  numeroProtons: 35,
-  electrons: 35,
-  massaAtomica: 79.90,
-  numeroNeutrons: 45,
-  raioAtomico: 114,
-  categoria: 'Não-metal',
-  electronegativity: 2.96,
-  temperaturaFusao: -7.2,
-  temperaturaEbulicao: 58.8,
-  densidade: 3.12,
-  configuracaoEletronica: '2, 8, 18, 7',
-  energiaIonizacao: 1139.9
-},
-'I': {
-  protons: 53,
-  numeroProtons: 53,
-  electrons: 53,
-  massaAtomica: 126.90,
-  numeroNeutrons: 74,
-  raioAtomico: 140,
-  categoria: 'Halogênio',
-  electronegativity: 2.66,
-  temperaturaFusao: 113.7,
-  temperaturaEbulicao: 184.3,
-  densidade: 4.933,
-  configuracaoEletronica: '2, 8, 18, 18, 7',
-  energiaIonizacao: 1008.4
-},
-'At': {
-  protons: 85,
-  numeroProtons: 85,
-  electrons: 85,
-  massaAtomica: 210,
-  numeroNeutrons: 125,
-  raioAtomico: 150,
-  categoria: 'Halogênio',
-  electronegativity: 2.2,
-  temperaturaFusao: 302,
-  temperaturaEbulicao: 337,
-  densidade: 6.17,
-  configuracaoEletronica: '2, 8, 18, 32, 18, 7',
-  energiaIonizacao: 897.91
-},
-'He': {
-  protons: 2,
-  numeroProtons: 2,
-  electrons: 2,
-  massaAtomica: 4.0026,
-  numeroNeutrons: 2,
-  raioAtomico: 31,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -272.2,
-  temperaturaEbulicao: -268.93,
-  densidade: 0.0001786,
-  configuracaoEletronica: '2',
-  energiaIonizacao: 2372.3
-},
-'Ne': {
-  protons: 10,
-  numeroProtons: 10,
-  electrons: 10,
-  massaAtomica: 20.18,
-  numeroNeutrons: 10,
-  raioAtomico: 38,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -248.59,
-  temperaturaEbulicao: -246.05,
-  densidade: 0.0008999,
-  configuracaoEletronica: '2, 8',
-  energiaIonizacao: 2080.7
-},
-'Ar': {
-  protons: 18,
-  numeroProtons: 18,
-  electrons: 18,
-  massaAtomica: 39.95,
-  numeroNeutrons: 22,
-  raioAtomico: 71,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -189.35,
-  temperaturaEbulicao: -185.85,
-  densidade: 0.0017837,
-  configuracaoEletronica: '2, 8, 8',
-  energiaIonizacao: 1520.6
-},
-'Kr': {
-  protons: 36,
-  numeroProtons: 36,
-  electrons: 36,
-  massaAtomica: 83.80,
-  numeroNeutrons: 48,
-  raioAtomico: 88,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -157.36,
-  temperaturaEbulicao: -153.22,
-  densidade: 0.003733,
-  configuracaoEletronica: '2, 8, 18, 8',
-  energiaIonizacao: 1350.8
-},
-'Xe': {
-  protons: 54,
-  numeroProtons: 54,
-  electrons: 54,
-  massaAtomica: 131.29,
-  numeroNeutrons: 77,
-  raioAtomico: 108,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -111.8,
-  temperaturaEbulicao: -108.1,
-  densidade: 0.0055,
-  configuracaoEletronica: '2, 8, 18, 18, 8',
-  energiaIonizacao: 1170.4
-},
-'Rn': {
-  protons: 86,
-  numeroProtons: 86,
-  electrons: 86,
-  massaAtomica: 222,
-  numeroNeutrons: 136,
-  raioAtomico: 140,
-  categoria: 'Gás nobre',
-  electronegativity: 0,
-  temperaturaFusao: -71,
-  temperaturaEbulicao: -61.8,
-  densidade: 0.00973,
-  configuracaoEletronica: '2, 8, 18, 32, 18, 8',
-  energiaIonizacao: 1037.7
-}
-
-}; 
-
-// Carregar elementos ao selecionar o grupo 
-
-groupSelect.addEventListener("change", () => { 
-
-  const group = groupSelect.value; 
-
-  
-
-  elementSelect.innerHTML = '<option value="">-- Selecione um Elemento --</option>'; 
-
-  
-
-  if (group && elementsByGroup[group]) { 
-
-    elementSelect.disabled = false; 
-
-    elementsByGroup[group].forEach(({ symbol, name }) => { 
-
-      const option = document.createElement("option"); 
-
-      option.value = symbol; 
-
-      option.textContent = `${name} (${symbol})`; 
-
-      elementSelect.appendChild(option); 
-
-    }); 
-
-  } else { 
-
-    elementSelect.disabled = true; 
-
-  } 
-
-}); 
-
-  
-
-// Atualizar a tabela e iniciar animação quando o elemento for selecionado 
-
-elementSelect.addEventListener("change", () => { 
-
-  const element = elementSelect.value; 
-
-   
-
-  if (!element) return; // Se não houver elemento selecionado, não faz nada 
-
-  
-
-  elementoAtual = elementProperties[element]; // Atualizar o elemento atual 
-
-  
-
-  // Preencher a tabela com as propriedades do elemento 
-
-  tableBody.innerHTML = ` 
-
-    <tr><td>Número atômico ou Número de Prótons (carga +)</td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
-
-    <tr><td>Número de Elétrons (carga -)</td><td>${elementoAtual.electrons}</td><td>Eletronegatividade (escala de Pauling)</td><td>${exibirComVirgula(elementoAtual.electronegativity)}</td></tr> 
-
-    <tr><td>Massa atômica relativa (u)</td><td>${exibirComVirgula(elementoAtual.massaAtomica)}</td><td>Temperatura de fusão (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaFusao)}</td></tr> 
-    <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
-
-    <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
-   <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td>
-   <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
-
-
-  
- 
-  `; 
-
-   
-
-  // Exibir a tabela 
-
-  infoTable.classList.remove("hidden"); 
-
-  
-
-  // Remover o canvas antigo, se houver 
-
-  if (p5Instance) { 
-
-    p5Instance.remove(); 
-
-  } 
-
-  
-
-  // Criar um novo canvas no contêiner 
-
-  p5Instance = new p5(sketch, canvasContainer); // Passando o contêiner como o segundo parâmetro 
-
-}); 
-
-  
-
-// Função de animação com p5.js 
-
-const sketch = (p) => { 
-
-  let layers = []; 
-
-  
-
-  p.setup = () => { 
-
-    p.createCanvas(400, 400); 
-
-    layers = calculateLayers(elementoAtual.protons); // Calcular camadas para a distribuição de elétrons 
-
-  }; 
-
-  
-
-  p.draw = () => { 
-
-    p.background(255); 
-
-    p.translate(p.width / 2, p.height / 2); 
-
-  
-
-    // Desenhar núcleo 
-
-    p.fill(255, 165, 0); 
-
-    p.ellipse(0, 0, 50, 50); 
-
-    p.fill(0); 
-
-    p.textAlign(p.CENTER, p.CENTER); 
-
-    p.text(`P=${elementoAtual.protons}+`, 0, -10); 
-
-    p.text(`N=${elementoAtual.numeroNeutrons}`, 0, 10); 
-
-  
-
-    // Desenhar camadas e elétrons 
-
-    layers.forEach((layer, index) => { 
-
-      p.noFill(); 
-
-      p.stroke(0); 
-
-      p.ellipse(0, 0, layer.radius * 2, layer.radius * 2); 
-
-  
-
-      layer.electrons.forEach((e, i) => { 
-
-        const angle = p.frameCount * 0.01 + (i * p.TWO_PI) / layer.electrons.length; 
-
-        const x = layer.radius * Math.cos(angle); 
-
-        const y = layer.radius * Math.sin(angle); 
-
-  
-
-        p.fill(0, 0, 255); 
-
-        p.ellipse(x, y, 12, 12); // Desenha o elétron 
-
-      }); 
-
-    }); 
-
-  }; 
-
-  
-
-}; 
-
-  
-
-  
-
-const calculateLayers = (electrons) => { 
-
-  const maxPerLayer = [2, 8, 18, 32, 32, 18, 8]; // Máximo de elétrons por camada 
-
-  const divisibleValues = [8, 18, 32]; // Valores possíveis para cada camada 
-
-  const layers = []; 
-
-  let remainingElectrons = electrons; 
-
-  
-
-  for (let i = 0; i < maxPerLayer.length && remainingElectrons > 0; i++) { 
-
-    let electronsInLayer = Math.min(remainingElectrons, maxPerLayer[i]); 
-
-  
-
-    // Se a camada for de camada 3 ou mais, aplica a nova regra 
-
-    if (i >= 2 && remainingElectrons > 0) { 
-
-      // Encontra o maior valor de divisibleValues que seja menor ou igual ao máximo permitido para a camada atual 
-
-      for (let j = divisibleValues.length - 1; j >= 0; j--) { 
-
-        if (divisibleValues[j] <= maxPerLayer[i] && remainingElectrons >= divisibleValues[j]) { 
-
-          electronsInLayer = divisibleValues[j]; 
-
-          break; 
-
-        } 
-
-      } 
-
-    } 
-
-  
-
-    layers.push({ 
-
-      radius: 50 + i * 30, // Raio da camada (ajustável) 
-
-      electrons: Array(electronsInLayer).fill(0) // Elétrons na camada 
-
-    }); 
-
-  
-
-    remainingElectrons -= electronsInLayer; 
-
-  } 
-
-  
-
-  // Se ainda restarem elétrons, eles vão para a camada seguinte 
-
-  if (remainingElectrons > 0) { 
-
-    layers.push({ 
-
-      radius: 50 + layers.length * 30, 
-
-      electrons: Array(remainingElectrons).fill(0) 
-
-    }); 
-
-  } 
-
-  
-
-  return layers; 
-
-}; 
-
-
-document.getElementById("group-select").addEventListener("change", function() {
-  var selectedGroup = this.value;
-  var groupImage = document.getElementById("group-image");
-
-  // Ocultar a imagem inicialmente
-  groupImage.style.display = "none";
-
-  // Verifica o grupo selecionado e atualiza a imagem correspondente
-  switch (selectedGroup) {
-    case "1":
-      groupImage.src = "img/grupo01.jpg";
-      break;
-    case "2":
-      groupImage.src = "img/grupo02.jpg";
-      break;
-    case "13":
-      groupImage.src = "img/grupo13.jpg";
-      break;
-    case "14":
-      groupImage.src = "img/grupo14.jpg";
-      break;
-    case "15":
-      groupImage.src = "img/grupo15.jpg";
-      break;
-    case "16":
-      groupImage.src = "img/grupo16.jpg";
-      break;
-    case "17":
-      groupImage.src = "img/grupo17.jpg";
-      break;
-    case "18":
-      groupImage.src = "img/grupo18.jpg";
-      break;
-    default:
-      groupImage.src = "";
-      break;
-  }
-
-  // Exibe a imagem se um grupo for selecionado
-  if (groupImage.src !== "") {
-    groupImage.style.display = "block";
-  }
-});
-
-
-// pergunta e resposta sobre os grupos cima para baixo
+<div class="container">
+    <h1>"Tendências Periódicas: Como as Propriedades dos Elementos Variam ao Longo do Período 2, Caracterizado por Elementos com Duas Camadas Eletrônicas ou Dois Níveis de Energia" </h1>
+
+    <!-- Área onde a imagem das propriedades dos elementos será mostrada -->
+    <div id="period-image-container">
+        <img id="period-image" src="img/periodo02.jpg" alt="Propriedades dos Elementos no Período - Grupo 2" style="max-width: 100%; display: block;">
+    </div>
+
+    <div class="pergunta">
+        <p><strong>1. Como o número de prótons muda ao longo do período 2? O que isso significa para a força com que o núcleo atrai os elétrons?</strong></p>
+        <button onclick="mostrarResposta('resposta1-grupo2')">Resposta</button>
+        <div id="resposta1-grupo2" class="resposta">
+            <p>O número de prótons aumenta de 3 (Li) para 10 (Ne). Isso significa que o núcleo exerce uma força crescente sobre os elétrons, reduzindo o raio atômico ao longo do período.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>2. Por que todos os elementos do período 2 têm as camadas K completas? O que muda na configuração eletrônica ao avançar de Li para Ne?</strong></p>
+        <button onclick="mostrarResposta('resposta2-grupo2')">Resposta</button>
+        <div id="resposta2-grupo2" class="resposta">
+            <p>Todos os elementos do período 2 têm as camadas K completas porque possuem pelo menos 2 elétrons para preenchê-la. À medida que avançamos de Li para Ne, os elétrons adicionais ocupam a camada L, preenchendo-a progressivamente.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>3. Por que o raio atômico diminui ao avançar de Li para Ne, mesmo que todos os elementos tenham duas camadas eletrônicas?</strong></p>
+        <button onclick="mostrarResposta('resposta3-grupo2')">Resposta</button>
+        <div id="resposta3-grupo2" class="resposta">
+            <p>O raio atômico diminui porque o aumento no número de prótons faz com que o núcleo atraia os elétrons das camadas externas com mais força, reduzindo o tamanho do átomo.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>4. Como a eletronegatividade muda ao longo do período 2? Por que o Flúor tem a maior eletronegatividade enquanto o Lítio tem a menor?</strong></p>
+        <button onclick="mostrarResposta('resposta4-grupo2')">Resposta</button>
+        <div id="resposta4-grupo2" class="resposta">
+            <p>A eletronegatividade aumenta ao longo do período, do Li (0,98) ao F (3,98). O Flúor tem alta eletronegatividade porque seu núcleo atrai fortemente os elétrons devido ao maior número de prótons e ao pequeno raio atômico.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>5. Qual é o padrão observado na energia de ionização ao longo do período 2? Por que a energia de ionização do Neônio é a mais alta?</strong></p>
+        <button onclick="mostrarResposta('resposta5-grupo2')">Resposta</button>
+        <div id="resposta5-grupo2" class="resposta">
+            <p>A energia de ionização aumenta ao longo do período porque o aumento no número de prótons torna mais difícil remover um elétron. O Neônio tem a maior energia de ionização porque sua configuração eletrônica é estável, possui 8 elétrons em sua última camada, regra do octeto, exigindo mais energia para remover um elétron.</p>
+        </div>
+    </div>
+
+    <div class="pergunta">
+        <p><strong>6. Por que o carbono apresenta uma tendência intermediária em termos de propriedades, como eletronegatividade e raio atômico, no período 2?</strong></p>
+        <button onclick="mostrarResposta('resposta6-grupo2')">Resposta</button>
+        <div id="resposta6-grupo2" class="resposta">
+            <p>O Carbono apresenta valores intermediários porque está no meio do período. Ele tem um número de prótons moderado, o que resulta em um tamanho atômico médio e uma eletronegatividade intermediária.</p>
+        </div>
+    </div>
+</div>
+
+<script>
     function mostrarResposta(id) {
-      const resposta = document.getElementById(id);
-      resposta.style.display = resposta.style.display === 'block' ? 'none' : 'block';
+        const resposta = document.getElementById(id);
+        resposta.style.display = resposta.style.display === "block" ? "none" : "block";
     }
+</script>
 
 
 
-if (elementoAtual) {
-    const periodo = elementoAtual.periodo; // Obter o período do elemento
 
-    // Selecionar o contêiner e o elemento de imagem
-    const imageContainer = document.getElementById("period-image-container-periodo");
-    const periodImage = document.getElementById("period-image-periodo");
+      
 
-    // Verificar e definir a imagem com base no período
-    switch (periodo) {
-      case "1":
-        periodImage.src = "img/periodo01.jpg";
-        break;
-      case "2":
-        periodImage.src = "img/periodo02.jpg";
-        break;
-      case "3":
-        periodImage.src = "img/periodo03.jpg";
-        break;
-      case "4":
-        periodImage.src = "img/periodo04.jpg";
-        break;
-      case "5":
-        periodImage.src = "img/periodo05.jpg";
-        break;
-      case "6":
-        periodImage.src = "img/periodo06.jpg";
-        break;
-      case "7":
-        periodImage.src = "img/periodo07.jpg";
-        break;
-      default:
-        periodImage.src = ""; // Limpar a imagem se o período não for válido
-    }
 
-    // Certificar que a imagem será exibida
-    periodImage.style.display = "block";
-  };
- 
 
+
+
+
+      
+  </div>
+
+
+
+    
+
+
+    
+
+    
+  </div>
+
+                        <div class="enim-container">
+                        <h3>Questões do Enem Resolvidas nos Vídeos</h3>
+                        <ul class="exercise-list">
+                            <li><a href="LQ09-exercicio1.html" target="_blank">Questão 1</a></li>
+                            <li><a href="LQ09-exercicio2.html" target="_blank">Questão 2</a></li>
+                            <li><a href="LQ09-exercicio3.html" target="_blank">Questão 3</a></li>
+                        </ul>
+                        </div>
+
+  <script src="anima.js"></script>
+</body>
+
+</html>
