@@ -1,40 +1,22 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f4f4f9;
-}
-
-h1 {
-  margin: 20px 0;
-  color: #333;
-}
-
-.tabela {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px auto;
-}
-
-.celula {
-  width: 150px;
-  height: 150px;
-  border: 1px solid #ccc;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  height: 100vh;
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+  flex-direction: column;
 }
 
-.celula p {
+h1 {
   position: absolute;
-  bottom: 5px;
-  font-size: 12px;
+  top: 20px;
   text-align: center;
-  margin: 0;
+  color: #333;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 80px;  /* Espaço para o título */
 }
