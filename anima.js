@@ -1129,4 +1129,46 @@ document.getElementById("group-select").addEventListener("change", function() {
       const resposta = document.getElementById(id);
       resposta.style.display = resposta.style.display === 'block' ? 'none' : 'block';
     }
+
+
+
+if (elementoAtual) {
+    const periodo = elementoAtual.periodo; // Obter o período do elemento
+
+    // Selecionar o contêiner e o elemento de imagem
+    const imageContainer = document.getElementById("period-image-container-periodo");
+    const periodImage = document.getElementById("period-image-periodo");
+
+    // Verificar e definir a imagem com base no período
+    switch (periodo) {
+      case "1":
+        periodImage.src = "img/periodo01.jpg";
+        break;
+      case "2":
+        periodImage.src = "img/periodo02.jpg";
+        break;
+      case "3":
+        periodImage.src = "img/periodo03.jpg";
+        break;
+      case "4":
+        periodImage.src = "img/periodo04.jpg";
+        break;
+      case "5":
+        periodImage.src = "img/periodo05.jpg";
+        break;
+      case "6":
+        periodImage.src = "img/periodo06.jpg";
+        break;
+      case "7":
+        periodImage.src = "img/periodo07.jpg";
+        break;
+      default:
+        periodImage.src = ""; // Limpar a imagem se o período não for válido
+    }
+
+    // Certificar que a imagem será exibida
+    periodImage.style.display = "block";
+  }
+});
  
+
