@@ -3,7 +3,10 @@ let neutrons = [];
 let angulo = 0;
 
 function setup() {
-  createCanvas(400, 400);
+  // Criação do canvas
+  let canvas = createCanvas(400, 400);
+  canvas.parent("canvas-container");  // Associar o canvas ao container HTML
+  
   noFill();
 
   // Cores
@@ -25,10 +28,6 @@ function setup() {
     let posY = raioNucleo * sin(TWO_PI * (i / 12) + PI / 24);
     neutrons.push({ x: posX, y: posY, cor: corNeutron });
   }
-
-  // Adicionar o canvas no container da página HTML
-  let canvasContainer = document.getElementById('canvas-container');
-  canvas.parent(canvasContainer);
 }
 
 function draw() {
