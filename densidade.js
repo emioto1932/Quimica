@@ -1,10 +1,10 @@
 const elementos = [
-  { id: "hidrogenio", simbolo: "H", nome: "Hidrogênio", densidade: "0,09 g/cm³", cor: [200, 200, 255] },
-  { id: "litio", simbolo: "Li", nome: "Lítio", densidade: "0,53 g/cm³", cor: [255, 100, 100] },
-  { id: "sodio", simbolo: "Na", nome: "Sódio", densidade: "0,97 g/cm³", cor: [255, 255, 0] },
-  { id: "potassio", simbolo: "K", nome: "Potássio", densidade: "0,86 g/cm³", cor: [150, 100, 255] },
-  { id: "rubidio", simbolo: "Rb", nome: "Rubídio", densidade: "1,53 g/cm³", cor: [255, 165, 0] },
-  { id: "cesio", simbolo: "Cs", nome: "Césio", densidade: "1,93 g/cm³", cor: [255, 215, 0] }
+  { id: "hidrogenio", simbolo: "H", nome: "Hidrogênio", "0,09 g/cm³", cor: [200, 200, 255] },
+  { id: "litio", simbolo: "Li", nome: "Lítio", "0,53 g/cm³", cor: [255, 100, 100] },
+  { id: "sodio", simbolo: "Na", nome: "Sódio", "0,97 g/cm³", cor: [255, 255, 0] },
+  { id: "potassio", simbolo: "K", nome: "Potássio", "0,86 g/cm³", cor: [150, 100, 255] },
+  { id: "rubidio", simbolo: "Rb", nome: "Rubídio", "1,53 g/cm³", cor: [255, 165, 0] },
+  { id: "cesio", simbolo: "Cs", nome: "Césio", "1,93 g/cm³", cor: [255, 215, 0] }
 ];
 
 elementos.forEach(elemento => {
