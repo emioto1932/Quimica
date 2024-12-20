@@ -3,32 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Número Atômico dos Elementos Químicos</title>
-  <link rel="stylesheet" href="numero-atomico.css">
+  <title>Átomo de Sódio - Animação Atômica</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <section>
-    <h1>Número Atômico dos Elementos Químicos</h1>
-    <p>
-        O número atômico é a característica que define a identidade de um elemento químico. Ele é igual ao número de prótons no núcleo de um átomo e, por consequência, é único para cada elemento no universo.
-    </p>
-    <p>
-        A tabela periódica é organizada de acordo com o número atômico de seus elementos.
-    </p>
-  </section>
+  <h1>Átomo de Sódio - Número Atômico: 11, Número de Nêutrons: 12</h1>
+  <script>
+    let protons = [];
+    let neutrons = [];
+    let angulo = 0;
 
-  <div class="tabela">
-    <!-- Criando células com IDs representando elementos -->
-    <div class="celula" id="hidrogenio">H - 1</div>
-    <div class="celula" id="helios">He - 2</div>
-    <div class="celula" id="litio">Li - 3</div>
-    <div class="celula" id="sodio">Na - 11</div>
-    <div class="celula" id="potassio">K - 19</div>
-    <div class="celula" id="rubidio">Rb - 37</div>
-    <div class="celula" id="cesio">Cs - 55</div>
-  </div>
+    function setup() {
+      createCanvas(400, 400);
+      noFill();
 
-  <script src="numero-atomico.js"></script>
+      // Cores
+      let corProton = color(255, 165, 0); // Laranja para prótons
+      let corNeutron = color(139, 69, 19); // Marrom para nêutrons
+
+      // Posição e raio do núcleo
+      let raioNucleo = 100;
+
+      // Definir a posição dos prótons e nêutrons
+      for (let i = 0; i < 11; i++) {
+        let posX = raioNucleo * cos(TWO_PI * (i / 11));
+        let posY = raioNucleo * sin(TWO_PI * (i / 11));
+        protons.push({ x: posX, y: posY, cor: corProton });
+      }
+
+      for (let i = 0; i < 12; i++) {
+        let posX = raioNucleo * cos(TWO_PI * (i / 12) + PI / 24); // Deslocar ligeiramente para intercalar
+        let posY = raioNucleo * sin(TWO_PI * (i / 12) + PI / 24);
+        neutrons.push({ x: posX, y: posY, cor: corNeutron });
+      }
+    }
+
+    function draw() {
+      background(255);
+
+      // Desenho do núcleo (círculo externo)
+      stroke(0);
+      ellipse(width / 2, height / 2, 200, 200);
+
+      // Animação do núcleo com tremor
+      for (let i = 0; i < protons.length; i++) {
+        let tremorX = random(-2, 2); // Pequeno tremor
+        let tremorY = random(-2, 2);
+
+        // Desenha os prótons
+        fill(protons[i].cor);
+        ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 12, 12);
+      }
+
+      for (let i = 0; i < neutrons.length; i++) {
+        // Desenha os nêutrons (sem tremor)
+        fill(neutrons[i].cor);
+        ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 12, 12);
+      }
+    }
+  </script>
 </body>
 </html>
