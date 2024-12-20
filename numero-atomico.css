@@ -1,13 +1,15 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f4f4f4;
-}
-
-h1 {
-  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
 #canvas-container {
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
