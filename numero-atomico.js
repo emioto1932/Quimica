@@ -1,19 +1,56 @@
-const elementos = [
-  { id: "hidrogenio", simbolo: "H", nome: "Hidrogênio", numeroAtomico: 1, numeroNeutron: 0, cor: [200, 200, 255] },
-  { id: "helios", simbolo: "He", nome: "Hélio", numeroAtomico: 2, numeroNeutron: 2, cor: [255, 100, 100] },
-  { id: "litio", simbolo: "Li", nome: "Lítio", numeroAtomico: 3, numeroNeutron: 4, cor: [255, 255, 0] },
-  { id: "sodio", simbolo: "Na", nome: "Sódio", numeroAtomico: 11, numeroNeutron: 12, cor: [150, 100, 255] },
-  { id: "potassio", simbolo: "K", nome: "Potássio", numeroAtomico: 19, numeroNeutron: 20, cor: [255, 165, 0] },
-  { id: "rubidio", simbolo: "Rb", nome: "Rubídio", numeroAtomico: 37, numeroNeutron: 48, cor: [255, 215, 0] },
-  { id: "cesio", simbolo: "Cs", nome: "Césio", numeroAtomico: 55, numeroNeutron: 78, cor: [200, 255, 100] }
-];
+let protons = [];
+let neutrons = [];
+let angulo = 0;
 
-elementos.forEach(elemento => {
-  const container = document.getElementById(elemento.id);
-  if (container) {
-    // Adiciona o texto com o número atômico
-    const texto = document.createElement("p");
-    texto.innerHTML = `<strong>${elemento.simbolo}</strong> (${elemento.nome})<br>Número Atômico: ${elemento.numeroAtomico}`;
-    container.appendChild(texto);
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+
+  // Cores
+  let corProton = color(255, 165, 0); // Laranja para prótons
+  let corNeutron = color(139, 69, 19); // Marrom para nêutrons
+
+  // Posição e raio do núcleo
+  let raioNucleo = 100;
+
+  // Definir a posição dos prótons e nêutrons
+  for (let i = 0; i < 11; i++) {
+    let posX = raioNucleo * cos(TWO_PI * (i / 11));
+    let posY = raioNucleo * sin(TWO_PI * (i / 11));
+    protons.push({ x: posX, y: posY, cor: corProton });
   }
-});
+
+  for (let i = 0; i < 12; i++) {
+    let posX = raioNucleo * cos(TWO_PI * (i / 12) + PI / 24); // Deslocar ligeiramente para intercalar
+    let posY = raioNucleo * sin(TWO_PI * (i / 12) + PI / 24);
+    neutrons.push({ x: posX, y: posY, cor: corNeutron });
+  }
+
+  // Adicionar o canvas no container da página HTML
+  let canvasContainer = document.getElementById('canvas-container');
+  canvas.parent(canvasContainer);
+}
+
+function draw() {
+  background(255);
+
+  // Desenho do núcleo (círculo externo)
+  stroke(0);
+  ellipse(width / 2, height / 2, 200, 200);
+
+  // Animação do núcleo com tremor
+  for (let i = 0; i < protons.length; i++) {
+    let tremorX = random(-2, 2); // Pequeno tremor
+    let tremorY = random(-2, 2);
+
+    // Desenha os prótons
+    fill(protons[i].cor);
+    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 12, 12);
+  }
+
+  for (let i = 0; i < neutrons.length; i++) {
+    // Desenha os nêutrons (sem tremor)
+    fill(neutrons[i].cor);
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 12, 12);
+  }
+}
