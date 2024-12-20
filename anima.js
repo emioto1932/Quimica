@@ -1168,7 +1168,6 @@ if (elementoAtual) {
 
     // Certificar que a imagem será exibida
     periodImage.style.display = "block";
-  }
-});
+  };
  
 
