@@ -31,121 +31,121 @@ const elementsByGroup = {
 
   "1": [ 
 
-    { symbol: "H", name: "Hidrogênio" }, 
+    { symbol: "H", name: "Hidrogênio". periodo: "1" }, 
 
-    { symbol: "Li", name: "Lítio" }, 
+    { symbol: "Li", name: "Lítio", periodo: "2"  }, 
 
-    { symbol: "Na", name: "Sódio" }, 
+    { symbol: "Na", name: "Sódio", periodo: "3"  }, 
 
-    { symbol: "K", name: "Potássio" }, 
+    { symbol: "K", name: "Potássio", periodo: "4"  }, 
 
-    { symbol: "Rb", name: "Rubídio" }, 
+    { symbol: "Rb", name: "Rubídio", periodo: "5"  }, 
 
-    { symbol: "Cs", name: "Césio" }, 
+    { symbol: "Cs", name: "Césio", periodo: "6"  }, 
 
-    { symbol: "Fr", name: "Frâncio" } 
+    { symbol: "Fr", name: "Frâncio", periodo: "7"  } 
 
   ], 
 
   "2": [ 
 
-    { symbol: "Be", name: "Berílio" }, 
+    { symbol: "Be", name: "Berílio", periodo: "2"  }, 
 
-    { symbol: "Mg", name: "Magnésio" }, 
+    { symbol: "Mg", name: "Magnésio", periodo: "3"  }, 
 
-    { symbol: "Ca", name: "Cálcio" }, 
+    { symbol: "Ca", name: "Cálcio", periodo: "4"  }, 
 
-    { symbol: "Sr", name: "Estrôncio" }, 
+    { symbol: "Sr", name: "Estrôncio", periodo: "5"  }, 
 
-    { symbol: "Ba", name: "Bário" }, 
+    { symbol: "Ba", name: "Bário", periodo: "6"  }, 
 
-    { symbol: "Ra", name: "Radônio" } 
+    { symbol: "Ra", name: "Radônio", periodo: "7"  } 
 
   ], 
 
   "13": [ 
 
-    { symbol: "B", name: "Boro" }, 
+    { symbol: "B", name: "Boro", periodo: "2"  }, 
 
-    { symbol: "Al", name: "Alumínio" }, 
+    { symbol: "Al", name: "Alumínio", periodo: "3"  }, 
 
-    { symbol: "Ga", name: "Gálio" }, 
+    { symbol: "Ga", name: "Gálio", periodo: "4"  }, 
 
-    { symbol: "In", name: "Índio" }, 
+    { symbol: "In", name: "Índio", periodo: "5"  }, 
 
-    { symbol: "Tl", name: "Talio" } 
+    { symbol: "Tl", name: "Talio", periodo: "6"  } 
 
   ], 
 
   "14": [ 
 
-    { symbol: "C", name: "Carbono" }, 
+    { symbol: "C", name: "Carbono", periodo: "2"  }, 
 
-    { symbol: "Si", name: "Silício" }, 
+    { symbol: "Si", name: "Silício", periodo: "3"  }, 
 
-    { symbol: "Ge", name: "Germânio" }, 
+    { symbol: "Ge", name: "Germânio", periodo: "4"  }, 
 
-    { symbol: "Sn", name: "Estanho" }, 
+    { symbol: "Sn", name: "Estanho", periodo: "5"  }, 
 
-    { symbol: "Pb", name: "Chumbo" } 
+    { symbol: "Pb", name: "Chumbo", periodo: "6"  } 
 
   ], 
 
   "15": [ 
 
-    { symbol: "N", name: "Nitrogênio" }, 
+    { symbol: "N", name: "Nitrogênio", periodo: "2"  }, 
 
-    { symbol: "P", name: "Fósforo" }, 
+    { symbol: "P", name: "Fósforo", periodo: "3"  }, 
 
-    { symbol: "As", name: "Arsênio" }, 
+    { symbol: "As", name: "Arsênio", periodo: "4"  }, 
 
-    { symbol: "Sb", name: "Antimônio" }, 
+    { symbol: "Sb", name: "Antimônio", periodo: "5"  }, 
 
-    { symbol: "Bi", name: "Bismuto" } 
+    { symbol: "Bi", name: "Bismuto", periodo: "6"  } 
 
   ], 
 
   "16": [ 
 
-    { symbol: "O", name: "Oxigênio" }, 
+    { symbol: "O", name: "Oxigênio", periodo: "2"  }, 
 
-    { symbol: "S", name: "Enxofre" }, 
+    { symbol: "S", name: "Enxofre", periodo: "3"  }, 
 
-    { symbol: "Se", name: "Selênio" }, 
+    { symbol: "Se", name: "Selênio", periodo: "4"  }, 
 
-    { symbol: "Te", name: "Telúrio" }, 
+    { symbol: "Te", name: "Telúrio", periodo: "5"  }, 
 
-    { symbol: "Po", name: "Polônio" } 
+    { symbol: "Po", name: "Polônio", periodo: "6"  } 
 
   ], 
 
   "17": [ 
 
-    { symbol: "F", name: "Flúor" }, 
+    { symbol: "F", name: "Flúor", periodo: "2"  }, 
 
-    { symbol: "Cl", name: "Cloro" }, 
+    { symbol: "Cl", name: "Cloro", periodo: "3"  }, 
 
-    { symbol: "Br", name: "Bromo" }, 
+    { symbol: "Br", name: "Bromo", periodo: "4"  }, 
 
-    { symbol: "I", name: "Iodo" }, 
+    { symbol: "I", name: "Iodo", periodo: "5"  }, 
 
-    { symbol: "At", name: "Ástato" } 
+    { symbol: "At", name: "Ástato", periodo: "6"  } 
 
   ], 
 
   "18": [ 
 
-    { symbol: "He", name: "Hélio" }, 
+    { symbol: "He", name: "Hélio", periodo: "1"  }, 
 
-    { symbol: "Ne", name: "Neônio" }, 
+    { symbol: "Ne", name: "Neônio", periodo: "2"  }, 
 
-    { symbol: "Ar", name: "Argônio" }, 
+    { symbol: "Ar", name: "Argônio", periodo: "3"  }, 
 
-    { symbol: "Kr", name: "Cripton" }, 
+    { symbol: "Kr", name: "Criptônio", periodo: "4"  }, 
 
-    { symbol: "Xe", name: "Xenônio" }, 
+    { symbol: "Xe", name: "Xenônio", periodo: "5"  }, 
 
-    { symbol: "Rn", name: "Radônio" } 
+    { symbol: "Rn", name: "Radônio", periodo: "6"  } 
 
   ] 
 
