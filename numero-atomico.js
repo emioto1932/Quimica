@@ -15,6 +15,7 @@ function setup() {
 
   // Posição e raio do núcleo
   let raioNucleo = 100;
+  let raioParticula = 30; // Aumentando o tamanho das partículas
 
   // Definir a posição dos prótons e nêutrons
   for (let i = 0; i < 11; i++) {
@@ -35,21 +36,25 @@ function draw() {
 
   // Desenho do núcleo (círculo externo)
   stroke(0);
-  ellipse(width / 2, height / 2, 200, 200);
+  ellipse(width / 2, height / 2, 240, 240); // Aumentei o tamanho do círculo externo
 
   // Animação do núcleo com tremor
   for (let i = 0; i < protons.length; i++) {
-    let tremorX = random(-2, 2); // Pequeno tremor
-    let tremorY = random(-2, 2);
+    let tremorX = random(-4, 4); // Maior tremor para os prótons
+    let tremorY = random(-4, 4);
 
-    // Desenha os prótons
+    // Desenha os prótons com sinal de carga positiva
     fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 12, 12);
+    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 24, 24); // Aumentando as partículas
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    fill(255, 0, 0); // Vermelho para destacar o sinal "+"
+    text("+", width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY);
   }
 
   for (let i = 0; i < neutrons.length; i++) {
-    // Desenha os nêutrons (sem tremor)
+    // Desenha os nêutrons sem tremor
     fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 12, 12);
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 24, 24); // Aumentando as partículas
   }
 }
