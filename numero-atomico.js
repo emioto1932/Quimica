@@ -14,40 +14,45 @@ function setup() {
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
   // Posição e raio do núcleo
-  let raioNucleo = 70; // Reduzindo o raio do círculo que contém as partículas
-  let raioParticula = 30; // Aumentando o tamanho das partículas
+  let raioNucleo = 50; // Raio do círculo do núcleo, agora reduzido pela metade
+  let raioParticula = 20; // Aumento do tamanho das partículas
 
-  // Definir a posição dos prótons e nêutrons
+  // Definir a posição dos prótons e nêutrons em duas camadas (frente e fundo)
   for (let i = 0; i < 11; i++) {
-    let angulo = random(TWO_PI); // Distribuir aleatoriamente ao redor do círculo
-    let posX = raioNucleo * cos(angulo);
-    let posY = raioNucleo * sin(angulo);
-    protons.push({ x: posX, y: posY, cor: corProton });
-  }
+    // Alterna entre frente e fundo
+    let camada = i % 2 === 0 ? 'frente' : 'fundo';
 
-  // Para cada próton, criaremos um nêutron ao lado dele
-  for (let i = 0; i < 11; i++) {
-    let posX = protons[i].x + random(-15, 15); // Distância aleatória para o nêutron
-    let posY = protons[i].y + random(-15, 15); // Distância aleatória para o nêutron
-    neutrons.push({ x: posX, y: posY, cor: corNeutron });
+    let angulo = random(TWO_PI); // Distribuir aleatoriamente dentro do círculo
+    let distancia = raioNucleo * 1.2; // Distância para garantir que as partículas fiquem juntas
+
+    let posX = distancia * cos(angulo);
+    let posY = distancia * sin(angulo);
+
+    if (camada === 'frente') {
+      protons.push({ x: posX, y: posY, cor: corProton });
+      let posX_neutron = posX + random(-5, 5); // Ajustando posição do nêutron
+      let posY_neutron = posY + random(-5, 5);
+      neutrons.push({ x: posX_neutron, y: posY_neutron, cor: corNeutron });
+    } else {
+      let posX_neutron = posX + random(-5, 5); // Ajustando posição do nêutron
+      let posY_neutron = posY + random(-5, 5);
+      neutrons.push({ x: posX_neutron, y: posY_neutron, cor: corNeutron });
+      protons.push({ x: posX, y: posY, cor: corProton });
+    }
   }
 }
 
 function draw() {
   background(255);
 
-  // Desenho do núcleo (círculo externo)
-  stroke(0);
-  ellipse(width / 2, height / 2, 180, 180); // Círculo menor que envolve as partículas
-
-  // Animação do núcleo com tremor
+  // Desenha os prótons e nêutrons
   for (let i = 0; i < protons.length; i++) {
-    let tremorX = random(-4, 4); // Tremor para os prótons
-    let tremorY = random(-4, 4);
+    let tremorX = random(-2, 2); // Tremor para os prótons
+    let tremorY = random(-2, 2);
 
-    // Desenha os prótons com sinal de carga positiva
+    // Desenha os prótons
     fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 24, 24); // Aumentando as partículas
+    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 40, 40); // Aumento do tamanho das partículas
     textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 0, 0); // Vermelho para destacar o sinal "+"
@@ -55,8 +60,12 @@ function draw() {
   }
 
   for (let i = 0; i < neutrons.length; i++) {
-    // Desenha os nêutrons sem tremor, encostados aos prótons
+    // Desenha os nêutrons
     fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 24, 24); // Aumentando as partículas
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 40, 40); // Aumento do tamanho das partículas
   }
+
+  // Desenha o círculo central envolvendo todos os prótons e nêutrons
+  stroke(0);
+  ellipse(width / 2, height / 2, 120, 120); // Círculo que cobre todas as partículas
 }
