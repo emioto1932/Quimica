@@ -129,53 +129,72 @@
   
 
 
+<div class="container">
+    <h1>Tendências Periódicas: Como as Propriedades dos Elementos Variam ao Longo do Período 2</h1>
 
-<!-- GRUPO 2 -->
-    <h1>Tendências Periódicas: Como as Propriedades dos Elementos Variam ao Longo do Grupo</h1>
-
-    <div id="group-image-container">
-        <img id="group-image" src="caminho-para-sua-outra-imagem.png" alt="Propriedades dos Elementos no Grupo" style="max-width: 100%; display: block;">
+    <!-- Imagem ilustrativa -->
+    <div id="period-image-container">
+        <img id="period-image" src="caminho-para-sua-imagem.png" alt="Propriedades dos Elementos no Período 2" style="max-width: 100%; display: block;">
     </div>
 
-    <div class="pergunta">
-        <p><strong>1. O que acontece com o número de camadas à medida que você desce em um grupo?</strong></p>
-        <button onclick="mostrarResposta('resposta1-grupo2')">Resposta</button>
-        <div id="resposta1-grupo2" class="resposta">
-            <p>O número de camadas de elétrons aumenta conforme o número atômico cresce, pois os elementos mais pesados precisam de mais camadas para acomodar o maior número de elétrons.</p>
-        </div>
-    </div>
+    <!-- Perguntas e Respostas -->
+    <section class="perguntas">
+        <article class="pergunta">
+            <p><strong>1. Como o número de prótons muda ao longo do período 2? O que isso significa para a força com que o núcleo atrai os elétrons?</strong></p>
+            <button onclick="mostrarResposta('resposta1')">Mostrar Resposta</button>
+            <div id="resposta1" class="resposta">
+                <p>O número de prótons aumenta de 3 (Li) para 10 (Ne). Isso significa que o núcleo exerce uma força crescente sobre os elétrons, puxando-os para mais perto, o que diminui o raio atômico.</p>
+            </div>
+        </article>
 
-    <div class="pergunta">
-        <p><strong>2. Por que os elementos mais pesados de um grupo têm maior raio atômico?</strong></p>
-        <button onclick="mostrarResposta('resposta2-grupo2')">Resposta</button>
-        <div id="resposta2-grupo2" class="resposta">
-            <p>Os elementos mais pesados têm maior raio atômico porque possuem mais camadas eletrônicas, o que aumenta o tamanho do átomo, mesmo que a força de atração nuclear aumente.</p>
-        </div>
-    </div>
+        <article class="pergunta">
+            <p><strong>2. Por que todos os elementos do período 2 têm a camada K (primeira camada) completa? O que muda na configuração eletrônica quando avançamos de Li para Ne?</strong></p>
+            <button onclick="mostrarResposta('resposta2')">Mostrar Resposta</button>
+            <div id="resposta2" class="resposta">
+                <p>Todos têm a camada K completa porque possuem pelo menos 2 elétrons para preenchê-la. À medida que avançamos de Li para Ne, os elétrons adicionais ocupam a camada L, preenchendo-a progressivamente até ficar completa no Neônio.</p>
+            </div>
+        </article>
 
-    <div class="pergunta">
-        <p><strong>3. Como a reatividade muda em metais e não metais ao longo do grupo?</strong></p>
-        <button onclick="mostrarResposta('resposta3-grupo2')">Resposta</button>
-        <div id="resposta3-grupo2" class="resposta">
-            <p>Nos metais, a reatividade aumenta ao longo do grupo porque os elétrons da última camada são mais facilmente removidos. Nos não metais, a reatividade diminui porque a capacidade de atrair elétrons é reduzida com o aumento do raio atômico.</p>
-        </div>
-    </div>
+        <article class="pergunta">
+            <p><strong>3. Por que o raio atômico diminui ao avançar do Li para o Ne, mesmo que todos os elementos tenham duas camadas eletrônicas?</strong></p>
+            <button onclick="mostrarResposta('resposta3')">Mostrar Resposta</button>
+            <div id="resposta3" class="resposta">
+                <p>O raio atômico diminui porque o aumento no número de prótons faz com que o núcleo atraia os elétrons da camada externa com mais força, comprimindo o tamanho do átomo.</p>
+            </div>
+        </article>
 
-    <div class="pergunta">
-        <p><strong>4. Por que os elementos mais leves de um grupo têm maior energia de ionização?</strong></p>
-        <button onclick="mostrarResposta('resposta4-grupo2')">Resposta</button>
-        <div id="resposta4-grupo2" class="resposta">
-            <p>Os elementos mais leves têm maior energia de ionização porque os elétrons estão mais próximos do núcleo, tornando mais difícil removê-los.</p>
-        </div>
-    </div>
+        <article class="pergunta">
+            <p><strong>4. Como a eletronegatividade muda ao longo do período 2? Por que o Flúor tem a maior eletronegatividade enquanto o Lítio tem uma das menores?</strong></p>
+            <button onclick="mostrarResposta('resposta4')">Mostrar Resposta</button>
+            <div id="resposta4" class="resposta">
+                <p>A eletronegatividade aumenta ao longo do período, do Li (0,98) ao F (3,98). O Flúor é o mais eletronegativo porque seu núcleo exerce uma forte atração sobre os elétrons devido ao alto número de prótons e ao pequeno raio atômico.</p>
+            </div>
+        </article>
 
-    <div class="pergunta">
-        <p><strong>5. Qual é o padrão de eletronegatividade em um grupo?</strong></p>
-        <button onclick="mostrarResposta('resposta5-grupo2')">Resposta</button>
-        <div id="resposta5-grupo2" class="resposta">
-            <p>A eletronegatividade diminui ao longo do grupo porque o aumento no raio atômico reduz a força com que o núcleo atrai os elétrons compartilhados.</p>
-        </div>
-    </div>
+        <article class="pergunta">
+            <p><strong>5. Qual é o padrão observado na energia de ionização ao longo do período 2? Por que a energia de ionização do Neônio é a mais alta entre os elementos desse período?</strong></p>
+            <button onclick="mostrarResposta('resposta5')">Mostrar Resposta</button>
+            <div id="resposta5" class="resposta">
+                <p>A energia de ionização aumenta ao longo do período porque o aumento no número de prótons torna mais difícil remover um elétron. O Neônio tem a maior energia de ionização porque sua configuração eletrônica é estável, e remover um elétron exige mais energia.</p>
+            </div>
+        </article>
+
+        <article class="pergunta">
+            <p><strong>6. Por que a temperatura de fusão é mais alta para elementos como Carbono e Berílio, enquanto é muito baixa para Nitrogênio, Oxigênio, Flúor e Neônio?</strong></p>
+            <button onclick="mostrarResposta('resposta6')">Mostrar Resposta</button>
+            <div id="resposta6" class="resposta">
+                <p>O Carbono e o Berílio têm temperaturas de fusão altas porque formam redes covalentes ou estruturas metálicas, que exigem muita energia para quebrar. Os gases como Nitrogênio, Oxigênio, Flúor e Neônio têm temperaturas de fusão baixas devido às forças intermoleculares fracas.</p>
+            </div>
+        </article>
+
+        <article class="pergunta">
+            <p><strong>7. Por que a temperatura de ebulição é tão alta para elementos como Carbono, mas muito baixa para os gases como Neônio?</strong></p>
+            <button onclick="mostrarResposta('resposta7')">Mostrar Resposta</button>
+            <div id="resposta7" class="resposta">
+                <p>O Carbono tem uma alta temperatura de ebulição porque forma uma rede covalente sólida. Já o Neônio, sendo um gás nobre, tem forças de dispersão muito fracas, resultando em uma baixa temperatura de ebulição.</p>
+            </div>
+        </article>
+    </section>
 </div>
 
 <script>
@@ -184,6 +203,7 @@
         resposta.style.display = resposta.style.display === "block" ? "none" : "block";
     }
 </script>
+
 
       
 
