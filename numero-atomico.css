@@ -1,22 +1,13 @@
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f9;
   font-family: Arial, sans-serif;
-  flex-direction: column;
+  text-align: center;
+  background-color: #f4f4f4;
 }
 
 h1 {
-  position: absolute;
-  top: 20px;
-  text-align: center;
   color: #333;
 }
 
 #canvas-container {
-  position: absolute;
-  top: 80px;  /* Espaço para o título */
+  margin-top: 50px;
 }
