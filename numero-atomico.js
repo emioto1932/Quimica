@@ -1,4 +1,4 @@
-let raio = 120; // Raio máximo para a distribuição das partículas
+let raio = 30; // Raio para a "caixinha" de partículas
 let protons = [];  // Lista para armazenar os prótons
 let neutrons = []; // Lista para armazenar os nêutrons
 
@@ -6,7 +6,7 @@ function setup() {
   createCanvas(400, 400);
   let posX, posY;
   
-  // Gerar 11 prótons e 12 nêutrons, distribuídos alternadamente e próximos ao centro
+  // Gerar 11 prótons e 12 nêutrons dentro do círculo de raio 30px
   for (let i = 0; i < 11; i++) {
     // Próton
     let dist = random(0, raio);  // Distância aleatória menor do que o raio máximo
