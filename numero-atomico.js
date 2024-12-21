@@ -21,25 +21,28 @@ function setup() {
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
-  // Distribuindo prótons e nêutrons em posições aleatórias, mantendo eles perto
-  for (let i = 0; i < numProtons; i++) {
-    let angulo = random(TWO_PI); // Distribuindo aleatoriamente dentro do círculo
-    let distancia = raioNucleo * 1.2; // Distância para manter as partículas juntas
+  // Posicionando as partículas
+  let posicoesProtons = [];
+  let posicoesNeutrons = [];
+  let distancia = raioNucleo * 1.2; // Distância para manter as partículas juntas
+  
+  // Intercalando prótons e nêutrons em duas camadas (frente e fundo)
+  let numTotalParticulas = numProtons + numNeutrons;
+  let camadaFrente = true;
+  
+  for (let i = 0; i < numTotalParticulas; i++) {
+    let angulo = map(i, 0, numTotalParticulas, 0, TWO_PI); // Distribui as partículas ao longo do círculo
 
     let posX = distancia * cos(angulo);
     let posY = distancia * sin(angulo);
-
-    protons.push({ x: posX, y: posY, cor: corProton });
-  }
-
-  for (let i = 0; i < numNeutrons; i++) {
-    let angulo = random(TWO_PI); // Distribuindo aleatoriamente dentro do círculo
-    let distancia = raioNucleo * 1.2; // Distância para manter as partículas juntas
-
-    let posX = distancia * cos(angulo);
-    let posY = distancia * sin(angulo);
-
-    neutrons.push({ x: posX, y: posY, cor: corNeutron });
+    
+    if (i % 2 === 0) {
+      // Próton
+      protons.push({ x: posX, y: posY, cor: corProton });
+    } else {
+      // Nêutron
+      neutrons.push({ x: posX, y: posY, cor: corNeutron });
+    }
   }
 }
 
