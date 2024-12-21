@@ -10,8 +10,7 @@ function setup() {
   
   noFill();
 
-  // Definindo o tamanho do núcleo e partículas
-  let raioNucleo = 50; // Raio do núcleo
+  // Definindo o tamanho das partículas
   let raioParticula = 15; // Tamanho das partículas (prótons e nêutrons)
   let numProtons = 11;  // Número de prótons (do átomo de sódio)
   let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
@@ -21,9 +20,7 @@ function setup() {
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
   // Posicionando as partículas
-  let posicoesProtons = [];
-  let posicoesNeutrons = [];
-  let distancia = raioNucleo * 1.2; // Distância para manter as partículas juntas
+  let distancia = 60; // Distância para manter as partículas juntas
   
   // Intercalando prótons e nêutrons com a organização desejada
   let numTotalParticulas = numProtons + numNeutrons;
@@ -53,11 +50,6 @@ function setup() {
 
 function draw() {
   background(255);
-
-  // Desenha o núcleo
-  stroke(0);
-  strokeWeight(2);
-  ellipse(width / 2, height / 2, 120, 120); // Círculo do núcleo
 
   // Desenha os prótons e nêutrons
   for (let i = 0; i < protons.length; i++) {
