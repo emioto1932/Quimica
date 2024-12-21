@@ -3,7 +3,7 @@ let neutrons = [];
 let raio = 60; // Raio do núcleo
 let numProtons = 11;  // Número de prótons (do átomo de sódio)
 let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
-let maxDeslocamento = raio * 0.75; // Deslocamento máximo de 75% do raio
+let maxDeslocamento = raio * 0.7; // Deslocamento máximo de 70% do raio
 
 function setup() {
   createCanvas(400, 400);
@@ -13,11 +13,9 @@ function setup() {
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
-  // Colocando a primeira partícula no centro
+  // Adiciona o primeiro próton no centro
   let x = 0;
   let y = 0;
-
-  // Adiciona o primeiro próton
   protons.push({ x, y, cor: corProton });
 
   // Agora vamos adicionar nêutrons e prótons alternados, com deslocamento aleatório
