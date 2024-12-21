@@ -16,9 +16,10 @@ function setup() {
   // Colocando a primeira partícula no centro
   let x = 0;
   let y = 0;
-  
+
+  // Adiciona o primeiro próton
   protons.push({ x, y, cor: corProton });
-  
+
   // Agora vamos adicionar nêutrons e prótons alternados, com deslocamento aleatório
   for (let i = 0; i < numProtons - 1; i++) {
     let deslocamentoX = random(-maxDeslocamento, maxDeslocamento);
@@ -28,12 +29,12 @@ function setup() {
     if (i % 2 === 0) {
       // Próton
       protons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corProton });
-      // Adiciona o nêutron
+      // Adiciona o nêutron ao lado do próton
       neutrons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corNeutron });
     } else {
       // Próton
       protons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corProton });
-      // Adiciona o nêutron
+      // Adiciona o nêutron ao lado do próton
       neutrons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corNeutron });
     }
   }
