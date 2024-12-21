@@ -12,7 +12,7 @@ function setup() {
 
   // Inicializando os prótons e nêutrons
   for (let i = 0; i < numProtons; i++) {
-    // Para os prótons, distribuindo alternadamente
+    // Para os prótons, distribuindo alternadamente para cima e para baixo
     let angle = random(TWO_PI); // Ângulo aleatório
     let distance = random(0, radius); // Distância aleatória dentro do raio
 
@@ -23,7 +23,7 @@ function setup() {
   }
 
   for (let i = 0; i < numNeutrons; i++) {
-    // Para os nêutrons, também distribuindo alternadamente
+    // Para os nêutrons, distribuindo alternadamente para cima e para baixo
     let angle = random(TWO_PI); // Ângulo aleatório
     let distance = random(0, radius); // Distância aleatória dentro do raio
 
