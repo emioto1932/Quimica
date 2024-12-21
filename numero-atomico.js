@@ -1,8 +1,8 @@
 let protons = [];
 let neutrons = [];
-let raio = 25; // Raio reduzido para ajustar à tela de 50px x 50px
+let raio = 25; // Raio ajustado para a tela de 50px x 50px
 let angulo = 0; // Ângulo de deslocamento para posicionar os prótons e nêutrons
-let deslocamento = 0.76 * raio; // Deslocamento de 76% do raio para o nêutron
+let deslocamento = 0.5 * raio; // Reduzido para 50% do raio para aproximar as partículas
 
 function setup() {
   createCanvas(50, 50); // Tamanho da tela reduzido para 50x50px
@@ -19,7 +19,7 @@ function setup() {
 
   // Posicionando as partículas de acordo com a lógica solicitada
   for (let i = 0; i < numProtons; i++) {
-    // Gerando posições aleatórias, respeitando o deslocamento de 76%
+    // Gerando posições aleatórias, respeitando o deslocamento de 50% do raio
     let posX = random(-deslocamento, deslocamento); // Posição X aleatória
     let posY = random(-deslocamento, deslocamento); // Posição Y aleatória
     
