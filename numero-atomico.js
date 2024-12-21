@@ -1,8 +1,9 @@
 let protons = [];
 let neutrons = [];
-let raio = 45; // Raio do núcleo mais compacto
+let raio = 60; // Raio do núcleo
 let numProtons = 11;  // Número de prótons (do átomo de sódio)
 let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
+let maxDeslocamento = raio * 0.75; // Deslocamento máximo de 75% do raio
 
 function setup() {
   createCanvas(400, 400);
@@ -12,24 +13,28 @@ function setup() {
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
-  // Distribuindo prótons e nêutrons de forma ainda mais compacta
-  for (let i = 0; i < numProtons; i++) {
-    // Calculando a posição de cada partícula no espaço esférico
-    let theta = map(i, 0, numProtons, 0, PI); // ângulo de latitude
-    let phi = map(i, 0, numProtons, 0, TWO_PI); // ângulo de longitude
+  // Colocando a primeira partícula no centro
+  let x = 0;
+  let y = 0;
+  
+  protons.push({ x, y, cor: corProton });
+  
+  // Agora vamos adicionar nêutrons e prótons alternados, com deslocamento aleatório
+  for (let i = 0; i < numProtons - 1; i++) {
+    let deslocamentoX = random(-maxDeslocamento, maxDeslocamento);
+    let deslocamentoY = random(-maxDeslocamento, maxDeslocamento);
 
-    // Calculando as coordenadas esféricas para cada partícula
-    let x = raio * sin(theta) * cos(phi);
-    let y = raio * sin(theta) * sin(phi);
-    let z = raio * cos(theta);
-
-    // Alternando entre prótons e nêutrons, colocando-os muito próximos
+    // Alternando entre prótons e nêutrons
     if (i % 2 === 0) {
-      protons.push({ x, y, z, cor: corProton });
-      neutrons.push({ x: x + 0.2 * raio, y, z, cor: corNeutron }); // Nêutron muito mais próximo
+      // Próton
+      protons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corProton });
+      // Adiciona o nêutron
+      neutrons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corNeutron });
     } else {
-      protons.push({ x, y, z, cor: corProton });
-      neutrons.push({ x: x - 0.2 * raio, y, z, cor: corNeutron }); // Nêutron muito mais próximo na direção oposta
+      // Próton
+      protons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corProton });
+      // Adiciona o nêutron
+      neutrons.push({ x: x + deslocamentoX, y: y + deslocamentoY, cor: corNeutron });
     }
   }
 }
