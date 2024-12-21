@@ -1,59 +1,59 @@
 let protons = [];
 let neutrons = [];
+let raio = 100; // Raio da esfera
+let numProtons = 11;  // Número de prótons (do átomo de sódio)
+let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
+let angulo = 0; // Ângulo para distribuir as partículas
+let angulo2 = 0; // Segundo ângulo para distribuir em 3D
 
 function setup() {
   createCanvas(400, 400);
   noFill();
 
-  // Definindo o tamanho das partículas
-  let raioParticula = 15; // Tamanho das partículas (prótons e nêutrons)
-  let numProtons = 11;  // Número de prótons (do átomo de sódio)
-  let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
-
   // Cores das partículas
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
-  // Posicionando as partículas
-  let distancia = 30; // Distância para manter as partículas juntas
-
-  // Intercalando prótons e nêutrons com a organização desejada
-  let numTotalParticulas = numProtons + numNeutrons;
-
+  // Distribuindo prótons e nêutrons de forma esférica
   for (let i = 0; i < numProtons; i++) {
-    let angulo = map(i, 0, numProtons, -PI, PI); // Distribui as partículas ao longo do círculo
+    // Calculando a posição de cada partícula no espaço esférico
+    let theta = map(i, 0, numProtons, 0, PI); // ângulo de latitude
+    let phi = map(i, 0, numProtons, 0, TWO_PI); // ângulo de longitude
 
-    let posX = distancia * cos(angulo);
-    let posY = distancia * sin(angulo);
+    // Calculando as coordenadas esféricas para cada partícula
+    let x = raio * sin(theta) * cos(phi);
+    let y = raio * sin(theta) * sin(phi);
+    let z = raio * cos(theta);
 
-    // Alterna entre próton (positivo) para cima e nêutron (neutro) para baixo
+    // Alternando entre prótons e nêutrons, colocando-os próximos
     if (i % 2 === 0) {
-      protons.push({ x: posX, y: posY, cor: corProton, offsetY: -20 });
-      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: 20 });
+      protons.push({ x, y, z, cor: corProton });
+      neutrons.push({ x: x + 0.75 * raio, y, z, cor: corNeutron }); // Nêutron deslocado 75% do raio
     } else {
-      protons.push({ x: posX, y: posY, cor: corProton, offsetY: 20 });
-      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: -20 });
+      protons.push({ x, y, z, cor: corProton });
+      neutrons.push({ x: x - 0.75 * raio, y, z, cor: corNeutron }); // Nêutron deslocado na direção oposta
     }
   }
 }
 
 function draw() {
   background(255);
+  translate(width / 2, height / 2);
 
-  // Desenha os prótons e nêutrons
+  // Desenhando os prótons e nêutrons
   for (let i = 0; i < protons.length; i++) {
     // Desenha o próton
     fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y + protons[i].offsetY, 40, 40); // Aumento do tamanho das partículas
+    ellipse(protons[i].x, protons[i].y, 40, 40); // Aumento do tamanho das partículas
 
     // Adiciona o sinal de positivo no próton
     textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 0, 0); // Vermelho para destacar o sinal "+"
-    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y + protons[i].offsetY);
+    text("+", protons[i].x, protons[i].y);
 
     // Desenha o nêutron ao lado do próton, na posição alternada
     fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y + neutrons[i].offsetY, 40, 40); // Aumento do tamanho das partículas
+    ellipse(neutrons[i].x, neutrons[i].y, 40, 40); // Aumento do tamanho das partículas
   }
 }
