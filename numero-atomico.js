@@ -4,11 +4,11 @@ let numProtons = 11; // Número de prótons
 let numNeutrons = 12; // Número de nêutrons
 
 function setup() {
-  createCanvas(50, 50); // Tamanho da tela 50px x 50px
-
-  let radius = 12; // Raio da área onde as partículas serão distribuídas (um valor menor, mais compacto)
+  createCanvas(100, 100); // Tamanho da tela 100px x 100px
   
-  let angleOffset = PI / 4; // Ajuste de ângulo para distribuir as partículas de forma intercalada
+  let radius = 30; // Raio da área onde as partículas serão distribuídas (aumentado para caber melhor na tela)
+  
+  let angleOffset = PI / 4; // Ajuste de ângulo para distribuir as partículas de forma alternada
 
   // Inicializando os prótons e nêutrons
   for (let i = 0; i < numProtons; i++) {
@@ -40,12 +40,12 @@ function draw() {
   fill(255, 100, 0);
   noStroke();
   for (let i = 0; i < protons.length; i++) {
-    ellipse(protons[i].x, protons[i].y, 10, 10);
+    ellipse(protons[i].x, protons[i].y, 15, 15); // Prótons maiores
   }
 
   // Desenhar os nêutrons (círculo marrom)
   fill(139, 69, 19);
   for (let i = 0; i < neutrons.length; i++) {
-    ellipse(neutrons[i].x, neutrons[i].y, 10, 10);
+    ellipse(neutrons[i].x, neutrons[i].y, 15, 15); // Nêutrons maiores
   }
 }
