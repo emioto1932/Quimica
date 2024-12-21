@@ -1,14 +1,14 @@
 let protons = [];
 let neutrons = [];
-let raio = 100; // Raio do "círculo" em que as partículas vão estar localizadas
+let raio = 25; // Raio reduzido para ajustar à tela de 50px x 50px
 let angulo = 0; // Ângulo de deslocamento para posicionar os prótons e nêutrons
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(50, 50); // Tamanho da tela reduzido para 50x50px
   noFill();
 
   // Definindo o tamanho das partículas
-  let raioParticula = 15; // Tamanho das partículas (prótons e nêutrons)
+  let raioParticula = 5; // Tamanho das partículas (prótons e nêutrons)
   let numProtons = 11;  // Número de prótons (do átomo de sódio)
   let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
 
@@ -50,16 +50,16 @@ function draw() {
   for (let i = 0; i < protons.length; i++) {
     // Desenha o próton
     fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 40, 40); // Aumento do tamanho das partículas
+    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 8, 8); // Reduzindo o tamanho das partículas
 
     // Adiciona o sinal de positivo no próton
-    textSize(20);
+    textSize(8);
     textAlign(CENTER, CENTER);
     fill(255, 0, 0); // Vermelho para destacar o sinal "+"
     text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
 
     // Desenha o nêutron ao lado do próton, na posição alternada
     fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 40, 40); // Aumento do tamanho das partículas
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 8, 8); // Reduzindo o tamanho das partículas
   }
 }
