@@ -44,7 +44,7 @@ function draw() {
   background(255);
   translate(width / 2, height / 2);
 
-  // Desenhando os prótons e nêutrons
+  // Desenhando os prótons
   for (let i = 0; i < protons.length; i++) {
     // Desenha o próton
     fill(protons[i].cor);
