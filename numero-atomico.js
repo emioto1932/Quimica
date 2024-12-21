@@ -1,6 +1,5 @@
 let protons = [];
 let neutrons = [];
-let angulo = 0;
 let tremorX = 0;
 let tremorY = 0;
 
@@ -26,9 +25,8 @@ function setup() {
   let posicoesNeutrons = [];
   let distancia = raioNucleo * 1.2; // Distância para manter as partículas juntas
   
-  // Intercalando prótons e nêutrons em duas camadas (frente e fundo)
+  // Intercalando prótons e nêutrons com a organização desejada
   let numTotalParticulas = numProtons + numNeutrons;
-  let camadaFrente = true;
   
   for (let i = 0; i < numTotalParticulas; i++) {
     let angulo = map(i, 0, numTotalParticulas, 0, TWO_PI); // Distribui as partículas ao longo do círculo
@@ -36,12 +34,15 @@ function setup() {
     let posX = distancia * cos(angulo);
     let posY = distancia * sin(angulo);
     
+    // Alterna entre próton (positivo) para cima e nêutron (neutro) para baixo
     if (i % 2 === 0) {
       // Próton
-      protons.push({ x: posX, y: posY, cor: corProton });
+      protons.push({ x: posX, y: posY, cor: corProton, offsetY: -20 });
+      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: 20 });
     } else {
       // Nêutron
-      neutrons.push({ x: posX, y: posY, cor: corNeutron });
+      protons.push({ x: posX, y: posY, cor: corProton, offsetY: 20 });
+      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: -20 });
     }
   }
 }
@@ -54,22 +55,23 @@ function draw() {
   strokeWeight(2);
   ellipse(width / 2, height / 2, 120, 120); // Círculo do núcleo
 
-  // Desenha os prótons
+  // Desenha os prótons e nêutrons
   for (let i = 0; i < protons.length; i++) {
     tremorX = random(-2, 2); // Tremor nos prótons
     tremorY = random(-2, 2);
 
+    // Desenha o próton
     fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY, 40, 40); // Aumento do tamanho das partículas
+    ellipse(width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + protons[i].offsetY + tremorY, 40, 40); // Aumento do tamanho das partículas
+
+    // Adiciona o sinal de positivo no próton
     textSize(20);
     textAlign(CENTER, CENTER);
     fill(255, 0, 0); // Vermelho para destacar o sinal "+"
-    text("+", width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + tremorY);
-  }
-
-  // Desenha os nêutrons
-  for (let i = 0; i < neutrons.length; i++) {
+    text("+", width / 2 + protons[i].x + tremorX, height / 2 + protons[i].y + protons[i].offsetY + tremorY);
+    
+    // Desenha o nêutron ao lado do próton, na posição alternada
     fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 40, 40); // Aumento do tamanho das partículas
+    ellipse(width / 2 + neutrons[i].x + tremorX, height / 2 + neutrons[i].y + neutrons[i].offsetY + tremorY, 40, 40); // Aumento do tamanho das partículas
   }
 }
