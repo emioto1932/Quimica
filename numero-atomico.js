@@ -13,8 +13,8 @@ function setup() {
   // Definindo o tamanho do núcleo e partículas
   let raioNucleo = 50; // Raio do núcleo
   let raioParticula = 15; // Tamanho das partículas (prótons e nêutrons)
-  let numProtons = 11;
-  let numNeutrons = 12;
+  let numProtons = 11;  // Número de prótons (do átomo de sódio)
+  let numNeutrons = 12; // Número de nêutrons (do átomo de sódio)
 
   // Cores das partículas
   let corProton = color(255, 165, 0); // Laranja para prótons
@@ -35,14 +35,18 @@ function setup() {
     let posY = distancia * sin(angulo);
     
     // Alterna entre próton (positivo) para cima e nêutron (neutro) para baixo
-    if (i % 2 === 0) {
-      // Próton
-      protons.push({ x: posX, y: posY, cor: corProton, offsetY: -20 });
-      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: 20 });
+    if (i < numProtons) {
+      if (i % 2 === 0) {
+        // Próton
+        protons.push({ x: posX, y: posY, cor: corProton, offsetY: -20 });
+        neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: 20 });
+      } else {
+        // Nêutron
+        protons.push({ x: posX, y: posY, cor: corProton, offsetY: 20 });
+        neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: -20 });
+      }
     } else {
-      // Nêutron
-      protons.push({ x: posX, y: posY, cor: corProton, offsetY: 20 });
-      neutrons.push({ x: posX, y: posY, cor: corNeutron, offsetY: -20 });
+      break; // Só faz até o número de prótons e nêutrons
     }
   }
 }
