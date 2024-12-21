@@ -1,4 +1,4 @@
-let raio = 150; // Raio máximo para as partículas
+let raio = 120; // Raio máximo para a distribuição das partículas
 let protons = [];  // Lista para armazenar os prótons
 let neutrons = []; // Lista para armazenar os nêutrons
 
@@ -6,20 +6,20 @@ function setup() {
   createCanvas(400, 400);
   let posX, posY;
   
-  // Gerar 11 prótons e 12 nêutrons, distribuídos alternadamente
+  // Gerar 11 prótons e 12 nêutrons, distribuídos alternadamente e próximos ao centro
   for (let i = 0; i < 11; i++) {
-    // Definir a distância para cada partícula (distância compacta)
-    let dist = random(0.5 * raio, 0.75 * raio);
-    let angle = random(TWO_PI);  // Ângulo aleatório para distribuir as partículas
+    // Próton
+    let dist = random(0, raio);  // Distância aleatória menor do que o raio máximo
+    let angle = random(TWO_PI);  // Ângulo aleatório para a distribuição
     posX = cos(angle) * dist;
     posY = sin(angle) * dist;
     
     // Adicionar próton
     protons.push(createVector(posX, posY));
     
-    // Definir a posição do nêutron alternando a direção
-    dist = random(0.5 * raio, 0.75 * raio);
-    angle = random(TWO_PI);
+    // Nêutron (sempre intercalando)
+    dist = random(0, raio);  // Distância aleatória menor do que o raio máximo
+    angle = random(TWO_PI);  // Ângulo aleatório
     posX = cos(angle) * dist;
     posY = sin(angle) * dist;
     
