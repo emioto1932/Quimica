@@ -8,7 +8,7 @@ function setup() {
   
   // Gerar 11 prótons e 12 nêutrons, distribuídos alternadamente
   for (let i = 0; i < 11; i++) {
-    // Definir a distância para cada partícula (incrementando progressivamente)
+    // Definir a distância para cada partícula (distância compacta)
     let dist = random(0.5 * raio, 0.75 * raio);
     let angle = random(TWO_PI);  // Ângulo aleatório para distribuir as partículas
     posX = cos(angle) * dist;
@@ -27,7 +27,7 @@ function setup() {
     neutrons.push(createVector(posX, posY));
   }
   
-  noStroke();
+  noStroke();  // Sem contorno para as partículas
 }
 
 function draw() {
