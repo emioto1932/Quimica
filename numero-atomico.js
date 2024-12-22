@@ -1,8 +1,7 @@
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
 let numProtons = 35;  // Número de prótons
 let numNeutrons = 40; // Número de nêutrons
-let angulo = 0; // Começo do ângulo para as distribuições iniciais
-let deslocamento = raio * 0.4; // Deslocamento de 60% do raio para o nêutron e próton
+let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
 let particles = []; // Lista para armazenar as partículas
 
 function setup() {
@@ -24,12 +23,12 @@ function setup() {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Verifica se ainda há prótons para adicionar
+    // Alterna entre próton e nêutron
     if (numProtons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
       numProtons--; // Decrementa o número de prótons após desenhar
     }
-    // Verifica se ainda há nêutrons para adicionar
+
     if (numNeutrons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
       numNeutrons--; // Decrementa o número de nêutrons após desenhar
