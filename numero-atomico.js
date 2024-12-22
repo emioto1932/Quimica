@@ -17,20 +17,25 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Colocando os prótons e nêutrons alternados
+  // Contadores
+  let protonsCount = 0;
+  let neutronsCount = 0;
   let totalParticulas = numProtons + numNeutrons;
-  
+
   for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
     // Se for a vez de um próton (índices pares)
-    if (i % 2 === 0) {
+    if (protonsCount < numProtons) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
+      protonsCount++;
     }
+
     // Se for a vez de um nêutron (índices ímpares)
-    else {
+    if (neutronsCount < numNeutrons) {
       neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
+      neutronsCount++;
     }
 
     // Atualiza o ângulo para o próximo
