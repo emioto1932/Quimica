@@ -5,8 +5,8 @@ let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partícula
 let particles = []; // Lista para armazenar as partículas
 
 // Parâmetros da espiral
-let angleIncrement = 2.0; // Incremento do ângulo para a espiral
-let radiusIncrement = 1.5; // Incremento do raio (distância entre as partículas)
+let angleIncrement = 1.0; // Incremento do ângulo para a espiral
+let radiusIncrement = 1.0; // Incremento do raio (distância entre as partículas)
 
 function setup() {
   createCanvas(400, 400); // Tela de 400x400 px
@@ -28,15 +28,17 @@ function setup() {
     let offsetX = cos(currentAngle) * currentRadius;
     let offsetY = sin(currentAngle) * currentRadius;
 
-    // Alterna entre próton e nêutron de forma intercalada
-    if (i % 2 === 0 && numProtons > 0) {
-      particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
-      numProtons--; // Decrementa o número de prótons após desenhar
-    } 
-    if (i % 2 !== 0 && numNeutrons > 0) {
-      particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
-      numNeutrons--; // Decrementa o número de nêutrons após desenhar
-    }
+  // Adiciona um próton se ainda houver prótons
+  if (numProtons > 0) {
+    particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
+    numProtons--; // Decrementa o número de prótons após desenhar
+  }
+
+  // Adiciona um nêutron se ainda houver nêutrons
+  if (numNeutrons > 0) {
+    particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
+    numNeutrons--; // Decrementa o número de nêutrons após desenhar
+  }
 
     // Atualiza o ângulo e o raio para o próximo
     currentAngle += angleIncrement; // Aumenta o ângulo
