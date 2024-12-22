@@ -17,23 +17,23 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Contadores
-  let protonsCount = 0;
-  let neutronsCount = 0;
+  // Total de partículas
   let totalParticulas = numProtons + numNeutrons;
 
-  // Inicializa as partículas de forma intercalada
+  // Loop para adicionar prótons e nêutrons de forma intercalada
   for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Adiciona o próton e o nêutron intercalados
-    if (protonsCount < numProtons && (i % 2 === 0 || neutronsCount >= numNeutrons)) {
+    // Verifica se ainda há prótons para adicionar
+    if (numProtons > 0) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
-      protonsCount++;
-    } else if (neutronsCount < numNeutrons) {
+      numProtons--; // Decrementa o número de prótons
+    } 
+    // Verifica se ainda há nêutrons para adicionar
+    else if (numNeutrons > 0) {
       neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
-      neutronsCount++;
+      numNeutrons--; // Decrementa o número de nêutrons
     }
 
     // Atualiza o ângulo para o próximo
@@ -44,8 +44,8 @@ function setup() {
 function draw() {
   background(255);
 
-  // Desenhando os prótons e nêutrons
-  for (let i = 0; i < numProtons; i++) {
+  // Desenhando os prótons
+  for (let i = 0; i < protons.length; i++) {
     // Desenha o próton
     fill(protons[i].cor);
     ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
@@ -57,7 +57,8 @@ function draw() {
     text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
   }
 
-  for (let i = 0; i < numNeutrons; i++) {
+  // Desenhando os nêutrons
+  for (let i = 0; i < neutrons.length; i++) {
     // Desenha o nêutron
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
