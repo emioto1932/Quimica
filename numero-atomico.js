@@ -43,9 +43,14 @@ function setup() {
     else if (vezNeutron && numNeutrons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
       numNeutrons--; // Decrementa o número de nêutrons após desenhar
-      vezNeutron = false; // Passa para a vez do próton
-      vezProton = true; // Habilita a vez do próton
-    }
+    // Após desenhar o nêutron, se não houver mais prótons, deve desabilitar a vezProton
+      if (numProtons === 0) {
+        vezProton = false;  // Desabilita a vez do próton
+        vezNeutron = true;  // Continua permitindo a vez do nêutron
+      } else {
+        vezProton = true; // Habilita a vez do próton, caso haja ainda prótons
+        vezNeutron = false; // Desabilita a vez do nêutron
+      }
 
     // Atualiza o ângulo e o raio para criar o efeito espiral
     currentAngle += angleIncrement; // Aumenta o ângulo para o próximo ponto da espiral
