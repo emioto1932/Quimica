@@ -1,10 +1,10 @@
 let protons = [];
 let neutrons = [];
-let raio = 25; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 10;  // Número de prótons
-let numNeutrons = 10; // Número de nêutrons
+let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
+let numProtons = 35;  // Número de prótons
+let numNeutrons = 40; // Número de nêutrons
 let angulo = 0; // Começo do ângulo para as distribuições iniciais
-let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
+let deslocamento = raio * 0.4; // Deslocamento de 60% do raio para o nêutron e próton
 
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
@@ -22,12 +22,13 @@ function setup() {
   let neutronsCount = 0;
   let totalParticulas = numProtons + numNeutrons;
 
+  // Inicializa as partículas de forma intercalada
   for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Alterna entre próton e nêutron
-    if (i % 2 === 0 && protonsCount < numProtons) {
+    // Adiciona o próton e o nêutron intercalados
+    if (protonsCount < numProtons && (i % 2 === 0 || neutronsCount >= numNeutrons)) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
       protonsCount++;
     } else if (neutronsCount < numNeutrons) {
@@ -43,11 +44,8 @@ function setup() {
 function draw() {
   background(255);
 
-  let offset = 0;
-  let step = 2 * raio; // Ajustando a distância para ficar mais próximo
-
   // Desenhando os prótons e nêutrons
-  for (let i = 0; i < protons.length; i++) {
+  for (let i = 0; i < numProtons; i++) {
     // Desenha o próton
     fill(protons[i].cor);
     ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
@@ -57,8 +55,10 @@ function draw() {
     textSize(18); // Ajusta o tamanho do texto
     textAlign(CENTER, CENTER);
     text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
+  }
 
-    // Desenha o nêutron acima do próton (intercalado)
+  for (let i = 0; i < numNeutrons; i++) {
+    // Desenha o nêutron
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
   }
