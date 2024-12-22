@@ -27,7 +27,8 @@ function setup() {
     if (i % 2 === 0 && numProtons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
       numProtons--; // Decrementa o número de prótons após desenhar
-    } else if (i % 2 !== 0 && numNeutrons > 0) {
+    } 
+    if (i % 2 !== 0 && numNeutrons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
       numNeutrons--; // Decrementa o número de nêutrons após desenhar
     }
