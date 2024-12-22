@@ -19,34 +19,33 @@ function setup() {
 
   // Criando as partículas e distribuindo-as aleatoriamente
   for (let i = 0; i < numProtons; i++) {
-    // Para o primeiro próton, posicione no centro e altere a sua posição
-    if (i === 0) {
-      protons.push({ x: 0, y: 0, cor: corProton });
-      neutrons.push({ x: deslocamento, y: 0, cor: corNeutron });
-    } else {
-      // Deslocando aleatoriamente os próximos prótons
-      let offsetX = cos(currentAngle) * deslocamento;
-      let offsetY = sin(currentAngle) * deslocamento;
+    // Deslocando aleatoriamente os próximos prótons
+    let offsetX = cos(currentAngle) * deslocamento;
+    let offsetY = sin(currentAngle) * deslocamento;
 
-      // Prótons alternados entre os planos
-      let planoY = random() > 0.5 ? 1 : -1;  // Alternando entre 1 (cima) e -1 (baixo)
+    // Alternância entre os planos
+    let planoY = (i % 2 === 0) ? 1 : -1;  // Alternando entre 1 (cima) e -1 (baixo)
 
-      protons.push({ x: offsetX, y: offsetY * planoY, cor: corProton });
+    // Criando o próton
+    protons.push({ x: offsetX, y: offsetY * planoY, cor: corProton });
 
-      // Colocando o nêutron alternado na posição correta
-      let deslocamentoNeutron = deslocamento * 1.2; // Um pouco mais afastado
-      let offsetXNeutron = cos(currentAngle + PI) * deslocamentoNeutron;
-      let offsetYNeutron = sin(currentAngle + PI) * deslocamentoNeutron;
+    // Criando o nêutron alternado entre os planos
+    let deslocamentoNeutron = deslocamento * 1.2; // Um pouco mais afastado
+    let offsetXNeutron = cos(currentAngle + PI) * deslocamentoNeutron;
+    let offsetYNeutron = sin(currentAngle + PI) * deslocamentoNeutron;
 
-      neutrons.push({
-        x: offsetXNeutron,
-        y: offsetYNeutron * planoY, // Garantindo a alternância no plano
-        cor: corNeutron,
-      });
+    // Nêutrons são sempre alternados de forma intercalada com os prótons
+    planoY = (i % 2 === 0) ? -1 : 1; // Alternando o plano do nêutron
 
-      // Aumenta o ângulo para a próxima partícula
-      currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
-    }
+    // Criando o nêutron
+    neutrons.push({
+      x: offsetXNeutron,
+      y: offsetYNeutron * planoY, // Garantindo a alternância no plano
+      cor: corNeutron,
+    });
+
+    // Aumenta o ângulo para a próxima partícula
+    currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
   }
 }
 
