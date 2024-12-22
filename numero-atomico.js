@@ -37,7 +37,7 @@ function setup() {
       numProtons--; // Decrementa o número de prótons
     }
     // Verifica se ainda há nêutrons para adicionar
-    else if (numNeutrons > 0) {
+    if (numNeutrons > 0) {
       fill(corNeutron); // Preenche com a cor do nêutron
       ellipse(width / 2 + offsetX, height / 2 + offsetY, 25, 25); // Desenha o nêutron
 
