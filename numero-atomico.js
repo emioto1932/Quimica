@@ -43,6 +43,9 @@ function setup() {
 function draw() {
   background(255);
 
+  let offset = 0;
+  let step = 2 * raio; // Ajustando a distância para ficar mais próximo
+
   // Desenhando os prótons e nêutrons
   let maxParticulas = max(protons.length, neutrons.length); // Garantir que o loop percorra o maior número de partículas
   for (let i = 0; i < maxParticulas; i++) {
