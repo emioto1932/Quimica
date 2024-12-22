@@ -24,13 +24,10 @@ function setup() {
     let offsetY = sin(currentAngle) * deslocamento;
 
     // Alterna entre próton e nêutron de forma intercalada
-    if (numProtons > 0) {
+    if (i % 2 === 0 && numProtons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
       numProtons--; // Decrementa o número de prótons após desenhar
-    }
-
-    // Só desenha nêutron se houver nêutrons restantes
-    if (numNeutrons > 0) {
+    } else if (i % 2 !== 0 && numNeutrons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
       numNeutrons--; // Decrementa o número de nêutrons após desenhar
     }
