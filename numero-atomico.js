@@ -19,21 +19,21 @@ function setup() {
 
   // Colocando os prótons e nêutrons alternados
   let totalParticulas = numProtons + numNeutrons;
-
-  for (let i = 0; i < numProtons; i++) {
-    // Deslocando aleatoriamente os próximos prótons
+  
+  for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Criando o próton
-    protons.push({ x: offsetX, y: offsetY, cor: corProton });
+    // Se for a vez de um próton (índices pares)
+    if (i % 2 === 0) {
+      protons.push({ x: offsetX, y: offsetY, cor: corProton });
+    }
+    // Se for a vez de um nêutron (índices ímpares)
+    else {
+      neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
+    }
 
-    // Desenhando o nêutron logo após o próton, mas com deslocamento diferente
-    let offsetXNeutron = cos(currentAngle + PI / 2) * deslocamento;
-    let offsetYNeutron = sin(currentAngle + PI / 2) * deslocamento;
-    neutrons.push({ x: offsetXNeutron, y: offsetYNeutron, cor: corNeutron });
-
-    // Aumenta o ângulo para a próxima partícula
+    // Atualiza o ângulo para o próximo
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
   }
 }
