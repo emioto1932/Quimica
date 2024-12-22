@@ -17,25 +17,21 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Alternar entre prótons e nêutrons em cada plano
+  // Colocando os prótons e nêutrons alternados
   let totalParticulas = numProtons + numNeutrons;
 
-  for (let i = 0; i < totalParticulas; i++) {
+  for (let i = 0; i < numProtons; i++) {
     // Deslocando aleatoriamente os próximos prótons
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Definindo o plano em que a partícula será colocada
-    let planoY = (i % 2 === 0) ? 1 : -1;  // Alternando entre 1 (cima) e -1 (baixo)
+    // Criando o próton
+    protons.push({ x: offsetX, y: offsetY, cor: corProton });
 
-    // Alternando entre próton e nêutron
-    if (i % 2 === 0) {
-      // Criando o próton
-      protons.push({ x: offsetX, y: offsetY * planoY, cor: corProton });
-    } else {
-      // Criando o nêutron
-      neutrons.push({ x: offsetX, y: offsetY * planoY, cor: corNeutron });
-    }
+    // Desenhando o nêutron logo após o próton, mas com deslocamento diferente
+    let offsetXNeutron = cos(currentAngle + PI / 2) * deslocamento;
+    let offsetYNeutron = sin(currentAngle + PI / 2) * deslocamento;
+    neutrons.push({ x: offsetXNeutron, y: offsetYNeutron, cor: corNeutron });
 
     // Aumenta o ângulo para a próxima partícula
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
