@@ -52,6 +52,12 @@ function draw() {
     fill(protons[i].cor);
     ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
 
+    // Adiciona o sinal de "+"
+    fill(255, 0, 0); // Cor vermelha para o sinal "+"
+    textSize(18); // Ajusta o tamanho do texto
+    textAlign(CENTER, CENTER);
+    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
+
     // Desenha o nêutron acima do próton (intercalado)
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
