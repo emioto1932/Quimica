@@ -5,7 +5,7 @@ let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partícula
 let particles = []; // Lista para armazenar as partículas
 
 function setup() {
-  createCanvas(100, 100); // Tela de 100x100 px
+  createCanvas(400, 400); // Tela de 400x400 px
   noFill();
 
   // Cores das partículas
@@ -48,7 +48,7 @@ function draw() {
     fill(p.cor); // Preenche com a cor da partícula
 
     // Desenha a partícula
-    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25);
+    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
 
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
