@@ -25,7 +25,7 @@ function setup() {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Alterna entre próton e nêutron, se ainda houver espaço
+    // Alterna entre próton e nêutron, respeitando os limites
     if (protonsCount < numProtons) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
       protonsCount++;
@@ -44,10 +44,9 @@ function setup() {
 function draw() {
   background(255);
 
-  // Desenhando os prótons e nêutrons
+  // Desenhando os prótons
   for (let i = 0; i < numProtons; i++) {
-    // Desenha o próton
-    fill(protons[i].cor);
+    fill(protons[i].cor); // Cor do próton
     ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
 
     // Adiciona o sinal de "+"
@@ -57,9 +56,9 @@ function draw() {
     text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
   }
 
+  // Desenhando os nêutrons
   for (let i = 0; i < numNeutrons; i++) {
-    // Desenha o nêutron
-    fill(neutrons[i].cor);
+    fill(neutrons[i].cor); // Cor do nêutron
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
   }
 }
