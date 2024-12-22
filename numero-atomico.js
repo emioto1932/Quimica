@@ -1,6 +1,6 @@
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 35;  // Número de prótons
-let numNeutrons = 40; // Número de nêutrons
+let numProtons = 6;  // Número de prótons
+let numNeutrons = 9; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
 let particles = []; // Lista para armazenar as partículas
 
@@ -22,9 +22,11 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
   let currentRadius = deslocamento; // Raio inicial do espiral
-
+  
   // Total de partículas
   let totalParticulas = numProtons + numNeutrons;
+  let diferencaParticulas = numNeutrons - numProtons
+  let duplicidadeNeutron = 0
 
   // Loop para adicionar prótons e nêutrons de forma intercalada
   for (let i = 0; i < totalParticulas; i++) {
@@ -48,8 +50,19 @@ function setup() {
         vezProton = false;  // Desabilita a vez do próton
         vezNeutron = true;  // Continua permitindo a vez do nêutron
       } else {
+        if { diferencaParticulas === 0 && duplicidadeNeutron === 0)
         vezProton = true; // Habilita a vez do próton, caso haja ainda prótons
         vezNeutron = false; // Desabilita a vez do nêutron
+        }
+        else if (
+            vezProton = false;
+            vezNeutron = true;
+            diferençaParticulas--;
+            
+            
+        
+          }
+      
       }
     }
 
