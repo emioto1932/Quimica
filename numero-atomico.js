@@ -3,7 +3,8 @@ let neutrons = [];
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
 let numProtons = 35;  // Número de prótons
 let numNeutrons = 40; // Número de nêutrons
-let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para o nêutron e próton
+let angulo = 0; // Começo do ângulo para as distribuições iniciais
+let deslocamento = raio * 0.4; // Deslocamento de 60% do raio para o nêutron e próton
 
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
@@ -21,7 +22,6 @@ function setup() {
   let neutronsCount = 0;
   let totalParticulas = numProtons + numNeutrons;
 
-  // Distribuindo prótons e nêutrons
   for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
@@ -35,7 +35,7 @@ function setup() {
       neutronsCount++;
     }
 
-    // Atualiza o ângulo para o próximo, garantindo uma distribuição razoavelmente espalhada
+    // Atualiza o ângulo para o próximo
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
   }
 }
@@ -47,24 +47,19 @@ function draw() {
   let step = 2 * raio; // Ajustando a distância para ficar mais próximo
 
   // Desenhando os prótons e nêutrons
-  let maxParticulas = max(protons.length, neutrons.length); // Garantir que o loop percorra o maior número de partículas
-  for (let i = 0; i < maxParticulas; i++) {
+  for (let i = 0; i < protons.length; i++) {
     // Desenha o próton
-    if (i < protons.length) {
-      fill(protons[i].cor);
-      ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
+    fill(protons[i].cor);
+    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
 
-      // Adiciona o sinal de "+"
-      fill(255, 0, 0); // Cor vermelha para o sinal "+"
-      textSize(18); // Ajusta o tamanho do texto
-      textAlign(CENTER, CENTER);
-      text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
-    }
+    // Adiciona o sinal de "+"
+    fill(255, 0, 0); // Cor vermelha para o sinal "+"
+    textSize(18); // Ajusta o tamanho do texto
+    textAlign(CENTER, CENTER);
+    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
 
-    // Desenha o nêutron
-    if (i < neutrons.length) {
-      fill(neutrons[i].cor);
-      ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
-    }
+    // Desenha o nêutron acima do próton (intercalado)
+    fill(neutrons[i].cor);
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
   }
 }
