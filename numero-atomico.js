@@ -43,20 +43,16 @@ function setup() {
 function draw() {
   background(255);
 
-  // Desenhando os prótons
+  let offset = 0;
+  let step = 2 * raio; // Ajustando a distância para ficar mais próximo
+
+  // Desenhando os prótons e nêutrons
   for (let i = 0; i < protons.length; i++) {
+    // Desenha o próton
     fill(protons[i].cor);
     ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
 
-    // Adiciona o sinal de positivo no próton
-    textSize(15);
-    textAlign(CENTER, CENTER);
-    fill(255, 0, 0); // Vermelho para o sinal "+"
-    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
-  }
-
-  // Desenhando os nêutrons
-  for (let i = 0; i < neutrons.length; i++) {
+    // Desenha o nêutron acima do próton (intercalado)
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
   }
