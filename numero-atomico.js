@@ -16,27 +16,28 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Contadores
+  // Preenchendo as partículas
   let protonsCount = 0;
   let neutronsCount = 0;
 
-  // Preencher o número correto de prótons e nêutrons
+  // Garantindo a quantidade correta de prótons e nêutrons
   while (protonsCount < numProtons || neutronsCount < numNeutrons) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Alterna entre próton e nêutron, respeitando os limites
+    // Adicionando prótons
     if (protonsCount < numProtons) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
       protonsCount++;
     }
 
+    // Adicionando nêutrons
     if (neutronsCount < numNeutrons) {
       neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
       neutronsCount++;
     }
 
-    // Atualiza o ângulo para o próximo, garantindo uma distribuição razoavelmente espalhada
+    // Atualiza o ângulo para a próxima posição
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
   }
 }
