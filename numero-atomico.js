@@ -1,13 +1,11 @@
-let protons = [];
-let neutrons = [];
-let raio = 25; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 5;  // Número de prótons
-let numNeutrons = 6; // Número de nêutrons
-let angulo = 0; // Começo do ângulo para as distribuições iniciais
-let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
+let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
+let numProtons = 35;  // Número de prótons
+let numNeutrons = 40; // Número de nêutrons
+let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
+let particles = []; // Lista para armazenar as partículas
 
 function setup() {
-  createCanvas(100, 100); // Tela de 100x100 px
+  createCanvas(400, 400); // Tela de 400x400 px
   noFill();
 
   // Cores das partículas
@@ -17,23 +15,24 @@ function setup() {
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Contadores
-  let protonsCount = 0;
-  let neutronsCount = 0;
+  // Total de partículas
   let totalParticulas = numProtons + numNeutrons;
 
+  // Loop para adicionar prótons e nêutrons de forma intercalada
   for (let i = 0; i < totalParticulas; i++) {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Alterna entre próton e nêutron
-    if (protonsCount < numProtons) {
-      protons.push({ x: offsetX, y: offsetY, cor: corProton });
-      protonsCount++;
-    } 
-    if (neutronsCount < numNeutrons) {
-      neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
-      neutronsCount++;
+    // Alterna entre próton e nêutron de forma intercalada
+    if (numProtons > 0) {
+      particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
+      numProtons--; // Decrementa o número de prótons após desenhar
+    }
+
+    // Só desenha nêutron se houver nêutrons restantes
+    if (numNeutrons > 0) {
+      particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
+      numNeutrons--; // Decrementa o número de nêutrons após desenhar
     }
 
     // Atualiza o ângulo para o próximo
@@ -42,25 +41,22 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(255); // Limpa a tela a cada quadro
 
-  let offset = 0;
-  let step = 2 * raio; // Ajustando a distância para ficar mais próximo
+  // Desenha as partículas
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    fill(p.cor); // Preenche com a cor da partícula
 
-  // Desenhando os prótons e nêutrons
-  for (let i = 0; i < protons.length; i++) {
-    // Desenha o próton
-    fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
+    // Desenha a partícula
+    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
 
-    // Adiciona o sinal de "+"
-    fill(255, 0, 0); // Cor vermelha para o sinal "+"
-    textSize(18); // Ajusta o tamanho do texto
-    textAlign(CENTER, CENTER);
-    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
-
-    // Desenha o nêutron acima do próton (intercalado)
-    fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
+    // Se for um próton, coloca o sinal de "+"
+    if (p.tipo === 'proton') {
+      fill(255, 0, 0); // Cor vermelha para o sinal "+"
+      textSize(18); // Ajusta o tamanho do texto
+      textAlign(CENTER, CENTER);
+      text("+", width / 2 + p.x, height / 2 + p.y);
+    }
   }
 }
