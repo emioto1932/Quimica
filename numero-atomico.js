@@ -37,7 +37,8 @@ function setup() {
 
     // Atualiza o ângulo para o próximo
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
-  }
+  
+}
 }
 
 function draw() {
@@ -59,6 +60,7 @@ function draw() {
     
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
+       fill(p.cor); // Preenche com a cor da partícula
       fill(255, 0, 0); // Cor vermelha para o sinal "+"
       textSize(18); // Ajusta o tamanho do texto
       textAlign(CENTER, CENTER);
