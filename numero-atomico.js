@@ -30,7 +30,7 @@ function setup() {
       numProtons--; // Decrementa o número de prótons após desenhar
     }
     // Verifica se ainda há nêutrons para adicionar
-    else if (numNeutrons > 0) {
+    if (numNeutrons > 0) {
       particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
       numNeutrons--; // Decrementa o número de nêutrons após desenhar
     }
