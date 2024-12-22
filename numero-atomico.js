@@ -1,11 +1,3 @@
-let protons = [];
-let neutrons = [];
-let raio = 25; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 35;  // Número de prótons
-let numNeutrons = 40; // Número de nêutrons
-let angulo = 0; // Começo do ângulo para as distribuições iniciais
-let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
-
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
   noFill();
