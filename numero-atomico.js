@@ -3,7 +3,7 @@ let neutrons = [];
 let raio = 25; // Raio do "círculo" em que as partículas vão estar localizadas
 let numProtons = 10;  // Número de prótons
 let numNeutrons = 10; // Número de nêutrons
-let angulo = 0;
+let angulo = 0; // Começo do ângulo para as distribuições iniciais
 
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
@@ -13,23 +13,40 @@ function setup() {
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
-  // Distribuindo os prótons e nêutrons aleatoriamente dentro do círculo
+  // Inicializando as partículas
+  let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
+  let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
+
+  // Criando as partículas e distribuindo-as aleatoriamente
   for (let i = 0; i < numProtons; i++) {
-    let posX = cos(angulo) * raio;
-    let posY = sin(angulo) * raio;
+    // Para o primeiro próton, posicione no centro e altere a sua posição
+    if (i === 0) {
+      protons.push({ x: 0, y: 0, cor: corProton });
+      neutrons.push({ x: deslocamento, y: 0, cor: corNeutron });
+    } else {
+      // Deslocando aleatoriamente os próximos prótons
+      let offsetX = cos(currentAngle) * deslocamento;
+      let offsetY = sin(currentAngle) * deslocamento;
 
-    // Aleatoriamente, coloca a partícula em um plano positivo ou negativo (alternando entre cima e baixo)
-    let planoY = random() > 0.5 ? 1 : -1; // Alterna entre 1 (acima) e -1 (abaixo)
+      // Prótons alternados entre os planos
+      let planoY = random() > 0.5 ? 1 : -1;  // Alternando entre 1 (cima) e -1 (baixo)
 
-    // Adicionando o próton com a posição no plano
-    protons.push({ x: posX, y: posY * planoY, cor: corProton });
+      protons.push({ x: offsetX, y: offsetY * planoY, cor: corProton });
 
-    // Calculando a posição do nêutron de forma alternada, mas mantendo a alternância entre planos
-    let deslocamento = raio * 0.75; // Deslocamento para os nêutrons
-    planoY = random() > 0.5 ? 1 : -1; // Alterna entre 1 (acima) e -1 (abaixo)
-    neutrons.push({ x: posX + deslocamento, y: posY * planoY, cor: corNeutron });
+      // Colocando o nêutron alternado na posição correta
+      let deslocamentoNeutron = deslocamento * 1.2; // Um pouco mais afastado
+      let offsetXNeutron = cos(currentAngle + PI) * deslocamentoNeutron;
+      let offsetYNeutron = sin(currentAngle + PI) * deslocamentoNeutron;
 
-    angulo += PI / 5; // Deslocamento angular para distribuição das partículas (72 graus)
+      neutrons.push({
+        x: offsetXNeutron,
+        y: offsetYNeutron * planoY, // Garantindo a alternância no plano
+        cor: corNeutron,
+      });
+
+      // Aumenta o ângulo para a próxima partícula
+      currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
+    }
   }
 }
 
@@ -52,32 +69,5 @@ function draw() {
   for (let i = 0; i < neutrons.length; i++) {
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
-  }
-
-  // Verificando se as partículas ultrapassaram os limites da tela e ajustando a posição
-  for (let i = 0; i < protons.length; i++) {
-    checkBoundary(protons[i]);
-    checkBoundary(neutrons[i]);
-  }
-}
-
-// Função para verificar se a partícula está fora da tela e reposicionar
-function checkBoundary(particle) {
-  let limite = 50; // Limite da tela (metade do tamanho da tela)
-
-  if (particle.x > limite) {
-    particle.x = -limite; // Reposiciona no lado oposto
-    particle.y = random(-limite, limite); // Aleatoriamente desloca a posição
-  } else if (particle.x < -limite) {
-    particle.x = limite;
-    particle.y = random(-limite, limite);
-  }
-
-  if (particle.y > limite) {
-    particle.y = -limite;
-    particle.x = random(-limite, limite);
-  } else if (particle.y < -limite) {
-    particle.y = limite;
-    particle.x = random(-limite, limite);
   }
 }
