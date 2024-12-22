@@ -46,11 +46,17 @@ function draw() {
   // Desenha as partículas
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
-    fill(p.cor); // Preenche com a cor da partícula
 
-    // Desenha a partícula
-    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
 
+     if (p.tipo === 'neutron') {
+
+       fill(p.cor); // Preenche com a cor da partícula
+        
+    
+      
+    }
+
+    
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
       fill(255, 0, 0); // Cor vermelha para o sinal "+"
@@ -58,5 +64,7 @@ function draw() {
       textAlign(CENTER, CENTER);
       text("+", width / 2 + p.x, height / 2 + p.y);
     }
+    // Desenha a partícula
+    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
   }
 }
