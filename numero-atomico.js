@@ -3,6 +3,7 @@ let numProtons = 35;  // Número de prótons
 let numNeutrons = 40; // Número de nêutrons
 let angulo = 0; // Começo do ângulo para as distribuições iniciais
 let deslocamento = raio * 0.4; // Deslocamento de 60% do raio para o nêutron e próton
+let particles = []; // Lista para armazenar as partículas
 
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
@@ -25,23 +26,13 @@ function setup() {
 
     // Verifica se ainda há prótons para adicionar
     if (numProtons > 0) {
-      fill(corProton); // Preenche com a cor do próton
-      ellipse(width / 2 + offsetX, height / 2 + offsetY, 25, 25); // Desenha o próton
-
-      // Adiciona o sinal de "+"
-      fill(255, 0, 0); // Cor vermelha para o sinal "+"
-      textSize(18); // Ajusta o tamanho do texto
-      textAlign(CENTER, CENTER);
-      text("+", width / 2 + offsetX, height / 2 + offsetY);
-
-      numProtons--; // Decrementa o número de prótons
+      particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
+      numProtons--; // Decrementa o número de prótons após desenhar
     }
     // Verifica se ainda há nêutrons para adicionar
-    if (numNeutrons > 0) {
-      fill(corNeutron); // Preenche com a cor do nêutron
-      ellipse(width / 2 + offsetX, height / 2 + offsetY, 25, 25); // Desenha o nêutron
-
-      numNeutrons--; // Decrementa o número de nêutrons
+    else if (numNeutrons > 0) {
+      particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
+      numNeutrons--; // Decrementa o número de nêutrons após desenhar
     }
 
     // Atualiza o ângulo para o próximo
@@ -50,5 +41,22 @@ function setup() {
 }
 
 function draw() {
-  // O desenho das partículas já foi feito no setup(), então não há necessidade de desenhar novamente no draw().
+  background(255); // Limpa a tela a cada quadro
+
+  // Desenha as partículas
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    fill(p.cor); // Preenche com a cor da partícula
+
+    // Desenha a partícula
+    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25);
+
+    // Se for um próton, coloca o sinal de "+"
+    if (p.tipo === 'proton') {
+      fill(255, 0, 0); // Cor vermelha para o sinal "+"
+      textSize(18); // Ajusta o tamanho do texto
+      textAlign(CENTER, CENTER);
+      text("+", width / 2 + p.x, height / 2 + p.y);
+    }
+  }
 }
