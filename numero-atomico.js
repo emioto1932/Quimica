@@ -26,14 +26,11 @@ function setup() {
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Se for a vez de um próton (índices pares)
-    if (protonsCount < numProtons) {
+    // Alterna entre próton e nêutron
+    if (i % 2 === 0 && protonsCount < numProtons) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
       protonsCount++;
-    }
-
-    // Se for a vez de um nêutron (índices ímpares)
-    if (neutronsCount < numNeutrons) {
+    } else if (neutronsCount < numNeutrons) {
       neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
       neutronsCount++;
     }
