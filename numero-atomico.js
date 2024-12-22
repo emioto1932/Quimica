@@ -4,6 +4,7 @@ let raio = 25; // Raio do "círculo" em que as partículas vão estar localizada
 let numProtons = 10;  // Número de prótons
 let numNeutrons = 10; // Número de nêutrons
 let angulo = 0; // Começo do ângulo para as distribuições iniciais
+let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
 
 function setup() {
   createCanvas(100, 100); // Tela de 100x100 px
@@ -14,16 +15,15 @@ function setup() {
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
 
   // Inicializando as partículas
-  let deslocamento = raio * 0.6; // Deslocamento de 60% do raio para o nêutron e próton
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
 
-  // Criando as partículas e distribuindo-as aleatoriamente
+  // Criando as partículas e distribuindo-as alternadamente nos planos
   for (let i = 0; i < numProtons; i++) {
     // Deslocando aleatoriamente os próximos prótons
     let offsetX = cos(currentAngle) * deslocamento;
     let offsetY = sin(currentAngle) * deslocamento;
 
-    // Alternância entre os planos
+    // Definindo o plano em que a partícula será colocada
     let planoY = (i % 2 === 0) ? 1 : -1;  // Alternando entre 1 (cima) e -1 (baixo)
 
     // Criando o próton
