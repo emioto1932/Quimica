@@ -45,6 +45,7 @@ function setup() {
     // Atualiza o ângulo para o próximo
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
   }
+}
 
 function draw() {
   background(255);
