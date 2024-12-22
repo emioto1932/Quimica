@@ -5,7 +5,7 @@ let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partícula
 let particles = []; // Lista para armazenar as partículas
 
 // Parâmetros da espiral
-let angleIncrement = 0.4; // Incremento do ângulo para a espiral
+let angleIncrement = 0.8; // Incremento do ângulo para a espiral
 let radiusIncrement = 1.5; // Incremento do raio (distância entre as partículas)
 
 function setup() {
