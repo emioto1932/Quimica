@@ -7,6 +7,10 @@ let particles = []; // Lista para armazenar as partículas
 let vezProton = true; // Controla quando é a vez de adicionar um próton
 let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 
+// Parâmetros da espiral
+let angleIncrement = 0.2; // Incremento do ângulo para a espiral
+let radiusIncrement = 1.5; // Incremento do raio (distância entre as partículas)
+
 function setup() {
   createCanvas(400, 400); // Tela de 400x400 px
   noFill();
@@ -44,8 +48,8 @@ function setup() {
     }
 
     // Atualiza o ângulo e o raio para criar o efeito espiral
-    currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
-    currentRadius += 3; // Aumenta o raio para afastar as partículas, criando o efeito espiral
+    currentAngle += angleIncrement; // Aumenta o ângulo para o próximo ponto da espiral
+    currentRadius += radiusIncrement; // Aumenta o raio para afastar as partículas, criando o efeito espiral
   }
 }
 
