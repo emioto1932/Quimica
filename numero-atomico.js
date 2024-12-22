@@ -1,6 +1,6 @@
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 35;  // Número de prótons
-let numNeutrons = 40; // Número de nêutrons
+let numProtons = 9;  // Número de prótons
+let numNeutrons = 10; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
 let particles = []; // Lista para armazenar as partículas
 
