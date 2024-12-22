@@ -9,7 +9,7 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 
 // Parâmetros da espiral
 let angleIncrement = 0.8; // Incremento do ângulo para a espiral
-let radiusIncrement = 1.5; // Incremento do raio (distância entre as partículas)
+let radiusIncrement = 0.4; // Incremento do raio (distância entre as partículas)
 
 function setup() {
   createCanvas(400, 400); // Tela de 400x400 px
