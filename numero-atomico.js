@@ -43,26 +43,23 @@ function setup() {
 function draw() {
   background(255);
 
-  // Desenhando as partículas intercaladas
-  let maxParticulas = max(protons.length, neutrons.length); // Total de partículas, considerando o maior valor
+  let offset = 0;
+  let step = 2 * raio; // Ajustando a distância para ficar mais próximo
 
-  for (let i = 0; i < maxParticulas; i++) {
-    // Desenha o próton se houver
-    if (i < protons.length) {
-      fill(protons[i].cor);
-      ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
+  // Desenhando os prótons e nêutrons
+  for (let i = 0; i < protons.length; i++) {
+    // Desenha o próton
+    fill(protons[i].cor);
+    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
 
-      // Adiciona o sinal de "+"
-      fill(255, 0, 0); // Cor vermelha para o sinal "+"
-      textSize(18); // Ajusta o tamanho do texto
-      textAlign(CENTER, CENTER);
-      text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
-    }
+    // Adiciona o sinal de "+"
+    fill(255, 0, 0); // Cor vermelha para o sinal "+"
+    textSize(18); // Ajusta o tamanho do texto
+    textAlign(CENTER, CENTER);
+    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
 
-    // Desenha o nêutron se houver
-    if (i < neutrons.length) {
-      fill(neutrons[i].cor);
-      ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
-    }
+    // Desenha o nêutron acima do próton (intercalado)
+    fill(neutrons[i].cor);
+    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
   }
 }
