@@ -17,14 +17,16 @@ function setup() {
 
   // Inicializando as partículas
   let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
+  let currentRadius = deslocamento; // Raio inicial do espiral
 
   // Total de partículas
   let totalParticulas = numProtons + numNeutrons;
 
   // Loop para adicionar prótons e nêutrons de forma intercalada
   for (let i = 0; i < totalParticulas; i++) {
-    let offsetX = cos(currentAngle) * deslocamento;
-    let offsetY = sin(currentAngle) * deslocamento;
+    // Calcular a posição em espiral
+    let offsetX = cos(currentAngle) * currentRadius;
+    let offsetY = sin(currentAngle) * currentRadius;
 
     // Verifica se é a vez de adicionar um próton
     if (vezProton && numProtons > 0) {
@@ -41,8 +43,9 @@ function setup() {
       vezProton = true; // Habilita a vez do próton
     }
 
-    // Atualiza o ângulo para o próximo
+    // Atualiza o ângulo e o raio para criar o efeito espiral
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
+    currentRadius += 3; // Aumenta o raio para afastar as partículas, criando o efeito espiral
   }
 }
 
