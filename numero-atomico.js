@@ -1,5 +1,3 @@
-let protons = [];
-let neutrons = [];
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
 let numProtons = 35;  // Número de prótons
 let numNeutrons = 40; // Número de nêutrons
@@ -27,12 +25,22 @@ function setup() {
 
     // Verifica se ainda há prótons para adicionar
     if (numProtons > 0) {
-      protons.push({ x: offsetX, y: offsetY, cor: corProton });
+      fill(corProton); // Preenche com a cor do próton
+      ellipse(width / 2 + offsetX, height / 2 + offsetY, 25, 25); // Desenha o próton
+
+      // Adiciona o sinal de "+"
+      fill(255, 0, 0); // Cor vermelha para o sinal "+"
+      textSize(18); // Ajusta o tamanho do texto
+      textAlign(CENTER, CENTER);
+      text("+", width / 2 + offsetX, height / 2 + offsetY);
+
       numProtons--; // Decrementa o número de prótons
-    } 
+    }
     // Verifica se ainda há nêutrons para adicionar
     else if (numNeutrons > 0) {
-      neutrons.push({ x: offsetX, y: offsetY, cor: corNeutron });
+      fill(corNeutron); // Preenche com a cor do nêutron
+      ellipse(width / 2 + offsetX, height / 2 + offsetY, 25, 25); // Desenha o nêutron
+
       numNeutrons--; // Decrementa o número de nêutrons
     }
 
@@ -42,25 +50,5 @@ function setup() {
 }
 
 function draw() {
-  background(255);
-
-  // Desenhando os prótons
-  for (let i = 0; i < protons.length; i++) {
-    // Desenha o próton
-    fill(protons[i].cor);
-    ellipse(width / 2 + protons[i].x, height / 2 + protons[i].y, 25, 25); // Prótons
-
-    // Adiciona o sinal de "+"
-    fill(255, 0, 0); // Cor vermelha para o sinal "+"
-    textSize(18); // Ajusta o tamanho do texto
-    textAlign(CENTER, CENTER);
-    text("+", width / 2 + protons[i].x, height / 2 + protons[i].y);
-  }
-
-  // Desenhando os nêutrons
-  for (let i = 0; i < neutrons.length; i++) {
-    // Desenha o nêutron
-    fill(neutrons[i].cor);
-    ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 25, 25); // Nêutrons
-  }
+  // O desenho das partículas já foi feito no setup(), então não há necessidade de desenhar novamente no draw().
 }
