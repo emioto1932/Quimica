@@ -47,14 +47,14 @@ function draw() {
 
     // Desenha a partícula com a cor apropriada
     fill(p.cor); // Preenche com a cor da partícula
-    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
+    ellipse(width / 3 + p.x, height / 3 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
 
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
       fill(255, 0, 0); // Cor vermelha para o sinal "+"
       textSize(18); // Ajusta o tamanho do texto
       textAlign(CENTER, CENTER);
-      text("+", width / 2 + p.x, height / 2 + p.y); // Coloca o "+" sobre o próton
+      text("+", width / 3 + p.x, height / 3 + p.y); // Coloca o "+" sobre o próton
     }
   }
 }
