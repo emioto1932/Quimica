@@ -29,7 +29,7 @@ function setup() {
       // Prótons e nêutrons alternados, com deslocamento
       let posX = cos(angulo) * raio;
       let posY = sin(angulo) * raio;
-      
+
       // Adicionando um próton e um nêutron intercalados
       if (i % 2 === 0) {
         protons.push({ x: posX, y: posY, cor: corProton });
@@ -61,5 +61,30 @@ function draw() {
     // Desenha o nêutron ao lado do próton, na posição alternada
     fill(neutrons[i].cor);
     ellipse(width / 2 + neutrons[i].x, height / 2 + neutrons[i].y, 40, 40); // Aumento do tamanho das partículas
+
+    // Verificando se as partículas ultrapassaram os limites da tela e ajustando a posição
+    checkBoundary(protons[i]);
+    checkBoundary(neutrons[i]);
+  }
+}
+
+// Função para verificar se a partícula está fora da tela e reposicionar
+function checkBoundary(particle) {
+  let limite = 50; // Limite da tela
+
+  if (particle.x > limite) {
+    particle.x = -limite; // Reposiciona no lado oposto
+    particle.y = random(-limite, limite); // Aleatoriamente desloca a posição
+  } else if (particle.x < -limite) {
+    particle.x = limite;
+    particle.y = random(-limite, limite);
+  }
+
+  if (particle.y > limite) {
+    particle.y = -limite;
+    particle.x = random(-limite, limite);
+  } else if (particle.y < -limite) {
+    particle.y = limite;
+    particle.x = random(-limite, limite);
   }
 }
