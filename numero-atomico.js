@@ -5,7 +5,7 @@ let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partícula
 let particles = []; // Lista para armazenar as partículas
 
 function setup() {
-  createCanvas(100, 100); // Tela de 400x400 px
+  createCanvas(400, 400); // Tela de 400x400 px
   noFill();
 
   // Cores das partículas
@@ -37,8 +37,7 @@ function setup() {
 
     // Atualiza o ângulo para o próximo
     currentAngle += random(PI / 4, PI / 2); // Aumenta aleatoriamente de 45 a 90 graus
-  
-}
+  }
 }
 
 function draw() {
@@ -48,25 +47,16 @@ function draw() {
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
 
+    // Desenha a partícula com a cor apropriada
+    fill(p.cor); // Preenche com a cor da partícula
+    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
 
-     if (p.tipo === 'neutron') {
-
-       fill(p.cor); // Preenche com a cor da partícula
-        
-    
-      
-    }
-
-    
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
-       fill(p.cor); // Preenche com a cor da partícula
       fill(255, 0, 0); // Cor vermelha para o sinal "+"
       textSize(18); // Ajusta o tamanho do texto
       textAlign(CENTER, CENTER);
-      text("+", width / 2 + p.x, height / 2 + p.y);
+      text("+", width / 2 + p.x, height / 2 + p.y); // Coloca o "+" sobre o próton
     }
-    // Desenha a partícula
-    ellipse(width / 2 + p.x, height / 2 + p.y, 25, 25); // Aplica o deslocamento (p.x e p.y)
   }
 }
