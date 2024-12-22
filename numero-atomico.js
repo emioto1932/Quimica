@@ -51,6 +51,7 @@ function setup() {
         vezProton = true; // Habilita a vez do próton, caso haja ainda prótons
         vezNeutron = false; // Desabilita a vez do nêutron
       }
+    }
 
     // Atualiza o ângulo e o raio para criar o efeito espiral
     currentAngle += angleIncrement; // Aumenta o ângulo para o próximo ponto da espiral
