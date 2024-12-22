@@ -27,7 +27,7 @@ function setup() {
     let offsetY = sin(currentAngle) * deslocamento;
 
     // Alterna entre próton e nêutron
-    if (i % 2 === 0 && protonsCount < numProtons) {
+    if (protonsCount < numProtons) {
       protons.push({ x: offsetX, y: offsetY, cor: corProton });
       protonsCount++;
     } 
