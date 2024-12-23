@@ -879,6 +879,8 @@ elementSelect.addEventListener("change", () => {
   tableBody.innerHTML = `
 
     <tr><td>
+
+    
    <a href="#" id="linkNumeroAtomico">Número atômico ou Número de Prótons (carga +)</a></td><td id="numProtons">${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
     <tr><td>Número de Elétrons (carga -)</td><td>${elementoAtual.electrons}</td><td>Eletronegatividade (escala de Pauling)</td><td>${exibirComVirgula(elementoAtual.electronegativity)}</td></tr> 
@@ -890,19 +892,21 @@ elementSelect.addEventListener("change", () => {
    <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td>
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
-// Adiciona um ouvinte de evento para o clique no link
-document.getElementById("linkNumeroAtomico").addEventListener("click", function(e) {
-    e.preventDefault(); // Previne o comportamento padrão do link
-
-    // Recupera os valores de numProtons e numNeutrons da tabela
+document.addEventListener("DOMContentLoaded", function() {
+    // Recupera os valores de numProtons e numNeutrons
     let numProtons = document.getElementById("numProtons").textContent;
-    let numNeutrons = document.getElementById("numNeutrons").textContent;
+    let numNeutrons = document.getElementById("neutrons").textContent;
 
-    // Cria a URL com os parâmetros de numProtons e numNeutrons
-    let url = "numero-atomico.html?numProtons=" + numProtons + "&numNeutrons=" + numNeutrons;
+    // Adiciona o evento de clique no link
+    document.getElementById("linkNumeroAtomico").addEventListener("click", function(e) {
+        e.preventDefault(); // Previne o comportamento padrão do link (evita o redirecionamento padrão para #)
 
-    // Redireciona para a página numero-atomico.html
-    window.location.href = url;
+        // Cria a URL com os parâmetros de numProtons e numNeutrons
+        let url = "numero-atomico.html?numProtons=" + numProtons + "&numNeutrons=" + numNeutrons;
+
+        // Redireciona para a página numero-atomico.html
+        window.location.href = url;
+    });
 });
 
 
