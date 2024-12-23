@@ -893,7 +893,7 @@ elementSelect.addEventListener("change", () => {
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Recupera os valores de numProtons e numNeutrons
+    // Recupera os valores de numProtons e numNeutrons da tabela
     let numProtons = document.getElementById("numProtons").textContent;
     let numNeutrons = document.getElementById("neutrons").textContent;
 
@@ -902,12 +902,13 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault(); // Previne o comportamento padrão do link (evita o redirecionamento padrão para #)
 
         // Cria a URL com os parâmetros de numProtons e numNeutrons
-        let url = "numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons};
+        let url = "numero-atomico.html?numProtons=" + numProtons + "&numNeutrons=" + numNeutrons;
 
         // Redireciona para a página numero-atomico.html
-        window.location.href = url;
+        window.location.href = url; // Isso vai redirecionar para a URL gerada
     });
 });
+
 </script>
 
 `; 
