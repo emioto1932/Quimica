@@ -1,4 +1,4 @@
--document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     // Recupera o parâmetro da URL
     const urlParams = new URLSearchParams(window.location.search);
     const propriedade = urlParams.get("propriedade");
@@ -12,9 +12,9 @@
         if (propriedade === "densidade") {
             propertyTitle.textContent = "Densidade";
             propertyIframe.src = "densidade.html"; // Carrega a página densidade.html
-        } else if (propriedade === "protons") {
-            propertyTitle.textContent = "Numero Atômico ou Número de Prótons";
-            propertyIframe.src = "numero_atomico.html// Carrega a página numero_atomico.html
+        } else if (propriedade === "ponto_fusao") {
+            propertyTitle.textContent = "Ponto de Fusão";
+            propertyIframe.src = "ponto_fusao.html"; // Carrega a página ponto_fusao.html
         } else if (propriedade === "condutividade") {
             propertyTitle.textContent = "Condutividade";
             propertyIframe.src = "condutividade.html"; // Carrega a página condutividade.html
