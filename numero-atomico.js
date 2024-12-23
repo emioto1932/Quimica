@@ -12,15 +12,10 @@ let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
 // Recupera os valores do localStorage
-let numProtons = parseInt(localStorage.getItem("numProtons"));
-let numNeutrons = parseInt(localStorage.getItem("numNeutrons"));
+let numProtons = localStorage.getItem("numProtons");
+let numNeutrons = localStorage.getItem("numNeutrons");
 
-// Verifica se os valores existem no localStorage
-if (isNaN(numProtons) || isNaN(numNeutrons)) {
-    console.error("Os valores de prótons ou nêutrons não foram encontrados ou não são válidos.");
-} else {
-    console.log(`Número de prótons: ${numProtons}, Número de nêutrons: ${numNeutrons}`);
-}
+
 
 
 function setup() {
