@@ -11,6 +11,12 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
+
+
+
+function setup() {
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Recupera os valores do localStorage
     const numProtons = localStorage.getItem("numProtons");
@@ -28,7 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-function setup() {
+
+    
   createCanvas(200, 200); // Tela de 400x400 px
   noFill();
 
