@@ -11,31 +11,21 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
+// Recupera os valores do localStorage
+let numProtons = parseInt(localStorage.getItem("numProtons"));
+let numNeutrons = parseInt(localStorage.getItem("numNeutrons"));
 
+// Verifica se os valores existem no localStorage
+if (isNaN(numProtons) || isNaN(numNeutrons)) {
+    console.error("Os valores de prótons ou nêutrons não foram encontrados ou não são válidos.");
+} else {
+    console.log(`Número de prótons: ${numProtons}, Número de nêutrons: ${numNeutrons}`);
+}
 
 
 function setup() {
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Recupera os valores do localStorage
-    const numProtons = localStorage.getItem("numProtons");
-    const numNeutrons = localStorage.getItem("numNeutrons");
-
-    // Se os valores existirem, use-os para construir a página
-    if (numProtons !== null && numNeutrons !== null) {
-        // Aqui você pode usar os valores para montar o conteúdo da página
-        document.getElementById("numProtons").textContent = numProtons;
-        document.getElementById("numNeutrons").textContent = numNeutrons;
-    } else {
-        console.error("Os valores de prótons e nêutrons não foram encontrados.");
-    }
-});
-
-
-
-
-    
+ 
   createCanvas(200, 200); // Tela de 400x400 px
   noFill();
 
