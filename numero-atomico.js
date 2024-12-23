@@ -1,6 +1,6 @@
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 80;  // Número de prótons
-let numNeutrons = 120; // Número de nêutrons
+//let numProtons = 80;  // Número de prótons
+//let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
 let particles = []; // Lista para armazenar as partículas
 
@@ -10,6 +10,23 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 // Parâmetros da espiral
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Recupera os valores do localStorage
+    const numProtons = localStorage.getItem("numProtons");
+    const numNeutrons = localStorage.getItem("numNeutrons");
+
+    // Se os valores existirem, use-os para construir a página
+    if (numProtons !== null && numNeutrons !== null) {
+        // Aqui você pode usar os valores para montar o conteúdo da página
+        document.getElementById("numProtons").textContent = numProtons;
+        document.getElementById("numNeutrons").textContent = numNeutrons;
+    } else {
+        console.error("Os valores de prótons e nêutrons não foram encontrados.");
+    }
+});
+
+
 
 function setup() {
   createCanvas(200, 200); // Tela de 400x400 px
