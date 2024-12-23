@@ -876,7 +876,7 @@ elementSelect.addEventListener("change", () => {
 
   // Preencher a tabela com as propriedades do elemento 
 
-  tableBody.innerHTML = ` 
+  tableBody.innerHTML = " 
 
     <tr><td>
     <a href="objeto.html?propriedade=numero-atomico">Número atômico ou Número de Prótons (carga +)</a></td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
@@ -891,14 +891,10 @@ elementSelect.addEventListener("change", () => {
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
 // Salvar no localStorage
-//localStorage.setItem("numProtons", ${elementoAtual.protons});
-//localStorage.setItem("numNeutrons", ${elementoAtual.numeroNeutrons});
+localStorage.setItem("numProtons", `${elementoAtual.protons}`);
+localStorage.setItem("numNeutrons", `${elementoAtual.numeroNeutrons}`);
 
-  localStorage.setItem("numProtons", elementoAtual.protons.toString());
-localStorage.setItem("numNeutrons", elementoAtual.numeroNeutrons.toString());
-
- 
-  `; 
+"; 
 
    
 
