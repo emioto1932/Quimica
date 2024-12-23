@@ -890,7 +890,9 @@ elementSelect.addEventListener("change", () => {
    <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td>
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
 
-
+// Salvar no localStorage
+localStorage.setItem("numProtons", ${elementoAtual.protons);
+localStorage.setItem("numNeutrons", ${elementoAtual.numeroNeutrons});
   
  
   `; 
