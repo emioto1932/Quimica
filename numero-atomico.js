@@ -11,23 +11,19 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
-   document.addEventListener("DOMContentLoaded", function() {
-    // Recupera os valores diretamente dos elementos da página
-    let numProtonsCht = document.getElementById("numProtons").textContent;
-    let numNeutronsCht = document.getElementById("numNeutrons").textContent;
+// Função que será chamada para atualizar as informações do átomo
+function updateAtomInfo(protons, neutrons) {
+  // Converte os parâmetros para número (pois vêm como strings da URL)
+  protons = parseInt(protons);
+  neutrons = parseInt(neutrons);
 
-    // Converte para número (caso necessário)
-    let numProtons = parseInt(numProtonsCht);
-    let numNeutrons = parseInt(numNeutronsCht);
+  // Atualiza o conteúdo da página com os valores
+  document.getElementById('protonsInfo').innerText = `Número de Prótons: ${protons}`;
+  document.getElementById('neutronsInfo').innerText = `Número de Nêutrons: ${neutrons}`;
 
-    console.log("Número de Prótons: " + numProtons);
-    console.log("Número de Nêutrons: " + numNeutrons);
-
-    // Se os valores foram recuperados corretamente, você pode continuar com a lógica do seu código
-    // Use numProtonsInt e numNeutronsInt conforme necessário para o seu processamento
-
-    // Lembre-se de que você agora pode usar esses valores na criação da espiral, etc.
-});
+  // Aqui você pode adicionar lógica adicional para desenhar o átomo, se necessário
+  console.log(`Prótons: ${protons}, Nêutrons: ${neutrons}`);
+}
 
 
 
