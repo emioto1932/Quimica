@@ -12,7 +12,7 @@ let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
 function setup() {
-  createCanvas(100, 100); // Tela de 400x400 px
+  createCanvas(200, 200); // Tela de 400x400 px
   noFill();
 
   // Cores das partículas
