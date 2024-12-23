@@ -11,9 +11,9 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
-// Recupera os valores do localStorage
-let numProtons = localStorage.getItem("numProtons");
-let numNeutrons = localStorage.getItem("numNeutrons");
+// Recupera os valores do localStorage e converte para números
+let numProtons = parseInt(localStorage.getItem("numProtons"));
+let numNeutrons = parseInt(localStorage.getItem("numNeutrons"));
 
 
 
