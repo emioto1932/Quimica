@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (propriedade === "densidade") {
             propertyTitle.textContent = "Densidade";
             propertyIframe.src = "densidade.html"; // Carrega a página densidade.html
-        } else if (propriedade === "numero_atomico") {
+        } else if (propriedade === "numero-atomico") {
             propertyTitle.textContent = "Número Atômico ou Número de Prótons";
             propertyIframe.src = "numero-atomico.html"; // Carrega a página ponto_fusao.html
         } else if (propriedade === "condutividade") {
