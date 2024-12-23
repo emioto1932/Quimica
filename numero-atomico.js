@@ -11,14 +11,23 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
 
-// Recupera os valores do localStorage e converte para números
-let numProtons = parseInt(localStorage.getItem("numProtons"));
-let numNeutrons = parseInt(localStorage.getItem("numNeutrons"));
+   document.addEventListener("DOMContentLoaded", function() {
+    // Recupera os valores diretamente dos elementos da página
+    const numProtonsCht = document.getElementById("numProtons").textContent;
+    const numNeutronsCht = document.getElementById("numNeutrons").textContent;
 
-// Verifique se os valores foram passados corretamente
-console.log("Número de Prótons:", numProtons);  // Exibe o número de prótons
-console.log("Número de Nêutrons:", numNeutrons);  // Exibe o número de nêutrons
+    // Converte para número (caso necessário)
+    const numProtons = parseInt(numProtonsCht);
+    const numNeutrons = parseInt(numNeutronsCht);
 
+    console.log("Número de Prótons: " + numProtonsInt);
+    console.log("Número de Nêutrons: " + numNeutronsInt);
+
+    // Se os valores foram recuperados corretamente, você pode continuar com a lógica do seu código
+    // Use numProtonsInt e numNeutronsInt conforme necessário para o seu processamento
+
+    // Lembre-se de que você agora pode usar esses valores na criação da espiral, etc.
+});
 
 
 
