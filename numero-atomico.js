@@ -15,6 +15,10 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
 let numProtons = parseInt(localStorage.getItem("numProtons"));
 let numNeutrons = parseInt(localStorage.getItem("numNeutrons"));
 
+// Verifique se os valores foram passados corretamente
+console.log("Número de Prótons:", numProtons);  // Exibe o número de prótons
+console.log("Número de Nêutrons:", numNeutrons);  // Exibe o número de nêutrons
+
 
 
 
