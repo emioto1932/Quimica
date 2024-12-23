@@ -13,12 +13,12 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
 
    document.addEventListener("DOMContentLoaded", function() {
     // Recupera os valores diretamente dos elementos da página
-    const numProtonsCht = document.getElementById("numProtons").textContent;
-    const numNeutronsCht = document.getElementById("numNeutrons").textContent;
+    let numProtonsCht = document.getElementById("numProtons").textContent;
+    let numNeutronsCht = document.getElementById("numNeutrons").textContent;
 
     // Converte para número (caso necessário)
-    const numProtons = parseInt(numProtonsCht);
-    const numNeutrons = parseInt(numNeutronsCht);
+    let numProtons = parseInt(numProtonsCht);
+    let numNeutrons = parseInt(numNeutronsCht);
 
     console.log("Número de Prótons: " + numProtonsInt);
     console.log("Número de Nêutrons: " + numNeutronsInt);
