@@ -899,7 +899,7 @@ document.getElementById("linkNumeroAtomico").addEventListener("click", function(
     let numNeutrons = document.getElementById("numNeutrons").textContent;
 
     // Cria a URL com os parâmetros de numProtons e numNeutrons
-    let url = `numero-atomico.html?numProtons=${numProtons}&numNeutrons=${numNeutrons}`;
+    let url = "numero-atomico.html?numProtons=" + numProtons + "&numNeutrons=" + numNeutrons;
 
     // Redireciona para a página numero-atomico.html
     window.location.href = url;
