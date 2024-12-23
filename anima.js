@@ -891,7 +891,7 @@ elementSelect.addEventListener("change", () => {
     <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
    <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td>
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
-
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     // Recupera os valores de numProtons e numNeutrons
     let numProtons = document.getElementById("numProtons").textContent;
@@ -908,7 +908,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = url;
     });
 });
-
+</script>
 
 `; 
 
