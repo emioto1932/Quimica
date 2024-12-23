@@ -20,8 +20,8 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
     let numProtons = parseInt(numProtonsCht);
     let numNeutrons = parseInt(numNeutronsCht);
 
-    console.log("Número de Prótons: " + numProtonsInt);
-    console.log("Número de Nêutrons: " + numNeutronsInt);
+    console.log("Número de Prótons: " + numProtons);
+    console.log("Número de Nêutrons: " + numNeutrons);
 
     // Se os valores foram recuperados corretamente, você pode continuar com a lógica do seu código
     // Use numProtonsInt e numNeutronsInt conforme necessário para o seu processamento
