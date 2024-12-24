@@ -906,6 +906,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Redireciona para a página numero-atomico.html
         window.location.href = url; // Isso vai redirecionar para a URL gerada
+
+// Verifica no console se a URL foi criada corretamente
+        console.log("URL gerada: ", url);
+
+        // Verifica se os valores de numProtons e numNeutrons são válidos
+        if (numProtons && numNeutrons) {
+            console.log("Protons: ", numProtons);
+            console.log("Neutrons: ", numNeutrons);
+
+            // Redireciona para a página numero-atomico.html
+            window.location.href = url; // Isso vai redirecionar para a URL gerada
+        } else {
+            console.log("Valores de numProtons ou numNeutrons não encontrados!");
+        }
+
+
+        
     });
 });
 
