@@ -904,9 +904,15 @@ document.addEventListener("DOMContentLoaded", function() {
         // Cria a URL com os parâmetros de numProtons e numNeutrons
         let url = "numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons};
 
-            // Selecione o link pelo ID
-        let link = document.getElementById("linkNumeroAtomico");
-     link.href = url
+
+ let link = document.getElementById("linkNumeroAtomico");
+
+    // Defina o atributo href do link com a URL gerada
+    link.href = url;
+
+
+
+     
 
         
     });
