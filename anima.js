@@ -878,22 +878,17 @@ elementSelect.addEventListener("change", () => {
 
   tableBody.innerHTML = `
 
-
-
-  // <tr><td><a href="numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons}> Número atômico ou Número de Prótons (carga +)</a></td><td id="numProtons">${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
-
-
-    <tr><td>
-    <a href="objeto.html?propriedade=numero-atomico">Número atômico ou Número de Prótons (carga +)</a></td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
+  <tr><td>Número atômico ou Número de Prótons (carga +)</td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
     <tr><td>Número de Elétrons (carga -)</td><td>${elementoAtual.electrons}</td><td>Eletronegatividade (escala de Pauling)</td><td>${exibirComVirgula(elementoAtual.electronegativity)}</td></tr> 
 
     <tr><td>Massa atômica relativa (u)</td><td>${exibirComVirgula(elementoAtual.massaAtomica)}</td><td>Temperatura de fusão (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaFusao)}</td></tr> 
-    <tr><td>Número de Neutrons (u )</td><td id="neutrons">${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
+    <tr><td>Número de Neutrons (u )</td><td>${elementoAtual.numeroNeutrons}</td><td>Temperatura de ebulição  (ºC)</td><td>${exibirComVirgula(elementoAtual.temperaturaEbulicao)}</td></tr> 
 
     <tr><td>Raio atômico (pm  ou picômetros)</td><td>${elementoAtual.raioAtomico}</td><td>1ª Energia de ionização (kJ/mol)</td><td>${exibirComVirgula(elementoAtual.energiaIonizacao)}</td></tr> 
    <tr><td>Configuração Eletrônica (K L M N O P Q)</td><td>${elementoAtual.configuracaoEletronica}</td>
    <td> <a href="objeto.html?propriedade=densidade">Densidade (g/cm³)</a></td><td>${exibirComVirgula(elementoAtual.densidade)}</td></tr> 
+
 
 
 `; 
