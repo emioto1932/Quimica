@@ -881,7 +881,7 @@ elementSelect.addEventListener("change", () => {
     <tr><td>
 
     
-   <a href="#" id="linkNumeroAtomico">Número atômico ou Número de Prótons (carga +)</a></td><td id="numProtons">${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
+   <a href="numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons}>Número atômico ou Número de Prótons (carga +)</a></td><td id="numProtons">${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
     <tr><td>Número de Elétrons (carga -)</td><td>${elementoAtual.electrons}</td><td>Eletronegatividade (escala de Pauling)</td><td>${exibirComVirgula(elementoAtual.electronegativity)}</td></tr> 
 
@@ -896,23 +896,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Recupera os valores de numProtons e numNeutrons da tabela
     let numProtons = document.getElementById("numProtons").textContent;
     let numNeutrons = document.getElementById("neutrons").textContent;
-
-    // Adiciona o evento de clique no link
-    document.getElementById("linkNumeroAtomico").addEventListener("click", function(e) {
-        e.preventDefault(); // Previne o comportamento padrão do link (evita o redirecionamento padrão para #)
-
-        // Cria a URL com os parâmetros de numProtons e numNeutrons
-        let url = "numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons};
-
-
- let link = document.getElementById("linkNumeroAtomico");
-
-    // Defina o atributo href do link com a URL gerada
-    link.href = url;
-
-
-
-     
+   
 
         
     });
