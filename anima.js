@@ -902,7 +902,7 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault(); // Previne o comportamento padrão do link (evita o redirecionamento padrão para #)
 
         // Cria a URL com os parâmetros de numProtons e numNeutrons
-        let url = "numero-atomico.html?numProtons=" + numProtons + "&numNeutrons=" + numNeutrons;
+        let url = "numero-atomico.html?numProtons=" + ${elementoAtual.protons} + "&numNeutrons=" + ${elementoAtual.numeroNeutrons};
 
         // Redireciona para a página numero-atomico.html
         window.location.href = url; // Isso vai redirecionar para a URL gerada
