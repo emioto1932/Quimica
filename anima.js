@@ -906,17 +906,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Redireciona para a página numero-atomico.html
         window.location.href = url; // Isso vai redirecionar para a URL gerada
-// Cria um novo elemento de link
-let link = document.createElement('a');
 
-// Define o texto do link
-link.textContent = 'Ir para Número Atômico';
-
-// Define o atributo href do link
-link.href = url;
-
-// Adiciona o link ao corpo do documento
-document.body.appendChild(link);
 
 
         
