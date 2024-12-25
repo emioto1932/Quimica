@@ -35,19 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Função que será chamada para atualizar as informações do átomo
-function updateAtomInfo(protons, neutrons) {
-  // Converte os parâmetros para número (pois vêm como strings da URL)
-  protons = parseInt(protons);
-  neutrons = parseInt(neutrons);
-
-  // Atualiza o conteúdo da página com os valores
-  document.getElementById('protonsInfo').innerText = `Número de Prótons: ${protons}`;
-  document.getElementById('neutronsInfo').innerText = `Número de Nêutrons: ${neutrons}`;
-
-  // Aqui você pode adicionar lógica adicional para desenhar o átomo, se necessário
-  console.log(`Prótons: ${protons}, Nêutrons: ${neutrons}`);
-}
 
 
 
