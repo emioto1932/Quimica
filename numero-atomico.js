@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Erro: Não foi possível recuperar os valores de prótons e nêutrons.");
   }
+}
 
 
 
