@@ -13,22 +13,21 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Recupera os parâmetros da URL
-  const urlParams = new URLSearchParams(window.location.search);
-  let numProtons = parseInt(urlParams.get("protons"));
-  let numNeutrons = parseInt(urlParams.get("neutrons"));
+// Recupera os parâmetros da URL
+let numProtons = 0;
+let numNeutrons = 0;
 
-  // Use os valores para montar a animação
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  numProtons = parseInt(urlParams.get("protons"));
+  numNeutrons = parseInt(urlParams.get("neutrons"));
+
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
-    
-
   } else {
     console.error("Erro: Não foi possível recuperar os valores de prótons e nêutrons.");
   }
-}
-
+});
 
 
 
