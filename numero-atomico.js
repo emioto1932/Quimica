@@ -1,6 +1,6 @@
 let raio = 10; // Raio do "círculo" em que as partículas vão estar localizadas
-let numProtons = 80;  // Número de prótons
-let numNeutrons = 120; // Número de nêutrons
+//let numProtons = 80;  // Número de prótons
+//let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
 let particles = []; // Lista para armazenar as partículas
 
@@ -10,6 +10,29 @@ let vezNeutron = false; // Controla quando é a vez de adicionar um nêutron
 // Parâmetros da espiral
 let angleIncrement = 0.4; // Incremento do ângulo para a espiral
 let radiusIncrement = 0.2; // Incremento do raio (distância entre as partículas)
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Recupera os parâmetros da URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const numProtons = parseInt(urlParams.get("protons"));
+  const numNeutrons = parseInt(urlParams.get("neutrons"));
+
+  // Use os valores para montar a animação
+  if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
+    console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
+    
+
+  } else {
+    console.error("Erro: Não foi possível recuperar os valores de prótons e nêutrons.");
+  }
+
+
+
+
+
+
 
 // Função que será chamada para atualizar as informações do átomo
 function updateAtomInfo(protons, neutrons) {
