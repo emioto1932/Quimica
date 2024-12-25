@@ -3,6 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const propriedade = urlParams.get("propriedade");
 
+
+      const protons = urlParams.get("protons");
+      const neutrons = urlParams.get("neutrons");
+
+
+
+
+    
     // Elementos da página
     const propertyTitle = document.getElementById("propertyTitle");
     const propertyIframe = document.getElementById("propertyIframe");
@@ -15,6 +23,13 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (propriedade === "numero-atomico") {
             propertyTitle.textContent = "Número Atômico ou Número de Prótons";
             propertyIframe.src = "numero-atomico.html"; // Carrega a página ponto_fusao.html
+
+    
+                    // Passe os valores de prótons e nêutrons ao iframe como parâmetros
+                    propertyIframe.src = `numero-atomico.html?protons=${protons}&neutrons=${neutrons}`;
+
+
+           
         } else if (propriedade === "condutividade") {
             propertyTitle.textContent = "Condutividade";
             propertyIframe.src = "condutividade.html"; // Carrega a página condutividade.html
