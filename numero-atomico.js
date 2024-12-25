@@ -16,8 +16,8 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
 document.addEventListener("DOMContentLoaded", function () {
   // Recupera os parâmetros da URL
   const urlParams = new URLSearchParams(window.location.search);
-  const numProtons = parseInt(urlParams.get("protons"));
-  const numNeutrons = parseInt(urlParams.get("neutrons"));
+  let numProtons = parseInt(urlParams.get("protons"));
+  let numNeutrons = parseInt(urlParams.get("neutrons"));
 
   // Use os valores para montar a animação
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
