@@ -40,10 +40,6 @@
     /* Estilo para o contêiner do canvas */
     #canvas-container {
       margin: 20px auto;
-      max-width: 800px;
+      max-width: 300px;
       padding: 20px;
-      background-color: #eaf4fc;
-      border: 1px dashed #0078d7;
-      border-radius: 8px;
-      text-align: center;
     }
