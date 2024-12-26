@@ -97,7 +97,7 @@ function draw() {
 
     // Desenha a partícula com a cor apropriada
     fill(p.cor); // Preenche com a cor da partícula
-    ellipse(width / 2 + p.x, height / 2 + p.y, 15, 15); // Aplica o deslocamento (p.x e p.y)
+    ellipse(width / 2 + p.x, height / 2 + p.y, 60, 60); // Aplica o deslocamento (p.x e p.y)
 
     // Se for um próton, coloca o sinal de "+"
     if (p.tipo === 'proton') {
