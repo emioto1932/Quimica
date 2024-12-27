@@ -878,7 +878,7 @@ elementSelect.addEventListener("change", () => {
 
   tableBody.innerHTML = `
 
-  <tr><td><a href="objeto.html?propriedade=numero-atomico&protons=${elementoAtual.protons}&neutrons=${elementoAtual.numeroNeutrons}">Número atômico ou Número de Prótons (carga +)</a></td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
+  <tr><td><a href="objeto.html?propriedade=numero-atomico&protons=${elementoAtual.protons}&neutrons=${elementoAtual.numeroNeutrons}&NomeEQ=${elementSelect.value}">Número atômico ou Número de Prótons (carga +)</a></td><td>${elementoAtual.protons}</td><td>Categoria</td><td>${elementoAtual.categoria}</td></tr> 
 
 
 
