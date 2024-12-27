@@ -110,7 +110,7 @@ function setup() {
 
       // Exemplo de como preencher o desenho do núcleo (canvas-container)
       // Aqui você pode adicionar a lógica de desenho do núcleo, mas para simplicidade, vamos apenas colocar um texto.
-      canvasContainer.textContent = "Desenho do núcleo";  // Substitua isso pela sua animação do núcleo, se necessário
+      // canvasContainer.textContent = "Desenho do núcleo";  // Substitua isso pela sua animação do núcleo, se necessário
     });
   
 
