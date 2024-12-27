@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   numProtons = parseInt(urlParams.get("protons"));
   numNeutrons = parseInt(urlParams.get("neutrons"));
+  nomeElemento = (urlParams.get("NomeEQ"));
 
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
@@ -86,6 +87,36 @@ function setup() {
     currentAngle += angleIncrement; // Aumenta o ângulo para o próximo ponto da espiral
     currentRadius += radiusIncrement; // Aumenta o raio para afastar as partículas, criando o efeito espiral
   }
+
+
+   
+    // Espera a página carregar
+    window.addEventListener("DOMContentLoaded", () => {
+      // Pega os elementos do HTML onde os dados serão colocados
+      const elementNameTd = document.getElementById("element-name");
+      const atomicNumberTd = document.getElementById("atomic-number");
+      const neutronsTd = document.getElementById("neutrons");
+
+
+      // Variáveis do arquivo numero-atomico.js
+      let elementName = "Sódio";  // Exemplo de nome do elemento
+      let atomicNumber = 11;      // Exemplo de número atômico
+      let neutrons = 12;          // Exemplo de número de nêutrons
+
+      // Preenche a tabela com os valores das variáveis
+      elementNameTd.textContent = nomeElemento;
+      atomicNumberTd.textContent = numProtons;
+      neutronsTd.textContent = numNeutrons;
+
+      // Exemplo de como preencher o desenho do núcleo (canvas-container)
+      // Aqui você pode adicionar a lógica de desenho do núcleo, mas para simplicidade, vamos apenas colocar um texto.
+      canvasContainer.textContent = "Desenho do núcleo";  // Substitua isso pela sua animação do núcleo, se necessário
+    });
+  
+
+
+
+  
 }
 
 function draw() {
