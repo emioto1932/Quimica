@@ -16,6 +16,7 @@ let radiusIncrement = 0.2; // Incremento do raio (distância entre as partícula
 // Recupera os parâmetros da URL
 let numProtons = 0;
 let numNeutrons = 0;
+let nomeElemento ="";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
@@ -123,6 +124,7 @@ function atualizarTabela() {
   const elementNameTd = document.getElementById("element-name");
   const atomicNumberTd = document.getElementById("atomic-number");
   const neutronsTd = document.getElementById("neutrons");
+
 
   // Preenche a tabela com os valores das variáveis
   elementNameTd.textContent = nomeElemento;
