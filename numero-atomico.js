@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Erro: Não foi possível recuperar os valores de prótons e nêutrons.");
   }
+
+
+  // Atualiza a tabela com as variáveis obtidas da URL
+  atualizarTabela();
 });
-
-
-
 
 
 
@@ -90,31 +91,7 @@ function setup() {
 
 
    
-    // Espera a página carregar
-    window.addEventListener("DOMContentLoaded", () => {
-      // Pega os elementos do HTML onde os dados serão colocados
-      const elementNameTd = document.getElementById("element-name");
-      const atomicNumberTd = document.getElementById("atomic-number");
-      const neutronsTd = document.getElementById("neutrons");
-
-
-      // Variáveis do arquivo numero-atomico.js
-      let elementName = "Sódio";  // Exemplo de nome do elemento
-      let atomicNumber = 11;      // Exemplo de número atômico
-      let neutrons = 12;          // Exemplo de número de nêutrons
-
-      // Preenche a tabela com os valores das variáveis
-      elementNameTd.textContent = nomeElemento;
-      atomicNumberTd.textContent = numProtons;
-      neutronsTd.textContent = numNeutrons;
-
-      // Exemplo de como preencher o desenho do núcleo (canvas-container)
-      // Aqui você pode adicionar a lógica de desenho do núcleo, mas para simplicidade, vamos apenas colocar um texto.
-      // canvasContainer.textContent = "Desenho do núcleo";  // Substitua isso pela sua animação do núcleo, se necessário
-    });
-  
-
-
+ 
 
   
 }
@@ -138,4 +115,17 @@ function draw() {
       text("+", width / 2 + p.x, height / 2 + p.y); // Coloca o "+" sobre o próton
     }
   }
+}
+
+// Função para atualizar a tabela com os valores obtidos da URL
+function atualizarTabela() {
+  // Espera a página carregar
+  const elementNameTd = document.getElementById("element-name");
+  const atomicNumberTd = document.getElementById("atomic-number");
+  const neutronsTd = document.getElementById("neutrons");
+
+  // Preenche a tabela com os valores das variáveis
+  elementNameTd.textContent = nomeElemento;
+  atomicNumberTd.textContent = numProtons;
+  neutronsTd.textContent = numNeutrons;
 }
