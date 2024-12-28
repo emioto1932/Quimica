@@ -42,8 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function setup() {
 
- 
-  createCanvas(200, 200); // Tela de 400x400 px
+    // Remove o canvas padrão do p5.js
+  let canvasDiv = document.getElementById('nucleo-canvas');
+  canvas = createCanvas(200, 200);
+  canvas.parent(canvasDiv); // Define o elemento pai como o div com id "nucleo-canvas"
+  
   noFill();
 
   // Cores das partículas
