@@ -1,4 +1,4 @@
-let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
+ilet raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
 //let numProtons = 80;  // Número de prótons
 //let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
@@ -125,7 +125,7 @@ function atualizarTabela() {
 
 
   // Preenche a tabela com os valores das variáveis
-  elementNameTd.textContent = nomeElemento;
+  elementNameTd.textContent = urlParams.get("NomeEQ");
   atomicNumberTd.textContent = numProtons;
   neutronsTd.textContent = numNeutrons;
 }
