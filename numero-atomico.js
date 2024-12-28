@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   numProtons = parseInt(urlParams.get("protons"));
   numNeutrons = parseInt(urlParams.get("neutrons"));
-  nomeElemento = (urlParams.get("NomeEQ"));
+  nomeElemento = urlParams.get("NomeEQ");
 
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
