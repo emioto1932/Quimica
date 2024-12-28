@@ -25,19 +25,27 @@
     </p>
   </section>
 
+  <!-- Container com flexbox para animação e nome do elemento -->
+  <div class="conteudo">
+    <div class="animacao-container">
+      <canvas id="nucleo-canvas" width="200" height="200"></canvas>
+    </div>
+    <div class="nome-elemento-container">
+      <h2 id="element-name">Elemento Químico</h2> <!-- Nome do Elemento Químico -->
+    </div>
+  </div>
+
     <table class="tabela-nucleos">
     <thead>
       <tr>
-        <th>Desenho do Núcleo</th>
-        <th>Elemento Químico</th>
+        
         <th>Número Atômico</th>
         <th>Número de Nêutrons</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td id="canvas-container"></td>
-        <td id="element-name"></td>
+        
         <td class = "numero-atomico" id="atomic-number"></td>
         <td class = "numero-neutrons" id="neutrons"></td>
       </tr>
