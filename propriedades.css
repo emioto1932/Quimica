@@ -44,7 +44,52 @@
       padding: 20px;
       text-align: center;
     }
+/* Divisória antes da tabela */
+.divisoria {
+  width: 100%;
+  height: 2px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
 
+/* Container principal com flexbox para animação e nome do elemento */
+.conteudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Espaço entre a animação e o nome */
+  margin-bottom: 20px;
+}
+
+/* Estilo para o canvas da animação */
+.animacao-container {
+  width: 200px;
+  height: 200px;
+}
+
+/* Estilo para o nome do elemento químico */
+.nome-elemento-container h2 {
+  font-size: 24px;
+  color: #2a6496;
+}
+
+/* Tabela */
+.tabela-nucleos {
+  width: 80%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.tabela-nucleos th, .tabela-nucleos td {
+  padding: 15px;
+  text-align: center;
+}
+
+.tabela-nucleos th {
+  background-color: #2a6496;
+  color: white;
+}
 
 /* Estilo para a tabela */
 table {
