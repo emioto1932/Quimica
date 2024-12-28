@@ -43,11 +43,116 @@ document.addEventListener("DOMContentLoaded", function () {
 function setup() {
 
     // Remove o canvas padrão do p5.js
+ // Verifica se o div existe
   let canvasDiv = document.getElementById('nucleo-canvas');
+  if (!canvasDiv) {
+    console.error('Div "nucleo-canvas" não encontrada!');
+    return;
+  }
+
+  // Cria o canvas e coloca no div especificado
   canvas = createCanvas(200, 200);
-  canvas.parent(canvasDiv); // Define o elemento pai como o div com id "nucleo-canvas"
-  
+  canvas.parent(canvasDiv); // Atribui o canvas ao div "nucleo-canvas"
   noFill();
+
+  // Cores das partículas
+  let corProton = color(255, 165, 0); // Laranja para prótons
+  let corNeutron = color(139, 69, 19); // Marrom para nêutrons
+
+  // Inicializando as partículas
+  let currentAngle = random(TWO_PI); // Ângulo aleatório para o primeiro próton
+  let currentRadius = deslocamento; // Raio inicial do espiral
+
+  // Total de partículas
+  let totalParticulas = numProtons + numNeutrons;
+
+  // Loop para adicionar prótons e nêutrons de forma intercalada
+  for (let i = 0; i < totalParticulas; i++) {
+    // Calcular a posição em espiral
+    let offsetX = cos(currentAngle) * currentRadius;
+    let offsetY = sin(currentAngle) * currentRadius;
+
+    // Verifica se é a vez de adicionar um próton
+    if (vezProton && numProtons > 0) {
+      particles.push({ x: offsetX, y: offsetY, cor: corProton, tipo: 'proton' }); // Adiciona próton
+      numProtons--; // Decrementa o número de prótons após desenhar
+      vezProton = false; // Passa para a vez do nêutron
+      vezNeutron = true; // Habilita a vez do nêutron
+    }
+    // Verifica se é a vez de adicionar um nêutron
+    else if (vezNeutron && numNeutrons > 0) {
+      particles.push({ x: offsetX, y: offsetY, cor: corNeutron, tipo: 'neutron' }); // Adiciona nêutron
+      numNeutrons--; // Decrementa o número de nêutrons após desenhar
+    // Após desenhar o nêutron, se não houver mais prótons, deve desabilitar a vezProton
+      if (numProtons === 0) {
+        vezProton = false;  // Desabilita a vez do próton
+        vezNeutron = true;  // Continua permitindo a vez do nêutron
+      } else {
+        vezProton = true; // Habilita a vez do próton, caso haja ainda prótons
+        vezNeutron = false; // Desabilita a vez do nêutron
+      }
+    }
+
+    // Atualiza o ângulo e o raio para criar o efeito espiral
+    currentAngle += angleIncrement; // Aumenta o ângulo para o próximo ponto da espiral
+    currentRadius += radiusIncrement; // Aumenta o raio para afastar as partículas, criando o efeito espiral
+  }
+}
+
+function draw() {
+  background(255); // Limpa a tela a cada quadro
+
+  // Desenha as partículas
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+
+    // Desenha a partícula com a cor apropriada
+    fill(p.cor); // Preenche com a cor da partícula
+    ellipse(width / 2 + p.x, height / 2 + p.y, 60, 60); // Aplica o deslocamento (p.x e p.y)
+
+    // Se for um próton, coloca o sinal de "+"
+    if (p.tipo === 'proton') {
+      fill(255, 0, 0); // Cor vermelha para o sinal "+"
+      textSize(12); // Ajusta o tamanho do texto
+      textAlign(CENTER, CENTER);
+      text("+", width / 2 + p.x, height / 2 + p.y); // Coloca o "+" sobre o próton
+    }
+  }
+}
+
+// Função para atualizar a tabela com os valores obtidos da URL
+function atualizarTabela() {
+  const elementNameTd = document.getElementById("element-name");
+  const atomicNumberTd = document.getElementById("atomic-number");
+  const neutronsTd = document.getElementById("neutrons");
+
+  // Preenche a tabela com os valores das variáveis
+  elementNameTd.textContent = nomeElemento;
+  atomicNumberTd.textContent = numProtons;
+  neutronsTd.textContent = numNeutrons;
+}
+6. Certifique-se de que o HTML está corretamente estruturado
+Além disso, se o HTML não estiver carregando corretamente ou se houver algum problema de sintaxe, o canvas pode não ser exibido. Tente incluir todo o código dentro do DOMContentLoaded para garantir que o HTML seja carregado antes do JavaScript:
+
+javascript
+Copiar código
+document.addEventListener("DOMContentLoaded", function () {
+  // Coloque o restante do código aqui
+});
+Teste novamente:
+Após essas alterações, faça o seguinte:
+
+Abra a página no navegador.
+Verifique o console do desenvolvedor (F
+
+
+
+
+
+
+
+
+
 
   // Cores das partículas
   let corProton = color(255, 165, 0); // Laranja para prótons
