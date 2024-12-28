@@ -1,4 +1,4 @@
-ilet raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
+let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
 //let numProtons = 80;  // Número de prótons
 //let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   numProtons = parseInt(urlParams.get("protons"));
   numNeutrons = parseInt(urlParams.get("neutrons"));
-  nomeElemento = urlParams.get("NomeEQ");
+  nomeElemento = (urlParams.get("NomeEQ"));
 
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
@@ -91,6 +91,8 @@ function setup() {
   }
 
 
+   
+ 
 
   
 }
