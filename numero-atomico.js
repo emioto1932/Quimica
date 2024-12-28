@@ -91,7 +91,10 @@ function setup() {
   }
 
 
-   
+// Seleciona o canvas dentro da célula
+const canvas = document.getElementById("nucleo-canvas");
+const ctx = canvas.getContext("2d");
+
  
 
   
