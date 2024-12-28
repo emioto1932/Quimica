@@ -125,7 +125,7 @@ function atualizarTabela() {
 
 
   // Preenche a tabela com os valores das variáveis
-  elementNameTd.textContent = urlParams.get("NomeEQ");
+  elementNameTd.textContent = nomeElemento;
   atomicNumberTd.textContent = numProtons;
   neutronsTd.textContent = numNeutrons;
 }
