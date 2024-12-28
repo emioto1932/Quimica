@@ -1,109 +1,46 @@
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
-}
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
 
-/* Estilo para a seção */
-section {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    /* Estilo para a seção */
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-/* Títulos */
-h1, h2 {
-  color: #2a6496;
-  text-align: center;
-}
+    /* Títulos */
+    h1, h2 {
+      color: #2a6496;
+      text-align: center;
+    }
 
-/* Texto destacado */
-.destaque {
-  font-weight: bold;
-  color: #d9534f; /* Vermelho suave */
-}
+    /* Texto destacado */
+    .destaque {
+      font-weight: bold;
+      color: #d9534f; /* Vermelho suave */
+    }
 
-/* Parágrafos */
-p {
-  margin: 10px 0;
-  text-align: justify;
-  font-size: 16px;
-}
+    /* Parágrafos */
+    p {
+      margin: 10px 0;
+      text-align: justify;
+      font-size: 16px;
+    }
 
-/* Estilo para o contêiner do canvas */
-#canvas-container {
-  margin: 20px auto;
-  max-width: 300px;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Estilo para a tabela */
-
-
-/* Estilo para a tabela */
-table {
-  border-collapse: collapse;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 800px;
-}
-
-thead th {
-  background-color: #2a6496;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-/* Cor de fundo para as células de próton e nêutron */
-.numero-atomico {
-  background-color: rgb(255, 165, 0); /* Laranja para o número atômico (próton) */
-  color: #fff; /* Cor do texto em branco para "Número Atômico" */
-}
-
-.numero-neutrons {
-  background-color: rgb(139, 69, 19); /* Marrom para o número de nêutrons */
-  color: #fff; /* Cor do texto em branco para "Número de Nêutrons" */
-}
-
-/* Estilo para as células do corpo */
-tbody td {
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-/* Cor de fundo para as células de próton e nêutron */
-.numero-atomico {
-  background-color: rgb(255, 165, 0); /* Laranja para o número atômico (próton) */
-}
-
-.numero-neutrons {
-  background-color: rgb(139, 69, 19); /* Marrom para o número de nêutrons */
-}
-
-/* Estilo para o contêiner do canvas */
-
-#canvas-container {
-  text-align: center;
-  vertical-align: middle;
-}
-
-#nucleo-canvas {
-  display: block;
-  margin: 0 auto;
-  border: 1px solid #ccc; /* Apenas para visualização */
-  background-color: #f0f8ff; /* Fundo para destaque */
-}
+    /* Estilo para o contêiner do canvas */
+    #canvas-container {
+      margin: 20px auto;
+      max-width: 300px;
+      padding: 20px;
+      text-align: center;
+    }
