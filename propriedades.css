@@ -77,3 +77,15 @@ table tbody tr:nth-child(even) {
 table tbody tr:nth-child(odd) {
   background-color: #fff;
 }
+
+#canvas-container {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#nucleo-canvas {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ccc; /* Apenas para visualização */
+  background-color: #f0f8ff; /* Fundo para destaque */
+}
