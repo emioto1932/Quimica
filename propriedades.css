@@ -66,12 +66,12 @@ thead th {
 /* Cor de fundo para as células de próton e nêutron */
 .numero-atomico {
   background-color: rgb(255, 165, 0); /* Laranja para o número atômico (próton) */
-  color: #fff; /* Cor do texto em branco para "Número Atômico" */
+  color: #ddd; /* Cor do texto em branco para "Número Atômico" */
 }
 
 .numero-neutrons {
   background-color: rgb(139, 69, 19); /* Marrom para o número de nêutrons */
-  color: #fff; /* Cor do texto em branco para "Número de Nêutrons" */
+  color: #ddd; /* Cor do texto em branco para "Número de Nêutrons" */
 }
 
 
