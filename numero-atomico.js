@@ -43,9 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function setup() {
 
  
-  createCanvas(200, 200); // Tela de 400x400 px
-  noFill();
+ // createCanvas(200, 200); // Tela de 400x400 px
+ // noFill();
 
+
+const container = document.getElementById('container');
+createCanvas(200, 200).container(container);
+
+  
   // Cores das partículas
   let corProton = color(255, 165, 0); // Laranja para prótons
   let corNeutron = color(139, 69, 19); // Marrom para nêutrons
