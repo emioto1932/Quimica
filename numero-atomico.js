@@ -134,10 +134,7 @@ function atualizarTabela(nome, protons, neutrons) {
   elementNameTd.textContent = nome;
   atomicNumberTd.textContent = protons;
   neutronsTd.textContent = neutrons;
+
+  alert("Valor da primeira coluna: " + nome);
 }
 
-function mostrarValor() {
-  const elemento = document.getElementById("element-name");
-  const valor = elemento.textContent;
-  alert("Valor da primeira coluna: " + valor);
-}
