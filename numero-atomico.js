@@ -47,9 +47,9 @@ function setup() {
  // noFill();
 
 
-const container = document.getElementById('container');
 createCanvas(200, 200).container(container);
-
+let canvas = createCanvas(400, 400);
+canvas.parent('container');
   
   // Cores das partículas
   let corProton = color(255, 165, 0); // Laranja para prótons
