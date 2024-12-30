@@ -1,4 +1,4 @@
-0let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
+let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
 //let numProtons = 80;  // Número de prótons
 //let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // Atualiza a tabela com as variáveis obtidas da URL
-  atualizarTabela(nomeElemento, numProtons, numNeutrons);
+  atualizarTabela();
 });
 
 
@@ -126,7 +126,7 @@ function draw() {
 }
 
 // Função para atualizar a tabela com os valores obtidos da URL
-function atualizarTabela(nomeElemento, numProtons, numNeutrons) {
+function atualizarTabela() {
   // Espera a página carregar
   const elementNameTd = document.getElementById("element-name");
   const atomicNumberTd = document.getElementById("atomic-number");
