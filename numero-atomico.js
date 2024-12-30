@@ -32,7 +32,7 @@ atualizarTabela(nome, protons, neutrons)
 
 
   // Atualiza a tabela com as variáveis obtidas da URL
-  atualizarTabela();
+  atualizarTabela(nomeElemento, numProtons, numNeutrons);
 });
 
 
