@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   numProtons = parseInt(urlParams.get("protons"));
   numNeutrons = parseInt(urlParams.get("neutrons"));
   nomeElemento = (urlParams.get("NomeEQ"));
-atualizarTabela(nome, protons, neutrons)
+
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
   } else {
