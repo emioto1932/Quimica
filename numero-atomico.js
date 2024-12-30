@@ -47,7 +47,7 @@ function setup() {
  // noFill();
 
 
-let canvas = createCanvas(400, 400);
+let canvas = createCanvas(200, 200);
 canvas.parent('container');
 
 
