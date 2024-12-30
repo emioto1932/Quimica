@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // Atualiza a tabela com as variáveis obtidas da URL
-  atualizarTabela();
+  atualizarTabela(nomeElemento, numProtons, numNeutrons);
 });
 
 
@@ -126,15 +126,12 @@ function draw() {
 }
 
 // Função para atualizar a tabela com os valores obtidos da URL
-function atualizarTabela() {
-  // Espera a página carregar
+function atualizarTabela(nome, protons, neutrons) {
   const elementNameTd = document.getElementById("element-name");
   const atomicNumberTd = document.getElementById("atomic-number");
   const neutronsTd = document.getElementById("neutrons");
 
-
-  // Preenche a tabela com os valores das variáveis
-  elementNameTd.textContent = nomeElemento;
-  atomicNumberTd.textContent = numProtons;
-  neutronsTd.textContent = numNeutrons;
+  elementNameTd.textContent = nome;
+  atomicNumberTd.textContent = protons;
+  neutronsTd.textContent = neutrons;
 }
