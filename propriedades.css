@@ -39,8 +39,8 @@
 
     /* Estilo para o contêiner do canvas */
     #container {
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border: 1px solid #ddd;
 }
 /* Estilo para a tabela */
