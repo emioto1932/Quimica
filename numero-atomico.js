@@ -20,9 +20,10 @@ let nomeElemento ="";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
- const nomeElemento = urlParams.get("NomeEQ");
+ const nomeElemento = parseStr(urlParams.get("NomeEQ"));
         const numProtons = parseInt(urlParams.get("protons"));
         const numNeutrons = parseInt(urlParams.get("neutrons"));
+  //const nomeElemento = parseStr(urlParams.get("NomeEQ"));
 //  numProtons = parseInt(urlParams.get("protons"));
  // numNeutrons = parseInt(urlParams.get("neutrons"));
  // nomeElemento = (urlParams.get("NomeEQ"));
