@@ -20,10 +20,13 @@ let nomeElemento ="";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
-  numProtons = parseInt(urlParams.get("protons"));
-  numNeutrons = parseInt(urlParams.get("neutrons"));
+ const nomeElemento = urlParams.get("NomeEQ");
+        const numProtons = parseInt(urlParams.get("protons"));
+        const numNeutrons = parseInt(urlParams.get("neutrons"));
+//  numProtons = parseInt(urlParams.get("protons"));
+ // numNeutrons = parseInt(urlParams.get("neutrons"));
  // nomeElemento = (urlParams.get("NomeEQ"));
-nomeElemento = decodeURIComponent(urlParams.get("NomeEQ"));
+//nomeElemento = decodeURIComponent(urlParams.get("NomeEQ"));
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
   } else {
