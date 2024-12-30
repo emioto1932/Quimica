@@ -135,6 +135,5 @@ function atualizarTabela(nome, protons, neutrons) {
   atomicNumberTd.textContent = protons;
   neutronsTd.textContent = neutrons;
 
-  alert("Valor da primeira coluna: " + nome);
 }
 
