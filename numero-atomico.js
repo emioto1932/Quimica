@@ -1,4 +1,4 @@
-let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
+0let raio = 60; // Raio do "círculo" em que as partículas vão estar localizadas
 //let numProtons = 80;  // Número de prótons
 //let numNeutrons = 120; // Número de nêutrons
 let deslocamento = raio * 0.4; // Deslocamento de 40% do raio para as partículas
@@ -20,13 +20,10 @@ let nomeElemento ="";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
- const nomeElemento = urlParams.get("NomeEQ");
-        const numProtons = parseInt(urlParams.get("protons"));
-        const numNeutrons = parseInt(urlParams.get("neutrons"));
-//  numProtons = parseInt(urlParams.get("protons"));
- // numNeutrons = parseInt(urlParams.get("neutrons"));
- // nomeElemento = (urlParams.get("NomeEQ"));
-//nomeElemento = decodeURIComponent(urlParams.get("NomeEQ"));
+  numProtons = parseInt(urlParams.get("protons"));
+  numNeutrons = parseInt(urlParams.get("neutrons"));
+  nomeElemento = (urlParams.get("NomeEQ"));
+
   if (!isNaN(numProtons) && !isNaN(numNeutrons)) {
     console.log(`Número de Prótons: ${numProtons}, Número de Nêutrons: ${numNeutrons}`);
   } else {
@@ -129,13 +126,15 @@ function draw() {
 }
 
 // Função para atualizar a tabela com os valores obtidos da URL
-function atualizarTabela(nome, protons, neutrons) {
+function atualizarTabela(nomeElemento, numProtons, numNeutrons) {
+  // Espera a página carregar
   const elementNameTd = document.getElementById("element-name");
   const atomicNumberTd = document.getElementById("atomic-number");
   const neutronsTd = document.getElementById("neutrons");
 
-  elementNameTd.textContent = nome;
-  atomicNumberTd.textContent = protons;
-  neutronsTd.textContent = neutrons;
 
+  // Preenche a tabela com os valores das variáveis
+  elementNameTd.textContent = nomeElemento;
+  atomicNumberTd.textContent = numProtons;
+  neutronsTd.textContent = numNeutrons;
 }
