@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const protons = urlParams.get("protons");
       const neutrons = urlParams.get("neutrons");
+      const nomeEQ = urlParams.get("nomeEQ");
 
 
 
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
                     // Passe os valores de prótons e nêutrons ao iframe como parâmetros
-                    propertyIframe.src = `numero-atomico.html?protons=${protons}&neutrons=${neutrons}`;
+                    propertyIframe.src = `numero-atomico.html?protons=${protons}&neutrons=${neutrons}&nomeEQ=${nomeEQ}`;
 
 
            
