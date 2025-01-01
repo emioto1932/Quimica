@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENEM (2020)</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -15,13 +25,23 @@
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
             <!-- Link para o arquivo animado -->
-            
             <img src="img/LQ01ex01-2020-Distribuicao_eletronica.jpg" alt="Questão 1">
-            
         </div>
+        
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
             <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+        </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução</a>
+        </div>
+        
+        <!-- Resolução do Exercício -->
+        <div id="resposta" style="display: none;">
+            <h2>Resolução:</h2>
+            <p>Esta questão trata da distribuição eletrônica dos elementos químicos. A resolução envolve a identificação da camada mais externa...</p>
         </div>
     </main>
 </body>
