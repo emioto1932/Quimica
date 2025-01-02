@@ -53,6 +53,7 @@
             height: 20px;
             background-color: #2196f3;
             border-radius: 50%;
+            animation: moveSequence 10s ease-in-out infinite;
         }
 
         .flash {
@@ -65,70 +66,57 @@
 
         .flash.yellow {
             background-color: yellow;
+            animation: emitYellow 10s ease-in-out infinite;
         }
 
         .flash.green {
             background-color: green;
+            animation: emitGreen 10s ease-in-out infinite;
         }
 
-        @keyframes moveToFirst {
-            0%, 19% {
-                transform: translate(0, 0); /* Inicial */
+        @keyframes moveSequence {
+            0%, 14% {
+                transform: translate(0, 0); /* Camada inicial */
             }
-            20%, 39% {
+            15%, 24% {
                 transform: translate(0, -120px); /* Primeira camada */
             }
-            40%, 59% {
-                transform: translate(0, 0); /* Retorna ao núcleo */
+            25%, 39% {
+                transform: translate(0, 0); /* Retorna à inicial */
             }
-        }
-
-        @keyframes moveToSecond {
-            60%, 79% {
-                transform: translate(0, 0); /* Inicial */
-            }
-            80%, 89% {
+            40%, 49% {
                 transform: translate(0, -180px); /* Segunda camada */
             }
-            90%, 100% {
-                transform: translate(0, 0); /* Retorna ao núcleo */
+            50%, 74% {
+                transform: translate(0, 0); /* Retorna à inicial */
+            }
+            75%, 100% {
+                transform: translate(0, 0); /* Repete o ciclo */
             }
         }
 
         @keyframes emitYellow {
-            40%, 45% {
-                opacity: 1;
+            24%, 29% {
+                opacity: 1; /* Flash visível para a primeira camada */
             }
-            46%, 100% {
-                opacity: 0;
+            30%, 100% {
+                opacity: 0; /* Flash desaparece */
             }
         }
 
         @keyframes emitGreen {
-            90%, 95% {
-                opacity: 1;
+            49%, 54% {
+                opacity: 1; /* Flash visível para a segunda camada */
             }
-            96%, 100% {
-                opacity: 0;
+            55%, 100% {
+                opacity: 0; /* Flash desaparece */
             }
-        }
-
-        .electron {
-            animation: moveToFirst 10s linear infinite, moveToSecond 10s linear infinite;
-        }
-
-        .flash.yellow {
-            animation: emitYellow 10s linear infinite;
-        }
-
-        .flash.green {
-            animation: emitGreen 10s linear infinite;
         }
     </style>
 </head>
 <body>
     <h1>Simulação: Movimentos Sequenciais do Elétron</h1>
-    <p>Observe o elétron realizando saltos e emitindo luz ao retornar ao estado fundamental.</p>
+    <p>Observe o elétron se movendo entre as camadas e emitindo luz ao retornar ao estado fundamental.</p>
     <div id="container">
         <div class="nucleus"></div>
         <!-- Camada interna -->
@@ -138,7 +126,7 @@
         <!-- Camada mais externa -->
         <div class="orbit" style="width: 360px; height: 360px; margin: -180px;"></div>
         <!-- Elétron animado -->
-        <div class="electron" style="top: 50%; left: calc(50% - 10px);">
+        <div class="electron" style="top: 50%; left: calc(50% - 60px);">
             <div class="flash yellow"></div> <!-- Flash amarelo -->
             <div class="flash green"></div> <!-- Flash verde -->
         </div>
