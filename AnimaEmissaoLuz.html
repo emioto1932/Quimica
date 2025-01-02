@@ -1,40 +1,4 @@
-O código parece correto, mas há algumas sugestões para melhorar:
 
-Ajustes
-1. *Centralizar o elétron*: Ajuste a posição inicial do elétron.
-```
-.electron {
-  top: calc(50% - 10px);
-  left: calc(50% - 10px);
-}
-```
-1. *Otimizar animações*: Reduza o tempo de animação para melhorar a fluidez.
-```
-@keyframes moveElectron {
-  0%, 15% { transform: translate(0, 0); }
-  16%, 30% { transform: translate(0, -120px); }
-  31%, 45% { transform: translate(0, 0); }
-  46%, 60% { transform: translate(0, -180px); }
-  61%, 100% { transform: translate(0, 0); }
-}
-```
-1. *Efeito de transição*: Adicione efeito de transição para as animações.
-```
-.flash {
-  transition: opacity 0.5s;
-}
-```
-1. *Compatibilidade*: Adicione prefixos para suportar navegadores antigos.
-```
-@keyframes moveElectron {
-  -webkit-animation: moveElectron 12s ease-in-out infinite;
-  -moz-animation: moveElectron 12s ease-in-out infinite;
-  -o-animation: moveElectron 12s ease-in-out infinite;
-}
-```
-
-Código atualizado
-```
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
