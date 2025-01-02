@@ -1,27 +1,53 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2019)</title>
+    <title>ENEM (2020) - Emissão de Luz</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="propriedades.css">
+    
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+    
 </head>
 <body>
     <header>
-        <h1>Questão 1 - ENEM (2019) - Distribuição Eletrônica</h1>
+        <h1> ENEM (2019) - Distribuição Eletrônica - Emissão de Luz</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ01ex02-2019-Distribuicao_eletronica.jpg" alt="Questão 1">
+            <img src="img/LQ01ex02-2019-Distribuicao_eletronica.jpg" alt="Questão 2">
         </div>
+        
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo2" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta">
+            <h2>Resolução:</h2>
+            <p>Quando fornecemos energia suficiente e específica a um elétron de um átomo, ele absorve essa energia e pode saltar de uma camada eletrônica mais interna para outra mais externa. Esse processo é conhecido como <span class="destaque">excitação eletrônica</span>.</p>
+            <p>Para que esse salto aconteça, a energia fornecida deve ser <span class="destaque">exatamente igual</span> à diferença de energia entre os dois níveis eletrônicos. Caso a energia fornecida seja menor ou maior que essa diferença, o elétron não realizará o salto.</p>
+            <p>Após um curto período, o elétron tende a retornar ao seu nível original, chamado de <span class="destaque">estado fundamental</span>, liberando a energia absorvida anteriormente na forma de radiação eletromagnética. Muitas vezes, essa radiação é visível como luz colorida. A cor depende da diferença de energia entre os níveis envolvidos.</p>
+            <p>Portanto, a resposta correta é: <span class="destaque">"Transição eletrônica de um nível mais externo para outro mais interno na eletrosfera atômica."</span></p>
+        </section>
     </main>
 </body>
 </html>
-
