@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação: Movimentos do Elétron</title>
+    <title>Simulação: Movimentos Sequenciais do Elétron</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,11 +53,7 @@
             height: 20px;
             background-color: #2196f3;
             border-radius: 50%;
-            animation: moveOrbit1 8s ease-in-out infinite;
-        }
-
-        .electron.second {
-            animation: moveOrbit2 8s ease-in-out infinite;
+            animation: moveSequence 10s ease-in-out infinite;
         }
 
         .flash {
@@ -70,69 +66,57 @@
 
         .flash.yellow {
             background-color: yellow;
-            animation: emitLight1 8s ease-in-out infinite;
+            animation: emitYellow 10s ease-in-out infinite;
         }
 
         .flash.green {
             background-color: green;
-            animation: emitLight2 8s ease-in-out infinite;
+            animation: emitGreen 10s ease-in-out infinite;
         }
 
-        @keyframes moveOrbit1 {
-            0%, 49% {
+        @keyframes moveSequence {
+            0%, 14% {
                 transform: translate(0, 0); /* Camada inicial */
             }
-            50% {
-                transform: translate(0, -120px); /* Camada externa */
+            15%, 24% {
+                transform: translate(0, -120px); /* Primeira camada */
             }
-            99%, 100% {
-                transform: translate(0, 0); /* Retorna à camada inicial */
+            25%, 39% {
+                transform: translate(0, 0); /* Retorna à inicial */
             }
-        }
-
-        @keyframes moveOrbit2 {
-            0%, 24% {
-                transform: translate(0, 0); /* Camada inicial */
+            40%, 49% {
+                transform: translate(0, -180px); /* Segunda camada */
             }
-            25% {
-                transform: translate(0, -180px); /* Camada mais externa */
-            }
-            74% {
-                transform: translate(0, -180px);
+            50%, 74% {
+                transform: translate(0, 0); /* Retorna à inicial */
             }
             75%, 100% {
-                transform: translate(0, 0); /* Retorna à camada inicial */
+                transform: translate(0, 0); /* Repete o ciclo */
             }
         }
 
-        @keyframes emitLight1 {
-            0%, 49% {
-                opacity: 0; /* Invisível durante o salto */
+        @keyframes emitYellow {
+            24%, 29% {
+                opacity: 1; /* Flash visível para a primeira camada */
             }
-            55%, 60% {
-                opacity: 1; /* Flash visível quando retorna */
-            }
-            61%, 100% {
+            30%, 100% {
                 opacity: 0; /* Flash desaparece */
             }
         }
 
-        @keyframes emitLight2 {
-            0%, 24% {
-                opacity: 0; /* Invisível durante o salto */
+        @keyframes emitGreen {
+            49%, 54% {
+                opacity: 1; /* Flash visível para a segunda camada */
             }
-            75%, 80% {
-                opacity: 1; /* Flash visível quando retorna */
-            }
-            81%, 100% {
+            55%, 100% {
                 opacity: 0; /* Flash desaparece */
             }
         }
     </style>
 </head>
 <body>
-    <h1>Simulação: Movimentos do Elétron</h1>
-    <p>Observe dois movimentos distintos do elétron, com emissão de luz amarela e verde ao retornar ao estado fundamental.</p>
+    <h1>Simulação: Movimentos Sequenciais do Elétron</h1>
+    <p>Observe o elétron se movendo entre as camadas e emitindo luz ao retornar ao estado fundamental.</p>
     <div id="container">
         <div class="nucleus"></div>
         <!-- Camada interna -->
@@ -144,8 +128,6 @@
         <!-- Elétron animado -->
         <div class="electron" style="top: 50%; left: calc(50% - 60px);">
             <div class="flash yellow"></div> <!-- Flash amarelo -->
-        </div>
-        <div class="electron second" style="top: 50%; left: calc(50% - 60px);">
             <div class="flash green"></div> <!-- Flash verde -->
         </div>
     </div>
