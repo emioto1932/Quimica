@@ -1,132 +1,138 @@
+O código parece correto, mas há algumas sugestões para melhorar:
+
+Ajustes
+1. *Centralizar o elétron*: Ajuste a posição inicial do elétron.
+```
+.electron {
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+}
+```
+1. *Otimizar animações*: Reduza o tempo de animação para melhorar a fluidez.
+```
+@keyframes moveElectron {
+  0%, 15% { transform: translate(0, 0); }
+  16%, 30% { transform: translate(0, -120px); }
+  31%, 45% { transform: translate(0, 0); }
+  46%, 60% { transform: translate(0, -180px); }
+  61%, 100% { transform: translate(0, 0); }
+}
+```
+1. *Efeito de transição*: Adicione efeito de transição para as animações.
+```
+.flash {
+  transition: opacity 0.5s;
+}
+```
+1. *Compatibilidade*: Adicione prefixos para suportar navegadores antigos.
+```
+@keyframes moveElectron {
+  -webkit-animation: moveElectron 12s ease-in-out infinite;
+  -moz-animation: moveElectron 12s ease-in-out infinite;
+  -o-animation: moveElectron 12s ease-in-out infinite;
+}
+```
+
+Código atualizado
+```
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação: Salto do Elétron</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #2a6496;
-        }
-
-        #container {
-            margin: 20px auto;
-            width: 400px;
-            height: 400px;
-            position: relative;
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nucleus {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            background-color: #ff5722;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px solid #aaa;
-            border-radius: 50%;
-        }
-
-        .electron {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #2196f3;
-            border-radius: 50%;
-            animation: moveElectron 12s ease-in-out infinite;
-        }
-
-        .flash {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            opacity: 0;
-        }
-
-        .flash.yellow {
-            background-color: yellow;
-            animation: emitYellow 12s ease-in-out infinite;
-        }
-
-        .flash.green {
-            background-color: green;
-            animation: emitGreen 12s ease-in-out infinite;
-        }
-
-        @keyframes moveElectron {
-            0%, 19% {
-                transform: translate(0, 0); /* Camada inicial */
-            }
-            20%, 39% {
-                transform: translate(0, -120px); /* Segunda camada */
-            }
-            40%, 59% {
-                transform: translate(0, 0); /* Retorna à inicial */
-            }
-            60%, 79% {
-                transform: translate(0, -180px); /* Terceira camada */
-            }
-            80%, 100% {
-                transform: translate(0, 0); /* Retorna à inicial */
-            }
-        }
-
-        @keyframes emitYellow {
-            39%, 44% {
-                opacity: 1; /* Luz amarela visível ao voltar da segunda camada */
-            }
-            45%, 100% {
-                opacity: 0; /* Luz desaparece */
-            }
-        }
-
-        @keyframes emitGreen {
-            79%, 84% {
-                opacity: 1; /* Luz verde visível ao voltar da terceira camada */
-            }
-            85%, 100% {
-                opacity: 0; /* Luz desaparece */
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulação: Salto do Elétron</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #2a6496;
+    }
+    
+    #container {
+      margin: 20px auto;
+      width: 400px;
+      height: 400px;
+      position: relative;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nucleus {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      background-color: #ff5722;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid #aaa;
+      border-radius: 50%;
+    }
+    
+    .electron {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #2196f3;
+      border-radius: 50%;
+      top: calc(50% - 10px);
+      left: calc(50% - 10px);
+      animation: moveElectron 12s ease-in-out infinite;
+    }
+    
+    .flash {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .flash.yellow {
+      background-color: yellow;
+      animation: emitYellow 12s ease-in-out infinite;
+    }
+    
+    .flash.green {
+      background-color: green;
+      animation: emitGreen 12s ease-in-out infinite;
+    }
+    
+    @keyframes moveElectron {
+      0%, 15% { transform: translate(0, 0); }
+      16%, 30% { transform: translate(0, -120px); }
+      31%, 45% { transform: translate(0, 0); }
+      46%, 60% { transform: translate(0, -180px); }
+      61%, 100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes emitYellow {
+      30%, 35% { opacity: 1; }
+      36%, 100% { opacity: 0; }
+    }
+    
+    @keyframes emitGreen {
+      60%, 65% { opacity: 1; }
+      66%, 100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Simulação: Salto do Elétron</h1>
-    <p>Observe o elétron saltar para camadas superiores e emitir luz ao retornar para a primeira camada.</p>
-    <div id="container">
-        <div class="nucleus"></div>
-        <!-- Camada interna -->
-        <div class="orbit" style="width: 120px; height: 120px; margin: -60px;"></div>
-        <!-- Camada intermediária -->
-        <div class="orbit" style="width: 240px; height: 240px; margin: -120px;"></div>
-        <!-- Camada externa -->
-        <div class="orbit" style="width: 360px; height: 360px; margin: -180px;"></div>
-        <!-- Elétron -->
-        <div class="electron" style="top: 50%; left: calc(50% - 60px);">
-            <div class="flash yellow"></div> <!-- Flash amarelo -->
-            <div class="flash green"></div> <!-- Flash verde -->
-        </div>
-    </div>
-</body>
-</html>
+  <h1>
+```
