@@ -51,9 +51,9 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: #2196f3;
+            background-color: #2196f3; /* Azul inicial */
             border-radius: 50%;
-            animation: moveSequence 10s ease-in-out infinite;
+            animation: moveElectron 10s ease-in-out infinite;
         }
 
         .flash {
@@ -74,9 +74,9 @@
             animation: emitGreen 10s ease-in-out infinite;
         }
 
-        @keyframes moveSequence {
+        @keyframes moveElectron {
             0%, 14% {
-                transform: translate(0, 0); /* Camada inicial */
+                transform: translate(0, 0); /* Posição inicial */
             }
             15%, 24% {
                 transform: translate(0, -120px); /* Primeira camada */
@@ -91,13 +91,13 @@
                 transform: translate(0, 0); /* Retorna à inicial */
             }
             75%, 100% {
-                transform: translate(0, 0); /* Repete o ciclo */
+                transform: translate(0, 0); /* Reinicia ciclo */
             }
         }
 
         @keyframes emitYellow {
             24%, 29% {
-                opacity: 1; /* Flash visível para a primeira camada */
+                opacity: 1; /* Emissão ao retornar da primeira camada */
             }
             30%, 100% {
                 opacity: 0; /* Flash desaparece */
@@ -106,7 +106,7 @@
 
         @keyframes emitGreen {
             49%, 54% {
-                opacity: 1; /* Flash visível para a segunda camada */
+                opacity: 1; /* Emissão ao retornar da segunda camada */
             }
             55%, 100% {
                 opacity: 0; /* Flash desaparece */
