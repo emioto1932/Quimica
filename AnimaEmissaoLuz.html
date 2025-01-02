@@ -57,33 +57,33 @@
         }
 
         @keyframes moveOrbit {
-            0%, 100% {
-                transform: translate(0px, 0px);
+            0%, 45% {
+                transform: translate(0, 0);
             }
             50% {
-                transform: translate(0px, -120px); /* Sobe para camada superior */
+                transform: translate(0, -120px); /* Sobe para a camada externa */
+            }
+            55%, 100% {
+                transform: translate(0, 0); /* Volta para a camada inicial */
             }
         }
 
         .flash {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80px;
-            height: 80px;
+            width: 40px;
+            height: 40px;
             background-color: yellow;
             border-radius: 50%;
-            transform: translate(-50%, -50%);
             opacity: 0;
             animation: emitLight 4s ease-in-out infinite;
         }
 
         @keyframes emitLight {
-            0%, 45% {
+            0%, 49% {
                 opacity: 0;
             }
             50% {
-                opacity: 1; /* Aparece o flash ao retornar */
+                opacity: 1; /* Aparece o flash quando o elétron retorna */
             }
             55%, 100% {
                 opacity: 0;
@@ -93,7 +93,7 @@
 </head>
 <body>
     <h1>Simulação: Salto do Elétron</h1>
-    <p>Observe o elétron receber energia, saltar para outra camada e emitir luz ao retornar.</p>
+    <p>Observe o elétron receber energia, saltar para outra camada e emitir luz ao retornar para o estado fundamental.</p>
     <div id="container">
         <div class="nucleus"></div>
         <!-- Camada interna -->
@@ -101,9 +101,9 @@
         <!-- Camada externa -->
         <div class="orbit" style="width: 240px; height: 240px; margin: -120px;"></div>
         <!-- Elétron animado -->
-        <div class="electron" style="top: 50%; left: calc(50% - 60px);"></div>
-        <!-- Luz emitida -->
-        <div class="flash"></div>
+        <div class="electron" style="top: 50%; left: calc(50% - 60px);">
+            <div class="flash"></div> <!-- Flash de luz atrelado ao elétron -->
+        </div>
     </div>
 </body>
 </html>
