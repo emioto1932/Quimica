@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação de Elétrons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #2a6496;
+            margin-top: 20px;
+        }
+
+        #container {
+            margin: 20px auto;
+            width: 400px;
+            height: 400px;
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #ff5722;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid #aaa;
+            border-radius: 50%;
+            animation: rotate 5s linear infinite;
+        }
+
+        .electron {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #2196f3;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg) translateX(-50%) translateY(-50%);
+            }
+            to {
+                transform: rotate(360deg) translateX(-50%) translateY(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Animação de Elétrons nas Camadas</h1>
+    <div id="container">
+        <div class="nucleus"></div>
+        <!-- Camadas e elétrons serão adicionados dinamicamente -->
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        function createOrbit(radius, electrons) {
+            const orbit = document.createElement('div');
+            orbit.className = 'orbit';
+            orbit.style.width = `${radius * 2}px`;
+            orbit.style.height = `${radius * 2}px`;
+            orbit.style.marginLeft = `-${radius}px`;
+            orbit.style.marginTop = `-${radius}px`;
+            
+            for (let i = 0; i < electrons; i++) {
+                const electron = document.createElement('div');
+                electron.className = 'electron';
+                const angle = (i * 360) / electrons;
+                const radian = (angle * Math.PI) / 180;
+                const x = Math.cos(radian) * radius;
+                const y = Math.sin(radian) * radius;
+                electron.style.transform = `translate(${x}px, ${y}px)`;
+                orbit.appendChild(electron);
+            }
+
+            container.appendChild(orbit);
+        }
+
+        // Configuração das camadas e elétrons
+        const layers = [
+            { radius: 60, electrons: 2 },
+            { radius: 100, electrons: 8 },
+            { radius: 140, electrons: 1 }
+        ];
+
+        layers.forEach(layer => createOrbit(layer.radius, layer.electrons));
+    </script>
+</body>
+</html>
