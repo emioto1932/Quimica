@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação: Movimentos Sequenciais do Elétron</title>
+    <title>Simulação: Movimentos do Elétron</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,7 @@
             height: 20px;
             background-color: #2196f3; /* Azul inicial */
             border-radius: 50%;
-            animation: moveElectron 10s ease-in-out infinite;
+            animation: moveElectron 12s ease-in-out infinite;
         }
 
         .flash {
@@ -66,56 +66,56 @@
 
         .flash.yellow {
             background-color: yellow;
-            animation: emitYellow 10s ease-in-out infinite;
+            animation: emitYellow 12s ease-in-out infinite;
         }
 
         .flash.green {
             background-color: green;
-            animation: emitGreen 10s ease-in-out infinite;
+            animation: emitGreen 12s ease-in-out infinite;
         }
 
         @keyframes moveElectron {
             0%, 14% {
                 transform: translate(0, 0); /* Posição inicial */
             }
-            15%, 24% {
-                transform: translate(0, -120px); /* Primeira camada */
+            15%, 29% {
+                transform: translate(0, -120px); /* Segunda camada */
             }
-            25%, 39% {
-                transform: translate(0, 0); /* Retorna à inicial */
+            30%, 49% {
+                transform: translate(0, 0); /* Retorna e emite amarelo */
             }
-            40%, 49% {
-                transform: translate(0, -180px); /* Segunda camada */
+            50%, 64% {
+                transform: translate(0, -180px); /* Terceira camada */
             }
-            50%, 74% {
-                transform: translate(0, 0); /* Retorna à inicial */
+            65%, 84% {
+                transform: translate(0, 0); /* Retorna e emite verde */
             }
-            75%, 100% {
+            85%, 100% {
                 transform: translate(0, 0); /* Reinicia ciclo */
             }
         }
 
         @keyframes emitYellow {
-            24%, 29% {
-                opacity: 1; /* Emissão ao retornar da primeira camada */
+            29%, 34% {
+                opacity: 1; /* Emissão ao retornar da segunda camada */
             }
-            30%, 100% {
+            35%, 100% {
                 opacity: 0; /* Flash desaparece */
             }
         }
 
         @keyframes emitGreen {
-            49%, 54% {
-                opacity: 1; /* Emissão ao retornar da segunda camada */
+            64%, 69% {
+                opacity: 1; /* Emissão ao retornar da terceira camada */
             }
-            55%, 100% {
+            70%, 100% {
                 opacity: 0; /* Flash desaparece */
             }
         }
     </style>
 </head>
 <body>
-    <h1>Simulação: Movimentos Sequenciais do Elétron</h1>
+    <h1>Simulação: Movimentos do Elétron</h1>
     <p>Observe o elétron se movendo entre as camadas e emitindo luz ao retornar ao estado fundamental.</p>
     <div id="container">
         <div class="nucleus"></div>
