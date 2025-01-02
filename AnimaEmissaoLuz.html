@@ -76,7 +76,7 @@
 
         @keyframes moveElectron {
             0%, 19% {
-                transform: translate(0, 0); /* Inicial */
+                transform: translate(0, 0); /* Camada inicial */
             }
             20%, 39% {
                 transform: translate(0, -120px); /* Segunda camada */
@@ -94,26 +94,26 @@
 
         @keyframes emitYellow {
             39%, 44% {
-                opacity: 1; /* Emite luz ao voltar da segunda camada */
+                opacity: 1; /* Luz amarela visível ao voltar da segunda camada */
             }
             45%, 100% {
-                opacity: 0; /* Invisível no resto do ciclo */
+                opacity: 0; /* Luz desaparece */
             }
         }
 
         @keyframes emitGreen {
             79%, 84% {
-                opacity: 1; /* Emite luz ao voltar da terceira camada */
+                opacity: 1; /* Luz verde visível ao voltar da terceira camada */
             }
             85%, 100% {
-                opacity: 0; /* Invisível no resto do ciclo */
+                opacity: 0; /* Luz desaparece */
             }
         }
     </style>
 </head>
 <body>
     <h1>Simulação: Salto do Elétron</h1>
-    <p>Observe o elétron receber energia, saltar para outra camada e emitir luz ao retornar para o estado fundamental.</p>
+    <p>Observe o elétron saltar para camadas superiores e emitir luz ao retornar para a primeira camada.</p>
     <div id="container">
         <div class="nucleus"></div>
         <!-- Camada interna -->
