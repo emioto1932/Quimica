@@ -1,27 +1,54 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2017)</title>
+    <title>ENEM (2020) - Mudança de Cor da Chama</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="propriedades.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 1 - ENEM (2017) - Distribuição Eletrônica</h1>
+        <h1>Questão 3 - ENEM (2017) - Distribuição Eletrônica</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ01ex03-2017-Distribuicao_eletronica.jpg" alt="Questão 1">
+            <img src="img/LQ01ex03-2017-Distribuicao_eletronica.jpg" alt="Questão 3">
         </div>
+        
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
             <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa B</h2>
+            <p>As substâncias presentes na água de cozimento, como o sal de cozinha (<span class="destaque">NaCl</span>), podem ser decompostas em seus íons constituintes quando dissolvidas em água. Nesse caso, o sódio (<span class="destaque">Na⁺</span>) é um dos íons liberados. Ao entrar em contato com a chama, o sódio sofre um processo de <span class="destaque">excitação eletrônica</span>.</p>
+            <p>Quando os átomos ou íons de sódio são aquecidos, eles absorvem energia suficiente para promover seus <span class="destaque">elétrons</span> a níveis de energia mais altos, ou seja, para camadas eletrônicas mais externas. Esse processo é chamado de <span class="destaque">excitação eletrônica</span>. Entretanto, esses elétrons excitados são instáveis nesses níveis mais altos e rapidamente retornam aos seus estados de energia mais baixos.</p>
+            <p>No retorno, a energia anteriormente absorvida é liberada na forma de <span class="destaque">radiação eletromagnética</span>. Essa radiação é composta por pacotes discretos de energia chamados de <span class="destaque">fótons</span>. O fóton é uma partícula de luz associada a uma quantidade específica de energia, que depende da diferença entre os níveis de energia nos quais o elétron se moveu.</p>
+            <p>No caso do sódio, os fótons emitidos correspondem a uma energia que se manifesta na forma de <span class="destaque">luz visível amarela</span>, com comprimento de onda predominante de 589 nm. Esse fenômeno é característico do sódio e resulta na coloração amarela da chama.</p>
+            <p>Esse fenômeno é conhecido como <span class="destaque">espectroscopia de emissão atômica</span> e é utilizado para identificar elementos químicos com base nas cores emitidas por seus átomos excitados.</p>
+            <p>Portanto, a mudança da chama azul para amarela ocorre devido à <span class="destaque">emissão de fótons pelo sódio excitado pela chama</span>. A resposta correta é <strong>alternativa B</strong>.</p>
+        </section>
     </main>
 </body>
 </html>
-
