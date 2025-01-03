@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENEM</title>
     <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
-<body class=bodyquestao>
+<body class="bodyquestao">
     <header>
         <h1>Questão 1 - Regra do Octeto</h1>
     </header>
     <main class="questao-enunciado">
-        <!-- Imagem do Exercício -->
+        <!-- Enunciado da Questão -->
         <div class="nota-anunciado">
-            
-
             <p class="enunciado">
                 A camada de valência é a camada mais externa de um átomo e contém os elétrons responsáveis pelas interações químicas. Segundo a regra do octeto, os átomos tendem a ganhar, perder ou compartilhar elétrons para atingir oito elétrons nessa camada, tornando-se mais estáveis, com uma configuração semelhante à dos gases nobres.
             </p>
-                 <table class="tabela">
+            <table class="tabela">
                 <thead>
                     <tr>
                         <th>Coluna da Tabela Periódica</th>
@@ -47,65 +54,54 @@
                     </tr>
                 </tbody>
             </table>
-
-             <p class="pergunta">
+            <p class="pergunta">
                 Com base na regra do octeto e nos dados fornecidos, analise as moléculas a seguir:
             </p>
-           <div class="alternativas">
-
-            <div class="alternativa">
+            <div class="alternativas">
                 <p>I. NaCl</p>
-            </div>
-            <div class="alternativa">
                 <p>II. H₂O</p>
-            </div>
-            <div class="alternativa">
                 <p>III. CO₂</p>
-            </div>
-            <div class="alternativa">
                 <p>IV. SF₆</p>
             </div>
-        </div>
-
             <p class="resposta">Quais dessas espécies obedecem rigorosamente à regra do octeto?</p>
-
             <div class="alternativas">
-                <div class="alternativa">
-                    <p>A) Apenas I e II</p>
-                </div>
-                <div class="alternativa">
-                    <p>B) Apenas II e III</p>
-                </div>
-                <div class="alternativa">
-                    <p>C) Apenas III e IV</p>
-                </div>
-                <div class="alternativa">
-                    <p>D) Apenas I, II e III</p>
-                </div>
-                <div class="alternativa">
-                    <p>E) Todas as espécies</p>
-                </div>
-            </div>   
-            
+                <p>A) Apenas I e II</p>
+                <p>B) Apenas II e III</p>
+                <p>C) Apenas III e IV</p>
+                <p>D) Apenas I, II e III</p>
+                <p>E) Todas as espécies</p>
+            </div>
+        </div>
 
-            
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
         </div>
-        <!-- Link para o Vídeo -->
-        <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
-        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa D</h2>
+            <p>A camada de valência é essencial para entender as ligações químicas e a regra do octeto. Vamos analisar as moléculas:</p>
+            <ul>
+                <li><strong>NaCl:</strong> Ligação iônica. O sódio (Na) doa 1 elétron para o cloro (Cl), atingindo a configuração estável.</li>
+                <li><strong>H₂O:</strong> Ligação covalente. O oxigênio (O) compartilha elétrons com dois átomos de hidrogênio (H), completando o octeto.</li>
+                <li><strong>CO₂:</strong> Ligação covalente. O carbono (C) compartilha elétrons com dois átomos de oxigênio (O), todos alcançando o octeto.</li>
+                <li><strong>SF₆:</strong> Exceção à regra do octeto. O enxofre (S) acomoda mais de 8 elétrons.</li>
+            </ul>
+            <p>Portanto, as moléculas que seguem a regra do octeto são <strong>NaCl, H₂O e CO₂</strong>. A resposta correta é: <strong>Alternativa D - Apenas I, II e III.</strong></p>
+        </section>
     </main>
 
-            <footer>
-                <p class="nota">
-                    <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo e a complexidade das questões do Enem. Trata-se de um exercício autoral, criado com o objetivo de revisar conceitos importantes e estimular o raciocínio necessário para resolver questões desse tipo.
-                </p>
-                <p class="nota">
-                <strong>Atenção:</strong> As questões foram elaboradas com base no estilo do Exame Nacional do Ensino Médio (Enem). <u>Não se trata de uma questão oficial do Enem</u>. Consulte as questões oficiais no site do INEP:                    <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">
-                https://www.gov.br/inep
-                </a>
-                </p>
-
-            </footer>
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo e a complexidade das questões do Enem. Trata-se de um exercício autoral, criado com o objetivo de revisar conceitos importantes e estimular o raciocínio necessário para resolver questões desse tipo.
+        </p>
+        <p class="nota">
+            <strong>Atenção:</strong> As questões foram elaboradas com base no estilo do Exame Nacional do Ensino Médio (Enem). <u>Não se trata de uma questão oficial do Enem</u>. Consulte as questões oficiais no site do INEP: 
+            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">
+            https://www.gov.br/inep
+            </a>
+        </p>
+    </footer>
 </body>
 </html>
