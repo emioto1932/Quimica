@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição Eletrônica do Neônio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let nucleusProtons = 10; // Prótons no núcleo
+        let nucleusNeutrons = 10; // Nêutrons no núcleo
+        let electrons = [2, 8]; // Distribuição eletrônica: 2 na 1ª camada, 8 na 2ª camada
+        let electronSpeed = 0.03; // Velocidade de rotação dos elétrons
+        let layers = [];
+        let angles = [];
+
+        function setup() {
+            createCanvas(200, 200);
+            angleMode(RADIANS);
+
+            // Configura as camadas de elétrons
+            let initialRadius = 40; // Raio inicial para a 1ª camada
+            for (let i = 0; i < electrons.length; i++) {
+                layers.push({
+                    radius: initialRadius + i * 30, // Raio da camada
+                    count: electrons[i] // Número de elétrons na camada
+                });
+                // Configura ângulos iniciais dos elétrons
+                angles.push(Array(electrons[i]).fill(0).map((_, index) => index * (TWO_PI / electrons[i])));
+            }
+        }
+
+        function draw() {
+            background(255);
+
+            // Desenha o núcleo
+            fill(255, 100, 100);
+            noStroke();
+            ellipse(width / 2, height / 2, 40, 40);
+            fill(255);
+            textSize(8);
+            textAlign(CENTER, CENTER);
+            text(`P=${nucleusProtons}+`, width / 2, height / 2 - 6);
+            text(`N=${nucleusNeutrons}`, width / 2, height / 2 + 6);
+
+            // Desenha as camadas e os elétrons
+            for (let i = 0; i < layers.length; i++) {
+                let { radius, count } = layers[i];
+
+                // Desenha a camada
+                noFill();
+                stroke(200);
+                ellipse(width / 2, height / 2, radius * 2, radius * 2);
+
+                // Desenha os elétrons em movimento
+                for (let j = 0; j < count; j++) {
+                    let x = width / 2 + radius * cos(angles[i][j]);
+                    let y = height / 2 + radius * sin(angles[i][j]);
+
+                    fill(100, 100, 255);
+                    noStroke();
+                    ellipse(x, y, 8, 8);
+
+                    // Atualiza o ângulo para o movimento
+                    angles[i][j] += electronSpeed;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
