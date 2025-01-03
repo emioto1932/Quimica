@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback do Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Envie seu Feedback</h1>
+    <p>Para enviar críticas, dúvidas, elogios ou correções sobre o site, preencha o formulário abaixo. O arquivo com suas informações será baixado em formato CSV para o seu uso. Caso prefira, copie o seguinte e-mail para enviar diretamente: <strong>eliezer9944@yahoo.com</strong>.</p>
+    <form id="feedbackForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Seu nome (opcional)">
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail (opcional)">
+        
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Deixe sua mensagem, sugestão ou crítica aqui..."></textarea>
+        
+        <button type="button" onclick="downloadCSV()">Enviar e Baixar CSV</button>
+    </form>
+
+    <script>
+        function downloadCSV() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const date = new Date();
+            const feedback = {
+                Nome: name || 'Anônimo',
+                Email: email || 'Não informado',
+                Mensagem: message,
+                Data: date.toLocaleDateString('pt-BR'),
+                Hora: date.toLocaleTimeString('pt-BR'),
+            };
+
+            // Formatar os dados em CSV
+            const csvData = [
+                ['Nome', 'Email', 'Mensagem', 'Data', 'Hora'],
+                [feedback.Nome, feedback.Email, feedback.Mensagem, feedback.Data, feedback.Hora]
+            ]
+                .map(row => row.map(value => `"${value}"`).join(','))
+                .join('\n');
+
+            // Criar um arquivo Blob para download
+            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+
+            // Criar o link de download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'feedback.csv';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+
+            // Limpar o formulário
+            document.getElementById('feedbackForm').reset();
+            alert('Seu feedback foi enviado e baixado como arquivo CSV!');
+        }
+    </script>
+</body>
+</html>
