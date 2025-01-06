@@ -31,7 +31,9 @@
 
         let electronX, electronY;
         let transferring = true;
+        let showIons = false;
         let timeSinceLastTransfer = 0;
+        let cycleStage = 0; // 0: Transferência, 1: Exibição dos íons, 2: Estado neutro
 
         function setup() {
             createCanvas(600, 400);
@@ -45,19 +47,28 @@
         function draw() {
             background(255);
 
-            // Atualiza o movimento do elétron se estiver transferindo
-            if (transferring) {
+            // Gerencia as fases do ciclo
+            if (cycleStage === 0 && transferring) {
                 transferElectron();
-            } else {
-                // Reinicia o ciclo após 1 segundo
-                if (millis() - timeSinceLastTransfer > 1000) {
+            } else if (cycleStage === 1) {
+                if (millis() - timeSinceLastTransfer > 2000) {
+                    cycleStage = 2;
+                    timeSinceLastTransfer = millis();
+                }
+            } else if (cycleStage === 2) {
+                if (millis() - timeSinceLastTransfer > 2000) {
                     resetElectron();
                 }
             }
 
             // Desenha os elementos
-            drawElement(sodium.x, sodium.y, transferring && electronX === sodium.x + sodium.radius ? sodium.symbol : "Na⁺", transferring && electronX === sodium.x + sodium.radius ? sodium.electrons : 0);
-            drawElement(chlorine.x, chlorine.y, transferring ? chlorine.symbol : "Cl⁻", transferring ? chlorine.electrons : 8);
+            if (cycleStage === 1) {
+                drawElement(sodium.x, sodium.y, "Na⁺", 0);
+                drawElement(chlorine.x, chlorine.y, "Cl⁻", 8);
+            } else {
+                drawElement(sodium.x, sodium.y, sodium.symbol, transferring ? sodium.electrons : 0);
+                drawElement(chlorine.x, chlorine.y, chlorine.symbol, transferring ? chlorine.electrons : 7);
+            }
 
             // Desenha o elétron em movimento
             if (transferring) {
@@ -79,6 +90,7 @@
             if (dist(electronX, electronY, targetX, targetY) < 1) {
                 transferring = false;
                 chlorine.electrons++; // Adiciona o elétron ao cloro
+                cycleStage = 1; // Passa para a exibição dos íons
                 timeSinceLastTransfer = millis(); // Marca o tempo da transferência
             }
         }
@@ -89,6 +101,7 @@
             electronY = sodium.y;
             transferring = true;
             chlorine.electrons = 7; // Reinicia os elétrons do cloro
+            cycleStage = 0; // Reinicia o ciclo
         }
 
         /**
@@ -102,7 +115,7 @@
             // Desenhar o símbolo químico
             fill(0);
             noStroke();
-            text(symbol, x, y - 50);
+            text(symbol, x, y - 70); // Subiu o símbolo 20px para cima
 
             // Desenhar o núcleo
             fill(255, 100, 100);
