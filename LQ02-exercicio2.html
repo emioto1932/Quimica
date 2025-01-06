@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <link rel="stylesheet" href="propriedades.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão 1 - Regra do Octeto</h1>
+    </header>
+    <main class="questao-enunciado">
+        <!-- Enunciado da Questão -->
+        <div class="nota-anunciado">
+            <p class="enunciado">
+                A Regra do Octeto explica que, para alcançar estabilidade química, os átomos dos elementos tendem a ganhar ou perder elétrons de modo que sua camada de valência (última camada com elétrons) tenha 8 elétrons, imitando a configuração de gases nobres.
+            </p>
+            <p class="enunciado">
+                Na formação de ligações iônicas, elementos com 1 a 3 elétrons na camada de valência (geralmente metais) tendem a doar elétrons, tornando-se íons positivos (cátions). Já os elementos com 5 a 7 elétrons na camada de valência (geralmente não metais) tendem a receber elétrons, tornando-se íons negativos (ânions). O Hidrogênio, apesar de ser gás, é uma exceção, pois possui apenas 1 elétron.
+            </p>
+            <p class="enunciado">
+                Para responder à questão, não é necessário realizar a distribuição eletrônica completa dos elementos químicos. Basta observar os elétrons na camada de valência e verificar o grupo em que o elemento se encontra na Tabela Periódica.
+            </p>
+            <p class="pergunta">
+                Observe as representações de Lewis nas alternativas abaixo e identifique a alternativa onde a representação está INCORRETA de acordo com a Regra do Octeto.
+            </p>
+            <div class="alternativas">
+                <p>(A) Representação do NaCl: Um átomo de Sódio (Na) com 1 elétron na última camada doando esse elétron para o Cloro (Cl), que tem 7 elétrons na camada de valência.</p>
+                <p>(B) Representação do MgO: Um átomo de Magnésio (Mg) com 2 elétrons na última camada doando ambos os elétrons para o Oxigênio (O), que tem 6 elétrons na camada de valência.</p>
+                <p>(C) Representação do CaCl₂: Um átomo de Cálcio (Ca) com 2 elétrons na última camada doando 1 elétron para cada um dos dois átomos de Cloro (Cl), que têm 7 elétrons na camada de valência.</p>
+                <p>(D) Representação do Al₂O₃: Dois átomos de Alumínio (Al), cada um com 3 elétrons na última camada, doando seus elétrons para três átomos de Oxigênio (O), cada um com 6 elétrons na camada de valência.</p>
+                <p>(E) Representação do K₂S: Dois átomos de Potássio (K), cada um com 1 elétron na última camada, compartilhando seus elétrons com o Enxofre (S), que tem 6 elétrons na camada de valência.</p>
+            </div>
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa E</h2>
+            <p>De acordo com a Regra do Octeto, os átomos tendem a ganhar ou perder elétrons de modo que sua camada de valência tenha 8 elétrons, imitando a configuração dos gases nobres. Vamos analisar cada alternativa:</p>
+            <ul>
+                <li><strong>NaCl:</strong> O Sódio (Na), com 1 elétron na camada de valência, doa esse elétron para o Cloro (Cl), que possui 7 elétrons. Ambos atingem a estabilidade. Correto.</li>
+                <li><strong>MgO:</strong> O Magnésio (Mg) doa seus 2 elétrons para o Oxigênio (O), que tem 6 elétrons. O Oxigênio atinge a estabilidade. Correto.</li>
+                <li><strong>CaCl₂:</strong> O Cálcio (Ca) doa 1 elétron para cada um dos dois átomos de Cloro (Cl), que possuem 7 elétrons. Ambos os átomos atingem a estabilidade. Correto.</li>
+                <li><strong>Al₂O₃:</strong> O Alumínio (Al) doa seus 3 elétrons para o Oxigênio (O), que tem 6 elétrons. O Oxigênio atinge a estabilidade. Correto.</li>
+                <li><strong>K₂S:</strong> O Potássio (K) tem 1 elétron na camada de valência e o Enxofre (S) tem 6 elétrons. A descrição da questão menciona que os elétrons são compartilhados entre o Potássio e o Enxofre, mas o Potássio, por ter 1 elétron, deveria doar seus elétrons ao Enxofre, e não compartilhá-los. Esta representação está INCORRETA.</li>
+            </ul>
+            <p>Portanto, a alternativa incorreta é a <strong>Alternativa E</strong>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo e a complexidade das questões do Enem. Trata-se de um exercício autoral, criado com o objetivo de revisar conceitos importantes e estimular o raciocínio necessário para resolver questões desse tipo.
+        </p>
+        <p class="nota">
+            <strong>Atenção:</strong> As questões foram elaboradas com base no estilo do Exame Nacional do Ensino Médio (Enem). <u>Não se trata de uma questão oficial do Enem</u>. Consulte as questões oficiais no site do INEP: 
+            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">
+            https://www.gov.br/inep
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
