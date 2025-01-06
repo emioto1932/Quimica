@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representação de Sódio e Cloro</title>
+    <title>Movimento de Elétrons - Sódio e Cloro</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
         body {
@@ -22,6 +22,26 @@
 </head>
 <body>
     <script>
+        let sodium = {
+            x: 150,
+            y: 200,
+            symbol: "Na",
+            electrons: 1,
+            radius: 60,
+            angles: [0] // Ângulo inicial para o elétron
+        };
+
+        let chlorine = {
+            x: 450,
+            y: 200,
+            symbol: "Cl",
+            electrons: 7,
+            radius: 60,
+            angles: Array(7).fill(0).map((_, i) => (TWO_PI / 7) * i) // Ângulos iniciais
+        };
+
+        let speed = 0.03; // Velocidade de rotação dos elétrons
+
         function setup() {
             createCanvas(600, 400);
             textSize(20);
@@ -31,39 +51,39 @@
         function draw() {
             background(255);
 
-            // Sódio (Na)
-            drawElement(150, 200, "Na", 1);
+            // Desenha o sódio (Na)
+            drawElement(sodium);
 
-            // Cloro (Cl)
-            drawElement(450, 200, "Cl", 7);
+            // Desenha o cloro (Cl)
+            drawElement(chlorine);
         }
 
         /**
-         * Desenha um elemento químico no canvas.
-         * @param {number} x Posição X do elemento.
-         * @param {number} y Posição Y do elemento.
-         * @param {string} symbol Símbolo do elemento.
-         * @param {number} electrons Número de elétrons na última camada.
+         * Desenha um elemento químico no canvas com elétrons em movimento.
+         * @param {Object} element Objeto com as informações do elemento químico.
          */
-        function drawElement(x, y, symbol, electrons) {
-            // Desenhar o símbolo químico
+        function drawElement(element) {
+            const { x, y, symbol, electrons, radius, angles } = element;
+
+            // Desenha o símbolo químico
             fill(0);
             noStroke();
             text(symbol, x, y - 50);
 
-            // Desenhar o núcleo (só para referência)
+            // Desenha o núcleo
             fill(255, 100, 100);
             ellipse(x, y, 40);
 
-            // Desenhar os elétrons na última camada
-            let radius = 60; // Raio da camada de valência
+            // Desenha os elétrons na última camada em movimento
             for (let i = 0; i < electrons; i++) {
-                let angle = TWO_PI / (electrons || 1) * i;
-                let electronX = x + radius * cos(angle);
-                let electronY = y + radius * sin(angle);
+                let electronX = x + radius * cos(angles[i]);
+                let electronY = y + radius * sin(angles[i]);
 
                 fill(100, 100, 255);
                 ellipse(electronX, electronY, 10); // Elétron
+
+                // Atualiza o ângulo para o movimento
+                angles[i] += speed;
             }
         }
     </script>
