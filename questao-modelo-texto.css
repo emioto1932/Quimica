@@ -28,6 +28,7 @@
     font-size: 1.1rem;
     margin-top: 20px;
     font-weight: bold;
+     width: 70%; /* No desktop, limita a largura a 70% */
 }
 
 /* Tabela */
