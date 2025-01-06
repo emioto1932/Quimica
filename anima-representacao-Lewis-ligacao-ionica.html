@@ -22,65 +22,70 @@
 </head>
 <body>
     <script>
+        // Configuração do Sódio (Na)
         let sodium = {
-            x: 150,
-            y: 200,
+            x: 150, // Posição X
+            y: 200, // Posição Y
             symbol: "Na",
-            electrons: 1,
-            radius: 60,
-            angles: [0] // Ângulo inicial para o elétron
+            electrons: 1, // Número de elétrons na camada de valência
+            radius: 60, // Raio da camada
+            angles: [0] // Ângulo inicial do elétron
         };
 
+        // Configuração do Cloro (Cl)
         let chlorine = {
-            x: 450,
-            y: 200,
+            x: 450, // Posição X
+            y: 200, // Posição Y
             symbol: "Cl",
-            electrons: 7,
-            radius: 60,
-            angles: Array(7).fill(0).map((_, i) => (TWO_PI / 7) * i) // Ângulos iniciais
+            electrons: 7, // Número de elétrons na camada de valência
+            radius: 60, // Raio da camada
+            angles: Array(7).fill(0).map((_, i) => (TWO_PI / 7) * i) // Ângulos iniciais dos elétrons
         };
 
-        let speed = 0.03; // Velocidade de rotação dos elétrons
+        // Velocidade de rotação dos elétrons
+        let speed = 0.03;
 
         function setup() {
-            createCanvas(600, 400);
+            createCanvas(600, 400); // Define o tamanho do canvas
             textSize(20);
             textAlign(CENTER, CENTER);
         }
 
         function draw() {
-            background(255);
+            background(255); // Fundo branco
 
-            // Desenha o sódio (Na)
+            // Desenhar o Sódio (Na)
             drawElement(sodium);
 
-            // Desenha o cloro (Cl)
+            // Desenhar o Cloro (Cl)
             drawElement(chlorine);
         }
 
         /**
-         * Desenha um elemento químico no canvas com elétrons em movimento.
-         * @param {Object} element Objeto com as informações do elemento químico.
+         * Função para desenhar um elemento químico com seus elétrons em movimento.
+         * @param {Object} element Objeto que representa o elemento químico.
          */
         function drawElement(element) {
             const { x, y, symbol, electrons, radius, angles } = element;
 
-            // Desenha o símbolo químico
+            // Desenhar o símbolo químico
             fill(0);
             noStroke();
             text(symbol, x, y - 50);
 
-            // Desenha o núcleo
+            // Desenhar o núcleo
             fill(255, 100, 100);
             ellipse(x, y, 40);
 
-            // Desenha os elétrons na última camada em movimento
+            // Desenhar os elétrons da camada de valência
             for (let i = 0; i < electrons; i++) {
+                // Calcula a posição do elétron
                 let electronX = x + radius * cos(angles[i]);
                 let electronY = y + radius * sin(angles[i]);
 
+                // Desenha o elétron
                 fill(100, 100, 255);
-                ellipse(electronX, electronY, 10); // Elétron
+                ellipse(electronX, electronY, 10);
 
                 // Atualiza o ângulo para o movimento
                 angles[i] += speed;
