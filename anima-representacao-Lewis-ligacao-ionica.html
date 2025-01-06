@@ -56,7 +56,7 @@
             }
 
             // Desenha os elementos
-            drawElement(sodium.x, sodium.y, transferring ? sodium.symbol : "Na⁺", transferring ? sodium.electrons : 0);
+            drawElement(sodium.x, sodium.y, transferring && electronX === sodium.x + sodium.radius ? sodium.symbol : "Na⁺", transferring && electronX === sodium.x + sodium.radius ? sodium.electrons : 0);
             drawElement(chlorine.x, chlorine.y, transferring ? chlorine.symbol : "Cl⁻", transferring ? chlorine.electrons : 8);
 
             // Desenha o elétron em movimento
