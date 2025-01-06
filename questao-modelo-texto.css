@@ -81,6 +81,7 @@
     font-weight: normal;
     margin-top: 10px;
     font-size: 1.1rem;
+     width: 70%; /* No desktop, limita a largura a 70% */
 
 }
 
