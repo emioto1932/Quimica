@@ -22,58 +22,73 @@
 </head>
 <body>
     <script>
-        // Configurações iniciais
         let sodium = {
             x: 150, y: 200, symbol: "Na", electrons: 1, radius: 60
         };
         let chlorine = {
             x: 450, y: 200, symbol: "Cl", electrons: 7, radius: 60
         };
-        let electronX = sodium.x + sodium.radius; // Posição inicial do elétron do Na
-        let electronY = sodium.y;
-        let transferring = true; // Controle da transferência
+
+        let electronX, electronY;
+        let transferring = true;
+        let timeSinceLastTransfer = 0;
 
         function setup() {
             createCanvas(600, 400);
             textSize(20);
             textAlign(CENTER, CENTER);
+
+            // Posição inicial do elétron
+            resetElectron();
         }
 
         function draw() {
             background(255);
 
+            // Atualiza o movimento do elétron se estiver transferindo
             if (transferring) {
-                // Movimento do elétron do Na para o Cl
-                let targetX = chlorine.x + chlorine.radius * cos(TWO_PI / 8 * chlorine.electrons);
-                let targetY = chlorine.y + chlorine.radius * sin(TWO_PI / 8 * chlorine.electrons);
-
-                // Interpolação do movimento
-                electronX = lerp(electronX, targetX, 0.05);
-                electronY = lerp(electronY, targetY, 0.05);
-
-                // Verifica se o elétron alcançou o cloro
-                if (dist(electronX, electronY, targetX, targetY) < 1) {
-                    transferring = false;
-                    chlorine.electrons++; // Adiciona o elétron ao cloro
+                transferElectron();
+            } else {
+                // Reinicia o ciclo após 1 segundo
+                if (millis() - timeSinceLastTransfer > 1000) {
+                    resetElectron();
                 }
             }
 
             // Desenha os elementos
-            drawElement(sodium.x, sodium.y, sodium.symbol, transferring ? sodium.electrons : 0);
-            drawElement(chlorine.x, chlorine.y, chlorine.symbol, chlorine.electrons);
+            drawElement(sodium.x, sodium.y, transferring ? sodium.symbol : "Na⁺", transferring ? sodium.electrons : 0);
+            drawElement(chlorine.x, chlorine.y, transferring ? chlorine.symbol : "Cl⁻", transferring ? chlorine.electrons : 8);
 
             // Desenha o elétron em movimento
             if (transferring) {
                 fill(100, 100, 255);
                 ellipse(electronX, electronY, 10);
             }
+        }
 
-            // Após a transferência, exibe os íons
-            if (!transferring) {
-                fill(0);
-                text("Na⁺", sodium.x, sodium.y - 80);
-                text("Cl⁻", chlorine.x, chlorine.y - 80);
+        function transferElectron() {
+            // Movimento do elétron do Na para o Cl
+            let targetX = chlorine.x + chlorine.radius * cos(TWO_PI / 8 * chlorine.electrons);
+            let targetY = chlorine.y + chlorine.radius * sin(TWO_PI / 8 * chlorine.electrons);
+
+            // Interpolação do movimento
+            electronX = lerp(electronX, targetX, 0.05);
+            electronY = lerp(electronY, targetY, 0.05);
+
+            // Verifica se o elétron alcançou o cloro
+            if (dist(electronX, electronY, targetX, targetY) < 1) {
+                transferring = false;
+                chlorine.electrons++; // Adiciona o elétron ao cloro
+                timeSinceLastTransfer = millis(); // Marca o tempo da transferência
             }
+        }
+
+        function resetElectron() {
+            // Reinicia o elétron no sódio
+            electronX = sodium.x + sodium.radius;
+            electronY = sodium.y;
+            transferring = true;
+            chlorine.electrons = 7; // Reinicia os elétrons do cloro
         }
 
         /**
