@@ -48,6 +48,8 @@
     text-align: left; /* Alinha o texto à esquerda */
     font-size: 1rem;
     margin-top: 20px; /* Espaço acima das alternativas */
+    width: 70%; /* No desktop, limita a largura a 70% */
+    
 }
 
 .alternativa {
@@ -67,7 +69,7 @@
     font-weight: normal;
     margin-top: 10px;
     font-size: 1.1rem;
-    width: 70%; /* No desktop, limita a largura a 70% */
+
 }
 
 /* Estilo do footer */
