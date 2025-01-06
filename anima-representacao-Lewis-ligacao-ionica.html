@@ -66,7 +66,12 @@
                 drawElement(sodium.x, sodium.y, "Na⁺", 0);
                 drawElement(chlorine.x, chlorine.y, "Cl⁻", 8);
             } else {
-                drawElement(sodium.x, sodium.y, sodium.symbol, transferring ? sodium.electrons : 0);
+                drawElement(
+                    sodium.x,
+                    sodium.y,
+                    sodium.symbol,
+                    transferring ? 0 : sodium.electrons // Elétron some quando em movimento
+                );
                 drawElement(chlorine.x, chlorine.y, chlorine.symbol, transferring ? chlorine.electrons : 7);
             }
 
@@ -115,7 +120,7 @@
             // Desenhar o símbolo químico
             fill(0);
             noStroke();
-            text(symbol, x, y - 70); // Subiu o símbolo 20px para cima
+            text(symbol, x, y - 90); // Subiu o símbolo 40px para cima
 
             // Desenhar o núcleo
             fill(255, 100, 100);
