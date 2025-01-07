@@ -22,11 +22,8 @@
 </head>
 <body>
     <script>
-        const sodiumAtoms = [];
-        const rows = 3;
-        const cols = 3;
+        let sodiumAtoms = [];
         let electronX, electronY;
-        let transferringElectron = false;
         let electronMoving = false;
         let currentElectronIndex = 0;
         let cycleStage = 0;
@@ -36,23 +33,30 @@
             textSize(20);
             textAlign(CENTER, CENTER);
 
-            // Criação dos átomos de sódio (3 fileiras de 3 átomos)
+            // Criação dos átomos de sódio: 4 neutros e 5 Na⁺
             let startX = 100;
             let startY = 100;
             let xOffset = 100;
             let yOffset = 100;
 
-            // Criação dos átomos de sódio nas fileiras
-            for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {
-                    sodiumAtoms.push({
-                        x: startX + col * xOffset,
-                        y: startY + row * yOffset,
-                        symbol: "Na",
-                        charge: 0, // 0 significa neutro, 1 significa Na⁺
-                        hasElectron: true, // Cada átomo de sódio começa com um elétron
-                    });
-                }
+            // 4 átomos de Na (neutros) e 5 átomos de Na⁺
+            for (let i = 0; i < 4; i++) {
+                sodiumAtoms.push({
+                    x: startX + i * xOffset,
+                    y: startY,
+                    symbol: "Na",
+                    charge: 0, // Neutro
+                    hasElectron: true, // Começa com 1 elétron
+                });
+            }
+            for (let i = 0; i < 5; i++) {
+                sodiumAtoms.push({
+                    x: startX + i * xOffset,
+                    y: startY + yOffset,
+                    symbol: "Na⁺",
+                    charge: 1, // Na⁺
+                    hasElectron: false, // Sem elétron
+                });
             }
         }
 
@@ -60,7 +64,7 @@
             background(255);
 
             // Fase de transferência de elétrons
-            if (cycleStage === 1 && transferringElectron) {
+            if (cycleStage === 1 && electronMoving) {
                 transferElectron();
             }
 
@@ -78,37 +82,37 @@
         }
 
         function transferElectron() {
-            let fromAtom = sodiumAtoms[currentElectronIndex];
-            let toAtom = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length];
+            // Selecione aleatoriamente um átomo neutro para perder um elétron
+            let fromAtom = sodiumAtoms.find(atom => atom.hasElectron && atom.charge === 0);
+            let toAtom = sodiumAtoms.find(atom => !atom.hasElectron && atom.charge === 1);
 
-            if (fromAtom.hasElectron && !electronMoving) {
-                // Marcar como movendo
+            if (fromAtom && toAtom && !electronMoving) {
+                // Marca como elétron em movimento
                 electronMoving = true;
 
-                // Iniciar a posição do elétron no átomo de origem
+                // Inicia a posição do elétron no átomo de origem
                 electronX = fromAtom.x + 60;
                 electronY = fromAtom.y;
 
-                // O átomo perde o elétron e fica Na⁺
+                // O átomo de sódio perde um elétron e se torna Na⁺
                 fromAtom.hasElectron = false;
                 fromAtom.charge = 1;
 
-                // O átomo vizinho recebe o elétron e fica neutro
+                // O átomo de Na⁺ recebe um elétron e volta a ser Na
                 toAtom.hasElectron = true;
                 toAtom.charge = 0;
 
-                // Atualizar o índice do átomo que perdeu o elétron
-                currentElectronIndex = (currentElectronIndex + 1) % sodiumAtoms.length;
+                cycleStage = 1;
             }
 
-            // Movimento do elétron para o próximo átomo
-            let toX = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].x + 60;
-            let toY = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].y;
+            // Movimento do elétron
+            let toX = toAtom.x + 60;
+            let toY = toAtom.y;
 
             electronX = lerp(electronX, toX, 0.05);
             electronY = lerp(electronY, toY, 0.05);
 
-            // Quando o elétron chegar ao seu destino
+            // Quando o elétron chega ao seu destino
             if (dist(electronX, electronY, toX, toY) < 2) {
                 electronMoving = false;
                 cycleStage = 1;
@@ -142,7 +146,7 @@
             // Desenhar a carga do átomo
             if (charge === 1) {
                 fill(255, 0, 0);
-                text("Na⁺", x, y + 30);
+                text("Na⁺", x, y + 30); // Átomo com carga positiva
             } else {
                 fill(0, 255, 0);
                 text("Na", x, y + 30); // Átomo neutro
