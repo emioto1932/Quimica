@@ -22,117 +22,90 @@
 </head>
 <body>
     <script>
-        let sodiumAtoms = [];
-        let electronX, electronY;
-        let transferring = false;
-        let electronIndex = -1;
-        let cycleStage = 0; // 0: Movimento dos elétrons, 1: Estado final
+        const sodiumAtoms = [];
+        const electrons = [];
+        const rows = 3;
+        const cols = 3;
+        const electronCount = 9; // Número de elétrons na nuvem metálica
 
         function setup() {
             createCanvas(600, 400);
             textSize(20);
             textAlign(CENTER, CENTER);
 
-            // Criação dos 10 átomos de sódio
+            // Criação dos átomos de sódio (3 fileiras de 3 átomos)
             let startX = 100;
-            for (let i = 0; i < 10; i++) {
-                sodiumAtoms.push({
-                    x: startX + i * 50, y: 200, symbol: "Na", electrons: 1, radius: 60, isPositive: false
-                });
+            let startY = 100;
+            let xOffset = 100;
+            let yOffset = 100;
+
+            // Criação dos átomos de sódio nas fileiras
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    sodiumAtoms.push({
+                        x: startX + col * xOffset,
+                        y: startY + row * yOffset,
+                        symbol: "Na",
+                        electrons: 1, // Cada átomo de sódio tem 1 elétron na camada de valência
+                    });
+                }
             }
 
-            // Posição inicial do elétron
-            resetElectron();
+            // Criação dos elétrons na nuvem metálica
+            for (let i = 0; i < electronCount; i++) {
+                electrons.push({
+                    x: random(100, 500), // Posição inicial aleatória
+                    y: random(100, 300),
+                    speedX: random(-2, 2), // Velocidade aleatória
+                    speedY: random(-2, 2),
+                });
+            }
         }
 
         function draw() {
             background(255);
 
-            // Fase de transferência de elétrons
-            if (cycleStage === 0 && transferring) {
-                transferElectron();
-            } else if (cycleStage === 1) {
-                if (millis() - timeSinceLastTransfer > 2000) {
-                    cycleStage = 0;
-                    resetElectron();
-                }
-            }
-
             // Desenho dos átomos de sódio
             for (let i = 0; i < sodiumAtoms.length; i++) {
                 let atom = sodiumAtoms[i];
-                drawElement(atom.x, atom.y, atom.symbol, atom.isPositive ? 0 : atom.electrons); // Elétron some quando positivo
+                drawElement(atom.x, atom.y, atom.symbol);
             }
 
-            // Desenha o elétron em movimento
-            if (transferring && electronIndex !== -1) {
+            // Desenho da nuvem de elétrons
+            for (let i = 0; i < electrons.length; i++) {
+                let electron = electrons[i];
                 fill(100, 100, 255);
-                ellipse(electronX, electronY, 10);
+                ellipse(electron.x, electron.y, 10);
+
+                // Movimentação dos elétrons (nuvem metálica)
+                electron.x += electron.speedX;
+                electron.y += electron.speedY;
+
+                // Colisão com as bordas do canvas
+                if (electron.x < 0 || electron.x > width) electron.speedX *= -1;
+                if (electron.y < 0 || electron.y > height) electron.speedY *= -1;
             }
-        }
-
-        function transferElectron() {
-            // Movimenta o elétron para o próximo átomo de sódio positivo
-            let targetAtom = sodiumAtoms.find(atom => atom.isPositive === false);
-            if (!targetAtom) {
-                transferring = false;
-                cycleStage = 1; // Todos os elétrons transferidos
-                timeSinceLastTransfer = millis();
-                return;
-            }
-
-            let targetX = targetAtom.x;
-            let targetY = targetAtom.y;
-
-            // Interpolação do movimento
-            electronX = lerp(electronX, targetX + targetAtom.radius, 0.05);
-            electronY = lerp(electronY, targetY, 0.05);
-
-            // Verifica se o elétron alcançou o átomo
-            if (dist(electronX, electronY, targetX + targetAtom.radius, targetY) < 1) {
-                targetAtom.electrons--;
-                targetAtom.isPositive = true; // Se o átomo perde elétrons, fica positivo
-                transferring = false;
-                cycleStage = 1; // Fase de visualização dos átomos
-                timeSinceLastTransfer = millis();
-            }
-        }
-
-        function resetElectron() {
-            // Reinicia a posição do elétron no primeiro átomo de sódio
-            electronX = sodiumAtoms[0].x + sodiumAtoms[0].radius;
-            electronY = sodiumAtoms[0].y;
-            transferring = true;
-            electronIndex = 0; // Começa com o primeiro átomo de sódio
-            cycleStage = 0; // Reinicia o ciclo
         }
 
         /**
-         * Desenha um átomo no canvas.
+         * Desenha um átomo de sódio no canvas.
          * @param {number} x Posição X do átomo.
          * @param {number} y Posição Y do átomo.
          * @param {string} symbol Símbolo do elemento.
-         * @param {number} electrons Número de elétrons na última camada.
          */
-        function drawElement(x, y, symbol, electrons) {
+        function drawElement(x, y, symbol) {
             // Desenhar o símbolo químico
             fill(0);
             noStroke();
             text(symbol, x, y - 90); // Subiu o símbolo 40px para cima
 
-            // Desenhar o núcleo
+            // Desenhar o núcleo do átomo
             fill(255, 100, 100);
             ellipse(x, y, 40);
 
             // Desenhar os elétrons na última camada
-            for (let i = 0; i < electrons; i++) {
-                let angle = TWO_PI / (electrons || 1) * i;
-                let electronX = x + 60 * cos(angle);
-                let electronY = y + 60 * sin(angle);
-
-                fill(100, 100, 255);
-                ellipse(electronX, electronY, 10); // Elétron
-            }
+            fill(100, 100, 255);
+            ellipse(x + 60, y, 10); // Elétron na camada de valência (movendo-se aleatoriamente)
         }
     </script>
 </body>
