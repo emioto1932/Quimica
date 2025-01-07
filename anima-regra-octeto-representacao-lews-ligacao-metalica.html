@@ -27,7 +27,8 @@
         const cols = 3;
         let electronX, electronY;
         let transferring = false;  // Flag para iniciar a transferência
-        let currentElectronIndex = -1;  // Átomo que vai perder o elétron
+        let currentElectronIndex = 0;  // Átomo que vai perder o elétron
+        let electronIndex = 0; // Índice do elétron em movimento
         let cycleStage = 0;  // Fases: 0 - Início, 1 - Transferência, 2 - Pausa
 
         function setup() {
@@ -69,50 +70,52 @@
                 drawElement(atom.x, atom.y, atom.symbol, atom.charge, atom.hasElectron);
             }
 
-            // Se todos os átomos já perderam seus elétrons e a transferência foi concluída
+            // Fase de pausa
             if (cycleStage === 2) {
                 fill(0);
-                text("Clique para iniciar a transferência novamente.", width / 2, height - 50);
-            } else if (cycleStage === 0) {
-                fill(0);
-                text("Clique para iniciar a transferência de elétrons", width / 2, height - 50);
-            }
-        }
-
-        function mousePressed() {
-            if (cycleStage === 0) {
-                cycleStage = 1; // Começar a transferência de elétrons
-                currentElectronIndex = 0; // Começar com o primeiro átomo
-                transferring = true;
-                sodiumAtoms[0].hasElectron = false; // O primeiro átomo de sódio perde seu elétron
+                text("Transferência em andamento...", width / 2, height - 50);
             }
         }
 
         function transferElectron() {
-            // Encontrar o átomo que vai receber o elétron
-            let nextAtomIndex = currentElectronIndex + 1;
-            if (nextAtomIndex >= sodiumAtoms.length) {
-                cycleStage = 2; // Quando todos os átomos perderam elétrons, finalizar
-                transferring = false;
-                return;
-            }
-
+            // Encontrar o átomo que vai perder o elétron
             let fromAtom = sodiumAtoms[currentElectronIndex];
-            let toAtom = sodiumAtoms[nextAtomIndex];
+            let toAtom = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length];
 
             // Transferir o elétron do átomo atual (Na) para o próximo átomo neutro
-            if (!fromAtom.hasElectron) {
-                toAtom.hasElectron = true; // O próximo átomo recebe o elétron
-                fromAtom.charge = 1; // O átomo que perdeu o elétron se torna Na⁺
-                toAtom.charge = 0; // O átomo que recebeu o elétron volta a ser neutro
-                currentElectronIndex = nextAtomIndex; // Avançar para o próximo átomo
+            if (fromAtom.hasElectron) {
+                fromAtom.hasElectron = false;  // O átomo perde o elétron
+                toAtom.hasElectron = true;  // O próximo átomo recebe o elétron
 
-                // Reiniciar a transferência para o próximo átomo
+                // Mudar a carga dos átomos
+                fromAtom.charge = 1; // O átomo que perdeu o elétron se torna Na⁺
+                toAtom.charge = 0;   // O átomo que recebeu o elétron volta a ser neutro
+
+                // Atualizar o índice do átomo que perde o elétron
+                currentElectronIndex = (currentElectronIndex + 1) % sodiumAtoms.length;
+            }
+
+            // Desenhar o elétron em movimento
+            let fromX = sodiumAtoms[currentElectronIndex].x + 60;
+            let fromY = sodiumAtoms[currentElectronIndex].y;
+            let toX = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].x + 60;
+            let toY = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].y;
+            
+            // Interpolação para movimentar o elétron de um átomo para o outro
+            electronX = lerp(fromX, toX, 0.05);
+            electronY = lerp(fromY, toY, 0.05);
+
+            if (dist(electronX, electronY, toX, toY) < 2) {
                 transferring = false;
+                cycleStage = 1;
                 setTimeout(() => {
                     transferring = true;
-                }, 1000); // Atraso antes de continuar a transferência
+                }, 1000);
             }
+
+            // Desenha o elétron em movimento
+            fill(100, 100, 255);
+            ellipse(electronX, electronY, 10); // Elétron
         }
 
         /**
