@@ -54,7 +54,7 @@
         }
 
         function drawBondRectangle() {
-            // Desenha o retângulo fixo no fundo entre os dois oxigênios
+            // Desenha o retângulo fixo entre os dois oxigênios
             let rectX = (oxygen1.x + oxygen2.x) / 2 - 40;  // Posição horizontal centralizada entre os dois oxigênios
             let rectY = oxygen1.y - 5;  // Posição vertical alinhada com os elétrons
             let rectWidth = abs(oxygen2.x - oxygen1.x) - 120;  // Largura do retângulo
@@ -68,22 +68,22 @@
         }
 
         function drawElectronPair() {
-            // Movimento do par de elétrons entre os dois oxigênios
+            // Movimento do primeiro par de elétrons
             let oscillationX1 = lerp(oxygen1.x + oxygen1.radius, (oxygen1.x + oxygen2.x) / 2 - 10, sin(offset) * 0.5 + 0.5);
             let oscillationX2 = lerp(oxygen2.x - oxygen2.radius, (oxygen1.x + oxygen2.x) / 2 + 10, sin(offset) * 0.5 + 0.5);
             
-            // Desenha os dois elétrons oscilando
+            // Desenha o primeiro par de elétrons oscilando
             fill(100, 100, 255);
             ellipse(oscillationX1, oxygen1.y, 10); // Elétron 1
             ellipse(oscillationX2, oxygen2.y, 10); // Elétron 2
 
-            // Repetir para o segundo par de elétrons
+            // Movimento do segundo par de elétrons (sincronizado com o primeiro)
             let oscillationX3 = lerp(oxygen1.x + oxygen1.radius - 15, (oxygen1.x + oxygen2.x) / 2 - 10, sin(offset + PI) * 0.5 + 0.5);
             let oscillationX4 = lerp(oxygen2.x - oxygen2.radius + 15, (oxygen1.x + oxygen2.x) / 2 + 10, sin(offset + PI) * 0.5 + 0.5);
             
             // Desenha o segundo par de elétrons oscilando
-            ellipse(oscillationX3, oxygen1.y - 20, 10); // Elétron 3
-            ellipse(oscillationX4, oxygen2.y - 20, 10); // Elétron 4
+            ellipse(oscillationX3, oxygen1.y + 20, 10); // Elétron 3
+            ellipse(oscillationX4, oxygen2.y + 20, 10); // Elétron 4
         }
 
         function drawElement(x, y, symbol, electrons) {
