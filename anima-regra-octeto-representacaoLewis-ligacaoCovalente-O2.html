@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligação Covalente - O2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let oxygen1 = { x: 200, y: 200, symbol: "O", electrons: 6, radius: 60 }; // Primeiro Oxigênio
+        let oxygen2 = { x: 400, y: 200, symbol: "O", electrons: 6, radius: 60 }; // Segundo Oxigênio
+
+        let offset = 0; // Deslocamento para os elétrons
+
+        function setup() {
+            createCanvas(600, 400);
+            textSize(20);
+            textAlign(CENTER, CENTER);
+
+            // Posição inicial dos elétrons
+            resetElectrons();
+        }
+
+        function draw() {
+            background(255);
+
+            // Desenha os átomos de oxigênio
+            drawElement(oxygen1.x, oxygen1.y, oxygen1.symbol, oxygen1.electrons);
+            drawElement(oxygen2.x, oxygen2.y, oxygen2.symbol, oxygen2.electrons);
+
+            // Desenha o retângulo fixo de ligação covalente dupla
+            drawBondRectangle();
+
+            // Desenha os pares de elétrons oscilando entre os oxigênios
+            drawElectronPair();
+
+            // Oscila os elétrons
+            offset += 0.1; // Controla a oscilação
+        }
+
+        function drawBondRectangle() {
+            // Desenha o retângulo fixo no fundo entre os dois oxigênios
+            let rectX = (oxygen1.x + oxygen2.x) / 2 - 40;  // Posição horizontal centralizada entre os dois oxigênios
+            let rectY = oxygen1.y - 5;  // Posição vertical alinhada com os elétrons
+            let rectWidth = abs(oxygen2.x - oxygen1.x) - 120;  // Largura do retângulo
+            let rectHeight = 10;  // Altura do retângulo
+
+            // Desenha o retângulo com borda azul (estático)
+            noFill();
+            stroke(0, 0, 255);
+            strokeWeight(2);
+            rect(rectX, rectY, rectWidth, rectHeight);  // Desenha o retângulo
+        }
+
+        function drawElectronPair() {
+            // Movimento do par de elétrons entre os dois oxigênios
+            let oscillationX1 = lerp(oxygen1.x + oxygen1.radius, (oxygen1.x + oxygen2.x) / 2 - 10, sin(offset) * 0.5 + 0.5);
+            let oscillationX2 = lerp(oxygen2.x - oxygen2.radius, (oxygen1.x + oxygen2.x) / 2 + 10, sin(offset) * 0.5 + 0.5);
+            
+            // Desenha os dois elétrons oscilando
+            fill(100, 100, 255);
+            ellipse(oscillationX1, oxygen1.y, 10); // Elétron 1
+            ellipse(oscillationX2, oxygen2.y, 10); // Elétron 2
+
+            // Repetir para o segundo par de elétrons
+            let oscillationX3 = lerp(oxygen1.x + oxygen1.radius - 15, (oxygen1.x + oxygen2.x) / 2 - 10, sin(offset + PI) * 0.5 + 0.5);
+            let oscillationX4 = lerp(oxygen2.x - oxygen2.radius + 15, (oxygen1.x + oxygen2.x) / 2 + 10, sin(offset + PI) * 0.5 + 0.5);
+            
+            // Desenha o segundo par de elétrons oscilando
+            ellipse(oscillationX3, oxygen1.y - 20, 10); // Elétron 3
+            ellipse(oscillationX4, oxygen2.y - 20, 10); // Elétron 4
+        }
+
+        function drawElement(x, y, symbol, electrons) {
+            // Desenhar o símbolo químico
+            fill(0);
+            noStroke();
+            text(symbol, x, y - 90); // Subiu o símbolo 40px para cima
+
+            // Desenhar o núcleo
+            fill(255, 100, 100);
+            ellipse(x, y, 40);
+
+            // Desenhar os elétrons na última camada
+            let angleOffset = radians(20); // Deslocamento de 20 graus no sentido horário
+            for (let i = 0; i < electrons - 2; i++) {  // Subtrai 2 para não desenhar os quatro elétrons compartilhados
+                let angle = TWO_PI / (electrons - 2) * i + angleOffset; // Inclui o deslocamento
+                let electronX = x + 60 * cos(angle);
+                let electronY = y + 60 * sin(angle);
+
+                fill(100, 100, 255);
+                ellipse(electronX, electronY, 10); // Elétron
+            }
+        }
+
+        function resetElectrons() {
+            // Reinicia a posição dos elétrons
+            offset = 0; // Reinicia a oscilação
+        }
+    </script>
+</body>
+</html>
