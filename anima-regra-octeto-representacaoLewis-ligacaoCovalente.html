@@ -72,8 +72,9 @@
             ellipse(x, y, 40);
 
             // Desenhar os elétrons na última camada
+            let angleOffset = radians(20); // Deslocamento de 20 graus no sentido horário
             for (let i = 0; i < electrons - 1; i++) {  // Subtraí 1 para não desenhar os dois elétrons compartilhados
-                let angle = TWO_PI / (electrons - 1) * i; // Divide entre os elétrons restantes (sem os compartilhados)
+                let angle = TWO_PI / (electrons - 1) * i + angleOffset; // Inclui o deslocamento
                 let electronX = x + 60 * cos(angle);
                 let electronY = y + 60 * sin(angle);
 
