@@ -43,7 +43,7 @@
             drawElement(oxygen1.x, oxygen1.y, oxygen1.symbol, oxygen1.electrons);
             drawElement(oxygen2.x, oxygen2.y, oxygen2.symbol, oxygen2.electrons);
 
-            // Desenha o retângulo fixo de ligação covalente dupla
+            // Desenha o retângulo fixo de ligação covalente
             drawBondRectangle();
 
             // Desenha os pares de elétrons oscilando entre os oxigênios
@@ -98,7 +98,7 @@
 
             // Desenhar os elétrons na última camada
             let angleOffset = radians(20); // Deslocamento de 20 graus no sentido horário
-            for (let i = 0; i < electrons - 2; i++) {  // Subtrai 2 para não desenhar os quatro elétrons compartilhados
+            for (let i = 0; i < electrons - 2; i++) {  // Subtraí 2 para não desenhar os 4 elétrons compartilhados
                 let angle = TWO_PI / (electrons - 2) * i + angleOffset; // Inclui o deslocamento
                 let electronX = x + 60 * cos(angle);
                 let electronY = y + 60 * sin(angle);
