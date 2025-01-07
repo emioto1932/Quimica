@@ -26,10 +26,10 @@
         const rows = 3;
         const cols = 3;
         let electronX, electronY;
-        let transferring = false;  // Flag para iniciar a transferência
-        let currentElectronIndex = 0;  // Átomo que vai perder o elétron
-        let electronIndex = 0; // Índice do elétron em movimento
-        let cycleStage = 0;  // Fases: 0 - Início, 1 - Transferência, 2 - Pausa
+        let transferringElectron = false;
+        let electronMoving = false;
+        let currentElectronIndex = 0;
+        let cycleStage = 0;
 
         function setup() {
             createCanvas(600, 400);
@@ -60,7 +60,7 @@
             background(255);
 
             // Fase de transferência de elétrons
-            if (cycleStage === 1 && transferring) {
+            if (cycleStage === 1 && transferringElectron) {
                 transferElectron();
             }
 
@@ -70,52 +70,49 @@
                 drawElement(atom.x, atom.y, atom.symbol, atom.charge, atom.hasElectron);
             }
 
-            // Fase de pausa
-            if (cycleStage === 2) {
-                fill(0);
-                text("Transferência em andamento...", width / 2, height - 50);
+            // Desenha o elétron em movimento
+            if (electronMoving) {
+                fill(100, 100, 255);
+                ellipse(electronX, electronY, 10); // Elétron em movimento
             }
         }
 
         function transferElectron() {
-            // Encontrar o átomo que vai perder o elétron
             let fromAtom = sodiumAtoms[currentElectronIndex];
             let toAtom = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length];
 
-            // Transferir o elétron do átomo atual (Na) para o próximo átomo neutro
-            if (fromAtom.hasElectron) {
-                fromAtom.hasElectron = false;  // O átomo perde o elétron
-                toAtom.hasElectron = true;  // O próximo átomo recebe o elétron
+            if (fromAtom.hasElectron && !electronMoving) {
+                // Marcar como movendo
+                electronMoving = true;
 
-                // Mudar a carga dos átomos
-                fromAtom.charge = 1; // O átomo que perdeu o elétron se torna Na⁺
-                toAtom.charge = 0;   // O átomo que recebeu o elétron volta a ser neutro
+                // Iniciar a posição do elétron no átomo de origem
+                electronX = fromAtom.x + 60;
+                electronY = fromAtom.y;
 
-                // Atualizar o índice do átomo que perde o elétron
+                // O átomo perde o elétron e fica Na⁺
+                fromAtom.hasElectron = false;
+                fromAtom.charge = 1;
+
+                // O átomo vizinho recebe o elétron e fica neutro
+                toAtom.hasElectron = true;
+                toAtom.charge = 0;
+
+                // Atualizar o índice do átomo que perdeu o elétron
                 currentElectronIndex = (currentElectronIndex + 1) % sodiumAtoms.length;
             }
 
-            // Desenhar o elétron em movimento
-            let fromX = sodiumAtoms[currentElectronIndex].x + 60;
-            let fromY = sodiumAtoms[currentElectronIndex].y;
+            // Movimento do elétron para o próximo átomo
             let toX = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].x + 60;
             let toY = sodiumAtoms[(currentElectronIndex + 1) % sodiumAtoms.length].y;
-            
-            // Interpolação para movimentar o elétron de um átomo para o outro
-            electronX = lerp(fromX, toX, 0.05);
-            electronY = lerp(fromY, toY, 0.05);
 
+            electronX = lerp(electronX, toX, 0.05);
+            electronY = lerp(electronY, toY, 0.05);
+
+            // Quando o elétron chegar ao seu destino
             if (dist(electronX, electronY, toX, toY) < 2) {
-                transferring = false;
+                electronMoving = false;
                 cycleStage = 1;
-                setTimeout(() => {
-                    transferring = true;
-                }, 1000);
             }
-
-            // Desenha o elétron em movimento
-            fill(100, 100, 255);
-            ellipse(electronX, electronY, 10); // Elétron
         }
 
         /**
