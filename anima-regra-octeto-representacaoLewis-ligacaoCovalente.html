@@ -25,7 +25,6 @@
         let chlorine1 = { x: 200, y: 200, symbol: "Cl", electrons: 7, radius: 60 }; // Primeiro Cloro
         let chlorine2 = { x: 400, y: 200, symbol: "Cl", electrons: 7, radius: 60 }; // Segundo Cloro
 
-        let electronX1, electronY1, electronX2, electronY2;
         let offset = 0; // Deslocamento para os elétrons
 
         function setup() {
@@ -56,7 +55,7 @@
             let oscillationX1 = lerp(chlorine1.x + chlorine1.radius, (chlorine1.x + chlorine2.x) / 2 - 10, sin(offset) * 0.5 + 0.5);
             let oscillationX2 = lerp(chlorine2.x - chlorine2.radius, (chlorine1.x + chlorine2.x) / 2 + 10, sin(offset) * 0.5 + 0.5);
             
-            // Desenha os dois elétrons
+            // Desenha os dois elétrons oscilando
             fill(100, 100, 255);
             ellipse(oscillationX1, chlorine1.y, 10); // Elétron 1
             ellipse(oscillationX2, chlorine2.y, 10); // Elétron 2
@@ -73,16 +72,10 @@
             ellipse(x, y, 40);
 
             // Desenhar os elétrons na última camada
-            for (let i = 0; i < electrons; i++) {
-                let angle = TWO_PI / (electrons || 1) * i;
+            for (let i = 0; i < electrons - 1; i++) {  // Subtraí 1 para não desenhar os dois elétrons compartilhados
+                let angle = TWO_PI / (electrons - 1) * i; // Divide entre os elétrons restantes (sem os compartilhados)
                 let electronX = x + 60 * cos(angle);
                 let electronY = y + 60 * sin(angle);
-
-                // Ajusta a posição dos elétrons do primeiro cloro (no eixo X)
-                if (x === chlorine1.x && i === 0) {
-                    electronX = x + 60 * cos(PI / 4);  // Ajusta a posição do primeiro elétron
-                    electronY = y + 60 * sin(PI / 4);
-                }
 
                 fill(100, 100, 255);
                 ellipse(electronX, electronY, 10); // Elétron
