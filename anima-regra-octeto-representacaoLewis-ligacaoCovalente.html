@@ -78,6 +78,12 @@
                 let electronX = x + 60 * cos(angle);
                 let electronY = y + 60 * sin(angle);
 
+                // Ajusta a posição dos elétrons do primeiro cloro (no eixo X)
+                if (x === chlorine1.x && i === 0) {
+                    electronX = x + 60 * cos(PI / 4);  // Ajusta a posição do primeiro elétron
+                    electronY = y + 60 * sin(PI / 4);
+                }
+
                 fill(100, 100, 255);
                 ellipse(electronX, electronY, 10); // Elétron
             }
