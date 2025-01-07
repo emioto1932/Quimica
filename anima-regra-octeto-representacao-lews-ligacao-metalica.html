@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ligação Metálica - Na</title>
+    <title>Transferência de Elétrons - Na</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
         body {
@@ -23,11 +23,12 @@
 <body>
     <script>
         const sodiumAtoms = [];
-        const electrons = [];
         const rows = 3;
         const cols = 3;
-        const totalAtoms = 9; // Total de átomos de sódio
-        let transferStage = 0; // Fase do processo (0: início, 1: transferência, 2: aguardando)
+        let electronX, electronY;
+        let transferring = false;  // Flag para iniciar a transferência
+        let currentElectronIndex = -1;  // Átomo que vai perder o elétron
+        let cycleStage = 0;  // Fases: 0 - Início, 1 - Transferência, 2 - Pausa
 
         function setup() {
             createCanvas(600, 400);
@@ -47,7 +48,7 @@
                         x: startX + col * xOffset,
                         y: startY + row * yOffset,
                         symbol: "Na",
-                        charge: 0, // 0 significa neutro, +1 significa Na⁺
+                        charge: 0, // 0 significa neutro, 1 significa Na⁺
                         hasElectron: true, // Cada átomo de sódio começa com um elétron
                     });
                 }
@@ -58,55 +59,59 @@
             background(255);
 
             // Fase de transferência de elétrons
-            if (transferStage === 1) {
+            if (cycleStage === 1 && transferring) {
                 transferElectron();
             }
 
-            // Desenho dos átomos de sódio
+            // Desenha os átomos de sódio
             for (let i = 0; i < sodiumAtoms.length; i++) {
                 let atom = sodiumAtoms[i];
                 drawElement(atom.x, atom.y, atom.symbol, atom.charge, atom.hasElectron);
             }
 
-            // Exibe o botão de iniciar a transferência após uma pausa
-            if (transferStage === 0) {
+            // Se todos os átomos já perderam seus elétrons e a transferência foi concluída
+            if (cycleStage === 2) {
+                fill(0);
+                text("Clique para iniciar a transferência novamente.", width / 2, height - 50);
+            } else if (cycleStage === 0) {
                 fill(0);
                 text("Clique para iniciar a transferência de elétrons", width / 2, height - 50);
             }
         }
 
         function mousePressed() {
-            if (transferStage === 0) {
-                transferStage = 1; // Começar a transferência de elétrons
+            if (cycleStage === 0) {
+                cycleStage = 1; // Começar a transferência de elétrons
+                currentElectronIndex = 0; // Começar com o primeiro átomo
+                transferring = true;
+                sodiumAtoms[0].hasElectron = false; // O primeiro átomo de sódio perde seu elétron
             }
         }
 
         function transferElectron() {
-            // Escolher aleatoriamente um átomo neutro e um átomo positivo
-            let neutralAtomIndex = -1;
-            let positiveAtomIndex = -1;
-
-            // Procurando um átomo neutro e um átomo positivo
-            for (let i = 0; i < sodiumAtoms.length; i++) {
-                if (sodiumAtoms[i].charge === 0 && neutralAtomIndex === -1) {
-                    neutralAtomIndex = i;
-                } else if (sodiumAtoms[i].charge === 1 && positiveAtomIndex === -1) {
-                    positiveAtomIndex = i;
-                }
+            // Encontrar o átomo que vai receber o elétron
+            let nextAtomIndex = currentElectronIndex + 1;
+            if (nextAtomIndex >= sodiumAtoms.length) {
+                cycleStage = 2; // Quando todos os átomos perderam elétrons, finalizar
+                transferring = false;
+                return;
             }
 
-            // Se encontramos ambos os átomos (neutro e positivo)
-            if (neutralAtomIndex !== -1 && positiveAtomIndex !== -1) {
-                // Transferir o elétron do átomo neutro para o átomo positivo
-                sodiumAtoms[neutralAtomIndex].charge = 1; // O átomo neutro agora é positivo
-                sodiumAtoms[neutralAtomIndex].hasElectron = false; // Perde o elétron
-                sodiumAtoms[positiveAtomIndex].charge = 0; // O átomo positivo volta a ser neutro
-                sodiumAtoms[positiveAtomIndex].hasElectron = true; // Recebe o elétron
+            let fromAtom = sodiumAtoms[currentElectronIndex];
+            let toAtom = sodiumAtoms[nextAtomIndex];
 
-                // Após a transferência, esperar um pouco antes de realizar a próxima
+            // Transferir o elétron do átomo atual (Na) para o próximo átomo neutro
+            if (!fromAtom.hasElectron) {
+                toAtom.hasElectron = true; // O próximo átomo recebe o elétron
+                fromAtom.charge = 1; // O átomo que perdeu o elétron se torna Na⁺
+                toAtom.charge = 0; // O átomo que recebeu o elétron volta a ser neutro
+                currentElectronIndex = nextAtomIndex; // Avançar para o próximo átomo
+
+                // Reiniciar a transferência para o próximo átomo
+                transferring = false;
                 setTimeout(() => {
-                    transferStage = 1; // Continuar a transferência de elétrons
-                }, 1000);
+                    transferring = true;
+                }, 1000); // Atraso antes de continuar a transferência
             }
         }
 
