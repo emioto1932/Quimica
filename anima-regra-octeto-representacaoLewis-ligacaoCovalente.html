@@ -48,7 +48,7 @@
             drawElectronPair();
 
             // Oscila os elétrons
-            offset += 0.1; // Controla a oscilação
+            offset += 0.05; // Controla a oscilação
         }
 
         function drawElectronPair() {
@@ -84,7 +84,7 @@
 
             // Ajuste para o primeiro cloro: inverter a posição inicial dos elétrons
             if (x === chlorine1.x) {
-                // Desenhar os 2 primeiros elétrons do Cloro 1 (invertidos)
+                // Desenhar os 2 primeiros elétrons do Cloro 1
                 let electronX1 = x + 60 * cos(PI);  // Posição oposta ao primeiro elétron
                 let electronY1 = y + 60 * sin(PI);
                 ellipse(electronX1, electronY1, 10); // Elétron 1 do Cloro 1
