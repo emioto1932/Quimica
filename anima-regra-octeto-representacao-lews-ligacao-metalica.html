@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligação Metálica - Na</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let sodiumAtoms = [];
+        let electronX, electronY;
+        let transferring = false;
+        let electronIndex = -1;
+        let cycleStage = 0; // 0: Movimento dos elétrons, 1: Estado final
+
+        function setup() {
+            createCanvas(600, 400);
+            textSize(20);
+            textAlign(CENTER, CENTER);
+
+            // Criação dos 10 átomos de sódio
+            let startX = 100;
+            for (let i = 0; i < 10; i++) {
+                sodiumAtoms.push({
+                    x: startX + i * 50, y: 200, symbol: "Na", electrons: 1, radius: 60, isPositive: false
+                });
+            }
+
+            // Posição inicial do elétron
+            resetElectron();
+        }
+
+        function draw() {
+            background(255);
+
+            // Fase de transferência de elétrons
+            if (cycleStage === 0 && transferring) {
+                transferElectron();
+            } else if (cycleStage === 1) {
+                if (millis() - timeSinceLastTransfer > 2000) {
+                    cycleStage = 0;
+                    resetElectron();
+                }
+            }
+
+            // Desenho dos átomos de sódio
+            for (let i = 0; i < sodiumAtoms.length; i++) {
+                let atom = sodiumAtoms[i];
+                drawElement(atom.x, atom.y, atom.symbol, atom.isPositive ? 0 : atom.electrons); // Elétron some quando positivo
+            }
+
+            // Desenha o elétron em movimento
+            if (transferring && electronIndex !== -1) {
+                fill(100, 100, 255);
+                ellipse(electronX, electronY, 10);
+            }
+        }
+
+        function transferElectron() {
+            // Movimenta o elétron para o próximo átomo de sódio positivo
+            let targetAtom = sodiumAtoms.find(atom => atom.isPositive === false);
+            if (!targetAtom) {
+                transferring = false;
+                cycleStage = 1; // Todos os elétrons transferidos
+                timeSinceLastTransfer = millis();
+                return;
+            }
+
+            let targetX = targetAtom.x;
+            let targetY = targetAtom.y;
+
+            // Interpolação do movimento
+            electronX = lerp(electronX, targetX + targetAtom.radius, 0.05);
+            electronY = lerp(electronY, targetY, 0.05);
+
+            // Verifica se o elétron alcançou o átomo
+            if (dist(electronX, electronY, targetX + targetAtom.radius, targetY) < 1) {
+                targetAtom.electrons--;
+                targetAtom.isPositive = true; // Se o átomo perde elétrons, fica positivo
+                transferring = false;
+                cycleStage = 1; // Fase de visualização dos átomos
+                timeSinceLastTransfer = millis();
+            }
+        }
+
+        function resetElectron() {
+            // Reinicia a posição do elétron no primeiro átomo de sódio
+            electronX = sodiumAtoms[0].x + sodiumAtoms[0].radius;
+            electronY = sodiumAtoms[0].y;
+            transferring = true;
+            electronIndex = 0; // Começa com o primeiro átomo de sódio
+            cycleStage = 0; // Reinicia o ciclo
+        }
+
+        /**
+         * Desenha um átomo no canvas.
+         * @param {number} x Posição X do átomo.
+         * @param {number} y Posição Y do átomo.
+         * @param {string} symbol Símbolo do elemento.
+         * @param {number} electrons Número de elétrons na última camada.
+         */
+        function drawElement(x, y, symbol, electrons) {
+            // Desenhar o símbolo químico
+            fill(0);
+            noStroke();
+            text(symbol, x, y - 90); // Subiu o símbolo 40px para cima
+
+            // Desenhar o núcleo
+            fill(255, 100, 100);
+            ellipse(x, y, 40);
+
+            // Desenhar os elétrons na última camada
+            for (let i = 0; i < electrons; i++) {
+                let angle = TWO_PI / (electrons || 1) * i;
+                let electronX = x + 60 * cos(angle);
+                let electronY = y + 60 * sin(angle);
+
+                fill(100, 100, 255);
+                ellipse(electronX, electronY, 10); // Elétron
+            }
+        }
+    </script>
+</body>
+</html>
