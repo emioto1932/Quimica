@@ -59,6 +59,16 @@
             fill(100, 100, 255);
             ellipse(oscillationX1, chlorine1.y, 10); // Elétron 1
             ellipse(oscillationX2, chlorine2.y, 10); // Elétron 2
+
+            // Desenha o retângulo de ligação covalente entre os elétrons
+            noFill();
+            stroke(0, 0, 255);
+            strokeWeight(2);
+            let rectX = (oscillationX1 + oscillationX2) / 2 - 5;  // Posição horizontal centralizada entre os dois elétrons
+            let rectY = chlorine1.y - 5;  // Posição vertical alinhada com os elétrons
+            let rectWidth = abs(oscillationX2 - oscillationX1);  // Largura com base na distância entre os elétrons
+            let rectHeight = 10;  // Altura do retângulo (como uma linha)
+            rect(rectX, rectY, rectWidth, rectHeight);  // Desenha o retângulo
         }
 
         function drawElement(x, y, symbol, electrons) {
