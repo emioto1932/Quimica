@@ -26,7 +26,8 @@
         const electrons = [];
         const rows = 3;
         const cols = 3;
-        const electronCount = 9; // Número de elétrons na nuvem metálica
+        const totalAtoms = 9; // Total de átomos de sódio
+        let transferStage = 0; // Fase do processo (0: início, 1: transferência, 2: aguardando)
 
         function setup() {
             createCanvas(600, 400);
@@ -46,44 +47,66 @@
                         x: startX + col * xOffset,
                         y: startY + row * yOffset,
                         symbol: "Na",
-                        electrons: 1, // Cada átomo de sódio tem 1 elétron na camada de valência
+                        charge: 0, // 0 significa neutro, +1 significa Na⁺
+                        hasElectron: true, // Cada átomo de sódio começa com um elétron
                     });
                 }
-            }
-
-            // Criação dos elétrons na nuvem metálica
-            for (let i = 0; i < electronCount; i++) {
-                electrons.push({
-                    x: random(100, 500), // Posição inicial aleatória
-                    y: random(100, 300),
-                    speedX: random(-2, 2), // Velocidade aleatória
-                    speedY: random(-2, 2),
-                });
             }
         }
 
         function draw() {
             background(255);
 
+            // Fase de transferência de elétrons
+            if (transferStage === 1) {
+                transferElectron();
+            }
+
             // Desenho dos átomos de sódio
             for (let i = 0; i < sodiumAtoms.length; i++) {
                 let atom = sodiumAtoms[i];
-                drawElement(atom.x, atom.y, atom.symbol);
+                drawElement(atom.x, atom.y, atom.symbol, atom.charge, atom.hasElectron);
             }
 
-            // Desenho da nuvem de elétrons
-            for (let i = 0; i < electrons.length; i++) {
-                let electron = electrons[i];
-                fill(100, 100, 255);
-                ellipse(electron.x, electron.y, 10);
+            // Exibe o botão de iniciar a transferência após uma pausa
+            if (transferStage === 0) {
+                fill(0);
+                text("Clique para iniciar a transferência de elétrons", width / 2, height - 50);
+            }
+        }
 
-                // Movimentação dos elétrons (nuvem metálica)
-                electron.x += electron.speedX;
-                electron.y += electron.speedY;
+        function mousePressed() {
+            if (transferStage === 0) {
+                transferStage = 1; // Começar a transferência de elétrons
+            }
+        }
 
-                // Colisão com as bordas do canvas
-                if (electron.x < 0 || electron.x > width) electron.speedX *= -1;
-                if (electron.y < 0 || electron.y > height) electron.speedY *= -1;
+        function transferElectron() {
+            // Escolher aleatoriamente um átomo neutro e um átomo positivo
+            let neutralAtomIndex = -1;
+            let positiveAtomIndex = -1;
+
+            // Procurando um átomo neutro e um átomo positivo
+            for (let i = 0; i < sodiumAtoms.length; i++) {
+                if (sodiumAtoms[i].charge === 0 && neutralAtomIndex === -1) {
+                    neutralAtomIndex = i;
+                } else if (sodiumAtoms[i].charge === 1 && positiveAtomIndex === -1) {
+                    positiveAtomIndex = i;
+                }
+            }
+
+            // Se encontramos ambos os átomos (neutro e positivo)
+            if (neutralAtomIndex !== -1 && positiveAtomIndex !== -1) {
+                // Transferir o elétron do átomo neutro para o átomo positivo
+                sodiumAtoms[neutralAtomIndex].charge = 1; // O átomo neutro agora é positivo
+                sodiumAtoms[neutralAtomIndex].hasElectron = false; // Perde o elétron
+                sodiumAtoms[positiveAtomIndex].charge = 0; // O átomo positivo volta a ser neutro
+                sodiumAtoms[positiveAtomIndex].hasElectron = true; // Recebe o elétron
+
+                // Após a transferência, esperar um pouco antes de realizar a próxima
+                setTimeout(() => {
+                    transferStage = 1; // Continuar a transferência de elétrons
+                }, 1000);
             }
         }
 
@@ -92,8 +115,10 @@
          * @param {number} x Posição X do átomo.
          * @param {number} y Posição Y do átomo.
          * @param {string} symbol Símbolo do elemento.
+         * @param {number} charge Carga do átomo (0 para neutro, 1 para Na⁺).
+         * @param {boolean} hasElectron Se o átomo tem um elétron na camada de valência.
          */
-        function drawElement(x, y, symbol) {
+        function drawElement(x, y, symbol, charge, hasElectron) {
             // Desenhar o símbolo químico
             fill(0);
             noStroke();
@@ -104,8 +129,19 @@
             ellipse(x, y, 40);
 
             // Desenhar os elétrons na última camada
-            fill(100, 100, 255);
-            ellipse(x + 60, y, 10); // Elétron na camada de valência (movendo-se aleatoriamente)
+            if (hasElectron) {
+                fill(100, 100, 255);
+                ellipse(x + 60, y, 10); // Elétron na camada de valência
+            }
+
+            // Desenhar a carga do átomo
+            if (charge === 1) {
+                fill(255, 0, 0);
+                text("Na⁺", x, y + 30);
+            } else {
+                fill(0, 255, 0);
+                text("Na", x, y + 30); // Átomo neutro
+            }
         }
     </script>
 </body>
