@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferência de Elétrons - Cl2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let chlorine1 = { x: 200, y: 200, symbol: "Cl", electrons: 7, radius: 60, share: 0 }; // Primeiro Cloro
+        let chlorine2 = { x: 400, y: 200, symbol: "Cl", electrons: 7, radius: 60, share: 0 }; // Segundo Cloro
+
+        let electronX1, electronY1, electronX2, electronY2;
+        let transferring = true;
+        let timeSinceLastTransfer = 0;
+        let cycleStage = 0; // 0: Transferência, 1: Exibição dos íons, 2: Estado neutro
+
+        function setup() {
+            createCanvas(600, 400);
+            textSize(20);
+            textAlign(CENTER, CENTER);
+
+            // Posição inicial dos elétrons
+            resetElectrons();
+        }
+
+        function draw() {
+            background(255);
+
+            // Gerencia as fases do ciclo
+            if (cycleStage === 0 && transferring) {
+                transferElectrons();
+            } else if (cycleStage === 1) {
+                if (millis() - timeSinceLastTransfer > 2000) {
+                    cycleStage = 2;
+                    timeSinceLastTransfer = millis();
+                }
+            } else if (cycleStage === 2) {
+                if (millis() - timeSinceLastTransfer > 2000) {
+                    resetElectrons();
+                }
+            }
+
+            // Desenha os elementos
+            if (cycleStage === 1) {
+                drawElement(chlorine1.x, chlorine1.y, "Cl⁻", 8); // Exibe o Cl- após a transferência
+                drawElement(chlorine2.x, chlorine2.y, "Cl⁻", 8); // Exibe o Cl- após a transferência
+            } else {
+                drawElement(chlorine1.x, chlorine1.y, chlorine1.symbol, chlorine1.electrons);
+                drawElement(chlorine2.x, chlorine2.y, chlorine2.symbol, chlorine2.electrons);
+            }
+
+            // Desenha os elétrons em movimento (os dois elétrons)
+            if (transferring) {
+                fill(100, 100, 255);
+                ellipse(electronX1, electronY1, 10); // Elétron do Cl1
+                ellipse(electronX2, electronY2, 10); // Elétron do Cl2
+            }
+        }
+
+        function transferElectrons() {
+            // Lógica de oscilação dos elétrons entre os dois cloros
+            let angle1 = map(chlorine1.share, 0, 1, 0, PI);
+            let angle2 = map(chlorine2.share, 0, 1, PI, 2*PI);
+
+            // Movimento dos elétrons para simular a tensão
+            electronX1 = lerp(electronX1, chlorine1.x + chlorine1.radius * cos(angle1), 0.05);
+            electronY1 = lerp(electronY1, chlorine1.y + chlorine1.radius * sin(angle1), 0.05);
+            electronX2 = lerp(electronX2, chlorine2.x + chlorine2.radius * cos(angle2), 0.05);
+            electronY2 = lerp(electronY2, chlorine2.y + chlorine2.radius * sin(angle2), 0.05);
+
+            // Verifica se os elétrons devem mudar de lugar
+            if (dist(electronX1, electronY1, chlorine1.x + chlorine1.radius * cos(angle1), chlorine1.y + chlorine1.radius * sin(angle1)) < 1) {
+                chlorine1.share = 1 - chlorine1.share;
+                chlorine2.share = 1 - chlorine2.share;
+                cycleStage = 1; // Passa para a exibição dos íons
+                timeSinceLastTransfer = millis(); // Marca o tempo da transferência
+            }
+        }
+
+        function resetElectrons() {
+            // Reinicia os elétrons
+            electronX1 = chlorine1.x + chlorine1.radius;
+            electronY1 = chlorine1.y;
+            electronX2 = chlorine2.x + chlorine2.radius;
+            electronY2 = chlorine2.y;
+            transferring = true;
+            chlorine1.share = 0;
+            chlorine2.share = 1;
+            cycleStage = 0; // Reinicia o ciclo
+        }
+
+        /**
+         * Desenha um elemento químico no canvas.
+         * @param {number} x Posição X do elemento.
+         * @param {number} y Posição Y do elemento.
+         * @param {string} symbol Símbolo do elemento.
+         * @param {number} electrons Número de elétrons na última camada.
+         */
+        function drawElement(x, y, symbol, electrons) {
+            // Desenhar o símbolo químico
+            fill(0);
+            noStroke();
+            text(symbol, x, y - 90); // Subiu o símbolo 40px para cima
+
+            // Desenhar o núcleo
+            fill(255, 100, 100);
+            ellipse(x, y, 40);
+
+            // Desenhar os elétrons na última camada
+            for (let i = 0; i < electrons; i++) {
+                let angle = TWO_PI / (electrons || 1) * i;
+                let electronX = x + 60 * cos(angle);
+                let electronY = y + 60 * sin(angle);
+
+                fill(100, 100, 255);
+                ellipse(electronX, electronY, 10); // Elétron
+            }
+        }
+    </script>
+</body>
+</html>
