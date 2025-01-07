@@ -43,11 +43,28 @@
             drawElement(chlorine1.x, chlorine1.y, chlorine1.symbol, chlorine1.electrons);
             drawElement(chlorine2.x, chlorine2.y, chlorine2.symbol, chlorine2.electrons);
 
+            // Desenha o retângulo fixo de ligação covalente
+            drawBondRectangle();
+
             // Desenha o par de elétrons oscilando entre os cloros
             drawElectronPair();
 
             // Oscila os elétrons
             offset += 0.1; // Controla a oscilação
+        }
+
+        function drawBondRectangle() {
+            // Desenha o retângulo fixo no fundo entre os dois cloros
+            let rectX = (chlorine1.x + chlorine2.x) / 2 - 20;  // Posição horizontal centralizada entre os dois cloros
+            let rectY = chlorine1.y - 5;  // Posição vertical alinhada com os elétrons
+            let rectWidth = abs(chlorine2.x - chlorine1.x) + 40;  // Largura do retângulo
+            let rectHeight = 10;  // Altura do retângulo
+
+            // Desenha o retângulo com borda azul (estático)
+            noFill();
+            stroke(0, 0, 255);
+            strokeWeight(2);
+            rect(rectX, rectY, rectWidth, rectHeight);  // Desenha o retângulo
         }
 
         function drawElectronPair() {
@@ -59,18 +76,6 @@
             fill(100, 100, 255);
             ellipse(oscillationX1, chlorine1.y, 10); // Elétron 1
             ellipse(oscillationX2, chlorine2.y, 10); // Elétron 2
-
-            // Desenha o retângulo de ligação covalente entre os dois elétrons
-            let rectX = (oscillationX1 + oscillationX2) / 2 - 5;  // Posição horizontal centralizada entre os dois elétrons
-            let rectY = chlorine1.y - 5;  // Posição vertical alinhada com os elétrons
-            let rectWidth = abs(oscillationX2 - oscillationX1);  // Largura com base na distância entre os elétrons
-            let rectHeight = 10;  // Altura do retângulo (como uma linha)
-
-            // Desenha o retângulo com borda azul
-            noFill();
-            stroke(0, 0, 255);
-            strokeWeight(2);
-            rect(rectX, rectY, rectWidth, rectHeight);  // Desenha o retângulo
         }
 
         function drawElement(x, y, symbol, electrons) {
