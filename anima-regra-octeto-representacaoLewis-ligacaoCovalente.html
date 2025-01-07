@@ -81,6 +81,14 @@
                 fill(100, 100, 255);
                 ellipse(electronX, electronY, 10); // Elétron
             }
+
+            // Ajuste para o primeiro cloro: inverter a posição inicial dos elétrons
+            if (x === chlorine1.x) {
+                // Desenhar os 2 primeiros elétrons do Cloro 1 (invertidos)
+                let electronX1 = x + 60 * cos(PI);  // Posição oposta ao primeiro elétron
+                let electronY1 = y + 60 * sin(PI);
+                ellipse(electronX1, electronY1, 10); // Elétron 1 do Cloro 1
+            }
         }
 
         function resetElectrons() {
