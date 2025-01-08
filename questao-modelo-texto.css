@@ -131,7 +131,17 @@ footer {
 }
 
 /* Responsividade - Para telas pequenas (celular) */
-@media (max-width: 768px) {
+ @media screen and (max-width: 768px) {
+
+   
+    h1, h2, h3, h4, h5, h6, p, .resposta, .alternattiiva, .alternativas, .footer, .nota {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
 
     /* Enunciado ocupa toda a largura */
     .enunciado {
