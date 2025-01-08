@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão 2 - Eletrólise e Ligação Covalente</h1>
+    </header>
+    <main class="questao-enunciado">
+        <!-- Enunciado da Questão -->
+        <div class="nota-anunciado">
+            <p class="enunciado">
+                O cloreto de sódio (NaCl), conhecido popularmente como sal de cozinha, é amplamente utilizado não apenas como tempero, mas também na indústria. Durante um processo industrial, uma **solução saturada de NaCl** é submetida à eletrólise. Nessa solução, o NaCl se dissocia em seus íons constituintes: **Na⁺** e **Cl⁻**, devido à ação da água. Quando uma corrente elétrica passa pela solução, o **íon cloreto (Cl⁻)** é **oxidado** no ânodo, liberando **gás cloro (Cl₂)**. Esse gás é então armazenado e transportado para a produção de produtos químicos, como desinfetantes e produtos de limpeza.
+            </p>
+            <p class="enunciado">
+                Além disso, a molécula de cloro (Cl₂) é formada por dois átomos de cloro que compartilham um par de elétrons, formando uma ligação covalente. Para que o átomo de cloro alcance a estabilidade, ele segue a **regra do octeto**, que consiste em ter oito elétrons na camada de valência, semelhante a um gás nobre.
+            </p>
+
+          <iframe src="anima-regra-octeto-representacaoLewis-ligacaoCovalente-Cl2.html" width="100%" height="400px" style="border:none;"></iframe>
+          
+            <p class="pergunta">
+                Considerando o processo descrito e o comportamento dos átomos de cloro, qual das alternativas abaixo apresenta a explicação correta sobre a ligação química formada entre os dois átomos de cloro (Cl₂)?
+            </p>
+            <div class="alternativas">
+                <p>(A) Os dois átomos de cloro formam uma ligação iônica, pois o átomo de cloro doa um elétron ao outro, garantindo que ambos atinjam a estabilidade.</p>
+                <p>(B) Os dois átomos de cloro formam uma ligação covalente, compartilhando um par de elétrons para alcançar a estabilidade da camada de valência.</p>
+                <p>(C) A molécula de cloro (Cl₂) é instável, pois não segue a regra do octeto e os átomos de cloro não conseguem compartilhar seus elétrons.</p>
+                <p>(D) O processo de eletrólise do cloreto de sódio libera átomos de cloro metálico, que formam uma rede cristalina metálica, permitindo sua aplicação em produtos de limpeza.</p>
+                <p>(E) Os átomos de cloro na molécula de cloro (Cl₂) estão ligados por uma ligação metálica, compartilhando elétrons livremente em uma estrutura semelhante a um metal.</p>
+            </div>
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa B</h2>
+            <p>A alternativa correta é a **B**, pois descreve adequadamente a formação da molécula de cloro (Cl₂) por meio de uma **ligação covalente**. Nesse tipo de ligação, os átomos de cloro compartilham um par de elétrons, permitindo que ambos atinjam a **estabilidade da camada de valência**, com oito elétrons, conforme a **regra do octeto**. Essa regra é uma forma de os átomos alcançarem a configuração eletrônica de um gás nobre, tornando-se mais estáveis.</p>
+
+            <div class="resposta">
+                <p><strong>Alternativa A:</strong> Está incorreta porque a ligação formada entre os átomos de cloro não é iônica, mas sim covalente. Em ligações iônicas, um átomo doa um elétron para outro, mas neste caso, ambos os átomos de cloro compartilham um par de elétrons.</p>
+                <p><strong>Alternativa C:</strong> Está errada, pois a molécula de Cl₂ é estável e segue a regra do octeto, com ambos os átomos de cloro alcançando a configuração estável ao compartilharem elétrons.</p>
+                <p><strong>Alternativa D:</strong> Está incorreta, pois a eletrólise do NaCl libera íons cloreto (Cl⁻), que são oxidado a gás cloro (Cl₂), e não átomos de cloro metálico.</p>
+                <p><strong>Alternativa E:</strong> Também está errada, pois a ligação entre os átomos de cloro na molécula de Cl₂ é covalente, e não metálica, já que os elétrons não se movem livremente como em metais.</p>
+            </div>
+            <p>Portanto, a alternativa correta é a <strong>Alternativa B</strong>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo e a complexidade das questões do Enem. Trata-se de um exercício autoral, criado com o objetivo de revisar conceitos importantes e estimular o raciocínio necessário para resolver questões desse tipo.
+        </p>
+        <p class="nota">
+            <strong>Atenção:</strong> As questões foram elaboradas com base no estilo do Exame Nacional do Ensino Médio (Enem). <u>Não se trata de uma questão oficial do Enem</u>. Consulte as questões oficiais no site do INEP: 
+            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">
+            https://www.gov.br/inep
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
