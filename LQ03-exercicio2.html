@@ -41,13 +41,66 @@
         </div>
 
         <!-- Link para o modal ou página pH.html -->
-        <div class="exercise-modal">
-            <a href="pH.html" target="_blank">O que é pH?</a>
-        </div>
+  
         
         <!-- Sessão de Resolução -->
 
         <section id="resposta" style="display: none;">
+            <a href="pH.html" target="_blank" onclick="openModal(); return false;">O que é pH?</a>
+
+<script>
+  function openModal() {
+    // Cria o modal dinamicamente
+    const modal = document.createElement('div');
+    modal.id = 'phModal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+
+    // Adiciona um iframe com o conteúdo do arquivo pH.html
+    const iframe = document.createElement('iframe');
+    iframe.src = 'pH.html';
+    iframe.style.width = '80%';
+    iframe.style.height = '80%';
+    iframe.style.border = 'none';
+    iframe.style.borderRadius = '8px';
+    modal.appendChild(iframe);
+
+    // Botão de fechar
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = 'Fechar';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '20px';
+    closeButton.style.right = '20px';
+    closeButton.style.padding = '10px 20px';
+    closeButton.style.backgroundColor = '#ff4444';
+    closeButton.style.color = 'white';
+    closeButton.style.border = 'none';
+    closeButton.style.borderRadius = '5px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.zIndex = '1001';
+
+    // Fecha o modal ao clicar no botão
+    closeButton.onclick = function () {
+      document.body.removeChild(modal);
+    };
+
+    modal.appendChild(closeButton);
+
+    // Adiciona o modal ao corpo da página
+    document.body.appendChild(modal);
+  }
+</script>
+
+
+            
             <h2>Resolução: Alternativa E</h2>
             <h3>O uso de calcário no solo:</h3>
             <p>O calcário (CaCO₃) é amplamente utilizado na agricultura para corrigir problemas no solo, especialmente a acidez. Ele também pode trazer benefícios para solos neutros, dependendo das condições. Vamos explorar as duas situações:</p>
