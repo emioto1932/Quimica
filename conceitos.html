@@ -120,13 +120,19 @@
             modal.style.display = 'block';
         }
 
-        // Função para fechar o modal
-        function fecharModal() {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
+                // Função para fechar o modal
+            function fecharModal() {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+        
+                // Volta para a página anterior (de onde o link foi clicado)
+                window.location.href = document.referrer;
+            }
+
+
+        
 
         // Fecha o modal se o usuário clicar fora da caixa de conteúdo
         window.addEventListener('click', (event) => {
