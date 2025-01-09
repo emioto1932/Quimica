@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uso de Calcário no Solo</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
-    <link rel="stylesheet" href="questao-modelo-texto.css">
-  
+    <link rel="stylesheet" href="propriedades.css">
     <script>
         // Função para mostrar ou ocultar a resolução
         function toggleResolução() {
@@ -39,72 +38,12 @@
         <div class="exercise-resposta">
             <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
         </div>
-
-        <!-- Link para o modal ou página pH.html -->
-  
         
         <!-- Sessão de Resolução -->
-
         <section id="resposta" style="display: none;">
-            <a href="pH.html" target="_blank" onclick="openModal(); return false;">O que é pH?</a>
-
-<script>
-  function openModal() {
-    // Cria o modal dinamicamente
-    const modal = document.createElement('div');
-    modal.id = 'phModal';
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.zIndex = '1000';
-
-    // Adiciona um iframe com o conteúdo do arquivo pH.html
-    const iframe = document.createElement('iframe');
-    iframe.src = 'pH.html';
-    iframe.style.width = '80%';
-    iframe.style.height = '80%';
-    iframe.style.border = 'none';
-    iframe.style.borderRadius = '8px';
-    modal.appendChild(iframe);
-
-    // Botão de fechar
-    const closeButton = document.createElement('button');
-    closeButton.innerHTML = 'Fechar';
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '20px';
-    closeButton.style.right = '20px';
-    closeButton.style.padding = '10px 20px';
-    closeButton.style.backgroundColor = '#ff4444';
-    closeButton.style.color = 'white';
-    closeButton.style.border = 'none';
-    closeButton.style.borderRadius = '5px';
-    closeButton.style.cursor = 'pointer';
-    closeButton.style.zIndex = '1001';
-
-    // Fecha o modal ao clicar no botão
-    closeButton.onclick = function () {
-      document.body.removeChild(modal);
-    };
-
-    modal.appendChild(closeButton);
-
-    // Adiciona o modal ao corpo da página
-    document.body.appendChild(modal);
-  }
-</script>
-
-
-            
             <h2>Resolução: Alternativa E</h2>
             <h3>O uso de calcário no solo:</h3>
             <p>O calcário (CaCO₃) é amplamente utilizado na agricultura para corrigir problemas no solo, especialmente a acidez. Ele também pode trazer benefícios para solos neutros, dependendo das condições. Vamos explorar as duas situações:</p>
-            
 
             <h4>1. Quando o solo está ácido (pH baixo):</h4>
             <p>Em solos ácidos, há um excesso de íons H⁺ na solução do solo. Esses íons tornam o ambiente desfavorável para o crescimento das plantas, aumentam a disponibilidade de íons tóxicos como Al³⁺, e reduzem a disponibilidade de nutrientes importantes.</p>
@@ -154,6 +93,7 @@
                 <li>Fornecimento de cálcio para as plantas, que auxilia no fortalecimento celular e no crescimento.</li>
                 <li>Estabilidade química do solo, mantendo a fertilidade.</li>
             </ul>
+<p>Clique para saber mais sobre o conceito de pH: <a href="conceitos.html#phLink">O que é pH?</a></p>
 
             <h3>Explicação de cada alternativa da questão:</h3>
             <ul>
@@ -170,4 +110,3 @@
     </main>
 </body>
 </html>
-
