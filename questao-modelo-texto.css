@@ -1,21 +1,21 @@
 /* Estilos para a página tipo-page-2 */
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-    }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    text-align: left; /* Alinha todo o texto à esquerda */
+}
 
-  /* Parágrafos */
-    p {
-      margin: 10px 0;
-      text-align: left;
-      font-size: 16px;
+/* Parágrafos */
+p {
+    margin: 10px 0;
+    font-size: 16px;
     width: 70%; /* No desktop, limita a largura a 70% */
-    }
-
+    text-align: left; /* Alinha o texto dos parágrafos à esquerda */
+}
 
 /* Estilo geral do corpo da questão */
 .bodyquestao {
@@ -27,6 +27,7 @@
 .enunciado {
     width: 70%; /* No desktop, limita a largura a 70% */
     padding: 0; /* Remove o padding extra */
+    text-align: left; /* Alinha o texto do enunciado à esquerda */
 }
 
 /* Estilo do texto da pergunta */
@@ -34,7 +35,8 @@
     font-size: 1.1rem;
     margin-top: 20px;
     font-weight: bold;
-     width: 70%; /* No desktop, limita a largura a 70% */
+    width: 70%; /* No desktop, limita a largura a 70% */
+    text-align: left; /* Alinha o texto da pergunta à esquerda */
 }
 
 /* Tabela */
@@ -46,37 +48,22 @@
     margin-right: 0; /* Garante que não haja margem à direita */
 }
 
-.tabela th, .tabela td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    text-align: center;
-}
-
-.tabela th {
-    background-color: #007bff;
-    color: white;
-}
-
-.tabela td {
-    background-color: #f9f9f9;
-}
-
 /* Estilo para as alternativas */
 .alternativas {
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left; /* Alinha o texto das alternativas à esquerda */
     font-size: 1rem;
     margin-top: 20px; /* Espaço acima das alternativas */
     width: 70%; /* No desktop, limita a largura a 70% */
-    
 }
 
+/* Estilo para cada alternativa */
 .alternativa {
     font-size: 1.2rem;
     background-color: #ffffff;
     padding: 0; /* Remove o espaçamento interno */
     margin: 0; /* Remove o espaçamento entre alternativas */
     display: block; /* Força cada alternativa a ocupar uma linha */
-    text-align: left; /* Garante alinhamento do texto à esquerda */
+    text-align: left; /* Alinha o texto das alternativas à esquerda */
     border: none; /* Remove borda, se preferir */
     line-height: 1.2; /* Ajusta o espaçamento entre as linhas */
     margin-left: 30px; /* Adiciona 30px de espaço à esquerda */
@@ -87,8 +74,8 @@
     font-weight: normal;
     margin-top: 10px;
     font-size: 1.1rem;
-     width: 70%; /* No desktop, limita a largura a 70% */
-
+    width: 70%; /* No desktop, limita a largura a 70% */
+    text-align: left; /* Alinha o texto da resposta à esquerda */
 }
 
 /* Estilo do footer */
@@ -96,52 +83,19 @@ footer {
     margin-top: 20px;
     font-size: 0.9rem;
     color: #555;
-}
-
-
-.enunciado {
-        width: 70%; /* No desktop, limita a largura a 70% */
-        padding: 0; /* Remove o padding extra */
-    }
-
-
-.nota {
-        width: 70%; /* No desktop, limita a largura a 70% */
-        padding: 0; /* Remove o padding extra */
-    }
-
-
-.nota a:hover {
-    text-decoration: underline;
-}
-
-
-.exercise-video a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.exercise-video a:hover {
-    background-color: #45a049;
+    text-align: left; /* Alinha o texto do footer à esquerda */
 }
 
 /* Responsividade - Para telas pequenas (celular) */
- @media screen and (max-width: 768px) {
-
-   
-    h1, h2, h3, h4, h5, h6, p, .resposta, .alternattiiva, .alternativas, .footer, .nota {
+@media screen and (max-width: 768px) {
+    h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
+        text-align: left; /* Garante que todos os textos estejam alinhados à esquerda em telas pequenas */
     }
-
 
     /* Enunciado ocupa toda a largura */
     .enunciado {
@@ -149,15 +103,6 @@ footer {
         margin: 0 auto; /* Centraliza no desktop */
         padding: 0 10px; /* Adiciona um pequeno padding para os lados no celular */
         box-sizing: border-box; /* Garante que o padding não afete a largura total */
-    }
-
-    /* Tabela ocupa 100% da largura no celular */
-    .tabela {
-        width: 100%;
-        margin-left: 0;
-        border-collapse: collapse;
-        margin-top: 1rem;
-        margin-right: 0;
     }
 
     /* Alternativas ocupam 100% no celular */
