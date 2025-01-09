@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de Calcário no Solo</title>
+    <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+  
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Uso de Calcário para Remediar o Solo</h1>
+    </header>
+    <main class="exercise-page">
+        <!-- Imagem do Exercício -->
+        <div class="exercise-image">
+            <!-- Imagem ilustrativa do uso de calcário (opcional) -->
+            <img src="img/LQ03ex02-2018-ligacao-ionica.jpg" alt="Uso de Calcário no Solo">
+        </div>
+        
+        <!-- Link para o Vídeo -->
+        <div class="exercise-video">
+            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+        </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa E</h2>
+            <h3>O uso de calcário no solo:</h3>
+            <p>O calcário (CaCO₃) é amplamente utilizado na agricultura para corrigir problemas no solo, especialmente a acidez. Ele também pode trazer benefícios para solos neutros, dependendo das condições. Vamos explorar as duas situações:</p>
+
+            <h4>1. Quando o solo está ácido (pH baixo):</h4>
+            <p>Em solos ácidos, há um excesso de íons H⁺ na solução do solo. Esses íons tornam o ambiente desfavorável para o crescimento das plantas, aumentam a disponibilidade de íons tóxicos como Al³⁺, e reduzem a disponibilidade de nutrientes importantes.</p>
+            <p><strong>Reação do calcário no solo ácido:</strong></p>
+            <pre>
+            CaCO₃ (s) + H⁺ → Ca²⁺ + HCO₃⁻
+            </pre>
+            <p>O bicarbonato (HCO₃⁻), em contato com a água, pode se dissociar parcialmente, liberando íons hidroxila (OH⁻):</p>
+            <pre>
+            HCO₃⁻ + H₂O ↔ H₂CO₃ + OH⁻
+            </pre>
+            <p>Esses íons hidroxila (OH⁻) neutralizam ainda mais a acidez do solo e reagem com o alumínio tóxico (Al³⁺), formando o precipitado insolúvel Al(OH)₃:</p>
+            <pre>
+            Al³⁺ + 3OH⁻ → Al(OH)₃ (s)
+            </pre>
+
+            <p><strong>Produtos formados:</strong></p>
+            <ul>
+                <li><strong>Íons Ca²⁺:</strong> Melhoram a fertilidade do solo.</li>
+                <li><strong>HCO₃⁻ e OH⁻:</strong> Neutralizam a acidez.</li>
+                <li><strong>Al(OH)₃:</strong> Reduz a toxicidade do alumínio.</li>
+            </ul>
+
+            <h4>Benefícios:</h4>
+            <ul>
+                <li>Elevação do pH, tornando o solo menos ácido.</li>
+                <li>Precipitação do alumínio tóxico (Al³⁺) na forma de Al(OH)₃, que é insolúvel.</li>
+                <li>Melhor disponibilidade de nutrientes para as plantas.</li>
+            </ul>
+
+            <h4>2. Quando o solo está neutro (pH equilibrado):</h4>
+            <p>Em solos neutros, o calcário não tem o mesmo impacto em termos de correção de pH, pois o pH já está em uma faixa favorável. No entanto, ele ainda pode ser usado como fonte de nutrientes, especialmente o cálcio (Ca²⁺), que é essencial para as plantas.</p>
+            <p><strong>Reação do calcário no solo neutro:</strong></p>
+            <pre>
+            CaCO₃ (s) + H₂O ↔ Ca²⁺ + HCO₃⁻
+            </pre>
+            <p>Nesse caso, a formação de OH⁻ a partir do HCO₃⁻ é limitada, pois o pH já está equilibrado, e o sistema permanece estável.</p>
+
+            <p><strong>Produtos formados:</strong></p>
+            <ul>
+                <li><strong>Íons Ca²⁺:</strong> Suprimento de cálcio para o solo.</li>
+                <li><strong>HCO₃⁻:</strong> Mantém a estabilidade do pH.</li>
+            </ul>
+
+            <h4>Benefícios:</h4>
+            <ul>
+                <li>Fornecimento de cálcio para as plantas, que auxilia no fortalecimento celular e no crescimento.</li>
+                <li>Estabilidade química do solo, mantendo a fertilidade.</li>
+            </ul>
+
+            <h3>Explicação de cada alternativa da questão:</h3>
+            <ul>
+                <li><strong>a) Diminuição do pH, deixando-o fértil:</strong> Errada. O calcário não diminui o pH, ele aumenta o pH ao neutralizar a acidez. A diminuição do pH tornaria o solo ainda mais ácido, o que não é desejável.</li>
+                <li><strong>b) Solubilização do alumínio, ocorrendo sua lixiviação pela chuva:</strong> Errada. O calcário não aumenta a solubilidade do alumínio. Pelo contrário, ao elevar o pH, ele reduz a toxicidade do Al³⁺ ao promover sua precipitação como Al(OH)₃, que é insolúvel e não lixiviado.</li>
+                <li><strong>c) Interação do íon cálcio com o íon alumínio, produzindo uma liga metálica:</strong> Errada. Liga metálica é formada apenas no estado sólido entre metais, e não entre íons em solução. O calcário não reage diretamente com o Al³⁺ nesse sentido.</li>
+                <li><strong>d) Reação do carbonato de cálcio com os íons alumínio, formando alumínio metálico:</strong> Errada. Não há redução do Al³⁺ para alumínio metálico nessa situação. O Al³⁺ é neutralizado pela formação de Al(OH)₃, e não pelo carbonato de cálcio diretamente.</li>
+                <li><strong>e) Aumento da sua alcalinidade, tornando os íons alumínio menos disponíveis:</strong> Correta. O calcário aumenta o pH (alcalinidade) do solo, e isso reduz a disponibilidade do Al³⁺, que precipita como Al(OH)₃, um composto insolúvel e não tóxico.</li>
+            </ul>
+
+            <h4>Resumo final:</h4>
+            <p>Em solos ácidos, o calcário aumenta o pH, neutraliza o H⁺, forma OH⁻ e precipita o Al³⁺ como Al(OH)₃. Em solos neutros, ele fornece cálcio (Ca²⁺) e bicarbonato (HCO₃⁻) sem alterar significativamente o pH. A alternativa correta na questão é <strong>e)</strong>, pois descreve com precisão o efeito do calcário no aumento da alcalinidade e na redução da toxicidade do alumínio.</p>
+        </section>
+    </main>
+</body>
+</html>
 
