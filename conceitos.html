@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conceitos Básicos de Química</title>
-    <style>
+ <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -73,7 +73,7 @@
     <h1>Saiba os conceitos básicos utilizados na química</h1>
     <p>Selecione um conceito para aprender mais:</p>
     <ul>
-        <li><a onclick="abrirModal('ph')">O que é pH?</a></li>
+        <li><a id="phLink" onclick="abrirModal('ph')">O que é pH?</a></li>
         <li><a onclick="abrirModal('ligacao')">O que é uma ligação química?</a></li>
         <!-- Outros conceitos podem ser adicionados aqui -->
     </ul>
@@ -83,18 +83,7 @@
         <div class="modal-content">
             <h2>O que é pH?</h2>
             <p>
-                O pH é uma medida que indica a acidez ou basicidade de uma solução, baseada na concentração de íons hidrogênio (H⁺) presentes. Segundo a definição de Arrhenius, uma substância ácida (geralmente com sabor azedo) é aquela que, ao ser dissolvida em água, libera íons H⁺. Já uma substância básica (geralmente com sabor adstringente, como caqui verde, ou com textura de sabão) é aquela que, em contato com a água, libera íons hidróxido (OH⁻).
-            </p>
-            <p>
-                A escala de pH varia de 0 a 14:
-                <ul>
-                    <li><strong>0 a 6:</strong> Solução ácida (alta concentração de H⁺ e baixa concentração de OH⁻).</li>
-                    <li><strong>7:</strong> Solução neutra (as concentrações de H⁺ e OH⁻ estão equilibradas).</li>
-                    <li><strong>8 a 14:</strong> Solução básica (baixa concentração de H⁺ e alta concentração de OH⁻).</li>
-                </ul>
-            </p>
-            <p>
-                Substâncias ácidas e básicas são reativas: o excesso de H⁺ em substâncias ácidas pode corroer materiais, enquanto o excesso de OH⁻ em substâncias básicas também pode causar reações corrosivas. O pH nos ajuda a entender o equilíbrio entre essas espécies químicas.
+                O pH é uma medida que indica a acidez ou basicidade de uma solução, baseada na concentração de íons hidrogênio (H⁺) presentes...
             </p>
             <button class="close-btn" onclick="fecharModal()">OK</button>
         </div>
@@ -105,7 +94,7 @@
         <div class="modal-content">
             <h2>O que é uma ligação química?</h2>
             <p>
-                Uma ligação química é a interação entre átomos que resulta na formação de moléculas ou compostos. Os tipos mais comuns de ligação são: iônica, covalente e metálica.
+                Uma ligação química é a interação entre átomos que resulta na formação de moléculas ou compostos. Os tipos mais comuns de ligação são...
             </p>
             <button class="close-btn" onclick="fecharModal()">OK</button>
         </div>
@@ -135,7 +124,16 @@
                 }
             });
         });
+
+        // Ao carregar a página, verifica se o parâmetro da URL inclui "#phLink"
+        window.addEventListener('load', function() {
+            if (window.location.hash === "#phLink") {
+                abrirModal('ph');
+            }
+        });
     </script>
 
 </body>
 </html>
+
+
