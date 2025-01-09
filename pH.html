@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informação sobre pH</title>
+  <style>
+    /* Estilo para o modal */
+    .modal {
+      display: none; /* Inicialmente escondido */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .close-btn:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bem-vindo à nossa página!</h1>
+  <p>Clique no link para saber mais: <a id="phLink">O que é pH?</a></p>
+
+  <!-- Modal -->
+  <div id="phModal" class="modal">
+    <div class="modal-content">
+      <h2>O que é pH?</h2>
+      <p>
+        O pH é uma medida que indica a acidez ou basicidade de uma solução, baseada na concentração de íons hidrogênio (H⁺) presentes. Segundo a definição de Arrhenius, uma substância ácida (geralmente com sabor azedo) é aquela que, ao ser dissolvida em água, libera íons H⁺. Já uma substância básica (geralmente com sabor adstringente, como caqui verde, ou com textura de sabão) é aquela que, em contato com a água, libera íons hidróxido (OH⁻).
+      </p>
+      <p>
+        A escala de pH varia de 0 a 14:
+        <ul>
+          <li><strong>0 a 6:</strong> Solução ácida (alta concentração de H⁺ e baixa concentração de OH⁻).</li>
+          <li><strong>7:</strong> Solução neutra (as concentrações de H⁺ e OH⁻ estão equilibradas).</li>
+          <li><strong>8 a 14:</strong> Solução básica (baixa concentração de H⁺ e alta concentração de OH⁻).</li>
+        </ul>
+      </p>
+      <p>
+        Substâncias ácidas e básicas são reativas: o excesso de H⁺ em substâncias ácidas pode corroer materiais, enquanto o excesso de OH⁻ em substâncias básicas também pode causar reações corrosivas. O pH nos ajuda a entender o equilíbrio entre essas espécies químicas.
+      </p>
+      <button class="close-btn">OK</button>
+    </div>
+  </div>
+
+  <script>
+    // Obtém o link e o modal
+    const phLink = document.getElementById('phLink');
+    const phModal = document.getElementById('phModal');
+    const closeButton = document.querySelector('.close-btn');
+
+    // Exibe o modal quando o link é clicado
+    phLink.addEventListener('click', () => {
+      phModal.style.display = 'block';
+    });
+
+    // Fecha o modal quando o botão OK é clicado
+    closeButton.addEventListener('click', () => {
+      phModal.style.display = 'none';
+    });
+
+    // Fecha o modal se o usuário clicar fora da caixa de conteúdo
+    window.addEventListener('click', (event) => {
+      if (event.target === phModal) {
+        phModal.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
