@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceitos Básicos de Química</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo do modal */
+        .modal {
+            display: none; /* Inicialmente escondido */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .close-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Saiba os conceitos básicos utilizados na química</h1>
+    <p>Selecione um conceito para aprender mais:</p>
+    <ul>
+        <li><a onclick="abrirModal('ph')">O que é pH?</a></li>
+        <li><a onclick="abrirModal('ligacao')">O que é uma ligação química?</a></li>
+        <!-- Outros conceitos podem ser adicionados aqui -->
+    </ul>
+
+    <!-- Modal para pH -->
+    <div id="phModal" class="modal">
+        <div class="modal-content">
+            <h2>O que é pH?</h2>
+            <p>
+                O pH é uma medida que indica a acidez ou basicidade de uma solução, baseada na concentração de íons hidrogênio (H⁺) presentes. Segundo a definição de Arrhenius, uma substância ácida (geralmente com sabor azedo) é aquela que, ao ser dissolvida em água, libera íons H⁺. Já uma substância básica (geralmente com sabor adstringente, como caqui verde, ou com textura de sabão) é aquela que, em contato com a água, libera íons hidróxido (OH⁻).
+            </p>
+            <p>
+                A escala de pH varia de 0 a 14:
+                <ul>
+                    <li><strong>0 a 6:</strong> Solução ácida (alta concentração de H⁺ e baixa concentração de OH⁻).</li>
+                    <li><strong>7:</strong> Solução neutra (as concentrações de H⁺ e OH⁻ estão equilibradas).</li>
+                    <li><strong>8 a 14:</strong> Solução básica (baixa concentração de H⁺ e alta concentração de OH⁻).</li>
+                </ul>
+            </p>
+            <p>
+                Substâncias ácidas e básicas são reativas: o excesso de H⁺ em substâncias ácidas pode corroer materiais, enquanto o excesso de OH⁻ em substâncias básicas também pode causar reações corrosivas. O pH nos ajuda a entender o equilíbrio entre essas espécies químicas.
+            </p>
+            <button class="close-btn" onclick="fecharModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal para outros conceitos (exemplo: ligação química) -->
+    <div id="ligacaoModal" class="modal">
+        <div class="modal-content">
+            <h2>O que é uma ligação química?</h2>
+            <p>
+                Uma ligação química é a interação entre átomos que resulta na formação de moléculas ou compostos. Os tipos mais comuns de ligação são: iônica, covalente e metálica.
+            </p>
+            <button class="close-btn" onclick="fecharModal()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal com o conteúdo correto
+        function abrirModal(conceito) {
+            const modal = document.getElementById(conceito + 'Modal');
+            modal.style.display = 'block';
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        // Fecha o modal se o usuário clicar fora da caixa de conteúdo
+        window.addEventListener('click', (event) => {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
