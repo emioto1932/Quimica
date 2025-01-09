@@ -9,6 +9,15 @@ body {
     text-align: left; /* Alinha todo o texto à esquerda */
 }
 
+h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
+        width: 70%;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: left; /* Garante que todos os textos estejam alinhados à esquerda em telas pequenas */
+    }
+
 /* Parágrafos */
 p {
     margin: 10px 0;
@@ -89,11 +98,11 @@ footer {
 /* Responsividade - Para telas pequenas (celular) */
 @media screen and (max-width: 768px) {
     h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
+      width: 70%;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 2px;
+        padding-right: 2px;
         text-align: left; /* Garante que todos os textos estejam alinhados à esquerda em telas pequenas */
     }
 
