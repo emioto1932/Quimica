@@ -26,6 +26,17 @@ p {
     text-align: left; /* Alinha o texto dos parágrafos à esquerda */
 }
 
+/* Estilo para equações químicas */
+.equacao-quimica {
+    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada ideal para equações */
+    font-size: 1.2rem; /* Ajuste o tamanho da fonte conforme necessário */
+    white-space: pre-wrap; /* Permite quebras de linha e mantém o formato da equação */
+    text-align: left; /* Alinha à esquerda */
+    margin: 10px 0; /* Espaço acima e abaixo da equação */
+    display: block; /* Garante que cada equação ocupe uma linha */
+    line-height: 1.5; /* Espaçamento entre as linhas, se houver */
+}
+
 /* Estilo geral do corpo da questão */
 .bodyquestao {
     margin-left: 10px; /* Define uma margem de 10px à esquerda */
