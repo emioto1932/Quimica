@@ -28,7 +28,7 @@ p {
 
 /* Estilo para equações químicas */
 .equacao-quimica {
-    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada ideal para equações */
+    font-family: Arial, sans-serif;
     font-size: 1.2rem; /* Ajuste o tamanho da fonte conforme necessário */
     white-space: pre-wrap; /* Permite quebras de linha e mantém o formato da equação */
     text-align: left; /* Alinha à esquerda */
