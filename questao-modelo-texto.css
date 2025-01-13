@@ -9,6 +9,11 @@ body {
     text-align: left; /* Alinha todo o texto à esquerda */
 }
 
+ .destaque {
+      font-weight: bold;
+      color: #d9534f; /* Vermelho suave */
+    }
+
 h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
         width: 70%;
         margin-left: 20px;
