@@ -1,8 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomba de Sódio e Potássio</title>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+<script>
 // Configuração do canvas e membrana
 const canvasWidth = 500;    // Largura do canvas
 const canvasHeight = 500;   // Altura do canvas
 const thickness = 20;       // Espessura da membrana
-const spacing = 15;         // Espaçamento entre as bolinhas
+const spacing = 40;         // Espaçamento entre as bolinhas
 
 // Coordenadas da membrana
 const membraneYTop = (canvasHeight / 2) - (thickness / 2);    // Parte superior da membrana
@@ -18,19 +28,25 @@ let intracellularK = [];  // Bolinhas de K+ na região intracelular
 function createBolinhas() {
     // Cria bolinhas extracelulares (alternando Na+ e K+)
     for (let i = 0; i < 10; i++) {
-        extracellularNa.push({ x: i * spacing, y: membraneYTop });
+        extracellularNa.push({ x: i * spacing + 20, y: membraneYTop });
     }
     for (let i = 0; i < 9; i++) {
-        extracellularK.push({ x: i * spacing + spacing / 2, y: membraneYTop });
+        extracellularK.push({ x: i * spacing + 40, y: membraneYTop });
     }
 
     // Cria bolinhas intracelulares (alternando Na+ e K+)
     for (let i = 0; i < 6; i++) {
-        intracellularNa.push({ x: i * spacing, y: membraneYBottom });
+        intracellularNa.push({ x: i * spacing + 20, y: membraneYBottom });
     }
     for (let i = 0; i < 3; i++) {
-        intracellularK.push({ x: i * spacing + spacing / 2, y: membraneYBottom });
+        intracellularK.push({ x: i * spacing + 40, y: membraneYBottom });
     }
+}
+
+// Função para desenhar a membrana
+function drawMembrane(ctx) {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(0, membraneYTop, canvasWidth, thickness); // Desenha a membrana
 }
 
 // Função para desenhar as bolinhas
@@ -75,3 +91,6 @@ function init() {
 
 // Chama a função inicial
 init();
+</script>
+</body>
+</html>
