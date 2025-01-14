@@ -31,7 +31,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 80px;
-            background-color: #ffcc00;
+            background-color: #4caf50; /* Cor verde */
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -45,7 +45,7 @@
             position: absolute;
             width: 50px;
             height: 50px;
-            background-color: #ffcc00;
+            background-color: #4caf50; /* Cor verde */
             border-radius: 50%;
         }
 
@@ -62,15 +62,29 @@
         .bolinhas {
             position: absolute;
             display: flex;
-            gap: 5px;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .bolinha {
-            width: 10px;
-            height: 10px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            animation: move 4s infinite;
+        }
+
+        .sodio {
             background-color: yellow;
-            animation: sodium 4s infinite;
+        }
+
+        .potassio {
+            background-color: blue;
         }
 
         .bolinha:nth-child(2) {
@@ -93,7 +107,7 @@
             }
         }
 
-        @keyframes sodium {
+        @keyframes move {
             0%, 100% {
                 transform: translateY(0);
             }
@@ -107,9 +121,11 @@
     <div class="membrana">
         <div class="bomba">
             <div class="bolinhas">
-                <div class="bolinha"></div>
-                <div class="bolinha"></div>
-                <div class="bolinha"></div>
+                <div class="bolinha sodio">Na⁺</div>
+                <div class="bolinha sodio">Na⁺</div>
+                <div class="bolinha sodio">Na⁺</div>
+                <div class="bolinha potassio">K⁺</div>
+                <div class="bolinha potassio">K⁺</div>
             </div>
         </div>
     </div>
