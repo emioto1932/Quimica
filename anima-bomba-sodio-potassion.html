@@ -1,140 +1,77 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomba de Sódio e Potássio</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #e0f7fa;
-        }
+// Configuração do canvas e membrana
+const canvasWidth = 500;    // Largura do canvas
+const canvasHeight = 500;   // Altura do canvas
+const thickness = 20;       // Espessura da membrana
+const spacing = 15;         // Espaçamento entre as bolinhas
 
-        .container {
-            position: relative;
-            width: 400px;
-            height: 600px;
-        }
+// Coordenadas da membrana
+const membraneYTop = (canvasHeight / 2) - (thickness / 2);    // Parte superior da membrana
+const membraneYBottom = (canvasHeight / 2) + (thickness / 2); // Parte inferior da membrana
 
-        .membrana {
-            position: relative;
-            width: 100%;
-            height: 20px;
-            background: linear-gradient(to bottom, #0077cc, #ffdd57, #0077cc);
-            border-radius: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+// Bolinhas
+let extracellularNa = []; // Bolinhas de Na+ na região extracelular
+let extracellularK = [];  // Bolinhas de K+ na região extracelular
+let intracellularNa = []; // Bolinhas de Na+ na região intracelular
+let intracellularK = [];  // Bolinhas de K+ na região intracelular
 
-        .bolinha {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
+// Função para criar bolinhas em uma posição inicial
+function createBolinhas() {
+    // Cria bolinhas extracelulares (alternando Na+ e K+)
+    for (let i = 0; i < 10; i++) {
+        extracellularNa.push({ x: i * spacing, y: membraneYTop });
+    }
+    for (let i = 0; i < 9; i++) {
+        extracellularK.push({ x: i * spacing + spacing / 2, y: membraneYTop });
+    }
 
-        .sodio {
-            background-color: yellow;
-            color: black;
-        }
+    // Cria bolinhas intracelulares (alternando Na+ e K+)
+    for (let i = 0; i < 6; i++) {
+        intracellularNa.push({ x: i * spacing, y: membraneYBottom });
+    }
+    for (let i = 0; i < 3; i++) {
+        intracellularK.push({ x: i * spacing + spacing / 2, y: membraneYBottom });
+    }
+}
 
-        .potassio {
-            background-color: blue;
-            color: white;
-        }
+// Função para desenhar as bolinhas
+function drawBolinhas(ctx, bolinhas, color, label) {
+    ctx.fillStyle = color;
+    ctx.font = "12px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
-        .bomba {
-            position: absolute;
-            width: 60px;
-            height: 80px;
-            background-color: #4caf50;
-            border-radius: 10px;
-            top: calc(50% - 40px);
-            left: calc(50% - 30px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    bolinhas.forEach(bolinha => {
+        ctx.beginPath();
+        ctx.arc(bolinha.x, bolinha.y, 8, 0, Math.PI * 2); // Desenha a bolinha
+        ctx.fill();
+        ctx.fillStyle = "black"; // Cor do texto
+        ctx.fillText(label, bolinha.x, bolinha.y); // Adiciona o texto no centro da bolinha
+    });
+}
 
-        @keyframes moveIon {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(0, -50px); }
-            100% { transform: translate(0, -100px); }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="membrana"></div>
-        <div class="bomba"></div>
-    </div>
-    <script>
-        const container = document.querySelector(".container");
-        const membrana = document.querySelector(".membrana");
-        const bomba = document.querySelector(".bomba");
+// Função principal para desenhar tudo
+function draw() {
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
 
-        const intracelularY = container.offsetHeight - 20; // Base inferior
-        const extracelularY = 0; // Base superior
-        const bolinhas = [];
+    // Limpa o canvas
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        function criarIons(tipo, quantidade, yInicial, classe) {
-            const espacamento = 15;
-            for (let i = 0; i < quantidade; i++) {
-                const bolinha = document.createElement("div");
-                bolinha.classList.add("bolinha", classe);
-                bolinha.textContent = tipo;
-                bolinha.style.left = `${i * espacamento}px`;
-                bolinha.style.top = `${yInicial}px`;
-                container.appendChild(bolinha);
-                bolinhas.push({ element: bolinha, x: i * espacamento, y: yInicial });
-            }
-        }
+    // Desenha a membrana
+    drawMembrane(ctx);
 
-        // Criar Na+ e K+ na região extracelular
-        criarIons("Na⁺", 10, extracelularY, "sodio");
-        criarIons("K⁺", 9, extracelularY, "potassio");
+    // Desenha as bolinhas
+    drawBolinhas(ctx, extracellularNa, "red", "Na+");
+    drawBolinhas(ctx, extracellularK, "blue", "K+");
+    drawBolinhas(ctx, intracellularNa, "red", "Na+");
+    drawBolinhas(ctx, intracellularK, "blue", "K+");
+}
 
-        // Criar Na+ e K+ na região intracelular
-        criarIons("Na⁺", 6, intracelularY, "sodio");
-        criarIons("K⁺", 3, intracelularY, "potassio");
+// Configuração inicial
+function init() {
+    createBolinhas();
+    draw();
+}
 
-        function moverIon(bolinha, destinoX, destinoY) {
-            bolinha.element.style.transition = "all 2s ease";
-            bolinha.element.style.left = `${destinoX}px`;
-            bolinha.element.style.top = `${destinoY}px`;
-        }
-
-        function animarIons() {
-            // Mover 3 Na+ para fora
-            let countNa = 0;
-            bolinhas.forEach((bolinha) => {
-                if (bolinha.element.classList.contains("sodio") && bolinha.y === intracelularY && countNa < 3) {
-                    moverIon(bolinha, Math.random() * 400, extracelularY);
-                    countNa++;
-                }
-            });
-
-            // Mover 2 K+ para dentro
-            let countK = 0;
-            bolinhas.forEach((bolinha) => {
-                if (bolinha.element.classList.contains("potassio") && bolinha.y === extracelularY && countK < 2) {
-                    moverIon(bolinha, Math.random() * 400, intracelularY);
-                    countK++;
-                }
-            });
-        }
-
-        setTimeout(animarIons, 1000); // Iniciar a animação após 1 segundo
-    </script>
-</body>
-</html>
+// Chama a função inicial
+init();
