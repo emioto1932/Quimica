@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomba de Sódio e Potássio</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .membrana {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            background: linear-gradient(to bottom, #0077cc, #ffdd57, #0077cc);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bomba {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pump 4s infinite;
+        }
+
+        .bomba::before,
+        .bomba::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ffcc00;
+            border-radius: 50%;
+        }
+
+        .bomba::before {
+            top: -20px;
+            clip-path: circle(50% at bottom);
+        }
+
+        .bomba::after {
+            bottom: -20px;
+            clip-path: circle(50% at top);
+        }
+
+        .bolinhas {
+            position: absolute;
+            display: flex;
+            gap: 5px;
+        }
+
+        .bolinha {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: yellow;
+            animation: sodium 4s infinite;
+        }
+
+        .bolinha:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .bolinha:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes pump {
+            0%, 50%, 100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            25% {
+                transform: translateX(-50%) rotate(15deg);
+            }
+            75% {
+                transform: translateX(-50%) rotate(-15deg);
+            }
+        }
+
+        @keyframes sodium {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="membrana">
+        <div class="bomba">
+            <div class="bolinhas">
+                <div class="bolinha"></div>
+                <div class="bolinha"></div>
+                <div class="bolinha"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
