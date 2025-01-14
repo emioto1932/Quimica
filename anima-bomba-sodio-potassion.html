@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animação Bomba de Sódio e Potássio</title>
+    <title>Bomba de Sódio e Potássio</title>
     <style>
         body {
             margin: 0;
@@ -19,9 +19,6 @@
             position: relative;
             width: 400px;
             height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         .membrana {
@@ -30,31 +27,12 @@
             height: 20px;
             background: linear-gradient(to bottom, #0077cc, #ffdd57, #0077cc);
             border-radius: 10px;
-        }
-
-        .ambiente {
-            position: relative;
-            width: 100%;
-            height: calc(50% - 10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .extracelular {
-            background-color: #b3e5fc;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .intracelular {
-            background-color: #c8e6c9;
-            display: flex;
-            flex-wrap: wrap;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .bolinha {
+            position: absolute;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -63,15 +41,16 @@
             align-items: center;
             font-size: 12px;
             font-weight: bold;
-            color: white;
         }
 
         .sodio {
             background-color: yellow;
+            color: black;
         }
 
         .potassio {
             background-color: blue;
+            color: white;
         }
 
         .bomba {
@@ -87,83 +66,75 @@
             align-items: center;
         }
 
-        @keyframes moveSodium {
-            0% { top: 300px; }
-            50% { top: 240px; }
-            100% { top: 100px; }
-        }
-
-        @keyframes movePotassium {
-            0% { top: 100px; }
-            50% { top: 240px; }
-            100% { top: 300px; }
+        @keyframes moveIon {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(0, -50px); }
+            100% { transform: translate(0, -100px); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="ambiente extracelular" id="extracelular">
-            <!-- Extracelular íons -->
-        </div>
-        <div class="membrana">
-            <div class="bomba"></div>
-        </div>
-        <div class="ambiente intracelular" id="intracelular">
-            <!-- Intracelular íons -->
-        </div>
+        <div class="membrana"></div>
+        <div class="bomba"></div>
     </div>
     <script>
-        const extracelular = document.getElementById("extracelular");
-        const intracelular = document.getElementById("intracelular");
+        const container = document.querySelector(".container");
+        const membrana = document.querySelector(".membrana");
+        const bomba = document.querySelector(".bomba");
 
-        // Criar íons na região extracelular
-        for (let i = 0; i < 10; i++) {
-            const sodio = document.createElement("div");
-            sodio.classList.add("bolinha", "sodio");
-            sodio.textContent = "Na⁺";
-            extracelular.appendChild(sodio);
+        const intracelularY = container.offsetHeight - 20; // Base inferior
+        const extracelularY = 0; // Base superior
+        const bolinhas = [];
 
-            const potassio = document.createElement("div");
-            potassio.classList.add("bolinha", "potassio");
-            potassio.textContent = "K⁺";
-            extracelular.appendChild(potassio);
-        }
-
-        // Criar íons na região intracelular
-        for (let i = 0; i < 4; i++) {
-            const sodio = document.createElement("div");
-            sodio.classList.add("bolinha", "sodio");
-            sodio.textContent = "Na⁺";
-            intracelular.appendChild(sodio);
-
-            const potassio = document.createElement("div");
-            potassio.classList.add("bolinha", "potassio");
-            potassio.textContent = "K⁺";
-            intracelular.appendChild(potassio);
-        }
-
-        // Animação dos íons
-        function animateIons() {
-            const sodiums = document.querySelectorAll(".intracelular .sodio");
-            const potassiums = document.querySelectorAll(".extracelular .potassio");
-
-            // Mover três Na⁺ para fora
-            for (let i = 0; i < 3; i++) {
-                sodiums[i].style.position = "absolute";
-                sodiums[i].style.animation = "moveSodium 4s forwards";
+        function criarIons(tipo, quantidade, yInicial, classe) {
+            const espacamento = 15;
+            for (let i = 0; i < quantidade; i++) {
+                const bolinha = document.createElement("div");
+                bolinha.classList.add("bolinha", classe);
+                bolinha.textContent = tipo;
+                bolinha.style.left = `${i * espacamento}px`;
+                bolinha.style.top = `${yInicial}px`;
+                container.appendChild(bolinha);
+                bolinhas.push({ element: bolinha, x: i * espacamento, y: yInicial });
             }
-
-            // Mover dois K⁺ para dentro
-            setTimeout(() => {
-                for (let i = 0; i < 2; i++) {
-                    potassiums[i].style.position = "absolute";
-                    potassiums[i].style.animation = "movePotassium 4s forwards";
-                }
-            }, 2000);
         }
 
-        // Iniciar a animação
-        animateIons();
+        // Criar Na+ e K+ na região extracelular
+        criarIons("Na⁺", 10, extracelularY, "sodio");
+        criarIons("K⁺", 9, extracelularY, "potassio");
+
+        // Criar Na+ e K+ na região intracelular
+        criarIons("Na⁺", 6, intracelularY, "sodio");
+        criarIons("K⁺", 3, intracelularY, "potassio");
+
+        function moverIon(bolinha, destinoX, destinoY) {
+            bolinha.element.style.transition = "all 2s ease";
+            bolinha.element.style.left = `${destinoX}px`;
+            bolinha.element.style.top = `${destinoY}px`;
+        }
+
+        function animarIons() {
+            // Mover 3 Na+ para fora
+            let countNa = 0;
+            bolinhas.forEach((bolinha) => {
+                if (bolinha.element.classList.contains("sodio") && bolinha.y === intracelularY && countNa < 3) {
+                    moverIon(bolinha, Math.random() * 400, extracelularY);
+                    countNa++;
+                }
+            });
+
+            // Mover 2 K+ para dentro
+            let countK = 0;
+            bolinhas.forEach((bolinha) => {
+                if (bolinha.element.classList.contains("potassio") && bolinha.y === extracelularY && countK < 2) {
+                    moverIon(bolinha, Math.random() * 400, intracelularY);
+                    countK++;
+                }
+            });
+        }
+
+        setTimeout(animarIons, 1000); // Iniciar a animação após 1 segundo
     </script>
 </body>
 </html>
