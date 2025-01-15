@@ -139,6 +139,27 @@ tbody td {
   border: 1px solid #ddd;
 }
 
+        /* Classe que controla o estilo da lista */
+        .styled-list {
+            width: 70%; /* 70% da largura da tela em desktops */
+            margin: 0 auto; /* Centraliza a lista */
+            padding-left: 20px; /* Espaço entre o marcador e o conteúdo */
+        }
+
+     
+
+        /* Estilo do marcador (bullet) */
+        .styled-list li {
+            list-style-type: disc; /* Marcadores em forma de círculo */
+            margin-bottom: 10px; /* Espaço entre os itens */
+        }
+
+        /* Estilo para os itens da lista */
+        .styled-list li strong {
+            color: #2c3e50; /* Cor do texto em negrito */
+        }
+
+
 /* Responsividade - Para telas pequenas (celular) */
 @media screen and (max-width: 768px) {
     h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
@@ -162,4 +183,11 @@ tbody td {
     .alternativa {
         margin-left: 20px;
     }
+
+   /* Ajuste para telas menores (como celulares) */
+       
+            .styled-list {
+                width: 100%; /* 100% da largura da tela em dispositivos móveis */
+            }
+           
 }
