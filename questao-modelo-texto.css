@@ -111,6 +111,34 @@ footer {
     text-align: left; /* Alinha o texto do footer à esquerda */
 }
 
+/* Estilo para a tabela */
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+thead th {
+  background-color: #2a6496;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+
+
+/* Estilo para as células do corpo */
+tbody td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
 /* Responsividade - Para telas pequenas (celular) */
 @media screen and (max-width: 768px) {
     h1, h2, h3, h4, h5, h6, p, .resposta, .alternativas, .footer, .nota {
