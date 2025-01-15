@@ -142,7 +142,7 @@ tbody td {
         /* Classe que controla o estilo da lista */
         .styled-list {
             width: 70%; /* 70% da largura da tela em desktops */
-            margin: 0 auto; /* Centraliza a lista */
+            text-align: left; /* Alinha o texto dos parágrafos à esquerda */
             padding-left: 20px; /* Espaço entre o marcador e o conteúdo */
         }
 
