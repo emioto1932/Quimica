@@ -102,16 +102,54 @@
             </div>
     
 
-    <!-- Modal para outros conceitos (exemplo: ligação química) -->
-    <div id="ligacaoModal" class="modal">
-        <div class="modal-content">
-            <h2>O que é uma ligação química?</h2>
-            <p>
-                Uma ligação química é a interação entre átomos que resulta na formação de moléculas ou compostos. Os tipos mais comuns de ligação são...
-            </p>
-            <button class="close-btn" onclick="fecharModal()">OK</button>
-        </div>
+   <!-- Modal para Equilíbrio Osmótico -->
+<div id="equilibrioModal" class="modal">
+    <div class="modal-content">
+        <h2>O que é equilíbrio osmótico?</h2>
+        <p>
+            O equilíbrio osmótico refere-se à manutenção do equilíbrio de água e solutos dentro e fora da célula. A bomba de sódio e potássio é fundamental para isso, pois, ao expelir 3 íons de sódio (Na⁺) para fora da célula e trazer 2 íons de potássio (K⁺) para dentro, ela cria um gradiente de concentração de íons.
+        </p>
+        <p>
+            Esse movimento ajuda a regular a quantidade de água dentro da célula, pois a água tende a se mover em direção à área com maior concentração de solutos (como os íons). Sem a bomba, haveria uma acumulação de sódio dentro da célula, o que faria a água entrar em excesso, potencialmente rompendo a célula.
+        </p>
+        <button class="close-btn" onclick="fecharModal()">OK</button>
     </div>
+</div>
+
+    <!-- Modal para Potencial de Repouso -->
+<div id="potencialModal" class="modal">
+    <div class="modal-content">
+        <h2>O que é o potencial de repouso?</h2>
+        <p>
+            O potencial de repouso é a diferença de carga elétrica entre o interior e o exterior da célula quando ela não está transmitindo sinais (ou seja, quando está "em repouso").
+        </p>
+        <p>
+            A bomba de sódio e potássio ajuda a manter essa diferença de carga. Ela transporta 3 íons de sódio (Na⁺), que são positivos, para fora da célula e 2 íons de potássio (K⁺), também positivos, para dentro da célula. Isso resulta em uma carga líquida negativa no interior da célula, em relação ao exterior, criando o potencial de repouso.
+        </p>
+        <p>
+            Esse gradiente de carga é essencial para a célula ser capaz de responder rapidamente a estímulos, como os impulsos nervosos, pois facilita a mudança de carga necessária para a transmissão desses sinais.
+        </p>
+        <button class="close-btn" onclick="fecharModal()">OK</button>
+    </div>
+</div>
+
+
+    <!-- Modal para Transmissão de Impulsos Nervosos -->
+<div id="impulsosModal" class="modal">
+    <div class="modal-content">
+        <h2>O que é a transmissão de impulsos nervosos?</h2>
+        <p>
+            A transmissão de impulsos nervosos é o processo pelo qual sinais elétricos são conduzidos ao longo de neurônios, permitindo a comunicação entre diferentes partes do corpo. Durante a transmissão de um impulso, a célula nervosa (neurônio) passa por uma mudança rápida na sua carga elétrica, chamada de despolarização.
+        </p>
+        <p>
+            Quando um impulso nervoso chega a um neurônio, os canais de sódio se abrem e os íons de sódio entram rapidamente na célula, invertendo a carga interna (de negativa para positiva). Para a célula retornar ao seu estado original e ser capaz de gerar outro impulso, a bomba de sódio e potássio entra em ação. Ela remove o excesso de sódio que entrou e reintroduz o potássio, restabelecendo o gradiente de íons e, assim, o potencial de repouso.
+        </p>
+        <p>
+            Sem a bomba, os neurônios não seriam capazes de se recarregar e transmitir sinais elétricos de forma eficiente, prejudicando a comunicação entre as células nervosas.
+        </p>
+        <button class="close-btn" onclick="fecharModal()">OK</button>
+    </div>
+</div>
 
     <script>
         // Função para abrir o modal com o conteúdo correto
