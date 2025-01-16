@@ -74,7 +74,10 @@
     <p>Selecione um conceito para aprender mais:</p>
     <ul>
         <li><a id="phLink" onclick="abrirModal('ph')">O que é pH?</a></li>
-        <li><a onclick="abrirModal('ligacao')">O que é uma ligação química?</a></li>
+        <li><a id="equilibrioLink" onclick="abrirModal('equilibrio')">O equilíbrio osmótico</a></li>
+        <li><a id="potencialLink" onclick="abrirModal('potencial')">O potencial de repouso</a></li>
+        <li><a id="impulsoLink" onclick="abrirModal('impulso')">A transmissão de impulsos nervosos</a></li>
+       
         <!-- Outros conceitos podem ser adicionados aqui -->
     </ul>
 
@@ -186,6 +189,15 @@
         window.addEventListener('load', function() {
             if (window.location.hash === "#phLink") {
                 abrirModal('ph');
+            }
+             if (window.location.hash === "#equilibriolink") {
+                abrirModal('equilibrio');
+            }
+             if (window.location.hash === "#potencialLink") {
+                abrirModal('potencial');
+            }
+             if (window.location.hash === "#impulsoLink") {
+                abrirModal('impulso');
             }
         });
     </script>
