@@ -144,6 +144,7 @@ tbody td {
             width: 70%; /* 70% da largura da tela em desktops */
             text-align: left; /* Alinha o texto dos parágrafos à esquerda */
             padding-left: 20px; /* Espaço entre o marcador e o conteúdo */
+            margin-left: 40px; /* Margem para afastar a lista da borda esquerda */
         }
 
      
