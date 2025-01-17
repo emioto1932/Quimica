@@ -25,7 +25,8 @@
 }
 
 .exercise-video a {
-    display: inline-block;
+   /* display: inline-block;*/
+    display: none;
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #4CAF50;
