@@ -16,6 +16,10 @@ header {
     position: relative;
 }
 
+.assista-video {
+    display: none;
+}
+
 .menu-container {
     display: flex;
     align-items: center;
