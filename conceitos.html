@@ -77,6 +77,8 @@
         <li><a id="equilibrioLink" onclick="abrirModal('equilibrio')">O equilíbrio osmótico</a></li>
         <li><a id="potencialLink" onclick="abrirModal('potencial')">O potencial de repouso</a></li>
         <li><a id="impulsoLink" onclick="abrirModal('impulso')">A transmissão de impulsos nervosos</a></li>
+        <li><a id="calorespecificoLink" onclick="abrirModal('calorespecifico')">Diferença entre o calor específico e a capacidade térmica</a></li>
+        
        
         <!-- Outros conceitos podem ser adicionados aqui -->
     </ul>
@@ -150,6 +152,135 @@
         <p>
             Sem a bomba, os neurônios não seriam capazes de se recarregar e transmitir sinais elétricos de forma eficiente, prejudicando a comunicação entre as células nervosas.
         </p>
+        <button class="close-btn" onclick="fecharModal()">OK</button>
+    </div>
+</div>
+
+    <!-- Modal para Calor Específico e Capacidade Térmica -->
+<div id="calorespecificoLink" class="modal">
+    <div class="modal-content">
+        <h2>Calor Específico e Capacidade Térmica</h2>
+        <p><strong>1. Calor específico (c):</strong></p>
+        <p><strong>Definição:</strong> É a quantidade de energia necessária para elevar a temperatura de 1 grama de uma substância em 1°C.</p>
+        <p><strong>Unidade:</strong> J/(g⋅°C) ou cal/(g⋅°C).</p>
+        <p><strong>Propriedade:</strong> É uma propriedade intensiva, ou seja, não depende da quantidade de substância, mas apenas do material em si.</p>
+        <p><strong>Exemplo:</strong> A água tem um calor específico de 4,18 J/(g⋅°C), o que significa que 1 grama de água precisa de 4,18 joules para aumentar sua temperatura em 1°C.</p>
+
+        <p><strong>2. Capacidade térmica (C):</strong></p>
+        <p><strong>Definição:</strong> É a quantidade de energia necessária para elevar a temperatura de um determinado corpo (ou sistema) inteiro em 1°C.</p>
+        <p><strong>Fórmula:</strong> C = m ⋅ c</p>
+        <p><strong>Onde:</strong></p>
+        <ul>
+            <li><strong>C:</strong> Capacidade térmica (em J/°C);</li>
+            <li><strong>m:</strong> Massa do corpo (em gramas);</li>
+            <li><strong>c:</strong> Calor específico da substância (em J/(g⋅°C)).</li>
+        </ul>
+        <p><strong>Unidade:</strong> J/°C.</p>
+        <p><strong>Propriedade:</strong> É uma propriedade extensiva, ou seja, depende da quantidade de substância.</p>
+        <p><strong>Exemplo:</strong> Se temos 100 g de água, a capacidade térmica será: C = m ⋅ c = 100 ⋅ 4,18 = 418 J/°C. Ou seja, são necessários 418 joules para aumentar a temperatura de todo o sistema (100 g de água) em 1°C.</p>
+
+        <p><strong>Principais diferenças:</strong></p>
+        <table>
+            <tr>
+                <th>Característica</th>
+                <th>Calor Específico (c)</th>
+                <th>Capacidade Térmica (C)</th>
+            </tr>
+            <tr>
+                <td>Definição</td>
+                <td>Energia para 1 g aumentar 1°C</td>
+                <td>Energia para o corpo inteiro aumentar 1°C</td>
+            </tr>
+            <tr>
+                <td>Unidade</td>
+                <td>J/(g⋅°C)</td>
+                <td>J/°C</td>
+            </tr>
+            <tr>
+                <td>Propriedade</td>
+                <td>Intensiva</td>
+                <td>Extensiva</td>
+            </tr>
+            <tr>
+                <td>Depende da massa?</td>
+                <td>Não</td>
+                <td>Sim</td>
+            </tr>
+        </table>
+
+        <p><strong>Resumo:</strong></p>
+        <p>O calor específico mede uma característica intrínseca da substância, como a água ter 4,18 J/(g⋅°C). A capacidade térmica é específica de um sistema ou corpo, dependendo da quantidade de substância envolvida.</p>
+
+        <p>Aqui está uma tabela com 10 substâncias comuns do dia a dia e seus respectivos calores específicos para que os estudantes percebam a diferença entre elas:</p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Substância</th>
+                <th>Calor Específico (c) em J/(g⋅°C)</th>
+                <th>Observações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Água (H₂O)</td>
+                <td>4,18</td>
+                <td>Muito alto, ajuda na regulação térmica do corpo e do planeta.</td>
+            </tr>
+            <tr>
+                <td>Gelo</td>
+                <td>2,10</td>
+                <td>Menor que o da água líquida, mas ainda significativo.</td>
+            </tr>
+            <tr>
+                <td>Óleo de cozinha</td>
+                <td>1,67</td>
+                <td>Menor que o da água, aquece e esfria mais rápido.</td>
+            </tr>
+            <tr>
+                <td>Álcool etílico</td>
+                <td>2,43</td>
+                <td>Usado como solvente, aquece mais rápido que a água.</td>
+            </tr>
+            <tr>
+                <td>Alumínio</td>
+                <td>0,90</td>
+                <td>Usado em panelas, aquece rapidamente, mas armazena pouco calor.</td>
+            </tr>
+            <tr>
+                <td>Ferro</td>
+                <td>0,45</td>
+                <td>Usado em utensílios e construções, aquece rápido, ideal para transferência de calor.</td>
+            </tr>
+            <tr>
+                <td>Areia</td>
+                <td>0,84</td>
+                <td>Aquece rapidamente, explicando o calor das praias durante o dia.</td>
+            </tr>
+            <tr>
+                <td>Vidro</td>
+                <td>0,84</td>
+                <td>Usado em janelas e recipientes, aquece e esfria rapidamente.</td>
+            </tr>
+            <tr>
+                <td>Madeira</td>
+                <td>1,76</td>
+                <td>Relativamente alto, retarda a propagação de calor em móveis e casas.</td>
+            </tr>
+            <tr>
+                <td>Ar</td>
+                <td>1,00</td>
+                <td>Importante na regulação térmica atmosférica, aquece e esfria moderadamente.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Análise Educacional:</h2>
+    <p>A água possui o maior calor específico da lista, mostrando sua capacidade de resistir a mudanças bruscas de temperatura, essencial para o equilíbrio térmico.</p>
+    <p>Metais como alumínio e ferro têm baixos valores, explicando por que esquentam rapidamente ao cozinhar.</p>
+    <p>Óleo e álcool aquecem mais rapidamente que a água, por isso são usados para transferir calor em situações específicas.</p>
+        
+        
         <button class="close-btn" onclick="fecharModal()">OK</button>
     </div>
 </div>
