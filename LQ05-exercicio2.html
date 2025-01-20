@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM - Ligas Metálicas</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão ENEM - Ligas Metálicas</h1>
+    </header>
+    <main class="questao-enunciado">
+
+        <!-- Imagem do Exercício -->
+        <div class="exercise-image">
+            <img src="img/LQ04ex02-2019-ligas-metalicas.jpg" alt="Questão sobre ligas metálicas">
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a introdução e a resolução</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Introdução</h2>
+            <p>
+                A densidade de uma mistura, como uma liga metálica, pode ser calculada utilizando uma média ponderada. Isso ocorre porque cada metal na liga contribui para a densidade final de acordo com sua proporção em massa. Essa abordagem é válida quando o volume da mistura é a soma exata dos volumes dos componentes, o que significa que não há contração volumétrica significativa. No entanto, caso haja variação no volume, o cálculo teórico pode divergir do valor experimental.
+            </p>
+            <p>
+                Para calcular a densidade de uma liga estanho-chumbo, utilizamos as densidades individuais dos metais (ρ<sub>Sn</sub> e ρ<sub>Pb</sub>) e as respectivas composições percentuais em massa (%Sn e %Pb) como pesos. A fórmula geral é:
+            </p>
+            <p>
+                <strong>ρ<sub>liga</sub> = (%Sn × ρ<sub>Sn</sub> + %Pb × ρ<sub>Pb</sub>) / 100</strong>
+            </p>
+
+            <h2>Resolução</h2>
+            <p>
+                Com base nos dados fornecidos, utilizaremos a fórmula acima para calcular a densidade de cada amostra de solda estanho-chumbo. As densidades do estanho (ρ<sub>Sn</sub>) e do chumbo (ρ<sub>Pb</sub>) são, respectivamente, 7,3 g/mL e 11,3 g/mL.
+            </p>
+
+            <p><strong>Amostra I (60% Sn, 40% Pb):</strong></p>
+            <p>ρ<sub>liga</sub> = (60 × 7,3 + 40 × 11,3) / 100 = 8,98 g/mL</p>
+
+            <p><strong>Amostra II (62% Sn, 38% Pb):</strong></p>
+            <p>ρ<sub>liga</sub> = (62 × 7,3 + 38 × 11,3) / 100 = 8,86 g/mL</p>
+
+            <p><strong>Amostra III (65% Sn, 35% Pb):</strong></p>
+            <p>ρ<sub>liga</sub> = (65 × 7,3 + 35 × 11,3) / 100 = 8,73 g/mL</p>
+
+            <p><strong>Amostra IV (63% Sn, 37% Pb):</strong></p>
+            <p>ρ<sub>liga</sub> = (63 × 7,3 + 37 × 11,3) / 100 = 8,81 g/mL</p>
+
+            <p><strong>Amostra V (59% Sn, 41% Pb):</strong></p>
+            <p>ρ<sub>liga</sub> = (59 × 7,3 + 41 × 11,3) / 100 = 9,00 g/mL</p>
+
+            <h3>Conclusão:</h3>
+            <p>
+                Apenas as amostras II (8,86 g/mL) e IV (8,81 g/mL) atendem às especificações internacionais para a densidade da liga estanho-chumbo, que deve estar entre 8,74 g/mL e 8,82 g/mL.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
 
