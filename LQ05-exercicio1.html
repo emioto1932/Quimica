@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão - Potenciais de Redução</h1>
+    </header>
+    <main class="questao-enunciado">
+        <!-- Enunciado da Questão -->
+        <div class="nota-anunciado">
+            <p class="enunciado">
+                Em uma pilha eletroquímica, ocorre uma transferência de elétrons entre os eletrodos. O potencial padrão de redução (E°) de uma substância é uma medida de sua tendência de receber elétrons e ser reduzida. Para que uma reação de pilha ocorra espontaneamente, é necessário que a soma dos potenciais da semi-reação de oxidação e da semi-reação de redução seja positiva.
+            </p>
+            <p class="enunciado">
+                Considere os potenciais padrão de redução (E°) fornecidos abaixo:
+            </p>
+            <ul class="enunciado">
+                <li>Cu²⁺ + 2e⁻ → Cu(s)  E° = +0,34 V</li>
+                <li>Zn²⁺ + 2e⁻ → Zn(s)  E° = -0,76 V</li>
+            </ul>
+            <p class="pergunta">
+                Com base nas informações acima, qual das opções abaixo corresponde corretamente à reação espontânea que ocorre na pilha formada por cobre (Cu) e zinco (Zn)?
+            </p>
+            <div class="alternativas">
+                <p>(A) Cu²⁺ + Zn → Cu + Zn²⁺</p>
+                <p>(B) Zn²⁺ + Cu → Zn + Cu²⁺</p>
+                <p>(C) 2Cu + Zn²⁺ → 2Cu²⁺ + Zn</p>
+                <p>(D) 2Zn + 2Cu²⁺ → 2Zn²⁺ + Cu</p>
+                <p>(E) Nenhuma das opções acima.</p>
+            </div>
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa A</h2>
+            <p>
+                De acordo com os potenciais padrão de redução fornecidos:
+            </p>
+            <ul>
+                <li>O cobre (Cu) tem o maior potencial de redução (+0,34 V), o que significa que será reduzido e atuará como o cátodo.</li>
+                <li>O zinco (Zn) tem o menor potencial de redução (-0,76 V), o que significa que será oxidado e atuará como o ânodo.</li>
+            </ul>
+            <p>
+                A reação espontânea será aquela em que o zinco doa elétrons (oxida) para o cobre (reduzido). Isso corresponde à equação:
+            </p>
+            <p class="resposta">
+                <strong>Cu²⁺ + Zn → Cu + Zn²⁺</strong>
+            </p>
+            <p>
+                O potencial da pilha pode ser calculado somando os potenciais padrão de oxidação e redução:
+            </p>
+            <ul>
+                <li>Oxidação (Zn → Zn²⁺ + 2e⁻): E° = +0,76 V</li>
+                <li>Redução (Cu²⁺ + 2e⁻ → Cu): E° = +0,34 V</li>
+                <li><strong>E° da pilha = +0,76 V + (+0,34 V) = +1,10 V</strong></li>
+            </ul>
+            <p>Portanto, a alternativa correta é a <strong>Alternativa A</strong>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo e a complexidade das questões do Enem. Trata-se de um exercício autoral, criado com o objetivo de revisar conceitos importantes e estimular o raciocínio necessário para resolver questões desse tipo.
+        </p>
+        <p class="nota">
+            <strong>Atenção:</strong> As questões foram elaboradas com base no estilo do Exame Nacional do Ensino Médio (Enem). <u>Não se trata de uma questão oficial do Enem</u>. Consulte as questões oficiais no site do INEP: 
+            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">
+            https://www.gov.br/inep
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
 
