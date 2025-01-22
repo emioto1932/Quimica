@@ -1,25 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2023)</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ENEM - Solo Amazônico</title>
+    <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+    <!-- MathJax para renderizar fórmulas matemáticas -->
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 1 - ENEM (2023) - Eletronegatividade</h1>
+        <h1>Questão - ENEM (2023) - Fertilidade do Solo Amazônico</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ06ex01-2023-Eletronegatividade.jpg" alt="Questão 1">
+            <img src="img/LQ06ex01-2023-Eletronegatividade.jpg alt="Questão ENEM - Fertilidade do Solo">
         </div>
+        
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+            <p><strong>Introdução:</strong></p>
+            <p>
+                Para compreender a questão da fertilidade do solo amazônico, é importante conhecer conceitos básicos de química relacionados à estrutura dos minerais presentes no solo, como os silicatos, e a interação desses minerais com nutrientes essenciais, como o potássio (\(K^+\)).  
+                O solo amazônico é naturalmente pobre em nutrientes devido à baixa disponibilidade de cargas negativas para interagir com cátions metálicos, enquanto os antigos habitantes enriqueceram o solo utilizando biocarvão. Este material apresenta grupos funcionais reativos que facilitam a retenção de nutrientes.
+            </p>
+            <p>
+                Além disso, a estabilidade estrutural dos silicatos e a ressonância dos grupos carboxilato (\(–COO^−\)) no biocarvão são fatores-chave na fertilidade do solo.
+            </p>
+            
+            <p><strong>Resolução:</strong></p>
+            <p>
+                O solo amazônico é predominantemente composto por silicatos, que possuem uma estrutura geométrica tetraédrica com oxigênios (\(O^{2-}\)) nas extremidades. Apesar de terem cargas negativas, esses oxigênios estão ligados de forma estável, tornando as cargas pouco disponíveis para interações químicas. Por isso, os silicatos têm baixa capacidade de reter nutrientes, como potássio (\(K^+\)).
+            </p>
+            <p>
+                Por outro lado, o biocarvão, feito a partir de materiais orgânicos como ossos e carvão vegetal, contém grupos carboxilato (\(–COO^−\)) com elétrons deslocalizados (ressonância). Esses grupos são mais reativos e conseguem formar ligações iônicas fortes com cátions metálicos. A diferença de eletronegatividade entre o oxigênio (\(3,44\)) e o potássio (\(0,82\)) gera uma atração forte, facilitando a retenção de nutrientes no solo fertilizado.
+            </p>
+            <p>
+                Assim, a principal diferença entre os silicatos e os grupos carboxilato do biocarvão é a disponibilidade das cargas negativas para interagir com os nutrientes. O biocarvão enriquece o solo ao aumentar sua capacidade de reter cátions metálicos essenciais, garantindo maior fertilidade.
+            </p>
+            
+            <p><strong>Resposta final:</strong> O enriquecimento do solo amazônico com biocarvão promove a retenção de nutrientes como o potássio devido à reatividade dos grupos carboxilato e à alta diferença de eletronegatividade com os cátions metálicos.</p>
+        </section>
     </main>
 </body>
 </html>
