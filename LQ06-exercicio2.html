@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão - Eletronegatividade e Polaridade</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão - Eletronegatividade e Polaridade Molecular</h1>
+    </header>
+    <main class="questao-enunciado">
+        <div class="exercise-image">
+            <img src="img/moleculas-agua-co2.jpg" alt="Moléculas de Água e Dióxido de Carbono">
+        </div>
+
+        <!-- Enunciado da Questão -->
+        <div class="nota-anunciado">
+            <p class="enunciado">
+                A água (H₂O) e o dióxido de carbono (CO₂) são duas moléculas essenciais para a vida no planeta Terra. A água, conhecida como solvente universal, apresenta uma geometria angular devido à presença de pares de elétrons livres no oxigênio, que geram uma distribuição de carga desigual, conferindo à molécula um caráter polar. Já o dióxido de carbono possui uma geometria linear, onde os momentos dipolares das duas ligações duplas entre carbono e oxigênio se anulam, tornando-o uma molécula apolar.
+            </p>
+            <p class="pergunta">
+                Com base nas informações sobre a eletronegatividade dos elementos químicos envolvidos e a geometria molecular, assinale a alternativa correta sobre as propriedades de polaridade das moléculas de água e dióxido de carbono:
+            </p>
+
+            <div class="alternativas">
+                <p>A) A molécula de água é apolar porque os momentos dipolares se anulam devido à sua geometria angular.</p>
+                <p>B) A molécula de dióxido de carbono é polar porque apresenta ligações covalentes duplas entre o carbono e os átomos de oxigênio.</p>
+                <p>C) A molécula de água é polar devido à diferença de eletronegatividade entre hidrogênio e oxigênio, combinada com sua geometria angular.</p>
+                <p>D) O dióxido de carbono é polar devido à presença de ligações duplas entre carbono e oxigênio, que criam polos de carga na molécula.</p>
+                <p>E) Tanto a água quanto o dióxido de carbono são polares devido à presença de átomos eletronegativos em suas estruturas.</p>
+            </div>
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa C</h2>
+            <p>
+                A água (H₂O) é polar devido à diferença de eletronegatividade entre o oxigênio e o hidrogênio, combinada com sua geometria angular. Isso resulta em uma distribuição assimétrica de carga, com o oxigênio apresentando uma carga parcial negativa e os hidrogênios uma carga parcial positiva.
+            </p>
+            <p>
+                O dióxido de carbono (CO₂), por sua vez, é apolar porque, apesar das ligações duplas entre carbono e oxigênio serem polares, os momentos dipolares se anulam devido à geometria linear da molécula.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> A questão acima foi elaborada para simular o estilo do Enem, promovendo a revisão de conceitos importantes como polaridade molecular e eletronegatividade.
+        </p>
+        <p class="nota">
+            <strong>Atenção:</strong> Esta não é uma questão oficial do Enem. Para acessar questões oficiais, visite o site do INEP:
+            <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank">INEP - Provas e Gabaritos</a>.
+        </p>
+    </footer>
+</body>
+</html>
