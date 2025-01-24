@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM - Geometria Molecular e Polaridade</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão - Geometria Molecular, Polaridade e Eletronegatividade</h1>
+    </header>
+    <main class="questao-enunciado">
+        <div class="nota-anunciado">
+            <p class="enunciado">
+                A polaridade de uma molécula depende tanto da eletronegatividade dos elementos químicos que a compõem quanto de sua forma geométrica. A tabela abaixo apresenta algumas moléculas importantes e suas fórmulas moleculares. Com base na tabela e no conceito de eletronegatividade, analise as alternativas e identifique a afirmativa incorreta.
+            </p>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Molécula</th>
+                        <th>Fórmula Molecular</th>
+                        <th>Forma Geométrica</th>
+                        <th>Polaridade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gás Nitrogênio</td>
+                        <td>N₂</td>
+                        <td>Linear</td>
+                        <td>Apolar</td>
+                    </tr>
+                    <tr>
+                        <td>Ozônio</td>
+                        <td>O₃</td>
+                        <td>Angular</td>
+                        <td>Polar</td>
+                    </tr>
+                    <tr>
+                        <td>Amônia</td>
+                        <td>NH₃</td>
+                        <td>Piramidal</td>
+                        <td>Polar</td>
+                    </tr>
+                    <tr>
+                        <td>Ácido Acético</td>
+                        <td>CH₃COOH</td>
+                        <td>Planar</td>
+                        <td>Polar</td>
+                    </tr>
+                    <tr>
+                        <td>Gás Propano</td>
+                        <td>C₃H₈</td>
+                        <td>Tetraédrica</td>
+                        <td>Apolar</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="nota">Tabela de Eletronegatividade (ordem decrescente):</p>
+            <ul>
+                <li>F (4,0) > O (3,5) > N (3,0) > Cl (3,0) > C (2,5) > H (2,1)</li>
+            </ul>
+
+            <p class="pergunta">
+                Analise as alternativas e identifique a descrição incorreta sobre as moléculas apresentadas:
+            </p>
+        </div>
+
+        <!-- Alternativas -->
+        <div class="alternativas">
+            <p>A) A molécula de ozônio (O₃) apresenta forma angular devido à presença de pares de elétrons não ligantes no átomo central de oxigênio, e sua polaridade é atribuída à diferença de eletronegatividade entre os átomos de oxigênio.</p>
+            <p>B) A molécula de amônia (NH₃) possui forma piramidal, com o nitrogênio como o polo negativo devido à sua maior eletronegatividade em relação aos hidrogênios.</p>
+            <p>C) O gás nitrogênio (N₂) é uma molécula apolar com ligações covalentes triplas altamente estáveis.</p>
+            <p>D) O ácido acético (CH₃COOH) possui átomos de carbono que formam ligações tetraédricas com os átomos vizinhos, tornando a molécula apolar.</p>
+            <p>E) O gás propano (C₃H₈) apresenta estrutura tetraédrica ao redor dos carbonos e é uma molécula apolar devido à distribuição uniforme dos elétrons.</p>
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução: Alternativa D</h2>
+            <p>
+                A alternativa incorreta é a <strong>D</strong>. Apesar de o ácido acético (CH₃COOH) conter átomos de carbono que formam ligações tetraédricas em alguns pontos, sua polaridade é atribuída ao grupo carboxílico (COOH), que possui um momento dipolar significativo devido à diferença de eletronegatividade entre oxigênio, carbono e hidrogênio.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="nota">
+            <strong>Nota ao estudante:</strong> Esta questão foi criada para auxiliar no aprendizado sobre geometria molecular, polaridade e eletronegatividade. Para aprofundar os estudos, revise os conceitos de ligações químicas e momento dipolar.
+        </p>
+    </footer>
+</body>
+</html>
