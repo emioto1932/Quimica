@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM</title>
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body class="bodyquestao">
+    <header>
+        <h1>Questão 3 - ENEM (2019) - Reação Química e Energia</h1>
+    </header>
+    <main class="questao-enunciado">
+
+        <!-- Imagem do Exercício -->
+        <div class="exercise-image">
+            <!-- Imagem ilustrativa do exercício -->
+            <img src="img/LQ04ex03-2019-reator-quimico.jpg" alt="Reação Química e Energia">
+        </div>
+
+        <!-- Botão para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a introdução e a resolução</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Introdução</h2>
+            <p>
+                A reação química entre hidrogênio e oxigênio para formar água é um exemplo clássico de reação exotérmica, liberando energia para o ambiente. Este conceito está diretamente relacionado à energia envolvida na quebra e formação de ligações químicas durante a reação.
+            </p>
+            <p>
+                Para resolver questões envolvendo variação de entalpia, utilizamos as energias das ligações dos reagentes e produtos, garantindo que os cálculos estejam de acordo com as proporções da equação química balanceada.
+            </p>
+
+            <h2>Resolução</h2>
+            <p>
+                A reação dada é:
+            </p>
+            <p>
+                <strong>2H<sub>2</sub>(g) + O<sub>2</sub>(g) → 2H<sub>2</sub>O(g)</strong>
+            </p>
+
+            <p>
+                <strong>1. Energias de ligação:</strong>
+                <ul>
+                    <li>H-H: 437 kJ/mol</li>
+                    <li>O=O: 494 kJ/mol</li>
+                    <li>H-O: 463 kJ/mol</li>
+                </ul>
+            </p>
+
+            <p>
+                <strong>2. Energia nos reagentes:</strong>
+                <ul>
+                    <li>2 moléculas de H<sub>2</sub>: 2 × 437 = 874 kJ</li>
+                    <li>1 molécula de O<sub>2</sub>: 1 × 494 = 494 kJ</li>
+                </ul>
+                Total: 874 + 494 = 1368 kJ
+            </p>
+
+            <p>
+                <strong>3. Energia nos produtos:</strong>
+                <ul>
+                    <li>4 ligações H-O em 2 moléculas de H<sub>2</sub>O: 4 × 463 = 1852 kJ</li>
+                </ul>
+                Total: 1852 kJ
+            </p>
+
+            <p>
+                <strong>4. Variação de entalpia (ΔH):</strong>
+                <ul>
+                    <li>ΔH = Energia dos reagentes - Energia dos produtos</li>
+                    <li>ΔH = 1368 - 1852 = -484 kJ/mol</li>
+                </ul>
+            </p>
+
+            <p>
+                <strong>5. Proporção para 1 kg de H<sub>2</sub>:</strong>
+                <ul>
+                    <li>4 g de H<sub>2</sub> liberam 484 kJ</li>
+                    <li>1000 g de H<sub>2</sub> liberam: (1000 × 484) / 4 = 121000 kJ</li>
+                </ul>
+            </p>
+
+            <p>
+                Portanto, a energia liberada pela combustão de 1 kg de hidrogênio é <strong>121000 kJ</strong>. A resposta correta é a letra <strong>B</strong>.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
