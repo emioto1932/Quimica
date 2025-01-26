@@ -106,6 +106,7 @@ tbody td {
         <li><a id="potencialLink" onclick="abrirModal('potencial')">O potencial de repouso</a></li>
         <li><a id="impulsoLink" onclick="abrirModal('impulso')">A transmissão de impulsos nervosos</a></li>
         <li><a id="calorespecificoLink" onclick="abrirModal('calorespecifico')">Diferença entre o calor específico e a capacidade térmica</a></li>
+        <li><a id="reacaoquimicaLink" onclick="abrirModal('reacaoquimica')">Reação química</a></li>
         
        
         <!-- Outros conceitos podem ser adicionados aqui -->
@@ -351,6 +352,100 @@ tbody td {
     </div>
 </div>
 
+
+<!-- Modal para Reação Química -->
+<div id="reacaoquimicaModal" class="modal">
+    <div class="modal-content">
+        <h2>Reação Química: Um Conceito Básico</h2>
+        <p>
+            Uma reação química pode ser comparada a uma receita culinária, onde há proporções específicas de "ingredientes" para formar o "prato final". Por exemplo, para fazer uma porção de bolinhos de chuva, você precisa de:
+        </p>
+        <ul>
+            <li>2 xícaras de farinha,</li>
+            <li>1 xícara de açúcar,</li>
+            <li>1 ovo,</li>
+            <li>2 pitadas de sal,</li>
+            <li>1 colher de manteiga,</li>
+            <li>1 colher de fermento.</li>
+        </ul>
+        <p>
+            Se você quiser fazer duas porções, terá que dobrar todos os ingredientes. O mesmo acontece nas reações químicas: as quantidades de substâncias reagentes e produtos são proporcionais e seguem regras específicas.
+        </p>
+        <h3>Os Coeficientes Estequiométricos</h3>
+        <p>
+            Nas reações químicas, as quantidades de substâncias são representadas por coeficientes estequiométricos. Eles indicam a proporção de moléculas ou átomos que participam da reação.
+        </p>
+        <p>Por exemplo, considere a reação química:</p>
+        <p>\( 2H_2 + O_2 \longrightarrow 2H_2O \)</p>
+        <p>
+            2 moléculas de \( H_2 \) reagem com 1 molécula de \( O_2 \) para formar 2 moléculas de \( H_2O \). Esses números (2, 1, 2) são os coeficientes estequiométricos.
+        </p>
+        <h3>A Quantidade na Química: Mol</h3>
+        <p>
+            Na química, a quantidade de substâncias é medida em mol, que é uma unidade que representa uma quantidade enorme de partículas (átomos, moléculas, íons, etc.).
+        </p>
+        <p>
+            1 mol = \( 6,02 \times 10^{23} \) partículas  
+            Isso equivale a 602.000.000.000.000.000.000.000 partículas!  
+            Para ajudar a entender, é como saber que:
+        </p>
+        <ul>
+            <li>1 dezena = 10,</li>
+            <li>1 centena = 100,</li>
+            <li>1 mol = \( 6,02 \times 10^{23} \).</li>
+        </ul>
+        <p>No exemplo da reação:</p>
+        <ul>
+            <li>2 mol de \( H_2 \) reagem com 1 mol de \( O_2 \) para formar 2 mol de \( H_2O \).</li>
+        </ul>
+        <h3>Massa em Gramas: Ligação com a Tabela Periódica</h3>
+        <p>
+            A massa de 1 mol de qualquer substância pode ser encontrada na tabela periódica, usando as massas atômicas dos elementos químicos.
+        </p>
+        <p>
+            Por exemplo:
+        </p>
+        <ul>
+            <li>Hidrogênio (\( H \)): 1 u.m.a. (unidade de massa atômica), o que equivale a 1 g/mol.</li>
+            <li>Oxigênio (\( O \)): 16 u.m.a., ou seja, 16 g/mol.</li>
+        </ul>
+        <p>Na reação, temos as seguintes massas molares:</p>
+        <ul>
+            <li>\( H_2 \): 2 g/mol (pois \( H_2 = 2 \times 1 \)),</li>
+            <li>\( O_2 \): 32 g/mol (pois \( O_2 = 2 \times 16 \)),</li>
+            <li>\( H_2O \): 18 g/mol (pois \( H_2O = 2 \times 1 + 16 \)).</li>
+        </ul>
+        <h3>Cálculo em Gramas</h3>
+        <p>Agora, vamos calcular a quantidade de cada substância em gramas, usando os coeficientes estequiométricos:</p>
+        <ul>
+            <li>2 mol de \( H_2 \): \( 2 \times 2 \, \text{g} = 4 \, \text{g} \),</li>
+            <li>1 mol de \( O_2 \): \( 1 \times 32 \, \text{g} = 32 \, \text{g} \),</li>
+            <li>2 mol de \( H_2O \): \( 2 \times 18 \, \text{g} = 36 \, \text{g} \).</li>
+        </ul>
+        <p>Portanto, na reação:</p>
+        <ul>
+            <li>4 g de \( H_2 \) reagem com 32 g de \( O_2 \) para formar 36 g de \( H_2O \).</li>
+        </ul>
+        <h3>Resumo</h3>
+        <p>
+            <ul>
+                <li>Reações químicas funcionam como receitas: seguem proporções específicas.</li>
+                <li>Os coeficientes estequiométricos definem essas proporções.</li>
+                <li>A unidade mol ajuda a medir grandes quantidades de partículas.</li>
+                <li>Usamos a tabela periódica para encontrar as massas em gramas de cada substância.</li>
+                <li>Multiplicamos as massas pelos coeficientes para calcular a quantidade exata em gramas.</li>
+            </ul>
+        </p>
+        <button class="close-btn" onclick="fecharModal()">OK</button>
+    </div>
+</div>
+
+
+    
+
+    
+
+    
     <script>
         // Função para abrir o modal com o conteúdo correto
         function abrirModal(conceito) {
@@ -398,6 +493,9 @@ tbody td {
             }
              if (window.location.hash === "#calorespecificoLink") {
                 abrirModal('calorespecifico');
+            }
+            if (window.location.hash === "#reacaoquimicaLink") {
+                abrirModal('reacaoquimica');
             }
         });
     </script>
