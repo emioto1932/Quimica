@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM - Oxidação da Glicose</title>
+    <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+    <!-- MathJax para renderizar fórmulas matemáticas -->
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Questão - ENEM (2018) - Oxidação da Glicose</h1>
+    </header>
+    <main class="exercise-page">
+        <!-- Imagem do Exercício -->
+        <div class="exercise-image">
+            <img src="     img/LQ07ex02-2018-ligacao-intramolecular.jpg" alt="Questão ENEM - Oxidação da Glicose">
+        </div>
+        
+        <!-- Link para o Vídeo -->
+        <div class="exercise-video">
+            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da resolução</a>
+        </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+            <p><strong>Introdução:</strong></p>
+            <p>
+                A oxidação da glicose no organismo humano é uma reação química que libera energia para diferentes atividades celulares. A equação química da combustão da glicose é:
+            </p>
+            <p>
+                \[ C_6H_{12}O_6 + 6 O_2 \rightarrow 6 CO_2 + 6 H_2O + \text{energia} \]
+            </p>
+            <p>
+                A cada 1 mol de glicose (massa molar de 180 g/mol), são liberados 2.800 kJ de energia. Entretanto, apenas 40% dessa energia é utilizada para atividades musculares.
+            </p>
+
+            <p><strong>Passo 1: Energia total liberada por 1 g de glicose</strong></p>
+            <p>
+                Utilizando uma regra de três para calcular a energia liberada por 1 g de glicose:
+            </p>
+            <p>
+                \[
+                \text{Energia total por 1 g} = \frac{2.800 \, \text{kJ}}{180 \, \text{g}} \cdot 1 \, \text{g} = 15,56 \, \text{kJ}
+                \]
+            </p>
+
+            <p><strong>Passo 2: Energia disponível para atividade muscular</strong></p>
+            <p>
+                Como apenas 40% da energia total é utilizada para atividade muscular:
+            </p>
+            <p>
+                \[
+                \text{Energia para atividade muscular} = 15,56 \, \text{kJ} \cdot 0,4 = 6,2 \, \text{kJ}
+                \]
+            </p>
+
+            <h3>Resposta final:</h3>
+            <p>
+                A energia obtida para atividade muscular na oxidação de 1,0 g de glicose é aproximadamente <strong>6,2 kJ</strong>.
+            </p>
+            <h3>Alternativa correta:</h3>
+            <p><strong>A) 6,2</strong></p>
+        </section>
+    </main>
+</body>
+</html>
