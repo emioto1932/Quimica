@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM - Oxidação da Glicose</title>
+    <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
+    <!-- MathJax para renderizar fórmulas matemáticas -->
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Questão - ENEM (2019) - Oxidação da Glicose</h1>
+    </header>
+    <main class="exercise-page">
+        <!-- Imagem do Exercício -->
+        <div class="exercise-image">
+            <img src="img/LQ07ex03-2018-ligacao-intramolecular.jpg" alt="Questão ENEM - Oxidação da Glicose">
+        </div>
+        
+        <!-- Link para o Vídeo -->
+        <div class="exercise-video">
+            <a href="https://www.youtube.com/watch?v=exemplo3" target="_blank">Clique aqui para o vídeo da resolução</a>
+        </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+        
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+            <p><strong>Introdução:</strong></p>
+            <p>
+                Durante a glicólise anaeróbica, a glicose é convertida em ácido lático, liberando uma quantidade de energia menor que a combustão aeróbica. Vamos calcular a energia liberada no processo anaeróbico com base nas equações fornecidas.
+            </p>
+
+            <h3>Equações termoquímicas:</h3>
+            <p>
+                Combustão da glicose: 
+                \[ C_6H_{12}O_6(s) + 6 O_2(g) \rightarrow 6 CO_2(g) + 6 H_2O(l) \quad \Delta H = -2800 \, \text{kJ} \]
+            </p>
+            <p>
+                Combustão do ácido lático: 
+                \[ CH_3CH(OH)COOH(s) + 3 O_2(g) \rightarrow 3 CO_2(g) + 3 H_2O(l) \quad \Delta H = -1344 \, \text{kJ} \]
+            </p>
+
+            <h3>Passo 1: Invertendo e ajustando a reação do ácido lático</h3>
+            <p>
+                Quando invertemos a equação do ácido lático para representar a formação a partir de CO₂ e H₂O, o sinal de ΔH muda. Multiplicando por 2, temos:
+            </p>
+            <p>
+                \[
+                6 CO_2(g) + 6 H_2O(l) \rightarrow 2 CH_3CH(OH)COOH(s) + 6 O_2(g) \quad \Delta H = +2688 \, \text{kJ}
+                \]
+            </p>
+
+            <h3>Passo 2: Somando as equações</h3>
+            <p>
+                Combustão da glicose:
+                \[ C_6H_{12}O_6(s) + 6 O_2(g) \rightarrow 6 CO_2(g) + 6 H_2O(l) \quad \Delta H = -2800 \, \text{kJ} \]
+            </p>
+            <p>
+                Formação do ácido lático (reação invertida):
+                \[ 6 CO_2(g) + 6 H_2O(l) \rightarrow 2 CH_3CH(OH)COOH(s) + 6 O_2(g) \quad \Delta H = +2688 \, \text{kJ} \]
+            </p>
+            <p>
+                Soma das equações:
+                \[ C_6H_{12}O_6(s) \rightarrow 2 CH_3CH(OH)COOH(s) \quad \Delta H = -2800 + 2688 = -112 \, \text{kJ} \]
+            </p>
+
+            <h3>Resposta final:</h3>
+            <p>
+                O processo anaeróbico libera **112 kJ por mol de glicose**. Isso é muito menos eficiente do que a combustão completa da glicose, que libera **2800 kJ/mol**.
+            </p>
+            <h3>Alternativa correta:</h3>
+            <p><strong>Libera 112 kJ por mol de glicose.</strong></p>
+        </section>
+    </main>
+</body>
+</html>
