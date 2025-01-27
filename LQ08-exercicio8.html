@@ -1,26 +1,66 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2018)</title>
+    <title>Questão - ENEM</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 8 - ENEM (2018) - Forças Intermoleculares</h1>
+        <h1>Questão - ENEM (2018) - Forças Intermoleculares</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ08ex08-2018-Forcas_Intermoleculares.jpg" alt="Questão 1">
+            <img src="img/LQ08ex08-2018-Forcas_Intermoleculares.jpg" alt="ENEM - Questão sobre Tensoativos e Meio Ambiente">
         </div>
+
+        
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo_vitaminas" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+
+            <p><strong>Introdução:</strong></p>
+            <p>Tensoativos são compostos orgânicos que possuem comportamento anfifílico. Isto é, possuem duas regiões, uma hidrofóbica e outra hidrofílica. O principal tensoativo aniônico sintético surgiu na década de 1940 e teve grande aceitação no mercado de detergentes em razão do melhor desempenho comparado ao do sabão. No entanto, o uso desse produto provocou grandes problemas ambientais, dentre eles a resistência à degradação biológica, por causa dos diversos carbonos terciários na cadeia que compõe a porção hidrofóbica desse tensoativo aniônico. As ramificações na cadeia dificultam sua degradação, levando à persistência no meio ambiente por longos períodos. Isso levou à sua substituição na maioria dos países por tensoativos biodegradáveis, ou seja, com cadeias alquílicas lineares.</p>
+
+            <p><strong>Resolução:</strong></p>
+
+            <p>- <strong>Alternativa A:</strong> A alternativa A apresenta um tensoativo com 17 carbonos secundários. Este tipo de estrutura, com carbonos secundários, não apresenta as características prejudiciais ao meio ambiente, pois é mais facilmente biodegradável.</p>
+
+            <p>- <strong>Alternativa B:</strong> A alternativa B possui 6 carbonos terciários na cadeia hidrofóbica. Essa característica é um dos principais fatores que dificultam a degradação biológica do composto, tornando-o mais persistente no ambiente. Esse tensoativo é o que causa maior impacto ambiental.</p>
+
+            <p>- <strong>Alternativa C:</strong> A alternativa C tem 9 carbonos secundários na cadeia, o que também não apresenta problemas de biodegradabilidade significativos. A presença de carbonos secundários facilita a degradação do tensoativo.</p>
+
+            <p>- <strong>Alternativa D:</strong> A alternativa D apresenta 10 carbonos secundários, sendo semelhante à alternativa C. Portanto, também não causa grandes problemas ambientais e é mais facilmente degradado.</p>
+
+            <p>- <strong>Alternativa E:</strong> A alternativa E contém 9 carbonos secundários, e, como nas outras alternativas com carbonos secundários, não apresenta características que dificultem sua degradação biológica.</p>
+
+            <h3>Conclusão:</h3>
+            <p>A alternativa correta é a <strong>B) com 6 carbonos terciários</strong>, pois é essa característica que torna o tensoativo difícil de ser degradado pelos microrganismos e que causa o impacto ambiental descrito no enunciado.</p>
+        </section>
     </main>
 </body>
 </html>
