@@ -1,26 +1,66 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2014)</title>
+    <title>Questão - ENEM</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 6 - ENEM (2014) - Forças Intermoleculares</h1>
+        <h1>Questão - ENEM (2014) - Forças Intermoleculares</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ08ex06-2014-Forcas_Intermoleculares.jpg" alt="Questão 1">
+            <img src="img/LQ08ex06-2014-Forcas_Intermoleculares.jpg" alt="ENEM - Questão sobre Sabões e Micelas">
         </div>
+
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo_vitaminas" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+
+            <p><strong>Introdução:</strong></p>
+            <p>A questão aborda a formação de micelas, que são estruturas essenciais para o processo de limpeza com sabão. Essas micelas possuem uma parte polar que interage com a água e uma parte apolar que interage com gorduras e óleos. A função dessas micelas é arrastar as moléculas de gordura ou sujeira para fora do material a ser limpo, garantindo a remoção de impurezas. No processo de formação de micelas, a parte polar das moléculas do sabão se volta para a água, enquanto a parte apolar se associa às gorduras ou sujeiras.</p>
+
+            <p><strong>Resolução:</strong></p>
+            <p>Sabemos que sabões e detergentes são compostos por moléculas que possuem uma parte polar (hidrofílica) e uma parte apolar (hidrofóbica). A parte apolar é capaz de interagir com as moléculas de gordura e óleo, enquanto a parte polar interage com a água. Isso permite que as substâncias apolares, como as gorduras, sejam removidas da superfície do material e transportadas para a solução aquosa. Assim, as micelas se formam quando essas moléculas de sabão se agrupam, com suas caudas apolares voltadas para as sujeiras e suas cabeças polares voltadas para a água.</p>
+
+            <p>- <strong>Alternativa A: C18H36</strong> representa uma molécula com uma longa cadeia de hidrocarbonetos, mas sem a parte polar, ou seja, não forma micelas adequadas. <strong>Não é a resposta correta.</strong></p>
+
+            <p>- <strong>Alternativa B: C17H33COONa</strong> representa um sabão (laurato de sódio), que é uma substância capaz de formar micelas, com uma cabeça polar (COO⁻) e uma cauda apolar (C17H33). <strong>Essa é a resposta correta.</strong></p>
+
+            <p>- <strong>Alternativa C: CH3CH2COONa</strong> representa um composto com uma cadeia mais curta que não é ideal para formar micelas eficazes como o sabão. <strong>Não é a resposta correta.</strong></p>
+
+            <p>- <strong>Alternativa D: CH3CH2CH2COOH</strong> é o ácido butanoico, que tem uma parte polar, mas não forma micelas adequadas como os sabões. <strong>Não é a resposta correta.</strong></p>
+
+            <p>- <strong>Alternativa E: CH3CH2CH2CH2OCH2CH2CH2CH3</strong> é um éter, que possui uma cadeia longa, mas não tem a capacidade de formar micelas eficientes, pois não possui a combinação de uma parte polar e apolar em uma estrutura adequada. <strong>Não é a resposta correta.</strong></p>
+
+            <h3>Conclusão:</h3>
+            <p>A alternativa correta é a <strong>B) C17H33COONa</strong>, pois essa substância tem as características necessárias para formar micelas estáveis, essenciais para o processo de limpeza.</p>
+        </section>
     </main>
 </body>
 </html>
