@@ -18,6 +18,16 @@ body {
     margin-bottom: 16px; /* Espaçamento inferior para separação */
 }
 
+.div-imagem {
+    display: block;
+    width: 50%;
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 16px; /* Adiciona espaço entre a imagem e o texto */
+    margin-bottom: 16px; /* Espaçamento inferior para separação */
+}
+
+
+
 
  .destaque {
       font-weight: bold;
