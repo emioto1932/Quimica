@@ -1,26 +1,65 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2020)</title>
+    <title>Questão - ENEM</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 7 - ENEM (2020) - Forças Intermoleculares</h1>
+        <h1>Questão - ENEM (2014) - Extração de Óleo Vegetal</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ08ex07-2020-Forcas_Intermoleculares.jpg" alt="Questão 1">
+            <img src="LQ08ex07-2020-Forcas_Intermoleculares.jpg" alt="ENEM - Questão sobre Extração de Óleo Vegetal">
         </div>
+
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo_vitaminas" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+
+            <p><strong>Introdução:</strong></p>
+            <p>A obtenção de óleos vegetais é um processo complexo que envolve diversas etapas, cada uma com características específicas que visam extrair o óleo de maneira eficiente. Entre essas etapas, destacam-se a trituração, o cozimento, a prensagem, a extração e a destilação. Cada uma dessas subetapas desempenha um papel importante na obtenção do óleo, mas, em particular, a extração é uma fase que se destaca por se basear em um princípio físico-químico fundamental: a polaridade das substâncias. Durante a extração, o uso de solventes como o hexano, que é apolar, permite a dissolução do óleo vegetal, que também é apolar, facilitando sua retirada dos grãos. Esse princípio de "semelhante dissolve semelhante" é crucial para a eficiência do processo de extração. Após a extração, o óleo obtido passa por etapas subsequentes, como a destilação, onde a separação dos compostos ocorre com base em suas propriedades físicas, como ponto de ebulição. Assim, a etapa de extração é a responsável por aplicar o conceito de polaridade para a obtenção eficiente do óleo vegetal.</p>
+
+            <p><strong>Resolução:</strong></p>
+
+            <p>- <strong>Alternativa A: Trituração:</strong> A trituração é a primeira etapa do processo de obtenção do óleo, responsável por quebrar os grãos e liberar suas células. No entanto, não envolve interações baseadas em polaridade, mas sim a ação mecânica.</p>
+
+            <p>- <strong>Alternativa B: Cozimento:</strong> O cozimento dos grãos ajuda a aumentar a eficiência da extração, mas não é uma etapa que dependa diretamente da polaridade das substâncias. Ela facilita a liberação dos compostos lipídicos.</p>
+
+            <p>- <strong>Alternativa C: Prensagem:</strong> A prensagem é uma etapa física, onde os grãos são comprimidos para extrair o óleo. Não há envolvimento direto da polaridade das substâncias nesta fase.</p>
+
+            <p>- <strong>Alternativa D: Extração:</strong> A extração é a etapa que envolve a utilização de um solvente como o hexano, que é apolar, para dissolver o óleo vegetal, que também é apolar. Este processo segue o princípio de "semelhante dissolve semelhante", onde solventes apolares atraem substâncias apolares, como o óleo, facilitando sua separação.</p>
+
+            <p>- <strong>Alternativa E: Destilação:</strong> Após a extração, a destilação é usada para separar o óleo extraído do solvente, com base nas diferenças de ponto de ebulição. Embora envolva separação física, não depende da polaridade das substâncias.</p>
+
+            <h3>Conclusão:</h3>
+            <p>A alternativa correta é a <strong>D) Extração</strong>, pois é nesta etapa que o conceito de polaridade das substâncias é aplicado para a separação do óleo vegetal através de solventes apolares, como o hexano.</p>
+        </section>
     </main>
 </body>
 </html>
