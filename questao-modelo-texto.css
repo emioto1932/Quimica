@@ -9,7 +9,7 @@ body {
     text-align: left; /* Alinha todo o texto à esquerda */
 }
 
-ilustracao-imagem {
+.ilustracao-imagem {
     float: left; /* Alinha a imagem à esquerda */
     max-width: 100%; /* Garante que a imagem não exceda seu contêiner */
     width: 50%; /* Define o tamanho padrão como 50% do contêiner */
