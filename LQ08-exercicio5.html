@@ -1,25 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENEM (2017)</title>
+    <title>ENEM - Cromatografia e Interações Intermoleculares</title>
     <link rel="stylesheet" href="questao-modelo-imagem.css">
+    <link rel="stylesheet" href="questao-modelo-texto.css">
+    <script>
+        // Função para mostrar ou ocultar a resolução
+        function toggleResolução() {
+            var resposta = document.getElementById('resposta');
+            if (resposta.style.display === 'none' || resposta.style.display === '') {
+                resposta.style.display = 'block';
+            } else {
+                resposta.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>Questão 5 - ENEM (2017) - Forças Intermoleculares</h1>
+        <h1>Questão - ENEM Cromatografia e Interações Intermoleculares</h1>
     </header>
     <main class="exercise-page">
         <!-- Imagem do Exercício -->
         <div class="exercise-image">
-            <img src="img/LQ08ex05-2017-Forcas_Intermoleculares.jpg" alt="Questão 1">
+            <img src="img/LQ08ex05-2017-Forcas_Intermoleculares.jpg" alt="ENEM Cromatografia e Interações Intermoleculares">
         </div>
+
         <!-- Link para o Vídeo -->
         <div class="exercise-video">
-            <a href="https://www.youtube.com/watch?v=exemplo1" target="_blank">Clique aqui para o vídeo da resolução</a>
+            <a href="https://www.youtube.com/watch?v=exemplo_vitaminas" target="_blank">Clique aqui para o vídeo da resolução</a>
         </div>
+
+        <!-- Link para mostrar/ocultar a resolução -->
+        <div class="exercise-resposta">
+            <a href="javascript:void(0);" onclick="toggleResolução()">Clique aqui para ver a resolução escrita</a>
+        </div>
+
+        <!-- Sessão de Resolução -->
+        <section id="resposta" style="display: none;">
+            <h2>Resolução da Questão</h2>
+            <p><strong>Introdução:</strong></p>
+            <p>A questão aborda o processo de cromatografia em papel, um método de separação que se baseia na migração diferencial dos componentes de uma mistura entre duas fases imiscíveis: a fase estacionária e a fase móvel. A fase estacionária é composta por celulose, que pode absorver até 22% de água, sendo essa água que interage com os componentes da amostra. A fase móvel é uma mistura de hexano com 5% de acetona, e as substâncias que formam interações intermoleculares mais fortes com a fase estacionária migram mais lentamente. O exercício se concentra em entender como as substâncias presentes em um extrato vegetal se comportam em função da interação com essas fases.</p>
+
+            <p><strong>Resolução:</strong></p>
+            <p>A fase estacionária, composta por celulose com água absorvida, interage com as substâncias da amostra, como o licopeno, α-caroteno, γ-caroteno, capsorubina e α-criptoxantina. O hexano é uma substância apolar, e a acetona, levemente polar, interage com substâncias polares. Assim, as substâncias com maior polaridade interagem mais fortemente com a fase estacionária e migram mais lentamente.</p>
+
+            <p>- **Licopeno**, **α-caroteno** e **γ-caroteno** possuem cadeias hidrofóbicas, ou seja, são apolares. Essas substâncias interagem de maneira fraca com a fase estacionária, fazendo com que migrem mais rapidamente.</p>
+
+            <p>- **Capsorubina** possui uma cadeia hidrofóbica, mas com extremidades contendo grupos hidroxila e cetona, que são polares, o que faz com que ela interaja mais fortemente com a fase estacionária. Isso faz com que a capsorubina migre mais lentamente do que as outras substâncias.</p>
+
+            <p>- **α-criptoxantina** também tem uma cadeia hidrofóbica, mas com um único grupo hidroxila em uma extremidade. Embora tenha alguma polaridade, ela não interage tanto quanto a capsorubina, mas sim mais do que as outras substâncias apolares.</p>
+
+            <p>Portanto, a substância que migra mais lentamente é a **capsorubina**, pois suas interações com a fase estacionária são mais fortes devido aos grupos polares em suas extremidades.</p>
+
+            <h3>Conclusão:</h3>
+            <p>A substância que migra mais lentamente, devido às suas interações mais fortes com a fase estacionária, é a **capsorubina**. A resposta correta é, portanto, a alternativa <strong>d) capsorubina.</strong></p>
+        </section>
     </main>
 </body>
 </html>
